@@ -115,6 +115,139 @@
       ],
       "title": "IdentificationRule",
       "type": "object"
+    },
+    "PlaceRule": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "places",
+          "default": "places",
+          "title": "Type",
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "layer": {
+          "title": "Layer",
+          "type": "string"
+        },
+        "catalog": {
+          "title": "Catalog",
+          "type": "string"
+        },
+        "theme": {
+          "title": "Theme",
+          "type": "string"
+        },
+        "noun": {
+          "title": "Noun",
+          "type": "string"
+        },
+        "directions": {
+          "items": {
+            "enum": [
+              "name-map",
+              "map-name"
+            ],
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Directions",
+          "type": "array"
+        },
+        "batch_size": {
+          "default": 10,
+          "minimum": 1,
+          "title": "Batch Size",
+          "type": "integer"
+        },
+        "references": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "References",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "layer",
+        "catalog",
+        "theme",
+        "noun",
+        "references"
+      ],
+      "title": "PlaceRule",
+      "type": "object"
+    },
+    "RelationRule": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "relations",
+          "default": "relations",
+          "title": "Type",
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "layer": {
+          "title": "Layer",
+          "type": "string"
+        },
+        "catalog": {
+          "title": "Catalog",
+          "type": "string"
+        },
+        "related_catalog": {
+          "title": "Related Catalog",
+          "type": "string"
+        },
+        "relation": {
+          "enum": [
+            "region",
+            "department",
+            "capital"
+          ],
+          "title": "Relation",
+          "type": "string"
+        },
+        "theme": {
+          "title": "Theme",
+          "type": "string"
+        },
+        "question": {
+          "title": "Question",
+          "type": "string"
+        },
+        "references": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "References",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "layer",
+        "catalog",
+        "related_catalog",
+        "relation",
+        "theme",
+        "question",
+        "references"
+      ],
+      "title": "RelationRule",
+      "type": "object"
     }
   },
   "additionalProperties": false,
@@ -127,6 +260,12 @@
           },
           {
             "$ref": "#/$defs/DepartmentRule"
+          },
+          {
+            "$ref": "#/$defs/PlaceRule"
+          },
+          {
+            "$ref": "#/$defs/RelationRule"
           }
         ]
       },

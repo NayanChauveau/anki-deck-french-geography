@@ -1,0 +1,26 @@
+features:
+- id: mountain-vosges
+  name: Vosges
+  view: metropolitan
+  explanation: 'Zone indicative de relief : les limites Natural Earth sont approximatives,
+    sans valeur administrative.'
+- id: mountain-jura
+  name: Jura
+  view: metropolitan
+  explanation: 'Zone indicative de relief : les limites Natural Earth sont approximatives,
+    sans valeur administrative.'
+- id: mountain-massif-central
+  name: Massif central
+  view: metropolitan
+  explanation: 'Zone indicative de relief : les limites Natural Earth sont approximatives,
+    sans valeur administrative.'
+- id: mountain-pyrenees
+  name: Pyrénées
+  view: metropolitan
+  explanation: 'Zone indicative de relief : les limites Natural Earth sont approximatives,
+    sans valeur administrative.'
+- id: mountain-alpes
+  name: Alpes
+  view: metropolitan
+  explanation: 'Zone indicative de relief : les limites Natural Earth sont approximatives,
+    sans valeur administrative.'

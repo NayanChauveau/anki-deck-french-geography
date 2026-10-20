@@ -104,7 +104,7 @@ def scene_for(project: Project, card: Card, back: bool):
                 0.8,
             )
         for geom in background.values():
-            if card.layer == "departments":
+            if card.layer in ("departments", "regions", "mountains"):
                 add_geometry(scene, projection.geometry(geom), style.land, style.border, 1.1)
             else:
                 add_geometry(scene, projection.geometry(geom), style.river, style.river, 1.5)
@@ -168,7 +168,9 @@ def render_svg(view, scene, ocean, font_path):
             parts.append(f'<path d="{" ".join(commands)}" {attrs} fill-rule="evenodd"/>')
         elif item.kind == "point":
             x, y = item.points[0]
-            parts.append(f'<circle cx="{x:.2f}" cy="{y:.2f}" r="5" {attrs}/>')
+            parts.append(
+                f'<circle cx="{x:.2f}" cy="{y:.2f}" r="{max(2.5, item.width * 1.4):.2f}" {attrs}/>'
+            )
         else:
             x, y = item.points[0]
             parts.append(
@@ -201,7 +203,8 @@ def render_png(view, scene, ocean, font_path):
             draw.line(scaled(item.points), fill=item.stroke, width=width, joint="curve")
         elif item.kind == "point":
             x, y = scaled(item.points)[0]
-            draw.ellipse((x - 10, y - 10, x + 10, y + 10), fill=item.fill)
+            radius = max(2.5, item.width * 1.4) * factor
+            draw.ellipse((x - radius, y - radius, x + radius, y + radius), fill=item.fill)
         else:
             x, y = scaled(item.points)[0]
             draw.text((x, y), item.text, fill=item.fill, font=font, anchor="ls")

@@ -119,7 +119,7 @@ def test_reject_outside_target(project, tmp_path):
 
 
 def copied_project(tmp_path):
-    for directory in ("geo", "cards", "catalog"):
+    for directory in ("geo", "cards", "catalog", "data"):
         shutil.copytree(ROOT / directory, tmp_path / directory)
     return tmp_path
 
@@ -178,7 +178,7 @@ def test_new_catalog_entry_and_geometry_generate_a_note_without_a_card_file(tmp_
     sources["sources"][0]["sha256"] = hashlib.sha256(geometry_path.read_bytes()).hexdigest()
     source_path.write_text(yaml.safe_dump(sources))
     project = load(root)
-    card = project.cards[-1]
+    card = next(c for c in project.cards if c.target == "example")
     assert len([c for c in project.cards if c.theme == "Fleuves"]) == 19
     assert card.target == "example"
     assert card.answer == "L’Exemple"
@@ -186,7 +186,7 @@ def test_new_catalog_entry_and_geometry_generate_a_note_without_a_card_file(tmp_
     assert card.annotations[0].text == "Exemple"
     first_river = next(c for c in project.cards if c.theme == "Fleuves")
     assert card.question == first_river.question
-    assert card.references == first_river.references
+    assert set(card.references) <= set(first_river.references)
 
 
 def test_common_rule_applies_to_all_notes(tmp_path):

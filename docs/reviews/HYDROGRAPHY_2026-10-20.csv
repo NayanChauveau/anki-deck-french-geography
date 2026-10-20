@@ -1,0 +1,19 @@
+id,status,checked_on,explanation,fact_sources,geometry_limits
+loire,verified,2026-10-20,"Elle traverse notamment Orléans, Tours et Nantes avant de rejoindre l’Atlantique à Saint-Nazaire.",https://www.larousse.fr/encyclopedie/riviere-lac/la_Loire/130237,Tracé généralisé Natural Earth
+seine,verified,2026-10-20,"Elle traverse Paris, puis Rouen, avant de rejoindre la Manche par l’estuaire de la Seine.",https://www.larousse.fr/encyclopedie/riviere-lac/la_Seine/143800,Tracé généralisé Natural Earth
+rhone,verified,2026-10-20,"Il traverse le lac Léman, passe par Lyon, puis rejoint la mer Méditerranée par son delta en Camargue.",https://www.larousse.fr/encyclopedie/riviere-lac/Rh%C3%B4ne/140848,Tracé généralisé Natural Earth
+ariege,verified,2026-10-20,Elle rejoint la Garonne au sud de Toulouse.,https://www.larousse.fr/encyclopedie/riviere-lac/Ari%C3%A8ge/106123,Tracé généralisé Natural Earth
+dordogne,verified,2026-10-20,Elle rencontre la Garonne au bec d’Ambès ; leur estuaire commun est la Gironde.,https://www.larousse.fr/encyclopedie/riviere-lac/la_Dordogne/116918,Tracé généralisé Natural Earth
+doubs,verified,2026-10-20,"Rivière du massif du Jura, il est un affluent de la Saône.",https://www.larousse.fr/encyclopedie/riviere-lac/le_Doubs/116981,Tracé généralisé Natural Earth
+durance,verified,2026-10-20,"Affluent du Rhône, elle draine une partie des Alpes du Sud.",https://www.larousse.fr/encyclopedie/riviere-lac/la_Durance/117449,Tracé généralisé Natural Earth
+escaut,verified,2026-10-20,"Né en France, ce fleuve traverse la Belgique avant de rejoindre la mer du Nord par les Pays-Bas.",https://www.larousse.fr/encyclopedie/riviere-lac/Escaut/118392,Tracé généralisé Natural Earth
+garonne,verified,2026-10-20,La Garonne et la Dordogne se rejoignent pour former l’estuaire de la Gironde.,https://www.larousse.fr/encyclopedie/riviere-lac/la_Garonne/111428,Tracé généralisé Natural Earth
+marne,verified,2026-10-20,"Affluent de la Seine, elle rejoint celle-ci à proximité de Paris.",https://www.eau-seine-normandie.fr/agence-de-leau/le-bassin-de-la-seine,Tracé généralisé Natural Earth
+meuse,verified,2026-10-20,"Ce fleuve traverse la France, la Belgique et les Pays-Bas.",https://www.larousse.fr/encyclopedie/riviere-lac/la_Meuse/133000,Tracé généralisé Natural Earth
+moselle,verified,2026-10-20,"Elle appartient au bassin du Rhin, dont elle est un affluent.",https://www.larousse.fr/encyclopedie/riviere-lac/wd/134171,Tracé généralisé Natural Earth
+rhin,verified,2026-10-20,Ce fleuve longe l’Alsace puis poursuit son cours vers la mer du Nord. Seul un tronçon est présent dans les données sélectionnées.,https://formation-civique.interieur.gouv.fr/fiches-par-thematiques/histoire-geographie-et-culture/atlas-de-la-france/les-fleuves-fran%C3%A7ais/,Tronçon partiel : voir geo/features/rivers.geojson et CARTOGRAPHY.md
+saone,verified,2026-10-20,Elle rejoint le Rhône à Lyon. Le jeu de données ne représente ici que sa partie aval.,https://www.larousse.fr/encyclopedie/riviere-lac/Sa%C3%B4ne/143176,Tronçon partiel : voir geo/features/rivers.geojson et CARTOGRAPHY.md
+segre,verified,2026-10-20,Il naît en Cerdagne française et rejoint l’Èbre.,https://www.larousse.fr/encyclopedie/riviere-lac/la_S%C3%A8gre/143772,Tracé généralisé Natural Earth
+tarn,verified,2026-10-20,Il naît au mont Lozère et rejoint la Garonne.,https://www.larousse.fr/dictionnaires/college/le_Tarn/39307,Tracé généralisé Natural Earth
+vienne,verified,2026-10-20,Elle naît sur le plateau de Millevaches et rejoint la Loire.,https://www.larousse.fr/encyclopedie/riviere-lac/la_Vienne/148847,Tracé généralisé Natural Earth
+yonne,verified,2026-10-20,"Issue du Morvan, elle rejoint la Seine à Montereau-Fault-Yonne.",https://www.eau-seine-normandie.fr/agence-de-leau/le-bassin-de-la-seine,Tracé généralisé Natural Earth

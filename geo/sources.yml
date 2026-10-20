@@ -35,6 +35,69 @@
       "file": "geo/features/departments.geojson",
       "sha256": "2397d3a818bf6d9fd41f7170622c543bb08f15c4cfc9d41bebb208e502e012cf",
       "modifications": "WGS84; 101 departments selected by code, excluding COM; properties split into editorial catalog; IDs prefixed dep-; invalid polygons repaired with Shapely make_valid, discarding collapsed line remnants; no simplification beyond upstream 1000m."
+    },
+    {
+      "version": "2025; local preparation 2026-10-20",
+      "license": "ODbL 1.0",
+      "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+      "id": "regions",
+      "source": "Etalab / IGN, contours administratifs",
+      "url": "https://etalab-datasets.geo.data.gouv.fr/contours-administratifs/2025/geojson/regions-1000m.geojson",
+      "upstream_sha256": "7f44a5c4deaeb710c9dc2b043ed4debcf50068a1b0740619a5873f9e878f9786",
+      "file": "geo/features/regions.geojson",
+      "sha256": "94d592bb8b9d5cf1353122f739535fd25bf1ca1917c93ee5cdc5f4bd4041466b",
+      "modifications": "WGS84; 18 COG regions selected, COM excluded; IDs prefixed reg-; make_valid repairs; collapsed non-polygon remnants discarded; upstream 1000m generalisation retained."
+    },
+    {
+      "version": "2025; snapshot 2026-10-20",
+      "license": "ODbL 1.0",
+      "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+      "id": "cities",
+      "source": "Etalab / IGN, positions des mairies",
+      "url": "https://etalab-datasets.geo.data.gouv.fr/contours-administratifs/2025/geojson/mairies.geojson",
+      "upstream_sha256": "1b5640e38050cd9ffe5e59d28c3212275de44004bd9cc093cbebdfdc64800f7a",
+      "file": "geo/features/cities.geojson",
+      "sha256": "d548a52b190f4df26f7f37788085be30f57f479fbcfdcae55b155827f03d6e7b",
+      "modifications": "WGS84; town halls for COG 2025 regional and departmental capitals only; name/relations from COG; codes prefixed city-; one town-hall point per selected commune."
+    },
+    {
+      "id": "administration",
+      "kind": "reference",
+      "source": "INSEE, COG au 1er janvier 2025",
+      "version": "2025",
+      "url": "https://www.insee.fr/fr/information/8377162",
+      "license": "Licence Ouverte 2.0",
+      "license_url": "https://www.insee.fr/fr/information/2008466?page=copyright.htm",
+      "file": "data/administration/cog-2025.json",
+      "sha256": "ac353fde764714df31121749a765601d109d889dd83a6d7e5ff32a0335580c9c",
+      "upstream_sha256": "d903566d9c0d263389d279baea6761917b7460749a07bec8ba37dd8f2ff7d98a",
+      "inputs": [
+        {
+          "url": "https://www.insee.fr/fr/statistiques/fichier/8377162/v_region_2025.csv",
+          "sha256": "d903566d9c0d263389d279baea6761917b7460749a07bec8ba37dd8f2ff7d98a"
+        },
+        {
+          "url": "https://www.insee.fr/fr/statistiques/fichier/8377162/v_departement_2025.csv",
+          "sha256": "513900ca23edc682ef9b912d7bfc317129eac3a7d71ff19bc22b40ea4838e6eb"
+        },
+        {
+          "url": "https://www.insee.fr/fr/statistiques/fichier/8377162/v_commune_2025.csv",
+          "sha256": "3f8d2913fb0bdee1f72f54706854dc0cd626ed4089bd5761ec9292db0cb12e7e"
+        }
+      ],
+      "modifications": "COG regions and departments retained; communes restricted to their capitals; UTF-8 CSV converted to JSON without changing codes, names or relationships."
+    },
+    {
+      "id": "mountains",
+      "source": "Natural Earth, physical label polygons",
+      "version": "v5.1.2",
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_geography_regions_polys.geojson",
+      "license": "Public domain",
+      "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "upstream_sha256": "b7b26e50ea917d3696aec87f932def2bf5f890f5770e441d59c162c6f4c92a77",
+      "file": "geo/features/mountains.geojson",
+      "sha256": "e934e4d0aa18ef60abefc99eec760fade00cc560278b7cd21fe3858df9e3d593",
+      "modifications": "Five physical regions selected by NAME, clipped to [-7,40,12,53], properties reduced, IDs prefixed mountain-, make_valid applied. Label polygons describe approximate geographic extents, not administrative mountain-law zones. No island polygon substituted for Corsican relief."
     }
   ]
 }

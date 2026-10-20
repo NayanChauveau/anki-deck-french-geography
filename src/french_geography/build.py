@@ -1,5 +1,8 @@
+import hashlib
 import html
 import json
+import shutil
+from importlib.metadata import version
 from pathlib import Path
 
 import genanki
@@ -19,13 +22,22 @@ def note_guid(card_id: str) -> str:
 
 
 def credits(card):
-    if card.layer != "departments":
+    if card.layer not in ("departments", "regions", "cities"):
         return ""
     return (
-        '<div class="credits">Contours : '
+        '<div class="credits">Cartographie : '
         '<a href="https://www.data.gouv.fr/datasets/contours-administratifs">'
         "Etalab / IGN · 2025</a>"
         ' · <a href="https://opendatacommons.org/licenses/odbl/1-0/">ODbL 1.0</a></div>'
+    )
+
+
+def references_html(references):
+    return "<br>".join(
+        f'<a href="{html.escape(ref, quote=True)}">{html.escape(ref)}</a>'
+        if ref.startswith(("https://", "http://"))
+        else html.escape(ref)
+        for ref in references
     )
 
 
@@ -35,8 +47,20 @@ def image_html(card, name):
 
 def maps(project: Project, out: Path):
     manifest = {}
-    cache = {}
+    cache_dir = project.root / "build/media"
+    cache_dir.mkdir(parents=True, exist_ok=True)
     out.mkdir(parents=True, exist_ok=True)
+    index_path = cache_dir / ".render-cache.json"
+    try:
+        cache = json.loads(index_path.read_text())
+    except (OSError, ValueError):
+        cache = {}
+    renderer = hashlib.sha256(Path(render.__code__.co_filename).read_bytes()).hexdigest()
+    sources = {source["id"]: source["sha256"] for source in project.sources}
+    environment = [version(package) for package in ("Pillow", "pyproj", "shapely")]
+    font = hashlib.sha256(
+        (project.root / "assets/fonts/NotoSans-Regular.ttf").read_bytes()
+    ).hexdigest()
     for card in project.cards:
         manifest[card.id] = {}
         for side, back in [("front", False), ("back", True)]:
@@ -44,12 +68,43 @@ def maps(project: Project, out: Path):
             if mode == "none":
                 manifest[card.id][side] = {}
                 continue
-            key = (card.layer, card.view, mode, card.target if mode == "target" else None)
-            if key not in cache:
-                cache[key] = {
-                    ext: path.name for ext, path in render(project, card, back, out).items()
+            inputs = [
+                card.layer,
+                card.view,
+                mode,
+                card.target if mode == "target" else None,
+                project.views[card.view].model_dump(),
+                {name: value.model_dump() for name, value in project.views.items()},
+                project.style.model_dump(),
+                sources[card.layer],
+                sources["countries"],
+                renderer,
+                environment,
+                font,
+            ]
+            key = hashlib.sha256(json.dumps(inputs, sort_keys=True).encode()).hexdigest()
+            record = cache.get(key, {})
+            valid = set(record) == {"svg", "png"}
+            if valid:
+                for extension, name in record.items():
+                    path = cache_dir / name
+                    if (
+                        not path.is_file()
+                        or name
+                        != "geo-" + hashlib.sha256(path.read_bytes()).hexdigest() + "." + extension
+                    ):
+                        valid = False
+                        break
+            if not valid:
+                record = {
+                    ext: path.name for ext, path in render(project, card, back, cache_dir).items()
                 }
-            manifest[card.id][side] = cache[key]
+                cache[key] = record
+            manifest[card.id][side] = record
+            if out.resolve() != cache_dir.resolve():
+                for name in record.values():
+                    shutil.copyfile(cache_dir / name, out / name)
+    index_path.write_text(json.dumps(cache, sort_keys=True) + "\n")
     (out / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
     return manifest
 
@@ -67,7 +122,8 @@ def preview(project: Project, out: Path) -> Path:
         )
         articles.append(
             f"<article><h2>{e(card.answer)}</h2><p>{e(card.question)}</p>"
-            f'<div class="pair">{figures}</div><p>{e(card.explanation)}</p></article>'
+            f'<div class="pair">{figures}</div><p>{e(card.explanation)}</p>'
+            f"<details><summary>Sources</summary>{references_html(card.references)}</details></article>"
         )
     css = (project.root / "templates/anki/style.css").read_text()
     document = (
@@ -121,6 +177,9 @@ def build(project: Project, out: Path) -> Path:
     decks = {
         "Fleuves": genanki.Deck(DECK_ID, DECK_NAME),
         "Départements": genanki.Deck(1976423102, "Géographie française::Départements"),
+        "Régions": genanki.Deck(1976423103, "Géographie française::Régions"),
+        "Villes": genanki.Deck(1976423104, "Géographie française::Villes"),
+        "Relief": genanki.Deck(1976423105, "Géographie française::Relief"),
     }
     media_files = set()
     positions = dict.fromkeys(decks, 0)
@@ -128,7 +187,7 @@ def build(project: Project, out: Path) -> Path:
         images = [manifest[card.id][side].get("png") for side in ["front", "back"]]
         media_files.update(str(media_dir / name) for name in images if name)
         image_fields = [image_html(card, name) if name else "" for name in images]
-        refs = " · ".join(html.escape(ref) for ref in card.references)
+        refs = references_html(card.references)
         positions[card.theme] += 1
         decks[card.theme].add_note(
             genanki.Note(

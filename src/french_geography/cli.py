@@ -8,7 +8,7 @@ from pathlib import Path
 
 from french_geography.build import build, maps, preview
 from french_geography.project import load
-from french_geography.schema import CatalogFile, DepartmentCatalog, RuleFile
+from french_geography.schema import CatalogFile, DepartmentCatalog, PlaceCatalog, RuleFile
 
 
 def anki(action: str, **params):
@@ -39,6 +39,7 @@ def main():
                 ("cards", RuleFile),
                 ("catalog", CatalogFile),
                 ("departments", DepartmentCatalog),
+                ("places", PlaceCatalog),
             ]:
                 (root / f"schema/{name}.schema.json").write_text(
                     json.dumps(model.model_json_schema(), ensure_ascii=False, indent=2) + "\n"
@@ -66,6 +67,7 @@ def main():
                 ("cards", RuleFile),
                 ("catalog", CatalogFile),
                 ("departments", DepartmentCatalog),
+                ("places", PlaceCatalog),
             ]:
                 actual = json.loads((root / f"schema/{name}.schema.json").read_text())
                 if actual != model.model_json_schema():

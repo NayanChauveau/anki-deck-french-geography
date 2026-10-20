@@ -2,11 +2,15 @@ features:
 - id: loire
   name: Loire
   article: la
-  explanation: Son cours traverse le centre de la France, puis rejoint l’océan Atlantique par un estuaire
-    à proximité de Saint-Nazaire.
+  explanation: Elle traverse notamment Orléans, Tours et Nantes avant de rejoindre l’Atlantique à Saint-Nazaire.
   label:
     lon: 1.0
     lat: 46.8
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Loire/130237
+  review:
+    status: verified
+    checked_on: '2026-10-20'
 - id: seine
   name: Seine
   article: la
@@ -14,6 +18,11 @@ features:
   label:
     lon: 1.9
     lat: 49.2
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Seine/143800
+  review:
+    status: verified
+    checked_on: '2026-10-20'
 - id: rhone
   name: Rhône
   article: le
@@ -22,61 +31,84 @@ features:
   label:
     lon: 5.3
     lat: 44.8
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Rh%C3%B4ne/140848
+  review:
+    status: verified
+    checked_on: '2026-10-20'
 - id: ariege
   name: Ariège
   article: l’
-  explanation: Affluent de la Garonne, elle descend des Pyrénées vers le nord.
+  explanation: Elle rejoint la Garonne au sud de Toulouse.
   references:
-  - https://adour-garonne.eaufrance.fr/coursdeau/O---0000
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Ari%C3%A8ge/106123
   label:
     lon: 2.0
     lat: 43.0
+  review:
+    status: verified
+    checked_on: '2026-10-20'
 - id: dordogne
   name: Dordogne
   article: la
-  explanation: Elle rejoint la Garonne pour former l’estuaire de la Gironde, ouvert sur l’Atlantique.
+  explanation: Elle rencontre la Garonne au bec d’Ambès ; leur estuaire commun est la Gironde.
   references:
-  - https://www.gironde.fr/la-transition-ecologique/fondements-naturels-et-humains-des-paysages
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Dordogne/116918
   label:
     lon: 0.1
     lat: 45.8
+  review:
+    status: verified
+    checked_on: '2026-10-20'
 - id: doubs
   name: Doubs
   article: le
   explanation: Rivière du massif du Jura, il est un affluent de la Saône.
   references:
-  - https://www.larousse.fr/encyclopedie/riviere-lac/Sa%C3%B4ne/143176
+  - https://www.larousse.fr/encyclopedie/riviere-lac/le_Doubs/116981
   label:
     lon: 5.7
     lat: 47.9
+  review:
+    status: verified
+    checked_on: '2026-10-20'
 - id: durance
   name: Durance
   article: la
   explanation: Affluent du Rhône, elle draine une partie des Alpes du Sud.
   references:
-  - https://formation-civique.interieur.gouv.fr/fiches-par-thematiques/histoire-geographie-et-culture/atlas-de-la-france/les-fleuves-fran%C3%A7ais/
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Durance/117449
   label:
     lon: 6.0
     lat: 44.0
+  review:
+    status: verified
+    checked_on: '2026-10-20'
 - id: escaut
   name: Escaut
   article: l’
   explanation: Né en France, ce fleuve traverse la Belgique avant de rejoindre la mer du Nord par les
     Pays-Bas.
   references:
-  - https://fr.wikipedia.org/wiki/Escaut
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Escaut/118392
   label:
     lon: 2.0
     lat: 49.9
+  review:
+    status: verified
+    checked_on: '2026-10-20'
 - id: garonne
   name: Garonne
   article: la
-  explanation: Avec la Dordogne, elle forme l’estuaire de la Gironde, qui débouche dans l’océan Atlantique.
+  explanation: La Garonne et la Dordogne se rejoignent pour former l’estuaire de la Gironde.
   references:
-  - https://www.gironde.fr/la-transition-ecologique/fondements-naturels-et-humains-des-paysages
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Garonne/111428
   label:
     lon: -1.8
     lat: 44.2
+  review:
+    status: verified
+    checked_on: '2026-10-20'
 - id: marne
   name: Marne
   article: la
@@ -86,25 +118,33 @@ features:
   label:
     lon: 3.3
     lat: 49.5
+  review:
+    status: verified
+    checked_on: '2026-10-20'
 - id: meuse
   name: Meuse
   article: la
-  explanation: Ce fleuve traverse la France, la Belgique et les Pays-Bas ; son bassin appartient au versant
-    de la mer du Nord.
+  explanation: Ce fleuve traverse la France, la Belgique et les Pays-Bas.
   references:
-  - https://fr.wikipedia.org/wiki/Meuse_(fleuve)
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Meuse/133000
   label:
     lon: 3.4
     lat: 49.1
+  review:
+    status: verified
+    checked_on: '2026-10-20'
 - id: moselle
   name: Moselle
   article: la
   explanation: Elle appartient au bassin du Rhin, dont elle est un affluent.
   references:
-  - https://formation-civique.interieur.gouv.fr/fiches-par-thematiques/histoire-geographie-et-culture/atlas-de-la-france/les-fleuves-fran%C3%A7ais/
+  - https://www.larousse.fr/encyclopedie/riviere-lac/wd/134171
   label:
     lon: 6.5
     lat: 48.8
+  review:
+    status: verified
+    checked_on: '2026-10-20'
 - id: rhin
   name: Rhin
   article: le
@@ -115,6 +155,9 @@ features:
   label:
     lon: 8.5
     lat: 48.3
+  review:
+    status: verified
+    checked_on: '2026-10-20'
 - id: saone
   name: Saône
   article: la
@@ -124,33 +167,45 @@ features:
   label:
     lon: 5.2
     lat: 46.5
+  review:
+    status: verified
+    checked_on: '2026-10-20'
 - id: segre
   name: Sègre
   article: le
-  explanation: Né dans les Pyrénées françaises, il s’écoule principalement en Espagne et rejoint l’Èbre.
+  explanation: Il naît en Cerdagne française et rejoint l’Èbre.
   references:
-  - https://fr.wikipedia.org/wiki/S%C3%A8gre
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_S%C3%A8gre/143772
   label:
     lon: 1.5
     lat: 41.9
+  review:
+    status: verified
+    checked_on: '2026-10-20'
 - id: tarn
   name: Tarn
   article: le
-  explanation: Affluent de la Garonne, il s’écoule du Massif central vers le Bassin aquitain.
+  explanation: Il naît au mont Lozère et rejoint la Garonne.
   references:
-  - https://adour-garonne.eaufrance.fr/coursdeau/O---0000
+  - https://www.larousse.fr/dictionnaires/college/le_Tarn/39307
   label:
     lon: 2.2
     lat: 44.6
+  review:
+    status: verified
+    checked_on: '2026-10-20'
 - id: vienne
   name: Vienne
   article: la
-  explanation: Elle descend du Massif central et rejoint la Loire.
+  explanation: Elle naît sur le plateau de Millevaches et rejoint la Loire.
   references:
-  - https://fr.wikipedia.org/wiki/Vienne_(affluent_de_la_Loire)
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Vienne/148847
   label:
     lon: -0.5
     lat: 46.5
+  review:
+    status: verified
+    checked_on: '2026-10-20'
 - id: yonne
   name: Yonne
   article: l’
@@ -160,3 +215,6 @@ features:
   label:
     lon: 2.2
     lat: 47.8
+  review:
+    status: verified
+    checked_on: '2026-10-20'

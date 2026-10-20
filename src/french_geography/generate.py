@@ -11,11 +11,16 @@ from french_geography.schema import (
     CatalogFile,
     DepartmentRule,
     IdentificationRule,
+    PlaceCatalog,
+    PlaceRule,
+    RelationRule,
 )
 
 
 def generate(
-    root: Path, rules: list[IdentificationRule | DepartmentRule], layers: dict
+    root: Path,
+    rules: list[IdentificationRule | DepartmentRule | PlaceRule | RelationRule],
+    layers: dict,
 ) -> list[Card]:
     cards = []
     seen_rules = set()
@@ -25,6 +30,9 @@ def generate(
         seen_rules.add(rule.id)
         if rule.layer not in layers:
             raise ValueError(f"Unknown geographic layer: {rule.layer}")
+        if isinstance(rule, (PlaceRule, RelationRule)):
+            cards.extend(generate_places(root, rule, layers[rule.layer]))
+            continue
         if isinstance(rule, DepartmentRule):
             cards.extend(generate_departments(root, rule, layers[rule.layer]))
             continue
@@ -51,7 +59,7 @@ def generate(
                 lon, lat = point.x, point.y
             cards.append(
                 Card(
-                    id=f"fr-geo-{rule.id}-{entry.id}",
+                    id=f"fr-geo-{rule.id}-{entry.id.lower()}",
                     target=entry.id,
                     view=rule.view,
                     question=rule.question,
@@ -119,6 +127,77 @@ def generate_departments(root, rule, geometries):
                         if end == "map"
                         else "none",
                         back_map="target" if "map" in (start, end) else "none",
+                    )
+                )
+    return cards
+
+
+def place_catalog(root, relative):
+    path = (root / relative).resolve()
+    if not path.is_relative_to(root.resolve()):
+        raise ValueError("Catalog path escapes project")
+    # Department catalogs share these relation fields.
+    catalog = PlaceCatalog.model_validate(yaml.safe_load(path.read_text()))
+    entries = {entry.id: entry for entry in catalog.features}
+    if len(entries) != len(catalog.features):
+        raise ValueError(f"Duplicate catalog ID: {relative}")
+    return entries
+
+
+def generate_places(root, rule, geometries):
+    entries = place_catalog(root, rule.catalog)
+    if entries.keys() != geometries.keys():
+        raise ValueError(f"Catalog/layer mismatch: {rule.catalog}")
+    cards = []
+    if isinstance(rule, RelationRule):
+        related = place_catalog(root, rule.related_catalog)
+        for entry in entries.values():
+            target = getattr(entry, rule.relation)
+            if target not in related:
+                raise ValueError(f"Unknown {rule.relation} for {entry.id}: {target}")
+            answer = related[target].name
+            question = rule.question.format(name=entry.name)
+            if answer.casefold() in question.casefold():
+                continue  # A relation already disclosed by its question adds no recall value.
+            cards.append(
+                Card(
+                    id=f"fr-geo-{rule.id}-{entry.id.lower()}",
+                    target=entry.id,
+                    view=entry.view,
+                    theme=rule.theme,
+                    layer=rule.layer,
+                    direction=rule.relation,
+                    question=question,
+                    answer=answer,
+                    explanation=f"{entry.name} → {answer} · Source : Insee, COG 2025.",
+                    references=rule.references,
+                    front_map="none",
+                    back_map="none",
+                )
+            )
+        return cards
+    for batch in batched(list(entries.values()), rule.batch_size):
+        for direction in rule.directions:
+            for entry in batch:
+                locate = direction == "name-map"
+                cards.append(
+                    Card(
+                        id=f"fr-geo-{rule.id}-{entry.id.lower()}-{direction}",
+                        target=entry.id,
+                        view=entry.view,
+                        layer=rule.layer,
+                        theme=rule.theme,
+                        direction=direction,
+                        question=(
+                            f"Où se situe {rule.noun} « {entry.name} » ?"
+                            if locate
+                            else f"Quel est le nom de {rule.noun} sur la carte ?"
+                        ),
+                        answer=entry.name,
+                        explanation=entry.explanation,
+                        references=list(dict.fromkeys([*rule.references, *entry.references])),
+                        front_map="blank" if locate else "target",
+                        back_map="target",
                     )
                 )
     return cards

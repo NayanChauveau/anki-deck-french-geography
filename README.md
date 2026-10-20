@@ -1,8 +1,20 @@
 # Géographie française — Anki
 
-**321 cartes** : 18 cours d’eau et 303 cartes de départements (101 × 3 sens).
-Les départements relient **nom, code et position** : nom → carte, carte → nom,
-carte → code. Voir [le fonctionnement des départements](docs/DEPARTMENTS.md).
+**880 cartes** réparties dans cinq sous-decks :
+
+| Série | Cartes | Contenu |
+| --- | ---: | --- |
+| Fleuves | 18 | Reconnaissance des cours d’eau, explications vérifiées |
+| Départements | 303 | 101 départements × 3 sens, par lots de dix |
+| Régions | 148 | Localisation, noms, chefs-lieux et département → région |
+| Villes | 401 | 101 chefs-lieux : localisation, noms et relations départementales |
+| Relief | 10 | Pilote de cinq grandes zones : Alpes, Pyrénées, Massif central, Jura, Vosges |
+
+Les questions relationnelles qui contiennent déjà leur réponse sont écartées.
+Les référentiels administratifs sont ceux du **COG au 1er janvier 2025**. Les points
+urbains représentent les mairies du millésime 2025, pas la forme des agglomérations.
+Voir [les régions et villes](docs/ADMINISTRATION.md), [les départements](docs/DEPARTMENTS.md)
+et [la revue hydrographique](docs/reviews/HYDROGRAPHY_2026-10-20.md).
 
 La série de géographie physique contient **18 cartes d’identification de cours d’eau**.
 Le recto montre le tracé surligné sans son nom ; le verso révèle le nom et une courte explication sous l’image. Le cadrage reste identique.
@@ -12,6 +24,8 @@ recoupe la métropole : Ariège, Dordogne, Doubs, Durance, Escaut, Garonne, Loir
 Marne, Meuse, Moselle, Rhin, Rhône, Saône, Sègre, Seine, Tarn, Vienne et Yonne.
 Il s’agit de fleuves et de rivières ; la sélection n’est pas un inventaire exhaustif.
 Le deck conserve son chemin Anki initial `Géographie française::Fleuves`.
+
+La progression prévue est détaillée dans la [roadmap complète](docs/ROADMAP.md).
 
 ## Construire et prévisualiser
 
@@ -123,6 +137,10 @@ explications restent dans le texte du verso. Les crédits départementaux sont a
 sous l’image en HTML, avec les liens vers le jeu de données et sa licence.
 Les références restent disponibles dans « Sources ».
 
-Les champs `explanation` sont des résumés éditoriaux rédigés pour ce deck, pas des
-textes extraits des GeoJSON ni des citations. Les références de géométrie ne valent
-pas à elles seules vérification de chaque détail d’une explication.
+Les champs `explanation` sont des résumés éditoriaux, pas des citations. Les 18 textes
+hydrographiques ont une référence factuelle et une revue datée. Les références des
+géométries restent distinctes de celles des explications.
+
+Le relief est un pilote : les zones Natural Earth sont approximatives. Les montagnes
+corses et le Massif armoricain attendent des géométries adaptées ; un contour d’île
+ou de région administrative n’est pas utilisé pour représenter un relief.

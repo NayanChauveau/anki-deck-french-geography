@@ -1,0 +1,11 @@
+rules:
+  - type: places
+    id: relief-massifs
+    layer: mountains
+    catalog: catalog/mountains.yml
+    theme: Relief
+    noun: la zone de relief
+    directions: [name-map, map-name]
+    batch_size: 10
+    references:
+      - https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-physical-labels/

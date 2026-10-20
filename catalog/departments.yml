@@ -2,312 +2,514 @@ features:
 - id: dep-01
   code: '01'
   name: Ain
+  region: reg-84
+  capital: city-01053
 - id: dep-02
   code: '02'
   name: Aisne
+  region: reg-32
+  capital: city-02408
 - id: dep-03
   code: '03'
   name: Allier
+  region: reg-84
+  capital: city-03190
 - id: dep-04
   code: '04'
   name: Alpes-de-Haute-Provence
+  region: reg-93
+  capital: city-04070
 - id: dep-05
   code: '05'
   name: Hautes-Alpes
+  region: reg-93
+  capital: city-05061
 - id: dep-06
   code: '06'
   name: Alpes-Maritimes
+  region: reg-93
+  capital: city-06088
 - id: dep-07
   code: '07'
   name: Ardèche
+  region: reg-84
+  capital: city-07186
 - id: dep-08
   code: 08
   name: Ardennes
+  region: reg-44
+  capital: city-08105
 - id: dep-09
   code: 09
   name: Ariège
+  region: reg-76
+  capital: city-09122
 - id: dep-10
   code: '10'
   name: Aube
+  region: reg-44
+  capital: city-10387
 - id: dep-11
   code: '11'
   name: Aude
+  region: reg-76
+  capital: city-11069
 - id: dep-12
   code: '12'
   name: Aveyron
+  region: reg-76
+  capital: city-12202
 - id: dep-13
   code: '13'
   name: Bouches-du-Rhône
+  region: reg-93
+  capital: city-13055
 - id: dep-14
   code: '14'
   name: Calvados
+  region: reg-28
+  capital: city-14118
 - id: dep-15
   code: '15'
   name: Cantal
+  region: reg-84
+  capital: city-15014
 - id: dep-16
   code: '16'
   name: Charente
+  region: reg-75
+  capital: city-16015
 - id: dep-17
   code: '17'
   name: Charente-Maritime
+  region: reg-75
+  capital: city-17300
 - id: dep-18
   code: '18'
   name: Cher
+  region: reg-24
+  capital: city-18033
 - id: dep-19
   code: '19'
   name: Corrèze
+  region: reg-75
+  capital: city-19272
 - id: dep-21
   code: '21'
   name: Côte-d'Or
+  region: reg-27
+  capital: city-21231
 - id: dep-22
   code: '22'
   name: Côtes-d'Armor
+  region: reg-53
+  capital: city-22278
 - id: dep-23
   code: '23'
   name: Creuse
+  region: reg-75
+  capital: city-23096
 - id: dep-24
   code: '24'
   name: Dordogne
+  region: reg-75
+  capital: city-24322
 - id: dep-25
   code: '25'
   name: Doubs
+  region: reg-27
+  capital: city-25056
 - id: dep-26
   code: '26'
   name: Drôme
+  region: reg-84
+  capital: city-26362
 - id: dep-27
   code: '27'
   name: Eure
+  region: reg-28
+  capital: city-27229
 - id: dep-28
   code: '28'
   name: Eure-et-Loir
+  region: reg-24
+  capital: city-28085
 - id: dep-29
   code: '29'
   name: Finistère
+  region: reg-53
+  capital: city-29232
 - id: dep-2A
   code: 2A
   name: Corse-du-Sud
+  region: reg-94
+  capital: city-2A004
 - id: dep-2B
   code: 2B
   name: Haute-Corse
+  region: reg-94
+  capital: city-2B033
 - id: dep-30
   code: '30'
   name: Gard
+  region: reg-76
+  capital: city-30189
 - id: dep-31
   code: '31'
   name: Haute-Garonne
+  region: reg-76
+  capital: city-31555
 - id: dep-32
   code: '32'
   name: Gers
+  region: reg-76
+  capital: city-32013
 - id: dep-33
   code: '33'
   name: Gironde
+  region: reg-75
+  capital: city-33063
 - id: dep-34
   code: '34'
   name: Hérault
+  region: reg-76
+  capital: city-34172
 - id: dep-35
   code: '35'
   name: Ille-et-Vilaine
+  region: reg-53
+  capital: city-35238
 - id: dep-36
   code: '36'
   name: Indre
+  region: reg-24
+  capital: city-36044
 - id: dep-37
   code: '37'
   name: Indre-et-Loire
+  region: reg-24
+  capital: city-37261
 - id: dep-38
   code: '38'
   name: Isère
+  region: reg-84
+  capital: city-38185
 - id: dep-39
   code: '39'
   name: Jura
+  region: reg-27
+  capital: city-39300
 - id: dep-40
   code: '40'
   name: Landes
+  region: reg-75
+  capital: city-40192
 - id: dep-41
   code: '41'
   name: Loir-et-Cher
+  region: reg-24
+  capital: city-41018
 - id: dep-42
   code: '42'
   name: Loire
+  region: reg-84
+  capital: city-42218
 - id: dep-43
   code: '43'
   name: Haute-Loire
+  region: reg-84
+  capital: city-43157
 - id: dep-44
   code: '44'
   name: Loire-Atlantique
+  region: reg-52
+  capital: city-44109
 - id: dep-45
   code: '45'
   name: Loiret
+  region: reg-24
+  capital: city-45234
 - id: dep-46
   code: '46'
   name: Lot
+  region: reg-76
+  capital: city-46042
 - id: dep-47
   code: '47'
   name: Lot-et-Garonne
+  region: reg-75
+  capital: city-47001
 - id: dep-48
   code: '48'
   name: Lozère
+  region: reg-76
+  capital: city-48095
 - id: dep-49
   code: '49'
   name: Maine-et-Loire
+  region: reg-52
+  capital: city-49007
 - id: dep-50
   code: '50'
   name: Manche
+  region: reg-28
+  capital: city-50502
 - id: dep-51
   code: '51'
   name: Marne
+  region: reg-44
+  capital: city-51108
 - id: dep-52
   code: '52'
   name: Haute-Marne
+  region: reg-44
+  capital: city-52121
 - id: dep-53
   code: '53'
   name: Mayenne
+  region: reg-52
+  capital: city-53130
 - id: dep-54
   code: '54'
   name: Meurthe-et-Moselle
+  region: reg-44
+  capital: city-54395
 - id: dep-55
   code: '55'
   name: Meuse
+  region: reg-44
+  capital: city-55029
 - id: dep-56
   code: '56'
   name: Morbihan
+  region: reg-53
+  capital: city-56260
 - id: dep-57
   code: '57'
   name: Moselle
+  region: reg-44
+  capital: city-57463
 - id: dep-58
   code: '58'
   name: Nièvre
+  region: reg-27
+  capital: city-58194
 - id: dep-59
   code: '59'
   name: Nord
+  region: reg-32
+  capital: city-59350
 - id: dep-60
   code: '60'
   name: Oise
+  region: reg-32
+  capital: city-60057
 - id: dep-61
   code: '61'
   name: Orne
+  region: reg-28
+  capital: city-61001
 - id: dep-62
   code: '62'
   name: Pas-de-Calais
+  region: reg-32
+  capital: city-62041
 - id: dep-63
   code: '63'
   name: Puy-de-Dôme
+  region: reg-84
+  capital: city-63113
 - id: dep-64
   code: '64'
   name: Pyrénées-Atlantiques
+  region: reg-75
+  capital: city-64445
 - id: dep-65
   code: '65'
   name: Hautes-Pyrénées
+  region: reg-76
+  capital: city-65440
 - id: dep-66
   code: '66'
   name: Pyrénées-Orientales
+  region: reg-76
+  capital: city-66136
 - id: dep-67
   code: '67'
   name: Bas-Rhin
+  region: reg-44
+  capital: city-67482
 - id: dep-68
   code: '68'
   name: Haut-Rhin
+  region: reg-44
+  capital: city-68066
 - id: dep-69
   code: '69'
   name: Rhône
+  region: reg-84
+  capital: city-69123
 - id: dep-70
   code: '70'
   name: Haute-Saône
+  region: reg-27
+  capital: city-70550
 - id: dep-71
   code: '71'
   name: Saône-et-Loire
+  region: reg-27
+  capital: city-71270
 - id: dep-72
   code: '72'
   name: Sarthe
+  region: reg-52
+  capital: city-72181
 - id: dep-73
   code: '73'
   name: Savoie
+  region: reg-84
+  capital: city-73065
 - id: dep-74
   code: '74'
   name: Haute-Savoie
+  region: reg-84
+  capital: city-74010
 - id: dep-75
   code: '75'
   name: Paris
   view: paris-region
+  region: reg-11
+  capital: city-75056
 - id: dep-76
   code: '76'
   name: Seine-Maritime
+  region: reg-28
+  capital: city-76540
 - id: dep-77
   code: '77'
   name: Seine-et-Marne
+  region: reg-11
+  capital: city-77288
 - id: dep-78
   code: '78'
   name: Yvelines
+  region: reg-11
+  capital: city-78646
 - id: dep-79
   code: '79'
   name: Deux-Sèvres
+  region: reg-75
+  capital: city-79191
 - id: dep-80
   code: '80'
   name: Somme
+  region: reg-32
+  capital: city-80021
 - id: dep-81
   code: '81'
   name: Tarn
+  region: reg-76
+  capital: city-81004
 - id: dep-82
   code: '82'
   name: Tarn-et-Garonne
+  region: reg-76
+  capital: city-82121
 - id: dep-83
   code: '83'
   name: Var
+  region: reg-93
+  capital: city-83137
 - id: dep-84
   code: '84'
   name: Vaucluse
+  region: reg-93
+  capital: city-84007
 - id: dep-85
   code: '85'
   name: Vendée
+  region: reg-52
+  capital: city-85191
 - id: dep-86
   code: '86'
   name: Vienne
+  region: reg-75
+  capital: city-86194
 - id: dep-87
   code: '87'
   name: Haute-Vienne
+  region: reg-75
+  capital: city-87085
 - id: dep-88
   code: '88'
   name: Vosges
+  region: reg-44
+  capital: city-88160
 - id: dep-89
   code: '89'
   name: Yonne
+  region: reg-27
+  capital: city-89024
 - id: dep-90
   code: '90'
   name: Territoire de Belfort
+  region: reg-27
+  capital: city-90010
 - id: dep-91
   code: '91'
   name: Essonne
+  region: reg-11
+  capital: city-91228
 - id: dep-92
   code: '92'
   name: Hauts-de-Seine
   view: paris-region
+  region: reg-11
+  capital: city-92050
 - id: dep-93
   code: '93'
   name: Seine-Saint-Denis
   view: paris-region
+  region: reg-11
+  capital: city-93008
 - id: dep-94
   code: '94'
   name: Val-de-Marne
   view: paris-region
+  region: reg-11
+  capital: city-94028
 - id: dep-95
   code: '95'
   name: Val-d'Oise
+  region: reg-11
+  capital: city-95500
 - id: dep-971
   code: '971'
   name: Guadeloupe
   view: guadeloupe
+  region: reg-01
+  capital: city-97105
 - id: dep-972
   code: '972'
   name: Martinique
   view: martinique
+  region: reg-02
+  capital: city-97209
 - id: dep-973
   code: '973'
   name: Guyane
   view: guyane
+  region: reg-03
+  capital: city-97302
 - id: dep-974
   code: '974'
   name: La Réunion
   view: reunion
+  region: reg-04
+  capital: city-97411
 - id: dep-976
   code: '976'
   name: Mayotte
   view: mayotte
+  region: reg-06
+  capital: city-97611

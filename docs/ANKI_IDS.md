@@ -30,3 +30,14 @@ objet. Les IDs du deck et du modèle restent propres à ce projet.
 
 Chaque direction a une identité distincte. Les codes du catalogue restent des
 chaînes (`01`, `2A`, `971`) ; seul le composant de l’ID est mis en minuscules.
+
+## Régions, villes et relief
+
+- Régions : deck `1976423103`, noms et positions `fr-geo-regions-reg-{code}-{direction}`.
+- Villes : deck `1976423104`, positions `fr-geo-villes-chefs-lieux-city-{code}-{direction}`.
+- Relief : deck `1976423105`, positions `fr-geo-relief-massifs-mountain-{id}-{direction}`.
+- Relations : `fr-geo-{id de règle}-{id de l’objet source en minuscules}`.
+
+Le modèle et le namespace existants sont partagés. Les anciens IDs des cours d’eau
+et départements ne changent pas. Une correction de texte ou de géométrie conserve
+l’identité de la note ; les relations sans valeur de rappel sont exclues avant export.

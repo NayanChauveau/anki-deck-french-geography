@@ -45,6 +45,17 @@
             }
           ],
           "default": null
+        },
+        "review": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EditorialReview"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
         }
       },
       "required": [
@@ -53,6 +64,30 @@
         "article"
       ],
       "title": "CatalogEntry",
+      "type": "object"
+    },
+    "EditorialReview": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "verified",
+            "needs-review"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "checked_on": {
+          "format": "date",
+          "title": "Checked On",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "checked_on"
+      ],
+      "title": "EditorialReview",
       "type": "object"
     },
     "LabelPosition": {

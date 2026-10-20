@@ -1,0 +1,32 @@
+rules:
+  - type: places
+    id: regions
+    layer: regions
+    catalog: catalog/regions.yml
+    theme: Régions
+    noun: la région
+    batch_size: 10
+    directions: [name-map, map-name]
+    references:
+      - https://www.insee.fr/fr/information/8377162
+      - https://www.data.gouv.fr/datasets/contours-administratifs
+  - type: relations
+    id: region-chef-lieu
+    layer: regions
+    catalog: catalog/regions.yml
+    related_catalog: catalog/cities.yml
+    relation: capital
+    theme: Régions
+    question: Quel est le chef-lieu de la région « {name} » ?
+    references:
+      - https://www.insee.fr/fr/information/8377162
+  - type: relations
+    id: departement-region
+    layer: departments
+    catalog: catalog/departments.yml
+    related_catalog: catalog/regions.yml
+    relation: region
+    theme: Régions
+    question: À quelle région appartient le département « {name} » ?
+    references:
+      - https://www.insee.fr/fr/information/8377162

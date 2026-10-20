@@ -1,3 +1,4 @@
+from datetime import date
 from typing import Annotated, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
@@ -24,7 +25,7 @@ class Card(Strict):
     references: list[str] = Field(min_length=1)
     annotations: list[Annotation] = Field(default_factory=list)
     layer: str = "rivers"
-    theme: Literal["Fleuves", "Départements"] = "Fleuves"
+    theme: str = Field(default="Fleuves", min_length=1)
     front_map: Literal["none", "blank", "target"] = "target"
     back_map: Literal["none", "blank", "target"] = "target"
     direction: str = "identification"
@@ -64,6 +65,11 @@ class LabelPosition(Strict):
     lat: float = Field(ge=-90, le=90)
 
 
+class EditorialReview(Strict):
+    status: Literal["verified", "needs-review"]
+    checked_on: date
+
+
 class CatalogEntry(Strict):
     id: str = Field(pattern=r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
     name: str = Field(min_length=1)
@@ -71,6 +77,7 @@ class CatalogEntry(Strict):
     explanation: str = ""
     references: list[str] = Field(default_factory=list)
     label: LabelPosition | None = None
+    review: EditorialReview | None = None
 
 
 class CatalogFile(Strict):
@@ -115,6 +122,8 @@ class DepartmentEntry(Strict):
     code: str = Field(pattern=r"^(?:0[1-9]|[1-8][0-9]|9[0-5]|2[AB]|97[12346])$", strict=True)
     name: str = Field(min_length=1)
     view: str | None = None
+    region: str | None = None
+    capital: str | None = None
 
     @model_validator(mode="after")
     def consistent_id(self):
@@ -127,5 +136,55 @@ class DepartmentCatalog(Strict):
     features: list[DepartmentEntry] = Field(min_length=1)
 
 
+class PlaceEntry(Strict):
+    id: str = Field(pattern=r"^[a-z]+-[A-Za-z0-9-]+$")
+    name: str = Field(min_length=1)
+    code: str | None = None
+    capital: str | None = None
+    department: str | None = None
+    region: str | None = None
+    view: str = "metropolitan"
+    explanation: str = ""
+    references: list[str] = Field(default_factory=list)
+
+
+class PlaceCatalog(Strict):
+    features: list[PlaceEntry] = Field(min_length=1)
+
+
+class PlaceRule(Strict):
+    type: Literal["places"] = "places"
+    id: str = Field(pattern=r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+    layer: str
+    catalog: str
+    theme: str
+    noun: str
+    directions: list[Literal["name-map", "map-name"]] = Field(
+        default_factory=lambda: ["name-map", "map-name"], min_length=1
+    )
+    batch_size: int = Field(default=10, ge=1)
+    references: list[str] = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def unique_directions(self):
+        if len(set(self.directions)) != len(self.directions):
+            raise ValueError("Duplicate place direction")
+        return self
+
+
+class RelationRule(Strict):
+    type: Literal["relations"] = "relations"
+    id: str = Field(pattern=r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+    layer: str
+    catalog: str
+    related_catalog: str
+    relation: Literal["region", "department", "capital"]
+    theme: str
+    question: str
+    references: list[str] = Field(min_length=1)
+
+
 class RuleFile(Strict):
-    rules: list[IdentificationRule | DepartmentRule] = Field(min_length=1)
+    rules: list[IdentificationRule | DepartmentRule | PlaceRule | RelationRule] = Field(
+        min_length=1
+    )
