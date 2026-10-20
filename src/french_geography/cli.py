@@ -8,7 +8,7 @@ from pathlib import Path
 
 from french_geography.build import build, maps, preview
 from french_geography.project import load
-from french_geography.schema import CatalogFile, RuleFile
+from french_geography.schema import CatalogFile, DepartmentCatalog, RuleFile
 
 
 def anki(action: str, **params):
@@ -35,7 +35,11 @@ def main():
     root = args.root.resolve()
     try:
         if args.command == "schema":
-            for name, model in [("cards", RuleFile), ("catalog", CatalogFile)]:
+            for name, model in [
+                ("cards", RuleFile),
+                ("catalog", CatalogFile),
+                ("departments", DepartmentCatalog),
+            ]:
                 (root / f"schema/{name}.schema.json").write_text(
                     json.dumps(model.model_json_schema(), ensure_ascii=False, indent=2) + "\n"
                 )
@@ -58,7 +62,11 @@ def main():
         else:
             for command in [["ruff", "check", "."], ["ruff", "format", "--check", "."], ["pytest"]]:
                 subprocess.run([sys.executable, "-m", *command], cwd=root, check=True)
-            for name, model in [("cards", RuleFile), ("catalog", CatalogFile)]:
+            for name, model in [
+                ("cards", RuleFile),
+                ("catalog", CatalogFile),
+                ("departments", DepartmentCatalog),
+            ]:
                 actual = json.loads((root / f"schema/{name}.schema.json").read_text())
                 if actual != model.model_json_schema():
                     raise ValueError("Stale schema: run make schema")

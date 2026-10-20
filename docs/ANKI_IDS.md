@@ -19,3 +19,14 @@ pas les notes déjà importées dans Anki. Aucune importation n’est lancée pa
 À partir de cette convention, conserver les IDs de règle et d’objet pour garder
 les révisions lors des mises à jour. Ne jamais réaffecter un ID diffusé à un autre
 objet. Les IDs du deck et du modèle restent propres à ce projet.
+
+## Départements
+
+- Sous-deck `Géographie française::Départements` : `1976423102`.
+- Modèle partagé : `1976423101`, mêmes champs et même ordinal de template.
+- Identifiant : `fr-geo-{rule.id}-{code en minuscules}-{direction}`.
+- Exemple : `fr-geo-departements-2a-map-name`.
+- Le GUID utilise le même namespace que les notes hydrographiques.
+
+Chaque direction a une identité distincte. Les codes du catalogue restent des
+chaînes (`01`, `2A`, `971`) ; seul le composant de l’ID est mis en minuscules.

@@ -20,11 +20,30 @@ def note_guid(card_id: str) -> str:
 
 def maps(project: Project, out: Path):
     manifest = {}
+    cache = {}
+    out.mkdir(parents=True, exist_ok=True)
     for card in project.cards:
-        manifest[card.id] = {
-            side: {ext: path.name for ext, path in render(project, card, back, out).items()}
-            for side, back in [("front", False), ("back", True)]
-        }
+        manifest[card.id] = {}
+        for side, back in [("front", False), ("back", True)]:
+            mode = card.back_map if back else card.front_map
+            if mode == "none":
+                manifest[card.id][side] = {}
+                continue
+            annotations = tuple(
+                a.model_dump_json() for a in card.annotations if back or a.side == "both"
+            )
+            key = (
+                card.layer,
+                card.view,
+                mode,
+                card.target if mode == "target" else None,
+                annotations,
+            )
+            if key not in cache:
+                cache[key] = {
+                    ext: path.name for ext, path in render(project, card, back, out).items()
+                }
+            manifest[card.id][side] = cache[key]
     (out / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
     return manifest
 
@@ -38,6 +57,7 @@ def preview(project: Project, out: Path) -> Path:
             f'<figure><figcaption>{label}</figcaption><img alt="{label}" '
             f'src="media/{manifest[card.id][side]["png"]}"></figure>'
             for side, label in [("front", "Recto"), ("back", "Verso")]
+            if manifest[card.id][side]
         )
         articles.append(
             f"<article><h2>{e(card.answer)}</h2><p>{e(card.question)}</p>"
@@ -53,7 +73,7 @@ def preview(project: Project, out: Path) -> Path:
         ".pair{display:flex;gap:16px}figure{margin:0;flex:1;min-width:0}"
         "article{margin-bottom:48px}figcaption{margin-bottom:8px}"
         "@media(max-width:640px){.pair{display:block}}</style>"
-        f"<h1>Géographie française</h1><p>{len(project.cards)} cours d’eau · recto et verso</p>"
+        f"<h1>Géographie française</h1><p>{len(project.cards)} cartes · recto et verso</p>"
         + "".join(articles)
         + "</html>"
     )
@@ -92,29 +112,40 @@ def build(project: Project, out: Path) -> Path:
         css=(templates / "style.css").read_text(),
         sort_field_index=0,
     )
-    deck = genanki.Deck(DECK_ID, DECK_NAME)
+    decks = {
+        "Fleuves": genanki.Deck(DECK_ID, DECK_NAME),
+        "Départements": genanki.Deck(1976423102, "Géographie française::Départements"),
+    }
     media_files = set()
     for card in project.cards:
-        images = [manifest[card.id][side]["png"] for side in ["front", "back"]]
-        media_files.update(str(media_dir / name) for name in images)
+        images = [manifest[card.id][side].get("png") for side in ["front", "back"]]
+        media_files.update(str(media_dir / name) for name in images if name)
+        image_fields = [
+            f'<img src="{name}" alt="Carte géographique">' if name else "" for name in images
+        ]
         refs = " · ".join(html.escape(ref) for ref in card.references)
-        deck.add_note(
+        decks[card.theme].add_note(
             genanki.Note(
                 model=model,
                 guid=note_guid(card.id),
                 fields=[
                     card.id,
                     html.escape(card.question),
-                    f'<img src="{images[0]}" alt="Cours d’eau à identifier">',
+                    image_fields[0],
                     html.escape(card.answer),
-                    f'<img src="{images[1]}" alt="{html.escape(card.answer)}">',
+                    image_fields[1],
                     html.escape(card.explanation),
                     refs,
                 ],
-                tags=["french-geography", "theme::fleuves", f"id::{card.id}"],
+                tags=[
+                    "french-geography",
+                    f"theme::{card.theme.lower()}",
+                    f"direction::{card.direction}",
+                    f"id::{card.id}",
+                ],
             )
         )
-    package = genanki.Package(deck)
+    package = genanki.Package(list(decks.values()))
     package.media_files = sorted(media_files)
     out.mkdir(parents=True, exist_ok=True)
     path = out / "french-geography.apkg"

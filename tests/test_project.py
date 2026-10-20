@@ -24,7 +24,9 @@ ROOT = Path(__file__).resolve().parents[1]
 
 @pytest.fixture
 def project():
-    return load(ROOT)
+    project = load(ROOT)
+    project.cards = [card for card in project.cards if card.theme == "Fleuves"]
+    return project
 
 
 def test_offline_package_contains_all_notes_and_media(project, tmp_path, monkeypatch):
@@ -173,13 +175,14 @@ def test_new_catalog_entry_and_geometry_generate_a_note_without_a_card_file(tmp_
     source_path.write_text(yaml.safe_dump(sources))
     project = load(root)
     card = project.cards[-1]
-    assert len(project.cards) == 19
+    assert len([c for c in project.cards if c.theme == "Fleuves"]) == 19
     assert card.target == "example"
     assert card.answer == "L’Exemple"
     assert card.explanation == ""
     assert card.annotations[0].text == "Exemple"
-    assert card.question == project.cards[0].question
-    assert card.references == project.cards[0].references
+    first_river = next(c for c in project.cards if c.theme == "Fleuves")
+    assert card.question == first_river.question
+    assert card.references == first_river.references
 
 
 def test_common_rule_applies_to_all_notes(tmp_path):
@@ -190,7 +193,9 @@ def test_common_rule_applies_to_all_notes(tmp_path):
             "Quel cours d’eau est surligné sur la carte ?", "Identifiez le tracé."
         )
     )
-    assert {card.question for card in load(root).cards} == {"Identifiez le tracé."}
+    assert {card.question for card in load(root).cards if card.theme == "Fleuves"} == {
+        "Identifiez le tracé."
+    }
 
 
 def test_catalog_requires_every_geographic_feature(tmp_path):

@@ -10,7 +10,7 @@
       "upstream_sha256": "bb854a900ecbd3b408df46d5e16e3e0f974ba55993f9d8b5c26e855273c0905a",
       "file": "geo/features/rivers.geojson",
       "sha256": "c10d0955c49b5bab5266e0c03353df1e262487893e6544ed03f6f9a8f4852a87",
-      "modifications": "WGS84; clipped to [-7,40,12,53]; properties reduced; rivers selected by aliases in geo/selection.yml and unioned; Rh\u00f4ne includes Rhne lake centerline; no added geometry."
+      "modifications": "WGS84; clipped to [-7,40,12,53]; properties reduced; rivers selected by aliases in geo/selection.yml and unioned; Rhône includes Rhne lake centerline; no added geometry."
     },
     {
       "id": "countries",
@@ -23,6 +23,18 @@
       "file": "geo/features/countries.geojson",
       "sha256": "4e4363f9c7bfa59c0ed3983325765cc8117ee6d4d41eddc7af3734bef14c66f6",
       "modifications": "WGS84; countries clipped to [-7,40,12,53]; properties reduced; no added geometry."
+    },
+    {
+      "id": "departments",
+      "source": "Etalab / data.gouv.fr, contours administratifs, IGN Admin Express",
+      "version": "2025, 1000m; snapshot 2026-10-20",
+      "url": "https://etalab-datasets.geo.data.gouv.fr/contours-administratifs/2025/geojson/departements-1000m.geojson",
+      "license": "ODbL 1.0",
+      "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+      "upstream_sha256": "c4be02f0454addb63d8a327d008fe983561d3e063340825f953b3a4e59a2198f",
+      "file": "geo/features/departments.geojson",
+      "sha256": "2397d3a818bf6d9fd41f7170622c543bb08f15c4cfc9d41bebb208e502e012cf",
+      "modifications": "WGS84; 101 departments selected by code, excluding COM; properties split into editorial catalog; IDs prefixed dep-; invalid polygons repaired with Shapely make_valid, discarding collapsed line remnants; no simplification beyond upstream 1000m."
     }
   ]
 }

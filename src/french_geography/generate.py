@@ -4,10 +4,18 @@ from pathlib import Path
 
 import yaml
 
-from french_geography.schema import Annotation, Card, CatalogFile, IdentificationRule
+from french_geography.schema import (
+    Annotation,
+    Card,
+    CatalogFile,
+    DepartmentRule,
+    IdentificationRule,
+)
 
 
-def generate(root: Path, rules: list[IdentificationRule], layers: dict) -> list[Card]:
+def generate(
+    root: Path, rules: list[IdentificationRule | DepartmentRule], layers: dict
+) -> list[Card]:
     cards = []
     seen_rules = set()
     for rule in rules:
@@ -16,6 +24,9 @@ def generate(root: Path, rules: list[IdentificationRule], layers: dict) -> list[
         seen_rules.add(rule.id)
         if rule.layer not in layers:
             raise ValueError(f"Unknown geographic layer: {rule.layer}")
+        if isinstance(rule, DepartmentRule):
+            cards.extend(generate_departments(root, rule, layers[rule.layer]))
+            continue
         path = (root / rule.catalog).resolve()
         if not path.is_relative_to(root.resolve()):
             raise ValueError("Catalog path escapes project")
@@ -47,6 +58,54 @@ def generate(root: Path, rules: list[IdentificationRule], layers: dict) -> list[
                     explanation=entry.explanation,
                     references=list(dict.fromkeys([*rule.references, *entry.references])),
                     annotations=[Annotation(text=entry.name, lon=lon, lat=lat)],
+                )
+            )
+    return cards
+
+
+def generate_departments(root, rule, geometries):
+    from french_geography.schema import DepartmentCatalog
+
+    path = (root / rule.catalog).resolve()
+    if not path.is_relative_to(root.resolve()):
+        raise ValueError("Catalog path escapes project")
+    catalog = DepartmentCatalog.model_validate(yaml.safe_load(path.read_text()))
+    entries = {entry.id: entry for entry in catalog.features}
+    if len(entries) != len(catalog.features):
+        raise ValueError("Duplicate department ID")
+    if entries.keys() != geometries.keys():
+        raise ValueError("Department catalog/layer mismatch")
+    cards = []
+    for entry in catalog.features:
+        values = {"name": entry.name, "code": entry.code, "map": ""}
+        for direction in rule.directions:
+            start, end = direction.split("-")
+            if end == "map":
+                question = f"Où se situe le département « {values[start]} » ?"
+            elif start == "map":
+                question = (
+                    "Quel est le nom du département surligné ?"
+                    if end == "name"
+                    else "Quel est le numéro du département surligné ?"
+                )
+            elif end == "code":
+                question = f"Quel est le numéro du département « {entry.name} » ?"
+            else:
+                question = f"Quel département porte le numéro {entry.code} ?"
+            cards.append(
+                Card(
+                    id=f"fr-geo-{rule.id}-{entry.code.lower()}-{direction}",
+                    target=entry.id,
+                    view=entry.view or rule.view,
+                    layer=rule.layer,
+                    theme="Départements",
+                    direction=direction,
+                    question=question,
+                    answer=(f"{entry.name} ({entry.code})" if end == "map" else values[end]),
+                    explanation=f"{entry.name} · code départemental {entry.code}.",
+                    references=rule.references,
+                    front_map="target" if start == "map" else "blank" if end == "map" else "none",
+                    back_map="target" if "map" in (start, end) else "none",
                 )
             )
     return cards

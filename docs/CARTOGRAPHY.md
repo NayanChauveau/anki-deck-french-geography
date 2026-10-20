@@ -103,3 +103,13 @@ pendant la validation ou le build ; aucun YAML de notes n’est produit.
 Les identifiants des cartes sont calculés depuis les IDs de la règle et de l’objet.
 Les anciens identifiants ont été abandonnés à la demande de l’auteur pendant cette
 phase de développement. Voir `ANKI_IDS.md` pour la convention actuelle.
+
+## Couches thématiques et départements
+
+Chaque note indique sa couche : les 18 cours d’eau utilisent uniquement le fond
+hydrographique ; les départements utilisent leurs limites polygonales. Les notes
+peuvent demander une image sans cible (`blank`), avec cible (`target`) ou aucune
+image (`none`). Le build réutilise les images identiques entre les sens d’une même
+série. Les images restent nommées par empreinte et toutes celles référencées sont
+embarquées dans le paquet. Voir [DEPARTMENTS.md](DEPARTMENTS.md) pour les données,
+la licence, les six sens disponibles et les trois sens actuellement activés.

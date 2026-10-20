@@ -84,4 +84,8 @@ for name, path, layer in [
             ),
         }
     )
-(root / "geo" / "sources.yml").write_text(json.dumps({"sources": sources}, indent=2) + "\n")
+registry_path = root / "geo/sources.yml"
+if registry_path.exists():
+    previous = yaml.safe_load(registry_path.read_text())["sources"]
+    sources.extend(source for source in previous if source["id"] not in ("rivers", "countries"))
+registry_path.write_text(json.dumps({"sources": sources}, indent=2) + "\n")

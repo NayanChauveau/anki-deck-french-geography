@@ -90,6 +90,8 @@ def scene_for(project: Project, card: Card, back: bool):
     view = project.views[card.view]
     style = project.style
     scene = []
+    show_target = (card.back_map if back else card.front_map) == "target"
+    background = {key: project.features[key] for key in project.layers[card.layer]}
 
     def layer(v, rect=None):
         projection = Projection(v, rect)
@@ -101,22 +103,39 @@ def scene_for(project: Project, card: Card, back: bool):
                 style.border,
                 0.8,
             )
-        for geom in project.features.values():
-            add_geometry(scene, projection.geometry(geom), style.river, style.river, 1.5)
+        for geom in background.values():
+            if card.layer == "departments":
+                add_geometry(scene, projection.geometry(geom), style.land, style.border, 1.1)
+            else:
+                add_geometry(scene, projection.geometry(geom), style.river, style.river, 1.5)
         target = projection.geometry(project.features[card.target])
         if target.is_empty:
             raise ValueError(f"Target outside view: {card.id}")
-        add_geometry(scene, target, style.target, style.target, style.target_width)
+        if show_target:
+            add_geometry(scene, target, style.target, style.target, style.target_width)
         return projection
 
     projection = layer(view)
-    scene.append(Primitive("text", [(30, 27)], style.ink, text="FRANCE · GÉOGRAPHIE PHYSIQUE"))
+    scene.append(
+        Primitive(
+            "text",
+            [(30, 27)],
+            style.ink,
+            text="FRANCE · DÉPARTEMENTS"
+            if card.layer == "departments"
+            else "FRANCE · GÉOGRAPHIE PHYSIQUE",
+        )
+    )
     scene.append(
         Primitive(
             "text",
             [(30, view.height - 22)],
             style.ink,
-            text="Cours d’eau surligné · Natural Earth · domaine public",
+            text=(
+                "Contours : Etalab / IGN · 2025 · ODbL 1.0"
+                if card.layer == "departments"
+                else "Cours d’eau surligné · Natural Earth · domaine public"
+            ),
         )
     )
     for annotation in card.annotations:

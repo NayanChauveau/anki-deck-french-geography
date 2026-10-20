@@ -1,5 +1,66 @@
 {
   "$defs": {
+    "DepartmentRule": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "departments",
+          "default": "departments",
+          "title": "Type",
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "layer": {
+          "default": "departments",
+          "title": "Layer",
+          "type": "string"
+        },
+        "catalog": {
+          "default": "catalog/departments.yml",
+          "title": "Catalog",
+          "type": "string"
+        },
+        "view": {
+          "default": "metropolitan",
+          "title": "View",
+          "type": "string"
+        },
+        "references": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "References",
+          "type": "array"
+        },
+        "directions": {
+          "items": {
+            "enum": [
+              "name-map",
+              "map-name",
+              "map-code",
+              "name-code",
+              "code-name",
+              "code-map"
+            ],
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Directions",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "references"
+      ],
+      "title": "DepartmentRule",
+      "type": "object"
+    },
     "IdentificationRule": {
       "additionalProperties": false,
       "properties": {
@@ -53,7 +114,14 @@
   "properties": {
     "rules": {
       "items": {
-        "$ref": "#/$defs/IdentificationRule"
+        "anyOf": [
+          {
+            "$ref": "#/$defs/IdentificationRule"
+          },
+          {
+            "$ref": "#/$defs/DepartmentRule"
+          }
+        ]
       },
       "minItems": 1,
       "title": "Rules",

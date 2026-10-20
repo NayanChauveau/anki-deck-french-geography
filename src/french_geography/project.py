@@ -20,6 +20,7 @@ class Project:
     countries: list[dict]
     features: dict
     sources: list[dict]
+    layers: dict
 
 
 def load(root: Path) -> Project:
@@ -85,4 +86,6 @@ def load(root: Path) -> Project:
         if not features[card.target].intersects(box(*views[card.view].bounds)):
             raise ValueError(f"Target outside view: {card.id}")
     style = Style.model_validate(yaml.safe_load((root / "geo/styles.yml").read_text())["styles"])
-    return Project(root, cards, views, style, layers["countries"], features, sources)
+    return Project(
+        root, cards, views, style, layers["countries"], features, sources, geographic_layers
+    )

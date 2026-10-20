@@ -4,3 +4,24 @@ views:
     bounds: [-5.8, 41.0, 10.0, 51.6]
     width: 900
     height: 900
+  paris-region:
+    projection: EPSG:2154
+    bounds: [1.6, 48.35, 3.1, 49.2]
+    width: 900
+    height: 900
+    inset: metropolitan
+  guadeloupe:
+    projection: EPSG:32620
+    bounds: [-62.0, 15.6, -60.8, 16.8]
+  martinique:
+    projection: EPSG:32620
+    bounds: [-61.4, 14.2, -60.6, 15.1]
+  guyane:
+    projection: EPSG:32622
+    bounds: [-55.0, 1.7, -51.2, 6.2]
+  reunion:
+    projection: EPSG:32740
+    bounds: [55.0, -21.6, 56.1, -20.6]
+  mayotte:
+    projection: EPSG:32738
+    bounds: [44.85, -13.2, 45.5, -12.45]

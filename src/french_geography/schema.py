@@ -23,6 +23,11 @@ class Card(Strict):
     explanation: str = ""
     references: list[str] = Field(min_length=1)
     annotations: list[Annotation] = Field(default_factory=list)
+    layer: str = "rivers"
+    theme: Literal["Fleuves", "Départements"] = "Fleuves"
+    front_map: Literal["none", "blank", "target"] = "target"
+    back_map: Literal["none", "blank", "target"] = "target"
+    direction: str = "identification"
 
 
 class View(Strict):
@@ -81,5 +86,45 @@ class IdentificationRule(Strict):
     references: list[str] = Field(min_length=1)
 
 
+DepartmentDirection = Literal[
+    "name-map", "map-name", "map-code", "name-code", "code-name", "code-map"
+]
+
+
+class DepartmentRule(Strict):
+    type: Literal["departments"] = "departments"
+    id: str = Field(pattern=r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+    layer: str = "departments"
+    catalog: str = "catalog/departments.yml"
+    view: str = "metropolitan"
+    references: list[str] = Field(min_length=1)
+    directions: list[DepartmentDirection] = Field(
+        default_factory=lambda: ["name-map", "map-name", "map-code"], min_length=1
+    )
+
+    @model_validator(mode="after")
+    def unique_directions(self):
+        if len(set(self.directions)) != len(self.directions):
+            raise ValueError("Duplicate department direction")
+        return self
+
+
+class DepartmentEntry(Strict):
+    id: str = Field(pattern=r"^dep-(?:0[1-9]|[1-8][0-9]|9[0-5]|2[AB]|97[12346])$")
+    code: str = Field(pattern=r"^(?:0[1-9]|[1-8][0-9]|9[0-5]|2[AB]|97[12346])$", strict=True)
+    name: str = Field(min_length=1)
+    view: str | None = None
+
+    @model_validator(mode="after")
+    def consistent_id(self):
+        if self.code == "20" or self.id != f"dep-{self.code}":
+            raise ValueError("Department ID must match its code; Corsica uses 2A and 2B")
+        return self
+
+
+class DepartmentCatalog(Strict):
+    features: list[DepartmentEntry] = Field(min_length=1)
+
+
 class RuleFile(Strict):
-    rules: list[IdentificationRule] = Field(min_length=1)
+    rules: list[IdentificationRule | DepartmentRule] = Field(min_length=1)

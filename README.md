@@ -1,6 +1,10 @@
 # Géographie française — Anki
 
-Deck de géographie physique française : **18 cartes d’identification de cours d’eau**.
+**321 cartes** : 18 cours d’eau et 303 cartes de départements (101 × 3 sens).
+Les départements relient **nom, code et position** : nom → carte, carte → nom,
+carte → code. Voir [le fonctionnement des départements](docs/DEPARTMENTS.md).
+
+La série de géographie physique contient **18 cartes d’identification de cours d’eau**.
 Le recto montre le tracé surligné sans son nom ; le verso révèle le nom,
 une annotation et une courte explication. Le cadrage reste identique.
 
@@ -48,7 +52,7 @@ exécuter `uv run --offline --frozen french-geography build`.
 ## Architecture
 
 - `cards/` : règles communes de génération des cartes.
-- `catalog/` : noms français, articles, explications et placements facultatifs.
+- `catalog/` : noms français, codes départementaux, articles et annotations éditoriales.
 - `schema/` : schéma JSON généré depuis les modèles Pydantic.
 - `geo/selection.yml` : correspondance des noms amont vers les identifiants locaux.
 - `geo/features/` : données GeoJSON WGS84 locales sélectionnées.
@@ -79,8 +83,8 @@ dans les éléments sélectionnés sont conservées dans le cadre de la carte.
 
 Le moteur accepte les points, lignes, polygones et leurs formes multiples, les
 trous de polygones, les projections PROJ et les encarts. Les jeux actuellement
-embarqués couvrent la métropole et son voisinage. Ajouter des cartes d’outre-mer
-nécessitera des données locales et des vues adaptées.
+embarqués couvrent la métropole et son voisinage. Les départements ultramarins disposent de leurs données et vues locales.
+D’autres thèmes d’outre-mer nécessiteront des jeux adaptés.
 
 ## Ajouter ou modifier une carte
 

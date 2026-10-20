@@ -1,0 +1,59 @@
+{
+  "$defs": {
+    "DepartmentEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^dep-(?:0[1-9]|[1-8][0-9]|9[0-5]|2[AB]|97[12346])$",
+          "title": "Id",
+          "type": "string"
+        },
+        "code": {
+          "pattern": "^(?:0[1-9]|[1-8][0-9]|9[0-5]|2[AB]|97[12346])$",
+          "title": "Code",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "view": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "View"
+        }
+      },
+      "required": [
+        "id",
+        "code",
+        "name"
+      ],
+      "title": "DepartmentEntry",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "features": {
+      "items": {
+        "$ref": "#/$defs/DepartmentEntry"
+      },
+      "minItems": 1,
+      "title": "Features",
+      "type": "array"
+    }
+  },
+  "required": [
+    "features"
+  ],
+  "title": "DepartmentCatalog",
+  "type": "object"
+}

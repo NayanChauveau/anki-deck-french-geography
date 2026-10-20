@@ -14,3 +14,6 @@
 - [ ] Configurer les releases main et les releases sur tags avant publication.
 
 - [x] Générer les notes par règle commune et catalogue éditorial, sans YAML de cartes répétitives.
+
+- [x] Ajouter les 101 départements et la génération nom ↔ position et position → code.
+- [x] Préparer les autres sens du triangle (nom ↔ code et code → position), désactivés.
