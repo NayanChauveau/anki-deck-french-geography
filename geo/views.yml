@@ -1,0 +1,6 @@
+views:
+  metropolitan:
+    projection: EPSG:2154
+    bounds: [-5.8, 41.0, 10.0, 51.6]
+    width: 900
+    height: 900

@@ -1,0 +1,119 @@
+{
+  "$defs": {
+    "Annotation": {
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        },
+        "lon": {
+          "maximum": 180,
+          "minimum": -180,
+          "title": "Lon",
+          "type": "number"
+        },
+        "lat": {
+          "maximum": 90,
+          "minimum": -90,
+          "title": "Lat",
+          "type": "number"
+        },
+        "side": {
+          "default": "back",
+          "enum": [
+            "both",
+            "back"
+          ],
+          "title": "Side",
+          "type": "string"
+        }
+      },
+      "required": [
+        "text",
+        "lon",
+        "lat"
+      ],
+      "title": "Annotation",
+      "type": "object"
+    },
+    "Card": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^fr-geo-[a-z0-9-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "target": {
+          "minLength": 1,
+          "title": "Target",
+          "type": "string"
+        },
+        "view": {
+          "minLength": 1,
+          "title": "View",
+          "type": "string"
+        },
+        "question": {
+          "minLength": 1,
+          "title": "Question",
+          "type": "string"
+        },
+        "answer": {
+          "minLength": 1,
+          "title": "Answer",
+          "type": "string"
+        },
+        "explanation": {
+          "minLength": 1,
+          "title": "Explanation",
+          "type": "string"
+        },
+        "references": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "References",
+          "type": "array"
+        },
+        "annotations": {
+          "items": {
+            "$ref": "#/$defs/Annotation"
+          },
+          "title": "Annotations",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "target",
+        "view",
+        "question",
+        "answer",
+        "explanation",
+        "references"
+      ],
+      "title": "Card",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "cards": {
+      "items": {
+        "$ref": "#/$defs/Card"
+      },
+      "minItems": 1,
+      "title": "Cards",
+      "type": "array"
+    }
+  },
+  "required": [
+    "cards"
+  ],
+  "title": "CardFile",
+  "type": "object"
+}

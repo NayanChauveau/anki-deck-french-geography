@@ -1,0 +1,9 @@
+styles:
+  ocean: '#e8f1f5'
+  land: '#f9f7f0'
+  neighbor: '#e3e5df'
+  border: '#a4afa9'
+  river: '#b6ccd7'
+  target: '#006a85'
+  ink: '#203d48'
+  target_width: 5
