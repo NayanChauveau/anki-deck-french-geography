@@ -98,6 +98,7 @@ class DepartmentRule(Strict):
     catalog: str = "catalog/departments.yml"
     view: str = "metropolitan"
     references: list[str] = Field(min_length=1)
+    batch_size: int = Field(default=10, ge=1, le=101)
     directions: list[DepartmentDirection] = Field(
         default_factory=lambda: ["name-map", "map-name", "map-code"], min_length=1
     )

@@ -13,7 +13,7 @@ chiffres ultramarins (`971`, `972`, `973`, `974`, `976`).
 | --- | --- | --- |
 | `name-map` | Nom et carte sans surbrillance | Zone du département surlignée |
 | `map-name` | Zone surlignée, sans nom ni code | Nom du département |
-| `map-code` | Même zone surlignée, sans nom ni code | Code départemental |
+| `map-code` | Même zone surlignée, sans nom ni code | Nom et code départemental |
 
 Le premier sens se révise en situant mentalement ou en pointant la zone, puis en
 comparant au verso. Il n’y a pas de clic interactif ni de correction automatique.
@@ -71,3 +71,17 @@ Le build ordinaire utilise uniquement les fichiers locaux.
 
 Les identifiants Anki sont dérivés de la règle, du code et du sens, par exemple
 `fr-geo-departements-01-map-code`. Changer une question ou un cadrage ne les change pas.
+
+## Ordre d’apprentissage
+
+Les départements sont triés par code, avec 2A/2B entre 19 et 21, puis regroupés par
+lots de `batch_size: 10`. Pour les dix mêmes départements, la génération produit
+10 cartes « Où se situe… », puis 10 cartes demandant le nom, puis 10 demandant le
+numéro, avant de passer aux dix suivants. Le dernier lot contient un département.
+Le paquet assigne des positions croissantes aux nouvelles cartes dans chaque
+sous-deck. Les identifiants des notes restent indépendants de cet ordre.
+
+Anki doit présenter les nouvelles cartes dans l’ordre de leur position, sans tirage
+aléatoire. Une réimportation met à jour les textes mais peut conserver les positions
+des cartes déjà présentes : les repositionner dans le navigateur Anki au besoin.
+Les révisions déjà programmées restent régies par l’ordonnanceur.

@@ -123,15 +123,18 @@ def build(project: Project, out: Path) -> Path:
         "Départements": genanki.Deck(1976423102, "Géographie française::Départements"),
     }
     media_files = set()
+    positions = dict.fromkeys(decks, 0)
     for card in project.cards:
         images = [manifest[card.id][side].get("png") for side in ["front", "back"]]
         media_files.update(str(media_dir / name) for name in images if name)
         image_fields = [image_html(card, name) if name else "" for name in images]
         refs = " · ".join(html.escape(ref) for ref in card.references)
+        positions[card.theme] += 1
         decks[card.theme].add_note(
             genanki.Note(
                 model=model,
                 guid=note_guid(card.id),
+                due=positions[card.theme],
                 fields=[
                     card.id,
                     html.escape(card.question),

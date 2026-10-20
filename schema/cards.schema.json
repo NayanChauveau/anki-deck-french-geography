@@ -37,6 +37,13 @@
           "title": "References",
           "type": "array"
         },
+        "batch_size": {
+          "default": 10,
+          "maximum": 101,
+          "minimum": 1,
+          "title": "Batch Size",
+          "type": "integer"
+        },
         "directions": {
           "items": {
             "enum": [

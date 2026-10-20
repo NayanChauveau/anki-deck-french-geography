@@ -23,6 +23,14 @@ def test_all_departments_have_three_directions_and_exactly_one_fact_to_recall():
     cards = [card for card in project.cards if card.theme == "Départements"]
     assert len(cards) == 303
     assert len({card.id for card in cards}) == 303
+    expected_directions = []
+    for size in [10] * 10 + [1]:
+        expected_directions.extend(["name-map"] * size + ["map-name"] * size + ["map-code"] * size)
+    assert [card.direction for card in cards] == expected_directions
+    for start in range(0, 300, 30):
+        group = cards[start : start + 30]
+        assert [c.target for c in group[:10]] == [c.target for c in group[10:20]]
+        assert [c.target for c in group[:10]] == [c.target for c in group[20:30]]
     assert set(Counter(card.target for card in cards).values()) == {3}
     assert {card.direction for card in cards} == {"name-map", "map-name", "map-code"}
     catalog = DepartmentCatalog.model_validate(
@@ -33,7 +41,7 @@ def test_all_departments_have_three_directions_and_exactly_one_fact_to_recall():
         assert variants["name-map"].front_map == "blank"
         assert entry.name in variants["name-map"].question
         assert variants["map-name"].answer == entry.name
-        assert variants["map-code"].answer == entry.code
+        assert variants["map-code"].answer == f"{entry.name} ({entry.code})"
         assert entry.code not in variants["map-code"].question
         assert entry.name not in variants["map-name"].question
         assert not variants["map-name"].annotations
@@ -110,7 +118,15 @@ def test_department_package_keeps_existing_river_identity_and_bundles_shared_med
     with sqlite3.connect(database) as db:
         assert db.execute("SELECT count(*) FROM cards WHERE did=1976423102").fetchone()[0] == 9
         assert db.execute("SELECT count(*) FROM cards WHERE did=1976423100").fetchone()[0] == 1
-        for (fields,) in db.execute("SELECT flds FROM notes WHERE flds LIKE '%dep-01%'"):
+        ordered = db.execute(
+            "SELECT notes.flds, cards.due FROM notes JOIN cards ON notes.id=cards.nid "
+            "WHERE cards.did=1976423102 ORDER BY cards.due"
+        ).fetchall()
+        assert [due for _, due in ordered] == list(range(1, 10))
+        assert [fields.split("\x1f")[0] for fields, _ in ordered] == [
+            c.id for c in project.cards if c.theme == "Départements"
+        ]
+        for fields, _ in ordered:
             assert 'alt="Carte géographique"' in fields
             assert 'class="credits"' in fields
             assert "https://opendatacommons.org/licenses/odbl/1-0/" in fields

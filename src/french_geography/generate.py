@@ -1,5 +1,6 @@
 """Build identification notes in memory from geographic layers and editorial catalogs."""
 
+from itertools import batched
 from pathlib import Path
 
 import yaml
@@ -76,36 +77,48 @@ def generate_departments(root, rule, geometries):
     if entries.keys() != geometries.keys():
         raise ValueError("Department catalog/layer mismatch")
     cards = []
-    for entry in catalog.features:
-        values = {"name": entry.name, "code": entry.code, "map": ""}
+    ordered_entries = sorted(
+        catalog.features, key=lambda entry: entry.code.replace("2A", "20A").replace("2B", "20B")
+    )
+    for batch in batched(ordered_entries, rule.batch_size):
         for direction in rule.directions:
-            start, end = direction.split("-")
-            if end == "map":
-                question = f"Où se situe le département « {values[start]} » ?"
-            elif start == "map":
-                question = (
-                    "Quel est le nom du département surligné ?"
-                    if end == "name"
-                    else "Quel est le numéro du département surligné ?"
+            for entry in batch:
+                values = {"name": entry.name, "code": entry.code, "map": ""}
+                start, end = direction.split("-")
+                if end == "map":
+                    question = f"Où se situe le département « {values[start]} » ?"
+                elif start == "map":
+                    question = (
+                        "Quel est le nom du département surligné ?"
+                        if end == "name"
+                        else "Quel est le numéro du département surligné ?"
+                    )
+                elif end == "code":
+                    question = f"Quel est le numéro du département « {entry.name} » ?"
+                else:
+                    question = f"Quel département porte le numéro {entry.code} ?"
+                cards.append(
+                    Card(
+                        id=f"fr-geo-{rule.id}-{entry.code.lower()}-{direction}",
+                        target=entry.id,
+                        view=entry.view or rule.view,
+                        layer=rule.layer,
+                        theme="Départements",
+                        direction=direction,
+                        question=question,
+                        answer=(
+                            f"{entry.name} ({entry.code})"
+                            if end == "map" or direction == "map-code"
+                            else values[end]
+                        ),
+                        explanation=f"{entry.name} · code départemental {entry.code}.",
+                        references=rule.references,
+                        front_map="target"
+                        if start == "map"
+                        else "blank"
+                        if end == "map"
+                        else "none",
+                        back_map="target" if "map" in (start, end) else "none",
+                    )
                 )
-            elif end == "code":
-                question = f"Quel est le numéro du département « {entry.name} » ?"
-            else:
-                question = f"Quel département porte le numéro {entry.code} ?"
-            cards.append(
-                Card(
-                    id=f"fr-geo-{rule.id}-{entry.code.lower()}-{direction}",
-                    target=entry.id,
-                    view=entry.view or rule.view,
-                    layer=rule.layer,
-                    theme="Départements",
-                    direction=direction,
-                    question=question,
-                    answer=(f"{entry.name} ({entry.code})" if end == "map" else values[end]),
-                    explanation=f"{entry.name} · code départemental {entry.code}.",
-                    references=rule.references,
-                    front_map="target" if start == "map" else "blank" if end == "map" else "none",
-                    back_map="target" if "map" in (start, end) else "none",
-                )
-            )
     return cards
