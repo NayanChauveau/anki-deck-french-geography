@@ -1,54 +1,21 @@
 {
   "$defs": {
-    "Annotation": {
-      "additionalProperties": false,
-      "properties": {
-        "text": {
-          "minLength": 1,
-          "title": "Text",
-          "type": "string"
-        },
-        "lon": {
-          "maximum": 180,
-          "minimum": -180,
-          "title": "Lon",
-          "type": "number"
-        },
-        "lat": {
-          "maximum": 90,
-          "minimum": -90,
-          "title": "Lat",
-          "type": "number"
-        },
-        "side": {
-          "default": "back",
-          "enum": [
-            "both",
-            "back"
-          ],
-          "title": "Side",
-          "type": "string"
-        }
-      },
-      "required": [
-        "text",
-        "lon",
-        "lat"
-      ],
-      "title": "Annotation",
-      "type": "object"
-    },
-    "Card": {
+    "IdentificationRule": {
       "additionalProperties": false,
       "properties": {
         "id": {
-          "pattern": "^fr-geo-[a-z0-9-]+$",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
           "title": "Id",
           "type": "string"
         },
-        "target": {
+        "layer": {
           "minLength": 1,
-          "title": "Target",
+          "title": "Layer",
+          "type": "string"
+        },
+        "catalog": {
+          "minLength": 1,
+          "title": "Catalog",
           "type": "string"
         },
         "view": {
@@ -61,16 +28,6 @@
           "title": "Question",
           "type": "string"
         },
-        "answer": {
-          "minLength": 1,
-          "title": "Answer",
-          "type": "string"
-        },
-        "explanation": {
-          "minLength": 1,
-          "title": "Explanation",
-          "type": "string"
-        },
         "references": {
           "items": {
             "type": "string"
@@ -78,42 +35,34 @@
           "minItems": 1,
           "title": "References",
           "type": "array"
-        },
-        "annotations": {
-          "items": {
-            "$ref": "#/$defs/Annotation"
-          },
-          "title": "Annotations",
-          "type": "array"
         }
       },
       "required": [
         "id",
-        "target",
+        "layer",
+        "catalog",
         "view",
         "question",
-        "answer",
-        "explanation",
         "references"
       ],
-      "title": "Card",
+      "title": "IdentificationRule",
       "type": "object"
     }
   },
   "additionalProperties": false,
   "properties": {
-    "cards": {
+    "rules": {
       "items": {
-        "$ref": "#/$defs/Card"
+        "$ref": "#/$defs/IdentificationRule"
       },
       "minItems": 1,
-      "title": "Cards",
+      "title": "Rules",
       "type": "array"
     }
   },
   "required": [
-    "cards"
+    "rules"
   ],
-  "title": "CardFile",
+  "title": "RuleFile",
   "type": "object"
 }

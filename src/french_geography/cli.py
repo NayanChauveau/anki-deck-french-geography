@@ -8,7 +8,7 @@ from pathlib import Path
 
 from french_geography.build import build, maps, preview
 from french_geography.project import load
-from french_geography.schema import CardFile
+from french_geography.schema import CatalogFile, RuleFile
 
 
 def anki(action: str, **params):
@@ -35,9 +35,10 @@ def main():
     root = args.root.resolve()
     try:
         if args.command == "schema":
-            (root / "schema/cards.schema.json").write_text(
-                json.dumps(CardFile.model_json_schema(), ensure_ascii=False, indent=2) + "\n"
-            )
+            for name, model in [("cards", RuleFile), ("catalog", CatalogFile)]:
+                (root / f"schema/{name}.schema.json").write_text(
+                    json.dumps(model.model_json_schema(), ensure_ascii=False, indent=2) + "\n"
+                )
             return
         project = load(root)
         if args.command == "validate":
@@ -57,9 +58,10 @@ def main():
         else:
             for command in [["ruff", "check", "."], ["ruff", "format", "--check", "."], ["pytest"]]:
                 subprocess.run([sys.executable, "-m", *command], cwd=root, check=True)
-            actual = json.loads((root / "schema/cards.schema.json").read_text())
-            if actual != CardFile.model_json_schema():
-                raise ValueError("Stale schema: run make schema")
+            for name, model in [("cards", RuleFile), ("catalog", CatalogFile)]:
+                actual = json.loads((root / f"schema/{name}.schema.json").read_text())
+                if actual != model.model_json_schema():
+                    raise ValueError("Stale schema: run make schema")
             print(f"Contrôles réussis : {len(project.cards)} fiches.")
     except (ValueError, KeyError, OSError, RuntimeError, subprocess.CalledProcessError) as error:
         parser.exit(1, f"Erreur : {error}\n")

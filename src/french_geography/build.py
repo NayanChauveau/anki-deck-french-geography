@@ -53,7 +53,7 @@ def preview(project: Project, out: Path) -> Path:
         ".pair{display:flex;gap:16px}figure{margin:0;flex:1;min-width:0}"
         "article{margin-bottom:48px}figcaption{margin-bottom:8px}"
         "@media(max-width:640px){.pair{display:block}}</style>"
-        "<h1>Géographie française</h1><p>Deux fleuves · recto et verso</p>"
+        f"<h1>Géographie française</h1><p>{len(project.cards)} cours d’eau · recto et verso</p>"
         + "".join(articles)
         + "</html>"
     )
@@ -105,7 +105,7 @@ def build(project: Project, out: Path) -> Path:
                 fields=[
                     card.id,
                     html.escape(card.question),
-                    f'<img src="{images[0]}" alt="Fleuve à identifier">',
+                    f'<img src="{images[0]}" alt="Cours d’eau à identifier">',
                     html.escape(card.answer),
                     f'<img src="{images[1]}" alt="{html.escape(card.answer)}">',
                     html.escape(card.explanation),

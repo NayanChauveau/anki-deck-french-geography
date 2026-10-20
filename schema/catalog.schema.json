@@ -1,0 +1,98 @@
+{
+  "$defs": {
+    "CatalogEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "article": {
+          "enum": [
+            "le",
+            "la",
+            "l’",
+            "les"
+          ],
+          "title": "Article",
+          "type": "string"
+        },
+        "explanation": {
+          "default": "",
+          "title": "Explanation",
+          "type": "string"
+        },
+        "references": {
+          "items": {
+            "type": "string"
+          },
+          "title": "References",
+          "type": "array"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/LabelPosition"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "article"
+      ],
+      "title": "CatalogEntry",
+      "type": "object"
+    },
+    "LabelPosition": {
+      "additionalProperties": false,
+      "properties": {
+        "lon": {
+          "maximum": 180,
+          "minimum": -180,
+          "title": "Lon",
+          "type": "number"
+        },
+        "lat": {
+          "maximum": 90,
+          "minimum": -90,
+          "title": "Lat",
+          "type": "number"
+        }
+      },
+      "required": [
+        "lon",
+        "lat"
+      ],
+      "title": "LabelPosition",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "features": {
+      "items": {
+        "$ref": "#/$defs/CatalogEntry"
+      },
+      "minItems": 1,
+      "title": "Features",
+      "type": "array"
+    }
+  },
+  "required": [
+    "features"
+  ],
+  "title": "CatalogFile",
+  "type": "object"
+}

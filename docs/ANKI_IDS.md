@@ -1,23 +1,21 @@
 # Identité Anki
 
-Ces valeurs sont propres au projet et permanentes :
-
 - Namespace GUID : `ultimate-french-geography-v1`.
 - Deck `Géographie française::Fleuves` : `1976423100`.
 - Modèle `Géographie française — carte physique` : `1976423101`.
-- GUID : `genanki.guid_for(namespace, card.id)` ; le nom du fleuve, le texte,
-  la géométrie et le chemin du fichier YAML n’y participent pas.
-- Modèle : `NoteId`, `Question`, `MapFront`, `Answer`, `MapBack`, `Explanation`, `Sources`.
-- Une note produit une seule carte, template `Identifier`, ordinal 0.
+- Identifiant de note : `fr-geo-{rule.id}-{feature.id}`.
+- GUID : `genanki.guid_for(namespace, identifiant_de_note)`.
+- Une note produit une carte, template `Identifier`, ordinal 0.
 
-Identifiants réservés dès cette première série :
+Par exemple, la règle `hydrographie-identification` et l’objet `loire` donnent
+`fr-geo-hydrographie-identification-loire`. Le texte de la question, le nom français,
+le chemin du catalogue et les coordonnées ne participent pas à cette identité.
+Il n’y a plus de registre manuel d’identifiants de cartes.
 
-| ID | Objet |
-| --- | --- |
-| `fr-geo-fleuve-loire-001` | Identification de la Loire |
-| `fr-geo-fleuve-seine-001` | Identification de la Seine |
+Les anciens IDs `fr-geo-fleuve-…` et `fr-geo-cours-eau-…` ont été remplacés avec
+l’accord explicite de l’auteur pendant le développement. Cette bascule ne migre
+pas les notes déjà importées dans Anki. Aucune importation n’est lancée par le build.
 
-Ne jamais renommer ou réaffecter un ID diffusé. Pour mettre à jour, importer le
-nouveau paquet dans la même collection sans supprimer les notes existantes.
-Conserver aussi les IDs du modèle et du deck, les noms/champs du modèle et
-l’ordinal du template. Un test verrouille les GUID des deux premières notes.
+À partir de cette convention, conserver les IDs de règle et d’objet pour garder
+les révisions lors des mises à jour. Ne jamais réaffecter un ID diffusé à un autre
+objet. Les IDs du deck et du modèle restent propres à ce projet.

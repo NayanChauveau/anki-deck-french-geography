@@ -2,7 +2,8 @@
 
 ## Pipeline implémenté
 
-Fiches YAML + GeoJSON locaux + vues + styles → validation → scène projetée commune
+Règles YAML + catalogue éditorial + GeoJSON locaux → génération des notes en mémoire
+→ validation avec vues et styles → scène projetée commune
 → SVG et PNG → galerie HTML et paquet Anki.
 
 Les deux sorties utilisent les mêmes primitives et coordonnées. Le SVG embarque
@@ -33,13 +34,13 @@ pas récursifs. Un test exerce une vue régionale avec un encart national.
 Les annotations définissent texte, longitude, latitude et côté (`back` par défaut,
 `both` pour un repère commun). Elles ne changent pas le cadrage recto/verso. Le moteur
 ne place pas automatiquement les étiquettes : il faut vérifier leur position dans
-la galerie. Pour les pilotes, seuls les noms des fleuves apparaissent au verso.
+la galerie. Pour les pilotes, seuls les noms des cours d’eau apparaissent au verso.
 
 ## Sources locales
 
 `geo/sources.yml` est le registre de référence : URL amont figée, tag, licence et
 son URL, SHA-256 amont, transformations, chemin local et SHA-256 du fichier préparé.
-Les rivières au 1:10 millions sont sélectionnées par nom et réunies par fleuve ;
+Les rivières au 1:10 millions sont sélectionnées par nom et réunies par cours d’eau ;
 les pays au 1:50 millions et les rivières sont découpés à `[-7, 40, 12, 53]`.
 Aucune coordonnée n’est ajoutée ni ajustée à la main.
 
@@ -59,13 +60,46 @@ make preview
 ```
 
 Le script attend les couches Natural Earth indiquées dans le registre et sélectionne
-les deux fleuves pilotes. Il n’est appelé par aucune commande de build.
+les 18 cours d’eau de `geo/selection.yml`. Il n’est appelé par aucune commande de build.
 Lors d’une évolution des données, examiner les différences de géométrie et la galerie,
 puis conserver ensemble les nouveaux fichiers et le registre mis à jour.
 
 ## Validation visuelle
 
-Les pilotes sont la Loire et la Seine, au cadrage national partagé. La galerie
+Les 18 cours d’eau utilisent un cadrage national partagé. La galerie
 montre recto et verso côte à côte. Le build et les médias embarqués sont testés hors
 réseau ; l’affichage dans Anki Desktop et sur téléphone reste une validation manuelle.
 Les dix autres catégories envisagées pour la série de douze exemples sont différées.
+
+Le Rhône inclut le tronçon `Rhne` de type `Lake Centerline` de Natural Earth
+pour assurer la continuité du tracé à travers le lac Léman. Ce segment est un axe
+cartographique du lac, pas un chenal matérialisé à sa surface.
+
+## Série hydrographique
+
+La sélection comporte 18 objets distincts, issus de 21 éléments Natural Earth.
+Les alias d’origine (`Maas`, `Mosel`, `Schelde`, `Sane`, `Segre`, etc.) sont conservés
+dans `geo/selection.yml` ; les fiches affichent les noms français. Les données sont
+réunies par ces alias, sans supposer que `rivernum` est un identifiant mondial unique.
+
+L’intersection avec le contour national sert à choisir les cours d’eau, pas à couper
+leur tracé à la frontière : leurs portions étrangères disponibles restent visibles.
+C’est particulièrement utile pour l’Escaut, la Meuse, la Moselle et le Sègre.
+La généralisation peut supprimer des tronçons : la Saône ne montre ici que l’aval,
+et le Rhin seulement une partie de son parcours. Les fiches signalent ces deux cas.
+Les limites des vues ne représentent pas des sources ni des embouchures.
+
+Les notes sont créées par `src/french_geography/generate.py` à partir des règles
+`cards/identification.yml` et du catalogue `catalog/rivers.yml`. Chaque règle parcourt
+toute sa couche géographique ; les noms et articles du catalogue servent à former
+les réponses. Les références propres à un objet complètent celles de la règle.
+La question et la vue sont communes. Une explication peut être omise, ainsi que
+le placement d’étiquette ; celui-ci utilise alors un point représentatif du tracé.
+
+Le catalogue est validé indépendamment du schéma géographique. Un ID manquant,
+inconnu ou dupliqué est une erreur. Les objets générés existent uniquement en mémoire
+pendant la validation ou le build ; aucun YAML de notes n’est produit.
+
+Les identifiants des cartes sont calculés depuis les IDs de la règle et de l’objet.
+Les anciens identifiants ont été abandonnés à la demande de l’auteur pendant cette
+phase de développement. Voir `ANKI_IDS.md` pour la convention actuelle.

@@ -1,8 +1,14 @@
 # Géographie française — Anki
 
-Deck de géographie physique française. Première série : **deux cartes d’identification,
-la Loire et la Seine**. Le recto montre le fleuve surligné sans son nom ; le verso
-révèle le nom, une annotation et une courte explication. Le cadrage reste identique.
+Deck de géographie physique française : **18 cartes d’identification de cours d’eau**.
+Le recto montre le tracé surligné sans son nom ; le verso révèle le nom,
+une annotation et une courte explication. Le cadrage reste identique.
+
+La série couvre les 18 cours d’eau du fichier Natural Earth téléchargé dont un tracé
+recoupe la métropole : Ariège, Dordogne, Doubs, Durance, Escaut, Garonne, Loire,
+Marne, Meuse, Moselle, Rhin, Rhône, Saône, Sègre, Seine, Tarn, Vienne et Yonne.
+Il s’agit de fleuves et de rivières ; la sélection n’est pas un inventaire exhaustif.
+Le deck conserve son chemin Anki initial `Géographie française::Fleuves`.
 
 ## Construire et prévisualiser
 
@@ -41,8 +47,10 @@ exécuter `uv run --offline --frozen french-geography build`.
 
 ## Architecture
 
-- `cards/` : contenu éditorial YAML, avec identifiants permanents.
+- `cards/` : règles communes de génération des cartes.
+- `catalog/` : noms français, articles, explications et placements facultatifs.
 - `schema/` : schéma JSON généré depuis les modèles Pydantic.
+- `geo/selection.yml` : correspondance des noms amont vers les identifiants locaux.
 - `geo/features/` : données GeoJSON WGS84 locales sélectionnées.
 - `geo/sources.yml` : provenance, version, licence, transformations et empreintes.
 - `geo/views.yml` : projections, cadrages partagés et encarts facultatifs.
@@ -61,16 +69,45 @@ identifiants de ce projet lui sont propres. Voir [l’identité Anki](docs/ANKI_
 
 ## Données et limites
 
-Les fleuves proviennent de Natural Earth au 1:10 millions, et le fond des pays
+Les cours d’eau proviennent de Natural Earth au 1:10 millions, et le fond des pays
 au 1:50 millions, figés sur le tag `v5.1.2`. Ces données sont dans le domaine public.
 Les tracés sont généralisés : ils servent à reconnaître un cours d’eau à l’échelle
-nationale, pas à situer précisément une source ou chaque méandre. Les deux fiches
-n’affichent donc pas de marqueur de source ou d’embouchure.
+nationale, pas à situer précisément une source ou chaque méandre. Les fiches
+n’affichent donc pas de marqueur de source ou d’embouchure. Certains tracés sont
+partiels, notamment ceux du Rhin et de la Saône. Les portions étrangères présentes
+dans les éléments sélectionnés sont conservées dans le cadre de la carte.
 
 Le moteur accepte les points, lignes, polygones et leurs formes multiples, les
 trous de polygones, les projections PROJ et les encarts. Les jeux actuellement
 embarqués couvrent la métropole et son voisinage. Ajouter des cartes d’outre-mer
 nécessitera des données locales et des vues adaptées.
+
+## Ajouter ou modifier une carte
+
+Les cartes ne sont pas écrites une par une. `cards/identification.yml` définit une
+règle pour chaque série : couche géographique, catalogue, question, vue et références
+communes. À chaque build, elle génère une note par objet de la couche locale.
+
+`catalog/rivers.yml` contient uniquement les particularités éditoriales, par exemple :
+
+```yaml
+features:
+  - id: ariege
+    name: Ariège
+    article: l’
+    explanation: Affluent de la Garonne, elle descend des Pyrénées vers le nord.
+```
+
+L’ID correspond à celui du GeoJSON, pas à un identifiant de carte à inventer.
+Le générateur compose « L’Ariège », reprend la question commune et calcule l’identité
+Anki. `explanation`, `references` et `label: {lon: …, lat: …}` sont facultatifs.
+Sans `label`, l’étiquette est placée sur un point représentatif du tracé ; ajuster
+ce placement dans le catalogue si nécessaire après examen de la galerie.
+
+Pour ajouter un objet : préparer sa géométrie locale avec provenance et empreinte,
+ajouter son nom et son article au catalogue, puis lancer `make check preview build`.
+Une géométrie sans entrée éditoriale, ou une entrée sans géométrie, est signalée par
+la validation. Aucun fichier de cartes générées n’est conservé dans le dépôt.
 
 Voir [CARTOGRAPHY.md](docs/CARTOGRAPHY.md) pour le fonctionnement et la préparation
 des sources. Les rendus ont été inspectés en image ; l’import dans Anki Desktop

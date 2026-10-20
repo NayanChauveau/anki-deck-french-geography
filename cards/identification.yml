@@ -1,0 +1,8 @@
+rules:
+  - id: hydrographie-identification
+    layer: rivers
+    catalog: catalog/rivers.yml
+    view: metropolitan
+    question: Quel cours d’eau est surligné sur la carte ?
+    references:
+      - https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-rivers-lake-centerlines/

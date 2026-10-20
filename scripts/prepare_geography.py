@@ -5,6 +5,7 @@ import hashlib
 import json
 from pathlib import Path
 
+import yaml
 from shapely.geometry import box, mapping, shape
 from shapely.ops import unary_union
 
@@ -23,15 +24,18 @@ for name, path, layer in [
     data = json.loads(original)
     features = []
     if name == "rivers":
-        for river in ["Loire", "Seine"]:
+        selection = yaml.safe_load((root / "geo/selection.yml").read_text())["rivers"]
+        for river, names in selection.items():
             parts = [
                 shape(f["geometry"])
                 for f in data["features"]
-                if f["properties"].get("name") == river and f["geometry"]["coordinates"]
+                if f["properties"].get("name") in names and f["geometry"]["coordinates"]
             ]
             geom = unary_union(parts).intersection(window)
+            if geom.is_empty:
+                raise ValueError(f"Empty selected river: {river}")
             features.append(
-                {"type": "Feature", "properties": {"id": river.lower()}, "geometry": mapping(geom)}
+                {"type": "Feature", "properties": {"id": river}, "geometry": mapping(geom)}
             )
     else:
         for feature in data["features"]:
@@ -69,7 +73,14 @@ for name, path, layer in [
             "sha256": hashlib.sha256(output.read_bytes()).hexdigest(),
             "modifications": (
                 "WGS84; clipped to [-7,40,12,53]; properties reduced; "
-                "rivers selected by name and unioned; no added geometry."
+                "rivers selected by aliases in geo/selection.yml and unioned; "
+                "Rhône includes Rhne lake centerline; "
+                "no added geometry."
+                if name == "rivers"
+                else (
+                    "WGS84; countries clipped to [-7,40,12,53]; "
+                    "properties reduced; no added geometry."
+                )
             ),
         }
     )

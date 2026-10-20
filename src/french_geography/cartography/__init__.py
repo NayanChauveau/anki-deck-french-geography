@@ -116,7 +116,7 @@ def scene_for(project: Project, card: Card, back: bool):
             "text",
             [(30, view.height - 22)],
             style.ink,
-            text="Fleuve surligné · Natural Earth · domaine public",
+            text="Cours d’eau surligné · Natural Earth · domaine public",
         )
     )
     for annotation in card.annotations:

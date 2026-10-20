@@ -7,7 +7,8 @@ import yaml
 from pyproj import CRS
 from shapely.geometry import box, shape
 
-from french_geography.schema import Card, CardFile, Style, View
+from french_geography.generate import generate
+from french_geography.schema import Card, RuleFile, Style, View
 
 
 @dataclass
@@ -65,9 +66,17 @@ def load(root: Path) -> Project:
         CRS.from_user_input(view.projection)
         if view.inset and (view.inset not in views or view.inset == key):
             raise ValueError(f"Invalid inset: {view.inset}")
-    cards = []
+    rules = []
     for path in sorted((root / "cards").rglob("*.yml")):
-        cards.extend(CardFile.model_validate(yaml.safe_load(path.read_text())).cards)
+        rules.extend(RuleFile.model_validate(yaml.safe_load(path.read_text())).rules)
+    geographic_layers = {
+        key: {
+            feature["properties"]["id"]: features[feature["properties"]["id"]] for feature in layer
+        }
+        for key, layer in layers.items()
+        if key != "countries"
+    }
+    cards = generate(root, rules, geographic_layers)
     if not cards or len({card.id for card in cards}) != len(cards):
         raise ValueError("Empty collection or duplicate note IDs")
     for card in cards:

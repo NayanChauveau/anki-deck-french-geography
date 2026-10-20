@@ -1,0 +1,38 @@
+rivers:
+  loire:
+  - Loire
+  seine:
+  - Seine
+  rhone:
+  - Rhône
+  - Rhne
+  ariege:
+  - Ariège
+  dordogne:
+  - Dordogne
+  doubs:
+  - Doubs
+  durance:
+  - Durance
+  escaut:
+  - Schelde
+  garonne:
+  - Garonne
+  marne:
+  - Marne
+  meuse:
+  - Maas
+  moselle:
+  - Mosel
+  rhin:
+  - Rhin
+  saone:
+  - Sane
+  segre:
+  - Segre
+  tarn:
+  - Tarn
+  vienne:
+  - Vienne
+  yonne:
+  - Yonne

@@ -1,0 +1,162 @@
+features:
+- id: loire
+  name: Loire
+  article: la
+  explanation: Son cours traverse le centre de la France, puis rejoint l’océan Atlantique par un estuaire
+    à proximité de Saint-Nazaire.
+  label:
+    lon: 1.0
+    lat: 46.8
+- id: seine
+  name: Seine
+  article: la
+  explanation: Elle traverse Paris, puis Rouen, avant de rejoindre la Manche par l’estuaire de la Seine.
+  label:
+    lon: 1.9
+    lat: 49.2
+- id: rhone
+  name: Rhône
+  article: le
+  explanation: Il traverse le lac Léman, passe par Lyon, puis rejoint la mer Méditerranée par son delta
+    en Camargue.
+  label:
+    lon: 5.3
+    lat: 44.8
+- id: ariege
+  name: Ariège
+  article: l’
+  explanation: Affluent de la Garonne, elle descend des Pyrénées vers le nord.
+  references:
+  - https://adour-garonne.eaufrance.fr/coursdeau/O---0000
+  label:
+    lon: 2.0
+    lat: 43.0
+- id: dordogne
+  name: Dordogne
+  article: la
+  explanation: Elle rejoint la Garonne pour former l’estuaire de la Gironde, ouvert sur l’Atlantique.
+  references:
+  - https://www.gironde.fr/la-transition-ecologique/fondements-naturels-et-humains-des-paysages
+  label:
+    lon: 0.1
+    lat: 45.8
+- id: doubs
+  name: Doubs
+  article: le
+  explanation: Rivière du massif du Jura, il est un affluent de la Saône.
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Sa%C3%B4ne/143176
+  label:
+    lon: 5.7
+    lat: 47.9
+- id: durance
+  name: Durance
+  article: la
+  explanation: Affluent du Rhône, elle draine une partie des Alpes du Sud.
+  references:
+  - https://formation-civique.interieur.gouv.fr/fiches-par-thematiques/histoire-geographie-et-culture/atlas-de-la-france/les-fleuves-fran%C3%A7ais/
+  label:
+    lon: 6.0
+    lat: 44.0
+- id: escaut
+  name: Escaut
+  article: l’
+  explanation: Né en France, ce fleuve traverse la Belgique avant de rejoindre la mer du Nord par les
+    Pays-Bas.
+  references:
+  - https://fr.wikipedia.org/wiki/Escaut
+  label:
+    lon: 2.0
+    lat: 49.9
+- id: garonne
+  name: Garonne
+  article: la
+  explanation: Avec la Dordogne, elle forme l’estuaire de la Gironde, qui débouche dans l’océan Atlantique.
+  references:
+  - https://www.gironde.fr/la-transition-ecologique/fondements-naturels-et-humains-des-paysages
+  label:
+    lon: -1.8
+    lat: 44.2
+- id: marne
+  name: Marne
+  article: la
+  explanation: Affluent de la Seine, elle rejoint celle-ci à proximité de Paris.
+  references:
+  - https://www.eau-seine-normandie.fr/agence-de-leau/le-bassin-de-la-seine
+  label:
+    lon: 3.3
+    lat: 49.5
+- id: meuse
+  name: Meuse
+  article: la
+  explanation: Ce fleuve traverse la France, la Belgique et les Pays-Bas ; son bassin appartient au versant
+    de la mer du Nord.
+  references:
+  - https://fr.wikipedia.org/wiki/Meuse_(fleuve)
+  label:
+    lon: 3.4
+    lat: 49.1
+- id: moselle
+  name: Moselle
+  article: la
+  explanation: Elle appartient au bassin du Rhin, dont elle est un affluent.
+  references:
+  - https://formation-civique.interieur.gouv.fr/fiches-par-thematiques/histoire-geographie-et-culture/atlas-de-la-france/les-fleuves-fran%C3%A7ais/
+  label:
+    lon: 6.5
+    lat: 48.8
+- id: rhin
+  name: Rhin
+  article: le
+  explanation: Ce fleuve longe l’Alsace puis poursuit son cours vers la mer du Nord. Seul un tronçon est
+    présent dans les données sélectionnées.
+  references:
+  - https://formation-civique.interieur.gouv.fr/fiches-par-thematiques/histoire-geographie-et-culture/atlas-de-la-france/les-fleuves-fran%C3%A7ais/
+  label:
+    lon: 8.5
+    lat: 48.3
+- id: saone
+  name: Saône
+  article: la
+  explanation: Elle rejoint le Rhône à Lyon. Le jeu de données ne représente ici que sa partie aval.
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Sa%C3%B4ne/143176
+  label:
+    lon: 5.2
+    lat: 46.5
+- id: segre
+  name: Sègre
+  article: le
+  explanation: Né dans les Pyrénées françaises, il s’écoule principalement en Espagne et rejoint l’Èbre.
+  references:
+  - https://fr.wikipedia.org/wiki/S%C3%A8gre
+  label:
+    lon: 1.5
+    lat: 41.9
+- id: tarn
+  name: Tarn
+  article: le
+  explanation: Affluent de la Garonne, il s’écoule du Massif central vers le Bassin aquitain.
+  references:
+  - https://adour-garonne.eaufrance.fr/coursdeau/O---0000
+  label:
+    lon: 2.2
+    lat: 44.6
+- id: vienne
+  name: Vienne
+  article: la
+  explanation: Elle descend du Massif central et rejoint la Loire.
+  references:
+  - https://fr.wikipedia.org/wiki/Vienne_(affluent_de_la_Loire)
+  label:
+    lon: -0.5
+    lat: 46.5
+- id: yonne
+  name: Yonne
+  article: l’
+  explanation: Issue du Morvan, elle rejoint la Seine à Montereau-Fault-Yonne.
+  references:
+  - https://www.eau-seine-normandie.fr/agence-de-leau/le-bassin-de-la-seine
+  label:
+    lon: 2.2
+    lat: 47.8
