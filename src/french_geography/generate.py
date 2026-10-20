@@ -169,8 +169,12 @@ def generate_places(root, rule, geometries):
                     direction=rule.relation,
                     question=question,
                     answer=answer,
-                    explanation=f"{entry.name} → {answer} · Source : Insee, COG 2025.",
-                    references=rule.references,
+                    explanation=(
+                        entry.explanation
+                        if rule.relation == "massif"
+                        else f"{entry.name} → {answer} · Source : Insee, COG 2025."
+                    ),
+                    references=list(dict.fromkeys([*rule.references, *entry.references])),
                     front_map="none",
                     back_map="none",
                 )

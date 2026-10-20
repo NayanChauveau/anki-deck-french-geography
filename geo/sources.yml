@@ -98,6 +98,18 @@
       "file": "geo/features/mountains.geojson",
       "sha256": "e934e4d0aa18ef60abefc99eec760fade00cc560278b7cd21fe3858df9e3d593",
       "modifications": "Five physical regions selected by NAME, clipped to [-7,40,12,53], properties reduced, IDs prefixed mountain-, make_valid applied. Label polygons describe approximate geographic extents, not administrative mountain-law zones. No island polygon substituted for Corsican relief."
+    },
+    {
+      "id": "peaks",
+      "source": "Natural Earth, elevation points",
+      "version": "v5.1.2",
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_geography_regions_elevation_points.geojson",
+      "license": "Public domain",
+      "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "upstream_sha256": "f98a16867867146ec4146d6d4b18c823eeedb2825947de666116cf9a4e3f43cb",
+      "file": "geo/features/peaks.geojson",
+      "sha256": "b5f78da62e926695db3ae8a4442a66e59ce7d94b600bb8860f39281843acc33b",
+      "modifications": "Three named summit points selected; coordinates unchanged; IDs prefixed peak-; elevation attributes omitted. Generalized positions are learning landmarks, not navigation data. Massif membership documented separately in the editorial catalog."
     }
   ]
 }

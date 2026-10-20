@@ -78,6 +78,9 @@ def maps(project: Project, out: Path):
                 project.style.model_dump(),
                 sources[card.layer],
                 sources["countries"],
+                sources.get("departments")
+                if card.layer == "cities" and card.view == "paris-region"
+                else None,
                 renderer,
                 environment,
                 font,

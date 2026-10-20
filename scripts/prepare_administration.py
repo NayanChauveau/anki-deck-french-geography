@@ -113,7 +113,11 @@ for code, row in sorted(communes.items()):
             "name": row["LIBELLE"],
             "department": f"dep-{row['DEP']}",
             "region": f"reg-{region}",
-            "view": region_views.get(region, "metropolitan"),
+            "view": (
+                "paris-region"
+                if code in {"75056", "92050", "93008", "94028"}
+                else region_views.get(region, "metropolitan")
+            ),
         }
     )
     city_features.append(

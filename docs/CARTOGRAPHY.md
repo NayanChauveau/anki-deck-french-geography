@@ -114,3 +114,19 @@ image (`none`). Le build réutilise les images identiques entre les sens d’une
 série. Les images restent nommées par empreinte et toutes celles référencées sont
 embarquées dans le paquet. Voir [DEPARTMENTS.md](DEPARTMENTS.md) pour les données,
 la licence, les six sens disponibles et les trois sens actuellement activés.
+
+## Sommets repères
+
+Trois points Natural Earth v5.1.2 représentent le mont Blanc, le puy de Sancy et le
+crêt de la Neige. `scripts/prepare_peaks.py` sélectionne ces points depuis un fichier
+local ; le build utilise uniquement `geo/features/peaks.geojson`, vérifié par empreinte.
+Les coordonnées généralisées sont conservées ; les attributs d’altitude sont exclus.
+Le catalogue éditorial `catalog/peaks.yml` conserve leurs relations aux grands ensembles
+Alpes, Massif central et Jura, avec références factuelles Larousse vérifiées le
+20 octobre 2026. « Grand ensemble » distingue cette échelle des massifs locaux
+(Mont-Blanc, monts Dore). Les trois sens génèrent neuf cartes, sans altitude à réciter.
+Les sommets forment une couche de points séparée des polygones indicatifs de relief.
+
+Paris, Nanterre, Bobigny et Créteil partagent désormais la vue francilienne avec
+encart métropolitain : leurs points se confondaient à l’échelle nationale. Leurs
+identifiants et coordonnées restent identiques.

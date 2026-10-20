@@ -103,6 +103,9 @@ def scene_for(project: Project, card: Card, back: bool):
                 style.border,
                 0.8,
             )
+        if card.layer == "cities" and card.view == "paris-region" and rect is None:
+            for geom in project.layers["departments"].values():
+                add_geometry(scene, projection.geometry(geom), style.land, style.border, 1.1)
         for geom in background.values():
             if card.layer in ("departments", "regions", "mountains"):
                 add_geometry(scene, projection.geometry(geom), style.land, style.border, 1.1)

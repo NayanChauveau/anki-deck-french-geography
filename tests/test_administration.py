@@ -87,3 +87,10 @@ def test_render_cache_reuses_identical_visuals(tmp_path, monkeypatch):
         for entry in first.values()
         for record in entry.values()
     )
+
+
+def test_crowded_paris_capitals_share_a_local_view():
+    project = load(ROOT)
+    for target in ("city-75056", "city-92050", "city-93008", "city-94028"):
+        cards = [card for card in project.cards if card.target == target]
+        assert cards and all(card.view == "paris-region" for card in cards)

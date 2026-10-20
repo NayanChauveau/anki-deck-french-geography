@@ -60,8 +60,9 @@ automatique. Ces possibilités seraient un chantier distinct.
 - [x] 148 cartes régionales et relations département → région, à partir du COG 2025.
 - [x] 401 cartes urbaines : 101 chefs-lieux réutilisables et relations départementales.
 - [x] Pilote de cinq grandes zones de relief, dix cartes avec limites approximatives explicites.
+- [x] Trois sommets repères et neuf cartes : localisation dans les deux sens et grand ensemble associé.
 
-Total généré : **880 notes produisant chacune une carte**. Ce nombre ne décrit pas
+Total généré : **889 notes produisant chacune une carte**. Ce nombre ne décrit pas
 nécessairement le nombre de notes d’une collection Anki déjà utilisée : les anciennes
 notes issues des changements d’identifiants peuvent y subsister.
 
@@ -78,13 +79,14 @@ notes issues des changements d’identifiants peuvent y subsister.
 - [x] Médias nommés par empreinte et embarqués dans le paquet Anki.
 - [x] Galerie HTML locale, export genanki et commandes AnkiConnect.
 - [x] CI de contrôle et artefacts paquet/galerie définis dans le dépôt.
-- [x] Tests automatiques : 40 tests réussis lors des dernières vérifications.
-- [x] Imports et demandes de synchronisation via AnkiConnect réalisés sur des builds précédents.
+- [x] Tests automatiques : 43 tests réussis lors des dernières vérifications.
+- [x] Paquet de 880 cartes construit et importé via AnkiConnect le 20 octobre 2026 ; synchronisation demandée.
 
 ### Limites à traiter
 
 - [ ] Valider méthodiquement les rendus, les mises à jour et les réglages sur Anki Desktop et mobile.
-- [ ] Compléter les références factuelles des petites explications.
+- [x] Compléter les références factuelles des 18 explications hydrographiques existantes.
+- [ ] Étendre la revue factuelle aux prochaines explications et séries.
 - [ ] Améliorer certains tracés hydrographiques incomplets, notamment Rhin et Saône.
 - [ ] Vérifier les crédits et obligations de redistribution avant publication publique.
 - [ ] Configurer et éprouver la publication des releases.
@@ -108,6 +110,16 @@ concentrer tout le parcours sur les codes administratifs.
 | 6 | Outre-mer à l’échelle mondiale | Localisation mondiale et connaissance locale | Fond mondial et projections adaptées |
 | 7 | Paysages et territoires | Régions naturelles, historiques, forêts et parcs | Convention sur les zones floues et référentiels datés |
 | 8 | Géographie humaine | Ports, axes et grands espaces d’activité | Relations et faits éditoriaux sourcés |
+
+### Statut des lots après le dernier import
+
+| Lot | Statut réel |
+| --- | --- |
+| 0 | Revue des 18 textes terminée ; contrôle complet dans les clients Anki encore ouvert |
+| 1 | 18 régions et chefs-lieux générés et importés ; documentation institutionnelle à compléter |
+| 2 | Pilote de cinq ensembles importé ; autres ensembles, sommets et cols à faire |
+| 3 | 101 chefs-lieux et relations générés et importés ; grandes villes complémentaires à sélectionner |
+| 4 à 8 | Non implémentés ; les séries existantes ne valent pas réalisation de ces extensions |
 
 L’outre-mer doit aussi être inclus dans chaque lot pertinent. Le lot 6 approfondit
 sa localisation et ses relations ; il ne signifie pas de l’ignorer avant cette étape.
@@ -133,12 +145,12 @@ les nouveaux objets ne changent pas le fond des séries existantes.
 
 ### 4.2 Premiers repères urbains
 
-- [ ] Ajouter les chefs-lieux régionaux comme premier ensemble de villes.
+- [x] Ajouter les chefs-lieux régionaux comme premier ensemble de villes.
 - [ ] Définir une sélection explicite de grandes villes complémentaires.
 - [ ] Distinguer commune, agglomération et aire d’attraction dans les éventuels critères de sélection.
-- [ ] Documenter le point géographique retenu pour représenter chaque ville.
-- [ ] Générer ville → position et position → ville.
-- [ ] Relier les villes à leurs départements et régions.
+- [x] Documenter le point géographique retenu pour représenter chaque ville.
+- [x] Générer ville → position et position → ville.
+- [x] Relier les villes à leurs départements et régions.
 - [ ] Distinguer clairement les villes homonymes dans les questions.
 
 Ne pas utiliser « les plus grandes villes » sans préciser le critère et le millésime.
@@ -146,10 +158,10 @@ Un chiffre de population ne doit pas devenir une dépendance de l’identité de
 
 ### 4.3 Préfectures départementales
 
-- [ ] Ajouter les préfectures du périmètre départemental retenu.
-- [ ] Stocker la relation département → préfecture une seule fois.
-- [ ] Choisir les sens de rappel : département → préfecture et/ou ville → département.
-- [ ] Réutiliser une ville déjà présente dans le catalogue plutôt que la dupliquer.
+- [x] Ajouter les 101 communes chefs-lieux départementaux du COG 2025.
+- [x] Stocker la relation département → préfecture une seule fois.
+- [x] Choisir les sens de rappel : département → préfecture et/ou ville → département.
+- [x] Réutiliser une ville déjà présente dans le catalogue plutôt que la dupliquer.
 - [ ] Vérifier les cas particuliers, les graphies et les distinctions chef-lieu/préfecture.
 - [ ] Ajouter les sous-préfectures seulement en extension avancée, après validation de l’intérêt.
 
@@ -161,17 +173,19 @@ Sélection candidate : Alpes, Pyrénées, Massif central, Jura, Vosges, Massif a
 et reliefs corses ; grands bassins, plaines et vallées structurantes.
 
 - [ ] Distinguer les ensembles montagneux, massifs, bassins et plaines dans les types d’objets.
-- [ ] Choisir des limites pédagogiques cohérentes avec les sources.
-- [ ] Documenter explicitement toute zone approximative ou limite conventionnelle.
-- [ ] Générer nom → zone et zone → nom pour les grands ensembles.
+- [x] Choisir les zones indicatives du pilote : Alpes, Pyrénées, Massif central, Jura et Vosges.
+- [ ] Compléter les géométries pour le Massif armoricain, les reliefs corses, les bassins et les plaines.
+- [x] Documenter les limites approximatives des cinq polygones Natural Earth du pilote.
+- [x] Générer nom → zone et zone → nom pour les cinq ensembles du pilote.
+- [ ] Étendre les cartes aux autres grands ensembles retenus.
 - [ ] Évaluer un fond de relief discret, sans nuire à la lecture des cibles.
 - [ ] Prévoir des cadrages communs aux séries régionales.
 
 ### 5.2 Sommets et cols
 
-- [ ] Choisir quelques sommets repères par grand ensemble, avant les listes détaillées.
+- [x] Première sélection de trois sommets repères (mont Blanc, puy de Sancy, crêt de la Neige) ; autres ensembles à compléter.
 - [ ] Stocker nom, position, massif et référence d’altitude avec son millésime si nécessaire.
-- [ ] Générer sommet → position, position → sommet et sommet → massif selon pertinence.
+- [x] Générer sommet → position, position → sommet et sommet → grand ensemble pour cette sélection.
 - [ ] Réserver les altitudes exactes aux repères où elles ont une réelle utilité.
 - [ ] Ajouter ensuite les cols structurants pour comprendre les passages entre vallées.
 - [ ] Vérifier les questions transfrontalières et les conventions d’altitude.
@@ -318,9 +332,10 @@ ne constitue pas à elle seule une source pour tout le texte d’une carte.
 
 ### Convention à appliquer aux nouvelles séries
 
-- [ ] Prévoir des références factuelles au niveau des objets ou des relations.
-- [ ] Ajouter un millésime aux faits administratifs, statistiques et aux sélections datées.
-- [ ] Prévoir un état de revue éditoriale distinct de la validité technique du YAML.
+- [x] Prévoir des références factuelles au niveau des objets ou des relations.
+- [x] Dater les faits administratifs et les sélections actuelles : COG/Etalab 2025.
+- [ ] Dater les futurs faits statistiques et leurs critères de sélection.
+- [x] Prévoir un état de revue éditoriale distinct de la validité technique du YAML.
 - [ ] Établir une méthode pour signaler, corriger et suivre les erreurs de contenu.
 - [ ] Garder les questions courtes et réserver le contexte au verso.
 
@@ -328,21 +343,25 @@ ne constitue pas à elle seule une source pour tout le texte d’une carte.
 
 ### Catalogues d’objets et relations
 
-- [ ] Étendre les catalogues aux régions, villes, massifs, sommets, lacs et repères côtiers.
-- [ ] Référencer les relations par identifiants : département/région, ville/département, sommet/massif, affluent/exutoire.
-- [ ] Valider l’existence des objets référencés et les relations impossibles ou contradictoires.
-- [ ] Réutiliser un même objet dans plusieurs séries sans recopier ses propriétés.
-- [ ] Conserver la séparation entre source géographique, contenu éditorial et rendu.
-- [ ] Conserver les propriétés textuelles des codes et identifiants administratifs.
+- [x] Étendre les catalogues aux régions, villes et cinq zones de relief.
+- [ ] Étendre les catalogues aux sommets, lacs et repères côtiers.
+- [x] Référencer département/région, ville/département et chefs-lieux par identifiants.
+- [x] Ajouter les premières relations sommet/grand ensemble.
+- [ ] Ajouter les relations affluent/exutoire.
+- [x] Valider l’existence des cibles administratives et tester les correspondances avec le COG 2025.
+- [ ] Étendre les contrôles de cohérence aux futures relations physiques.
+- [x] Réutiliser un même objet dans plusieurs séries sans recopier ses propriétés.
+- [x] Conserver la séparation entre source géographique, contenu éditorial et rendu.
+- [x] Conserver les propriétés textuelles des codes et identifiants administratifs.
 
 ### Règles de génération
 
-- [ ] Ajouter les nouvelles familles de questions par règles communes.
-- [ ] Permettre l’activation explicite des sens utiles pour chaque série.
-- [ ] Étendre les lots d’apprentissage à d’autres séries quand cela apporte un bénéfice.
+- [x] Ajouter les nouvelles familles de questions par règles communes.
+- [x] Permettre l’activation explicite des sens utiles pour chaque série.
+- [x] Étendre les lots d’apprentissage à d’autres séries quand cela apporte un bénéfice.
 - [ ] Éviter de créer deux cartes équivalentes par deux chemins de génération différents.
 - [ ] Produire un récapitulatif des objets, cartes et directions générées par série.
-- [ ] Séparer les sens effectivement activés des possibilités simplement disponibles dans le moteur.
+- [x] Séparer les sens effectivement activés des possibilités simplement disponibles dans le moteur.
 
 Ne pas ajouter de compatibilité ou d’abstraction complexe avant un besoin concret.
 L’existant fournit un modèle à étendre, pas une obligation de faire entrer tous les
@@ -354,7 +373,7 @@ thèmes dans la même règle.
 - [ ] Garantir qu’une modification de texte, de cadrage ou de géométrie ne recrée pas la note.
 - [ ] Documenter la suspension ou le retrait de cartes devenues inutiles.
 - [ ] Tester une mise à jour sur une collection avec historique de révision.
-- [ ] Documenter séparément l’ordre du paquet, les positions déjà présentes dans Anki et l’ordre des révisions.
+- [x] Documenter séparément l’ordre du paquet, les positions déjà présentes dans Anki et l’ordre des révisions.
 
 Les changements d’identifiants déjà autorisés pendant le développement ne doivent
 pas devenir une pratique de maintenance après diffusion.
@@ -366,10 +385,10 @@ pas devenir une pratique de maintenance après diffusion.
 - [ ] Vérifier les rendus sur petit écran et en mode sombre.
 - [ ] Contrôler le contraste des cibles, des frontières et des repères de contexte.
 - [ ] Contrôler les petites zones, îles et départements ainsi que les cibles proches d’une frontière.
-- [ ] Prévoir des vues communes par famille et des encarts lorsqu’ils sont nécessaires.
-- [ ] Distinguer les couches de contexte du thème étudié et éviter de surcharger les images.
-- [ ] Conserver un cadrage recto/verso identique pour une même question.
-- [ ] Garder les images sans textes décoratifs ; afficher réponses, explications et crédits en HTML.
+- [x] Prévoir des vues communes par famille et des encarts lorsqu’ils sont nécessaires.
+- [x] Distinguer les couches de contexte du thème étudié et éviter de surcharger les images.
+- [x] Conserver un cadrage recto/verso identique pour une même question.
+- [x] Garder les images sans textes décoratifs ; afficher réponses, explications et crédits en HTML.
 
 ### Nouvelles capacités à examiner
 
@@ -386,15 +405,15 @@ classiques et les clients mobiles.
 
 ## 14. Données, licences et reproductibilité
 
-- [ ] Pour chaque nouveau jeu, documenter source, URL, version, licence et modifications.
-- [ ] Conserver les empreintes amont et celles des fichiers préparés.
-- [ ] Séparer acquisition/préparation et build ordinaire ; ne jamais télécharger les sources au build.
+- [x] Pour chaque nouveau jeu, documenter source, URL, version, licence et modifications.
+- [x] Conserver les empreintes amont et celles des fichiers préparés.
+- [x] Séparer acquisition/préparation et build ordinaire ; ne jamais télécharger les sources au build.
 - [ ] Vérifier l’adéquation de l’échelle et de la précision au thème représenté.
 - [ ] Conserver les scripts de préparation reproductibles et contrôler les modifications de géométrie.
-- [ ] Documenter les réparations de géométries et les exclusions de périmètre.
+- [x] Documenter les réparations de géométries et les exclusions de périmètre.
 - [ ] Vérifier les obligations d’attribution, de partage de base dérivée et de redistribution des médias.
-- [ ] Conserver les crédits nécessaires associés aux cartes, hors des PNG lorsque possible.
-- [ ] Garder tous les médias référencés embarqués et nommés par leur contenu.
+- [x] Conserver les crédits nécessaires associés aux cartes, hors des PNG lorsque possible.
+- [x] Garder tous les médias référencés embarqués et nommés par leur contenu.
 
 Sources candidates à étudier selon les lots : référentiels administratifs et codes
 INSEE, contours IGN/Etalab, BD TOPAGE/Sandre, données des organismes géographiques
@@ -454,13 +473,26 @@ Un lot est terminé lorsque tous les points suivants sont vrais :
 
 ## 17. Prochaine séquence concrète
 
-- [x] Passer en revue les petites explications existantes et leurs références.
-- [x] Arrêter le périmètre du catalogue régional et son référentiel daté.
-- [x] Préparer les contours locaux et les relations département → région.
-- [x] Ajouter les chefs-lieux régionaux dans un catalogue de villes réutilisable.
-- [ ] Générer et inspecter une petite série pilote région/ville avant extension complète.
-- [ ] Déployer le lot régional complet après validation.
-- [ ] Ouvrir ensuite le lot des grands massifs, puis celui des villes/préfectures.
+### Réalisé dans la dernière séquence
+
+- [x] Revue des 18 explications hydrographiques, avec rapport et références factuelles.
+- [x] Catalogues COG 2025 des régions, chefs-lieux et relations administratives.
+- [x] Génération de 148 cartes régionales et 401 cartes urbaines.
+- [x] Pilote relief de cinq ensembles, dix cartes et limites approximatives explicites.
+- [x] Cache persistant de rendu et références consultables dans la galerie.
+- [x] 40 tests réussis, paquet de 880 cartes construit et importé ; synchronisation demandée.
+
+### Suite en cours, reprise autorisée
+
+- [ ] Contrôler visuellement les nouvelles séries dans Anki et vérifier leur ordre effectif.
+- [ ] Terminer la documentation des cas institutionnels et des homonymes urbains.
+- [ ] Compléter le pilote relief : géométries adaptées pour les reliefs corses et armoricains.
+- [x] Ajouter trois sommets repères avec sources géométriques et factuelles distinctes.
+- [ ] Définir les grandes villes complémentaires, au-delà des seuls chefs-lieux.
+- [ ] Préparer ensuite l’hydrographie enrichie : tracés incomplets et cours d’eau manquants.
+
+La poursuite a repris à la demande de l’auteur. Les validations dans les clients
+Anki restent ouvertes ; un build local ne les remplace pas.
 
 ## 18. Liens de référence
 
@@ -473,12 +505,24 @@ Un lot est terminé lorsque tous les points suivants sont vrais :
 Cette roadmap décrit les choix du projet ; elle ne prétend pas reproduire un
 programme scolaire officiel ni proposer un inventaire exhaustif des lieux français.
 
-## Avancement du 20 octobre 2026
+## Avancement du 20 octobre 2026 — état après import
 
 La revue hydrographique est consignée dans `docs/reviews/`. Le lot administratif
 prépare les 18 régions, leurs chefs-lieux, les 101 relations départementales et les
 101 points urbains à partir du COG/Etalab 2025. Les catalogues sont séparés des
 règles, et les images inchangées sont réutilisées par un cache contrôlé par empreinte.
 Le relief a un pilote de cinq zones ; le lot relief complet reste ouvert.
-Les validations sur applications et les futures séries ne sont pas considérées
-comme terminées par cette seule génération.
+Le commit `fec1eb1` contient cet ensemble. `make build` et `make push` ont réussi
+pour 880 cartes, puis la synchronisation a été demandée. La validation visuelle
+exhaustive dans les clients Anki et les futures séries restent à faire.
+
+### Reprise : sommets et cadrages urbains
+
+Neuf cartes de sommets portent le total local à 889. Les quatre chefs-lieux de
+Paris et de la petite couronne utilisent la vue francilienne, avec frontières
+départementales de contexte et encart national. Les identifiants existants sont
+conservés. Cette extension reste locale, sans nouvel import Anki.
+
+Validation locale de cette reprise : 43 tests réussis, 889 fiches validées ;
+aperçus du mont Blanc et de Bobigny inspectés. Contrôle sur mobile et import
+de cette extension restent à faire.

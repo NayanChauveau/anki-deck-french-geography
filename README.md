@@ -144,3 +144,7 @@ géométries restent distinctes de celles des explications.
 Le relief est un pilote : les zones Natural Earth sont approximatives. Les montagnes
 corses et le Massif armoricain attendent des géométries adaptées ; un contour d’île
 ou de région administrative n’est pas utilisé pour représenter un relief.
+
+Le pilote comprend aussi trois sommets repères et neuf cartes : localisation dans
+les deux sens et rattachement à un grand ensemble. Les relations sont sourcées
+séparément des points Natural Earth ; aucune altitude exacte n’est demandée.

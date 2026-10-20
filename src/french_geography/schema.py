@@ -143,6 +143,7 @@ class PlaceEntry(Strict):
     capital: str | None = None
     department: str | None = None
     region: str | None = None
+    massif: str | None = None
     view: str = "metropolitan"
     explanation: str = ""
     references: list[str] = Field(default_factory=list)
@@ -178,7 +179,7 @@ class RelationRule(Strict):
     layer: str
     catalog: str
     related_catalog: str
-    relation: Literal["region", "department", "capital"]
+    relation: Literal["region", "department", "capital", "massif"]
     theme: str
     question: str
     references: list[str] = Field(min_length=1)

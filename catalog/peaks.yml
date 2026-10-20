@@ -1,0 +1,19 @@
+features:
+- id: peak-puy-de-sancy
+  name: Puy de Sancy
+  massif: mountain-massif-central
+  explanation: 'Grand ensemble de relief : Massif central.'
+  references:
+  - https://www.larousse.fr/encyclopedie/autre-region/Massif_central/132176
+- id: peak-mont-blanc
+  name: Mont Blanc
+  massif: mountain-alpes
+  explanation: 'Grand ensemble de relief : Alpes.'
+  references:
+  - https://www.larousse.fr/encyclopedie/mont/mont_Blanc/109035
+- id: peak-cret-de-la-neige
+  name: Crêt de la Neige
+  massif: mountain-jura
+  explanation: 'Grand ensemble de relief : Jura.'
+  references:
+  - https://www.larousse.fr/encyclopedie/mont/cr%C3%AAt_de_la_Neige/134922

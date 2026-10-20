@@ -61,6 +61,18 @@
           "default": null,
           "title": "Region"
         },
+        "massif": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Massif"
+        },
         "view": {
           "default": "metropolitan",
           "title": "View",

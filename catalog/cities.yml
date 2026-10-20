@@ -454,7 +454,7 @@ features:
   name: Paris
   department: dep-75
   region: reg-11
-  view: metropolitan
+  view: paris-region
 - id: city-76540
   code: '76540'
   name: Rouen
@@ -556,19 +556,19 @@ features:
   name: Nanterre
   department: dep-92
   region: reg-11
-  view: metropolitan
+  view: paris-region
 - id: city-93008
   code: '93008'
   name: Bobigny
   department: dep-93
   region: reg-11
-  view: metropolitan
+  view: paris-region
 - id: city-94028
   code: '94028'
   name: Créteil
   department: dep-94
   region: reg-11
-  view: metropolitan
+  view: paris-region
 - id: city-95500
   code: '95500'
   name: Pontoise
