@@ -39,7 +39,7 @@ class Projection:
         pts = [self.transformer.transform(*p, errcheck=True) for p in ring]
         xs, ys = zip(*pts, strict=True)
         self.bounds = min(xs), min(ys), max(xs), max(ys)
-        x, y, width, height = rectangle or (28, 46, view.width - 56, view.height - 90)
+        x, y, width, height = rectangle or (24, 24, view.width - 48, view.height - 48)
         self.scale = min(width / (max(xs) - min(xs)), height / (max(ys) - min(ys)))
         self.ox = x + (width - (max(xs) - min(xs)) * self.scale) / 2
         self.oy = y + (height - (max(ys) - min(ys)) * self.scale) / 2
@@ -115,33 +115,7 @@ def scene_for(project: Project, card: Card, back: bool):
             add_geometry(scene, target, style.target, style.target, style.target_width)
         return projection
 
-    projection = layer(view)
-    scene.append(
-        Primitive(
-            "text",
-            [(30, 27)],
-            style.ink,
-            text="FRANCE · DÉPARTEMENTS"
-            if card.layer == "departments"
-            else "FRANCE · GÉOGRAPHIE PHYSIQUE",
-        )
-    )
-    scene.append(
-        Primitive(
-            "text",
-            [(30, view.height - 22)],
-            style.ink,
-            text=(
-                "Contours : Etalab / IGN · 2025 · ODbL 1.0"
-                if card.layer == "departments"
-                else "Cours d’eau surligné · Natural Earth · domaine public"
-            ),
-        )
-    )
-    for annotation in card.annotations:
-        if annotation.side == "both" or back:
-            x, y = projection.point(annotation.lon, annotation.lat)
-            scene.append(Primitive("text", [(x, y)], style.ink, text=annotation.text))
+    layer(view)
     if view.inset:
         inset = project.views[view.inset]
         rect = (view.width - 235, view.height - 245, 205, 180)

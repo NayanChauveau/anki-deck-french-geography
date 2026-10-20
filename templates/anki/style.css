@@ -7,3 +7,7 @@ img { display: block; width: 100%; height: auto; max-width: 900px; margin: auto;
 details { font-size: 12px; text-align: left; overflow-wrap: anywhere; color: #526e77; }
 .nightMode { color: #e8f1f5; background: #182a31; }
 .nightMode .eyebrow, .nightMode details { color: #bdced3; }
+
+.credits { font-size: 10px; line-height: 1.4; color: #526e77; margin: 6px 0; text-align: left; }
+.credits a { color: inherit; }
+.nightMode .credits { color: #bdced3; }

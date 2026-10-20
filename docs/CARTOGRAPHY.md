@@ -31,10 +31,11 @@ Le champ facultatif `inset` désigne une autre vue : celle-ci apparaît en bas �
 avec la même cible surlignée, pour situer un détail régional. Les encarts ne sont
 pas récursifs. Un test exerce une vue régionale avec un encart national.
 
-Les annotations définissent texte, longitude, latitude et côté (`back` par défaut,
-`both` pour un repère commun). Elles ne changent pas le cadrage recto/verso. Le moteur
-ne place pas automatiquement les étiquettes : il faut vérifier leur position dans
-la galerie. Pour les pilotes, seuls les noms des cours d’eau apparaissent au verso.
+Les images restent sans texte : aucun titre, crédit ou nom de cours d’eau n’est
+dessiné dans les SVG/PNG. Les questions, réponses, explications et références sont
+présentées par le template HTML Anki. Les crédits départementaux sont visibles sous
+l’image, avec les liens vers le jeu source et la licence. Recto et verso gardent
+le même cadrage ; seules les cartes de localisation changent la surbrillance.
 
 ## Sources locales
 

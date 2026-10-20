@@ -49,7 +49,8 @@ issu d’IGN Admin Express pour les départements. La fiche du jeu annonce la li
 [ODbL 1.0](https://www.data.gouv.fr/datasets/contours-administratifs).
 L’URL datée, les empreintes amont et locale, et les modifications sont conservées
 dans `geo/sources.yml`. La base dérivée est distribuée dans le dépôt, sous cette
-licence ; les images comportent l’attribution Etalab / IGN et la licence.
+licence ; les cartes Anki et la galerie affichent l’attribution Etalab / IGN et le lien de
+licence sous l’image, hors du SVG/PNG.
 
 Le fichier amont comprend aussi des collectivités d’outre-mer, exclues de cette
 série départementale. Les polygones invalides sont réparés avec `make_valid` ; les

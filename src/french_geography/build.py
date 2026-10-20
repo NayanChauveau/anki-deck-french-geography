@@ -18,6 +18,21 @@ def note_guid(card_id: str) -> str:
     return genanki.guid_for(NAMESPACE, card_id)
 
 
+def credits(card):
+    if card.layer != "departments":
+        return ""
+    return (
+        '<div class="credits">Contours : '
+        '<a href="https://www.data.gouv.fr/datasets/contours-administratifs">'
+        "Etalab / IGN · 2025</a>"
+        ' · <a href="https://opendatacommons.org/licenses/odbl/1-0/">ODbL 1.0</a></div>'
+    )
+
+
+def image_html(card, name):
+    return f'<img src="{name}" alt="Carte géographique">' + credits(card)
+
+
 def maps(project: Project, out: Path):
     manifest = {}
     cache = {}
@@ -29,16 +44,7 @@ def maps(project: Project, out: Path):
             if mode == "none":
                 manifest[card.id][side] = {}
                 continue
-            annotations = tuple(
-                a.model_dump_json() for a in card.annotations if back or a.side == "both"
-            )
-            key = (
-                card.layer,
-                card.view,
-                mode,
-                card.target if mode == "target" else None,
-                annotations,
-            )
+            key = (card.layer, card.view, mode, card.target if mode == "target" else None)
             if key not in cache:
                 cache[key] = {
                     ext: path.name for ext, path in render(project, card, back, out).items()
@@ -55,7 +61,7 @@ def preview(project: Project, out: Path) -> Path:
         e = html.escape
         figures = "".join(
             f'<figure><figcaption>{label}</figcaption><img alt="{label}" '
-            f'src="media/{manifest[card.id][side]["png"]}"></figure>'
+            f'src="media/{manifest[card.id][side]["png"]}">{credits(card)}</figure>'
             for side, label in [("front", "Recto"), ("back", "Verso")]
             if manifest[card.id][side]
         )
@@ -120,9 +126,7 @@ def build(project: Project, out: Path) -> Path:
     for card in project.cards:
         images = [manifest[card.id][side].get("png") for side in ["front", "back"]]
         media_files.update(str(media_dir / name) for name in images if name)
-        image_fields = [
-            f'<img src="{name}" alt="Carte géographique">' if name else "" for name in images
-        ]
+        image_fields = [image_html(card, name) if name else "" for name in images]
         refs = " · ".join(html.escape(ref) for ref in card.references)
         decks[card.theme].add_note(
             genanki.Note(

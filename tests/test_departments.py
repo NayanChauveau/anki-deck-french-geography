@@ -62,7 +62,7 @@ def test_blank_front_hides_target_and_map_questions_share_the_same_image():
         assert scene_for(project, variants["map-name"], False) == scene_for(
             project, variants["map-code"], False
         )
-        assert all(key not in p.text for p in blank if p.kind == "text")
+        assert all(p.kind != "text" for p in [*blank, *highlighted])
 
 
 def test_all_six_directions_are_supported_but_only_three_are_enabled():
@@ -112,3 +112,5 @@ def test_department_package_keeps_existing_river_identity_and_bundles_shared_med
         assert db.execute("SELECT count(*) FROM cards WHERE did=1976423100").fetchone()[0] == 1
         for (fields,) in db.execute("SELECT flds FROM notes WHERE flds LIKE '%dep-01%'"):
             assert 'alt="Carte géographique"' in fields
+            assert 'class="credits"' in fields
+            assert "https://opendatacommons.org/licenses/odbl/1-0/" in fields

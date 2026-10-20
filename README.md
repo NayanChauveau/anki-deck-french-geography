@@ -5,8 +5,7 @@ Les départements relient **nom, code et position** : nom → carte, carte → n
 carte → code. Voir [le fonctionnement des départements](docs/DEPARTMENTS.md).
 
 La série de géographie physique contient **18 cartes d’identification de cours d’eau**.
-Le recto montre le tracé surligné sans son nom ; le verso révèle le nom,
-une annotation et une courte explication. Le cadrage reste identique.
+Le recto montre le tracé surligné sans son nom ; le verso révèle le nom et une courte explication sous l’image. Le cadrage reste identique.
 
 La série couvre les 18 cours d’eau du fichier Natural Earth téléchargé dont un tracé
 recoupe la métropole : Ariège, Dordogne, Doubs, Durance, Escaut, Garonne, Loire,
@@ -104,9 +103,8 @@ features:
 
 L’ID correspond à celui du GeoJSON, pas à un identifiant de carte à inventer.
 Le générateur compose « L’Ariège », reprend la question commune et calcule l’identité
-Anki. `explanation`, `references` et `label: {lon: …, lat: …}` sont facultatifs.
-Sans `label`, l’étiquette est placée sur un point représentatif du tracé ; ajuster
-ce placement dans le catalogue si nécessaire après examen de la galerie.
+Anki. `explanation` et `references` sont facultatifs. Les images n’affichent pas
+d’étiquettes ; le nom de la réponse est présenté par le template du verso.
 
 Pour ajouter un objet : préparer sa géométrie locale avec provenance et empreinte,
 ajouter son nom et son article au catalogue, puis lancer `make check preview build`.
@@ -116,3 +114,15 @@ la validation. Aucun fichier de cartes générées n’est conservé dans le dé
 Voir [CARTOGRAPHY.md](docs/CARTOGRAPHY.md) pour le fonctionnement et la préparation
 des sources. Les rendus ont été inspectés en image ; l’import dans Anki Desktop
 et la lecture sur téléphone restent à vérifier sur les applications réelles.
+
+## Présentation des images
+
+Les images contiennent uniquement la géographie et la surbrillance éventuelle :
+aucun titre, nom ou crédit n’est dessiné sur la carte. Le nom de la réponse et les
+explications restent dans le texte du verso. Les crédits départementaux sont affichés
+sous l’image en HTML, avec les liens vers le jeu de données et sa licence.
+Les références restent disponibles dans « Sources ».
+
+Les champs `explanation` sont des résumés éditoriaux rédigés pour ce deck, pas des
+textes extraits des GeoJSON ni des citations. Les références de géométrie ne valent
+pas à elles seules vérification de chaque détail d’une explication.

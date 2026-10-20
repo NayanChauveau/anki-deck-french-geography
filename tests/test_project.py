@@ -37,7 +37,7 @@ def test_offline_package_contains_all_notes_and_media(project, tmp_path, monkeyp
     output = build(project, tmp_path)
     with zipfile.ZipFile(output) as package:
         media = json.loads(package.read("media"))
-        assert len(media) == 2 * len(project.cards)
+        assert len(media) == len(project.cards)
         for key, name in media.items():
             data = package.read(key)
             assert name == "geo-" + hashlib.sha256(data).hexdigest() + ".png"
@@ -75,7 +75,11 @@ def test_render_is_deterministic_and_front_does_not_reveal_answer(project, tmp_p
     second = render(project, card, False, tmp_path / "two")
     assert {k: p.name for k, p in first.items()} == {k: p.name for k, p in second.items()}
     assert label not in first["svg"].read_text()
-    assert label in render(project, card, True, tmp_path / "back")["svg"].read_text()
+    back_image = render(project, card, True, tmp_path / "back")
+    assert label not in back_image["svg"].read_text()
+    assert "<text" not in first["svg"].read_text()
+    assert "<text" not in back_image["svg"].read_text()
+    assert first["png"].read_bytes() == back_image["png"].read_bytes()
     with Image.open(first["png"]) as image:
         assert image.size == (900, 900)
         assert len(image.getcolors(900 * 900)) > 100
