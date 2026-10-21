@@ -564,3 +564,10 @@ Revue globale terminée : huit constats priorisés et un ordre de consolidation 
 le rapport. Les refactorings du moteur ne sont pas encore appliqués. Les contrôles
 locaux comptent désormais 57 tests, en plus du contrôle direct avec Deckdock. Le
 dépôt est public ; une release stable reste nécessaire pour installer via l’add-on.
+
+### Publication automatique demandée ensuite
+
+Le workflow suit maintenant le fonctionnement WSET 3 : release stable à chaque push
+validé de `main`, numéro de patch incrémenté automatiquement, paquet de nom constant.
+Les pull requests ne publient pas. Le premier passage distant doit être vérifié
+avant d’annoncer une version téléchargeable ; suivi dans `docs/DECKDOCK.md`.

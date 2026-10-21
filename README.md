@@ -157,8 +157,8 @@ séparément des points Natural Earth ; aucune altitude exacte n’est demandée
 ## Deckdock et consolidation
 
 Le paquet est vérifié avec le code de [Deckdock](https://github.com/NayanChauveau/anki-deckdock).
-L’installation suivie nécessitera une release GitHub stable versionnée ; pousser
-`main` ne crée pas cette release. Les contrôles effectués et le workflow préparé
+Après un push sur `main`, la CI publie une nouvelle release stable versionnée
+si les tests, le build et le contrôle Deckdock réussissent. Les contrôles effectués et le workflow préparé
 sont décrits dans [DECKDOCK.md](docs/DECKDOCK.md).
 
 Les prochaines extensions de contenu sont mises de côté. La priorité est la

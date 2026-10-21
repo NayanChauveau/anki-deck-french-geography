@@ -18,8 +18,8 @@ Le lien d’installation aura la forme suivante, **après publication de cette v
 https://github.com/NayanChauveau/anki-deck-french-geography/releases/download/vX.Y.Z/french-geography.apkg
 ```
 
-`vX.Y.Z` est un emplacement à remplacer, pas une release disponible. La vérification
-n’a créé ni tag ni release. Le dépôt est public et `main` est poussé. Ce push ne publie pas de release.
+`vX.Y.Z` est un emplacement à remplacer, pas une release disponible. Le dépôt est public. La CI est désormais configurée pour publier automatiquement
+la prochaine version stable après chaque push validé sur `main`.
 
 ## Vérifié localement
 
@@ -48,18 +48,27 @@ La commande utilise le code de cet add-on et le paquet déjà construit. GitHub 
 simulé, donc elle ne nécessite ni réseau ni Anki ouvert. Ce contrôle est ajouté à la
 CI contre la révision épinglée. Actualiser cette révision demande de rejouer le test.
 
-## Workflow de publication préparé
+## Publication automatique sur main
 
-`.github/workflows/release.yml` se déclenche sur les tags `v*`, exige précisément
-`vX.Y.Z`, puis réutilise les contrôles de `check.yml`. Ceux-ci construisent le paquet,
-la galerie et exercent le contrat Deckdock. Le job de publication récupère l’artefact
-et crée une nouvelle release stable, avec le fichier de nom constant et son label.
-Il ne remplace pas une release déjà existante.
+Comme sur WSET 3, `.github/workflows/check.yml` teste et construit le paquet sur les
+pull requests et les pushes de `main`. Sur un push de `main` uniquement, le job
+`release` attend le succès de ces contrôles, récupère leur artefact et publie le
+paquet exact construit depuis ce commit.
 
-Le workflow est configuré et contrôlé localement. Sa publication complète depuis
-un tag, le téléchargement distant et le dialogue d’import de Deckdock ne sont pas
-encore éprouvés sur une release réelle. Ne pas annoncer un lien de téléchargement
-fonctionnel tant que cette étape n’a pas eu lieu.
+Les publications sont sérialisées. `scripts/publish_release.py` lit les tags et les
+releases existants : la première version est `v0.1.0`, puis le numéro de patch du
+plus grand numéro stable est incrémenté (`v0.1.9` → `v0.1.10`). Les tags non conformes,
+comme `latest-main`, sont ignorés. Une erreur de lecture GitHub interrompt la
+publication ; elle ne déclenche pas un retour au numéro initial.
+
+Chaque release conserve `french-geography.apkg` et le label « Géographie française ».
+Elle cible le SHA vérifié par la CI et devient la release stable la plus récente.
+Une release existante n’est jamais remplacée. Une pull request ne publie rien.
+Aucun tag manuel n’est nécessaire pour une publication normale.
+
+La preuve de publication distante et le lien d’installation seront consignés ici
+après le premier passage réussi. Le dialogue d’import de l’add-on reste distinct des
+tests locaux de contrat et du backend Anki.
 
 ## Identités et mises à jour
 

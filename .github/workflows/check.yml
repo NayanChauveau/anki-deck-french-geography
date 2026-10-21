@@ -1,6 +1,5 @@
-name: Checks and preview
+name: CI
 "on":
-  workflow_call:
   pull_request:
   push:
     branches: [main]
@@ -31,3 +30,25 @@ jobs:
           ref: 34c797fa8f6546ece8aa0a7e31f90f745ef7a38e
           path: .compat/anki-deckdock
       - run: uv run --frozen python scripts/check_deckdock.py --deckdock .compat/anki-deckdock
+  release:
+    name: Publish versioned release
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: publish-versioned-release
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: french-geography
+          path: release
+      - name: Publish the next patch release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/publish_release.py --package release/dist/french-geography.apkg
