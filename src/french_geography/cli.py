@@ -33,9 +33,8 @@ def main():
     parser.add_argument("--out", type=Path)
     parser.add_argument(
         "--lang",
-        choices=["all", "en", "fr"],
-        default="all",
-        help="Package language (build only; default: both, English first)",
+        default=None,
+        help="Registered language code, or all (build defaults to all; preview to fr)",
     )
     args = parser.parse_args()
     root = args.root.resolve()
@@ -57,9 +56,9 @@ def main():
         elif args.command == "maps":
             maps(project, args.out or root / "build/media")
         elif args.command == "preview":
-            print(preview(project, args.out or root / "build/preview"))
+            print(preview(project, args.out or root / "build/preview", language=args.lang or "fr"))
         elif args.command == "build":
-            for path in build_packages(project, args.out or root / "dist", args.lang):
+            for path in build_packages(project, args.out or root / "dist", args.lang or "all"):
                 print(path)
         elif args.command == "push":
             path = build(project, args.out or root / "dist")

@@ -91,8 +91,10 @@ Les limites des vues ne représentent pas des sources ni des embouchures.
 
 Les notes sont créées par `src/french_geography/generate.py` à partir des règles
 `cards/identification.yml` et du catalogue `catalog/rivers.yml`. Chaque règle parcourt
-toute sa couche géographique ; les noms et articles du catalogue servent à former
-les réponses. Les références propres à un objet complètent celles de la règle.
+toute sa couche géographique ; les noms canoniques et les formulations de la langue
+sélectionnée servent à former les réponses. Les références propres à un objet
+complètent celles de la règle. Les descriptions et questions localisées vivent
+dans `locales/`, sous des clés stables ; voir [LOCALIZATION.md](LOCALIZATION.md).
 La question et la vue sont communes. Une explication peut être omise, ainsi que
 le placement d’étiquette ; celui-ci utilise alors un point représentatif du tracé.
 

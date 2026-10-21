@@ -2,28 +2,28 @@ features:
 - id: peak-puy-de-sancy
   name: Puy de Sancy
   massif: mountain-massif-central
-  explanation: 'Grand ensemble de relief : Massif central.'
   view: metropolitan
   references:
   - https://www.larousse.fr/encyclopedie/autre-region/Massif_central/132176
+  explanation_key: peak.puy-de-sancy.context
 - id: peak-mont-blanc
   name: Mont Blanc
   massif: mountain-alpes
-  explanation: 'Grand ensemble de relief : Alpes.'
   view: metropolitan
   references:
   - https://www.larousse.fr/encyclopedie/mont/mont_Blanc/109035
+  explanation_key: peak.mont-blanc.context
 - id: peak-cret-de-la-neige
   name: Crêt de la Neige
   massif: mountain-jura
-  explanation: 'Grand ensemble de relief : Jura.'
   view: metropolitan
   references:
   - https://www.larousse.fr/encyclopedie/mont/cr%C3%AAt_de_la_Neige/134922
+  explanation_key: peak.cret-de-la-neige.context
 - id: peak-monte-cinto
   name: Monte Cinto
   massif: mountain-corse
-  explanation: 'Grand ensemble de relief : Reliefs corses.'
   view: corsica-relief
   references:
   - https://www.larousse.fr/encyclopedie/mont/monte_Cinto/113690
+  explanation_key: peak.monte-cinto.context

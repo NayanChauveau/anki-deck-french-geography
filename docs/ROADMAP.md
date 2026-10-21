@@ -580,7 +580,7 @@ avant d’annoncer une version téléchargeable ; suivi dans `docs/DECKDOCK.md`.
 - [x] Pilote anglais limité à la Loire, une carte ; édition française à 1 014 cartes.
 - [x] Identités françaises conservées et identités anglaises séparées.
 - [x] Publication adaptée pour attacher les deux fichiers à une même release.
-- [ ] Traduction complète : différée, expressément hors du périmètre demandé.
+- [x] Traduction complète des 1 014 cartes ; structure multilingue décrite dans `LOCALIZATION.md`.
 
 Les noms de fichiers sont désormais figés. La première release mono-fichier précède
 cette transition autorisée par l’auteur ; les futurs assets gardent les suffixes de langue.
@@ -594,3 +594,16 @@ cette transition autorisée par l’auteur ; les futurs assets gardent les suffi
 - [x] Police embarquée uniquement pour les scènes contenant réellement du texte.
 - [x] Vérifications d’empreinte et copies dédupliquées par média ; réparation des fichiers corrompus testée.
 - [x] Cache `build/media` ajouté au workflow CI (gain distant à mesurer après exécution).
+
+### Complete translation and shared localization architecture
+
+- [x] 1,014 English notes covering all nine existing themes.
+- [x] Shared schema for French/English, stable semantic text keys and neutral catalogues/rules.
+- [x] Explicit language registry for asset names, namespaces, models and decks.
+- [x] Shared generator, localized UI/templates/gallery and registry-driven publication.
+- [x] Data-only third-locale fixture exercises addition of another language.
+Publication of the translation and multilingual refactoring uses the existing
+automatic release workflow after a successful main-branch build.
+
+Current architecture: [LOCALIZATION.md](LOCALIZATION.md). The earlier pilot-only
+translation log describes a previous step and is superseded by this completion.

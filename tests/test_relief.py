@@ -33,7 +33,7 @@ def test_summit_cards_have_three_directions_and_fact_sources():
 
 
 def test_unknown_summit_massif_is_rejected(tmp_path):
-    for directory in ("geo", "cards", "catalog", "data"):
+    for directory in ("geo", "cards", "catalog", "data", "locales"):
         copytree(ROOT / directory, tmp_path / directory)
     path = tmp_path / "catalog/peaks.yml"
     catalog = yaml.safe_load(path.read_text())

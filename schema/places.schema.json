@@ -109,7 +109,7 @@
           "default": null,
           "title": "Massif"
         },
-        "qualifier": {
+        "qualifier_key": {
           "anyOf": [
             {
               "type": "string"
@@ -119,17 +119,24 @@
             }
           ],
           "default": null,
-          "title": "Qualifier"
+          "title": "Qualifier Key"
         },
         "view": {
           "default": "metropolitan",
           "title": "View",
           "type": "string"
         },
-        "explanation": {
-          "default": "",
-          "title": "Explanation",
-          "type": "string"
+        "explanation_key": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Explanation Key"
         },
         "references": {
           "items": {

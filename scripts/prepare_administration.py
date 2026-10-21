@@ -113,9 +113,9 @@ for code, row in sorted(communes.items()):
             "id": f"city-{code}",
             "code": code,
             "name": row["LIBELLE"],
-            "qualifier": "Île-de-France"
+            "qualifier_key": "location.ile_de_france"
             if code == "93066"
-            else "océan Indien"
+            else "location.indian_ocean"
             if code == "97411"
             else None,
             "department": f"dep-{row['DEP']}",

@@ -1,20 +1,20 @@
 rules:
-  - type: places
-    id: relief-sommets
-    layer: peaks
-    catalog: catalog/peaks.yml
-    theme: Relief
-    noun: le sommet
-    directions: [name-map, map-name]
-    references:
-      - https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-physical-labels/
-  - type: relations
-    id: relief-sommet-massif
-    layer: peaks
-    catalog: catalog/peaks.yml
-    related_catalog: catalog/mountains.yml
-    relation: massif
-    theme: Relief
-    question: 'À quel grand ensemble de relief appartient le sommet « {name} » ?'
-    references:
-      - https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-physical-labels/
+- type: places
+  id: relief-sommets
+  layer: peaks
+  catalog: catalog/peaks.yml
+  theme: Relief
+  directions:
+  - name-map
+  - map-name
+  references:
+  - https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-physical-labels/
+- type: relations
+  id: relief-sommet-massif
+  layer: peaks
+  catalog: catalog/peaks.yml
+  related_catalog: catalog/mountains.yml
+  relation: massif
+  theme: Relief
+  references:
+  - https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-physical-labels/

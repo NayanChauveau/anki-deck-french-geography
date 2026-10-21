@@ -124,7 +124,7 @@ def test_reject_outside_target(project, tmp_path):
 
 
 def copied_project(tmp_path):
-    for directory in ("geo", "cards", "catalog", "data"):
+    for directory in ("geo", "cards", "catalog", "data", "locales"):
         shutil.copytree(ROOT / directory, tmp_path / directory)
     return tmp_path
 
@@ -166,7 +166,7 @@ def test_new_catalog_entry_and_geometry_generate_a_note_without_a_card_file(tmp_
     root = copied_project(tmp_path)
     catalog_path = root / "catalog/rivers.yml"
     catalog = yaml.safe_load(catalog_path.read_text())
-    catalog["features"].append({"id": "example", "name": "Exemple", "article": "l’"})
+    catalog["features"].append({"id": "example", "name": "Exemple"})
     catalog_path.write_text(yaml.safe_dump(catalog))
     geometry_path = root / "geo/features/rivers.geojson"
     data = json.loads(geometry_path.read_text())
@@ -182,6 +182,10 @@ def test_new_catalog_entry_and_geometry_generate_a_note_without_a_card_file(tmp_
     sources = yaml.safe_load(source_path.read_text())
     sources["sources"][0]["sha256"] = hashlib.sha256(geometry_path.read_bytes()).hexdigest()
     source_path.write_text(yaml.safe_dump(sources))
+    locale_path = root / "locales/fr.yml"
+    locale = yaml.safe_load(locale_path.read_text())
+    locale["forms"]["example"] = {"identification": "L’Exemple"}
+    locale_path.write_text(yaml.safe_dump(locale, allow_unicode=True))
     project = load(root)
     card = next(c for c in project.cards if c.target == "example")
     assert (
@@ -201,7 +205,7 @@ def test_new_catalog_entry_and_geometry_generate_a_note_without_a_card_file(tmp_
 
 def test_common_rule_applies_to_all_notes(tmp_path):
     root = copied_project(tmp_path)
-    path = root / "cards/identification.yml"
+    path = root / "locales/fr.yml"
     path.write_text(
         path.read_text().replace(
             "Quel cours d’eau est surligné sur la carte ?", "Identifiez le tracé."

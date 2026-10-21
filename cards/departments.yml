@@ -1,11 +1,14 @@
 rules:
-  - type: departments
-    id: departements
-    layer: departments
-    catalog: catalog/departments.yml
-    view: metropolitan
-    batch_size: 10
-    directions: [name-map, map-name, map-code]
-    references:
-      - https://www.data.gouv.fr/datasets/contours-administratifs
-      - 'Contours : Etalab / data.gouv.fr, IGN Admin Express, millésime 2025, ODbL 1.0.'
+- type: departments
+  id: departements
+  layer: departments
+  catalog: catalog/departments.yml
+  view: metropolitan
+  batch_size: 10
+  directions:
+  - name-map
+  - map-name
+  - map-code
+  references:
+  - https://www.data.gouv.fr/datasets/contours-administratifs
+  - '@boundaries.departments'

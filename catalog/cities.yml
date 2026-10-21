@@ -2,791 +2,680 @@ features:
 - id: city-01053
   code: '01053'
   name: Bourg-en-Bresse
-  qualifier: null
   department: dep-01
   region: reg-84
   view: metropolitan
 - id: city-02408
   code: 02408
   name: Laon
-  qualifier: null
   department: dep-02
   region: reg-32
   view: metropolitan
 - id: city-03190
   code: 03190
   name: Moulins
-  qualifier: null
   department: dep-03
   region: reg-84
   view: metropolitan
 - id: city-04070
   code: '04070'
   name: Digne-les-Bains
-  qualifier: null
   department: dep-04
   region: reg-93
   view: metropolitan
 - id: city-05061
   code: '05061'
   name: Gap
-  qualifier: null
   department: dep-05
   region: reg-93
   view: metropolitan
 - id: city-06004
   code: '06004'
   name: Antibes
-  qualifier: null
   department: dep-06
   region: reg-93
   view: metropolitan
 - id: city-06029
   code: 06029
   name: Cannes
-  qualifier: null
   department: dep-06
   region: reg-93
   view: metropolitan
 - id: city-06088
   code: 06088
   name: Nice
-  qualifier: null
   department: dep-06
   region: reg-93
   view: metropolitan
 - id: city-07186
   code: 07186
   name: Privas
-  qualifier: null
   department: dep-07
   region: reg-84
   view: metropolitan
 - id: city-08105
   code: 08105
   name: Charleville-Mézières
-  qualifier: null
   department: dep-08
   region: reg-44
   view: metropolitan
 - id: city-09122
   code: 09122
   name: Foix
-  qualifier: null
   department: dep-09
   region: reg-76
   view: metropolitan
 - id: city-10387
   code: '10387'
   name: Troyes
-  qualifier: null
   department: dep-10
   region: reg-44
   view: metropolitan
 - id: city-11069
   code: '11069'
   name: Carcassonne
-  qualifier: null
   department: dep-11
   region: reg-76
   view: metropolitan
 - id: city-12202
   code: '12202'
   name: Rodez
-  qualifier: null
   department: dep-12
   region: reg-76
   view: metropolitan
 - id: city-13001
   code: '13001'
   name: Aix-en-Provence
-  qualifier: null
   department: dep-13
   region: reg-93
   view: metropolitan
 - id: city-13055
   code: '13055'
   name: Marseille
-  qualifier: null
   department: dep-13
   region: reg-93
   view: metropolitan
 - id: city-14118
   code: '14118'
   name: Caen
-  qualifier: null
   department: dep-14
   region: reg-28
   view: metropolitan
 - id: city-15014
   code: '15014'
   name: Aurillac
-  qualifier: null
   department: dep-15
   region: reg-84
   view: metropolitan
 - id: city-16015
   code: '16015'
   name: Angoulême
-  qualifier: null
   department: dep-16
   region: reg-75
   view: metropolitan
 - id: city-17300
   code: '17300'
   name: La Rochelle
-  qualifier: null
   department: dep-17
   region: reg-75
   view: metropolitan
 - id: city-18033
   code: '18033'
   name: Bourges
-  qualifier: null
   department: dep-18
   region: reg-24
   view: metropolitan
 - id: city-19272
   code: '19272'
   name: Tulle
-  qualifier: null
   department: dep-19
   region: reg-75
   view: metropolitan
 - id: city-21231
   code: '21231'
   name: Dijon
-  qualifier: null
   department: dep-21
   region: reg-27
   view: metropolitan
 - id: city-22278
   code: '22278'
   name: Saint-Brieuc
-  qualifier: null
   department: dep-22
   region: reg-53
   view: metropolitan
 - id: city-23096
   code: '23096'
   name: Guéret
-  qualifier: null
   department: dep-23
   region: reg-75
   view: metropolitan
 - id: city-24322
   code: '24322'
   name: Périgueux
-  qualifier: null
   department: dep-24
   region: reg-75
   view: metropolitan
 - id: city-25056
   code: '25056'
   name: Besançon
-  qualifier: null
   department: dep-25
   region: reg-27
   view: metropolitan
 - id: city-26362
   code: '26362'
   name: Valence
-  qualifier: null
   department: dep-26
   region: reg-84
   view: metropolitan
 - id: city-27229
   code: '27229'
   name: Évreux
-  qualifier: null
   department: dep-27
   region: reg-28
   view: metropolitan
 - id: city-28085
   code: '28085'
   name: Chartres
-  qualifier: null
   department: dep-28
   region: reg-24
   view: metropolitan
 - id: city-29019
   code: '29019'
   name: Brest
-  qualifier: null
   department: dep-29
   region: reg-53
   view: metropolitan
 - id: city-29232
   code: '29232'
   name: Quimper
-  qualifier: null
   department: dep-29
   region: reg-53
   view: metropolitan
 - id: city-2A004
   code: 2A004
   name: Ajaccio
-  qualifier: null
   department: dep-2A
   region: reg-94
   view: metropolitan
 - id: city-2B033
   code: 2B033
   name: Bastia
-  qualifier: null
   department: dep-2B
   region: reg-94
   view: metropolitan
 - id: city-30189
   code: '30189'
   name: Nîmes
-  qualifier: null
   department: dep-30
   region: reg-76
   view: metropolitan
 - id: city-31555
   code: '31555'
   name: Toulouse
-  qualifier: null
   department: dep-31
   region: reg-76
   view: metropolitan
 - id: city-32013
   code: '32013'
   name: Auch
-  qualifier: null
   department: dep-32
   region: reg-76
   view: metropolitan
 - id: city-33063
   code: '33063'
   name: Bordeaux
-  qualifier: null
   department: dep-33
   region: reg-75
   view: metropolitan
 - id: city-34172
   code: '34172'
   name: Montpellier
-  qualifier: null
   department: dep-34
   region: reg-76
   view: metropolitan
 - id: city-35238
   code: '35238'
   name: Rennes
-  qualifier: null
   department: dep-35
   region: reg-53
   view: metropolitan
 - id: city-35288
   code: '35288'
   name: Saint-Malo
-  qualifier: null
   department: dep-35
   region: reg-53
   view: metropolitan
 - id: city-36044
   code: '36044'
   name: Châteauroux
-  qualifier: null
   department: dep-36
   region: reg-24
   view: metropolitan
 - id: city-37261
   code: '37261'
   name: Tours
-  qualifier: null
   department: dep-37
   region: reg-24
   view: metropolitan
 - id: city-38185
   code: '38185'
   name: Grenoble
-  qualifier: null
   department: dep-38
   region: reg-84
   view: metropolitan
 - id: city-39300
   code: '39300'
   name: Lons-le-Saunier
-  qualifier: null
   department: dep-39
   region: reg-27
   view: metropolitan
 - id: city-40192
   code: '40192'
   name: Mont-de-Marsan
-  qualifier: null
   department: dep-40
   region: reg-75
   view: metropolitan
 - id: city-41018
   code: '41018'
   name: Blois
-  qualifier: null
   department: dep-41
   region: reg-24
   view: metropolitan
 - id: city-42218
   code: '42218'
   name: Saint-Étienne
-  qualifier: null
   department: dep-42
   region: reg-84
   view: metropolitan
 - id: city-43157
   code: '43157'
   name: Le Puy-en-Velay
-  qualifier: null
   department: dep-43
   region: reg-84
   view: metropolitan
 - id: city-44109
   code: '44109'
   name: Nantes
-  qualifier: null
   department: dep-44
   region: reg-52
   view: metropolitan
 - id: city-45234
   code: '45234'
   name: Orléans
-  qualifier: null
   department: dep-45
   region: reg-24
   view: metropolitan
 - id: city-46042
   code: '46042'
   name: Cahors
-  qualifier: null
   department: dep-46
   region: reg-76
   view: metropolitan
 - id: city-47001
   code: '47001'
   name: Agen
-  qualifier: null
   department: dep-47
   region: reg-75
   view: metropolitan
 - id: city-48095
   code: '48095'
   name: Mende
-  qualifier: null
   department: dep-48
   region: reg-76
   view: metropolitan
 - id: city-49007
   code: '49007'
   name: Angers
-  qualifier: null
   department: dep-49
   region: reg-52
   view: metropolitan
 - id: city-50502
   code: '50502'
   name: Saint-Lô
-  qualifier: null
   department: dep-50
   region: reg-28
   view: metropolitan
 - id: city-51108
   code: '51108'
   name: Châlons-en-Champagne
-  qualifier: null
   department: dep-51
   region: reg-44
   view: metropolitan
 - id: city-51454
   code: '51454'
   name: Reims
-  qualifier: null
   department: dep-51
   region: reg-44
   view: metropolitan
 - id: city-52121
   code: '52121'
   name: Chaumont
-  qualifier: null
   department: dep-52
   region: reg-44
   view: metropolitan
 - id: city-53130
   code: '53130'
   name: Laval
-  qualifier: null
   department: dep-53
   region: reg-52
   view: metropolitan
 - id: city-54395
   code: '54395'
   name: Nancy
-  qualifier: null
   department: dep-54
   region: reg-44
   view: metropolitan
 - id: city-55029
   code: '55029'
   name: Bar-le-Duc
-  qualifier: null
   department: dep-55
   region: reg-44
   view: metropolitan
 - id: city-56260
   code: '56260'
   name: Vannes
-  qualifier: null
   department: dep-56
   region: reg-53
   view: metropolitan
 - id: city-57463
   code: '57463'
   name: Metz
-  qualifier: null
   department: dep-57
   region: reg-44
   view: metropolitan
 - id: city-58194
   code: '58194'
   name: Nevers
-  qualifier: null
   department: dep-58
   region: reg-27
   view: metropolitan
 - id: city-59350
   code: '59350'
   name: Lille
-  qualifier: null
   department: dep-59
   region: reg-32
   view: metropolitan
 - id: city-59512
   code: '59512'
   name: Roubaix
-  qualifier: null
   department: dep-59
   region: reg-32
   view: metropolitan
 - id: city-59599
   code: '59599'
   name: Tourcoing
-  qualifier: null
   department: dep-59
   region: reg-32
   view: metropolitan
 - id: city-60057
   code: '60057'
   name: Beauvais
-  qualifier: null
   department: dep-60
   region: reg-32
   view: metropolitan
 - id: city-61001
   code: '61001'
   name: Alençon
-  qualifier: null
   department: dep-61
   region: reg-28
   view: metropolitan
 - id: city-62041
   code: '62041'
   name: Arras
-  qualifier: null
   department: dep-62
   region: reg-32
   view: metropolitan
 - id: city-63113
   code: '63113'
   name: Clermont-Ferrand
-  qualifier: null
   department: dep-63
   region: reg-84
   view: metropolitan
 - id: city-64445
   code: '64445'
   name: Pau
-  qualifier: null
   department: dep-64
   region: reg-75
   view: metropolitan
 - id: city-65440
   code: '65440'
   name: Tarbes
-  qualifier: null
   department: dep-65
   region: reg-76
   view: metropolitan
 - id: city-66136
   code: '66136'
   name: Perpignan
-  qualifier: null
   department: dep-66
   region: reg-76
   view: metropolitan
 - id: city-67482
   code: '67482'
   name: Strasbourg
-  qualifier: null
   department: dep-67
   region: reg-44
   view: metropolitan
 - id: city-68066
   code: '68066'
   name: Colmar
-  qualifier: null
   department: dep-68
   region: reg-44
   view: metropolitan
 - id: city-68224
   code: '68224'
   name: Mulhouse
-  qualifier: null
   department: dep-68
   region: reg-44
   view: metropolitan
 - id: city-69123
   code: '69123'
   name: Lyon
-  qualifier: null
   department: dep-69
   region: reg-84
   view: metropolitan
 - id: city-69266
   code: '69266'
   name: Villeurbanne
-  qualifier: null
   department: dep-69
   region: reg-84
   view: metropolitan
 - id: city-70550
   code: '70550'
   name: Vesoul
-  qualifier: null
   department: dep-70
   region: reg-27
   view: metropolitan
 - id: city-71270
   code: '71270'
   name: Mâcon
-  qualifier: null
   department: dep-71
   region: reg-27
   view: metropolitan
 - id: city-72181
   code: '72181'
   name: Le Mans
-  qualifier: null
   department: dep-72
   region: reg-52
   view: metropolitan
 - id: city-73065
   code: '73065'
   name: Chambéry
-  qualifier: null
   department: dep-73
   region: reg-84
   view: metropolitan
 - id: city-74010
   code: '74010'
   name: Annecy
-  qualifier: null
   department: dep-74
   region: reg-84
   view: metropolitan
 - id: city-75056
   code: '75056'
   name: Paris
-  qualifier: null
   department: dep-75
   region: reg-11
   view: paris-region
 - id: city-76351
   code: '76351'
   name: Le Havre
-  qualifier: null
   department: dep-76
   region: reg-28
   view: metropolitan
 - id: city-76540
   code: '76540'
   name: Rouen
-  qualifier: null
   department: dep-76
   region: reg-28
   view: metropolitan
 - id: city-77288
   code: '77288'
   name: Melun
-  qualifier: null
   department: dep-77
   region: reg-11
   view: metropolitan
 - id: city-78646
   code: '78646'
   name: Versailles
-  qualifier: null
   department: dep-78
   region: reg-11
   view: metropolitan
 - id: city-79191
   code: '79191'
   name: Niort
-  qualifier: null
   department: dep-79
   region: reg-75
   view: metropolitan
 - id: city-80021
   code: '80021'
   name: Amiens
-  qualifier: null
   department: dep-80
   region: reg-32
   view: metropolitan
 - id: city-81004
   code: '81004'
   name: Albi
-  qualifier: null
   department: dep-81
   region: reg-76
   view: metropolitan
 - id: city-82121
   code: '82121'
   name: Montauban
-  qualifier: null
   department: dep-82
   region: reg-76
   view: metropolitan
 - id: city-83137
   code: '83137'
   name: Toulon
-  qualifier: null
   department: dep-83
   region: reg-93
   view: metropolitan
 - id: city-84007
   code: '84007'
   name: Avignon
-  qualifier: null
   department: dep-84
   region: reg-93
   view: metropolitan
 - id: city-85191
   code: '85191'
   name: La Roche-sur-Yon
-  qualifier: null
   department: dep-85
   region: reg-52
   view: metropolitan
 - id: city-86194
   code: '86194'
   name: Poitiers
-  qualifier: null
   department: dep-86
   region: reg-75
   view: metropolitan
 - id: city-87085
   code: '87085'
   name: Limoges
-  qualifier: null
   department: dep-87
   region: reg-75
   view: metropolitan
 - id: city-88160
   code: '88160'
   name: Épinal
-  qualifier: null
   department: dep-88
   region: reg-44
   view: metropolitan
 - id: city-89024
   code: '89024'
   name: Auxerre
-  qualifier: null
   department: dep-89
   region: reg-27
   view: metropolitan
 - id: city-90010
   code: '90010'
   name: Belfort
-  qualifier: null
   department: dep-90
   region: reg-27
   view: metropolitan
 - id: city-91228
   code: '91228'
   name: Évry-Courcouronnes
-  qualifier: null
   department: dep-91
   region: reg-11
   view: metropolitan
 - id: city-92050
   code: '92050'
   name: Nanterre
-  qualifier: null
   department: dep-92
   region: reg-11
   view: paris-region
 - id: city-93008
   code: '93008'
   name: Bobigny
-  qualifier: null
   department: dep-93
   region: reg-11
   view: paris-region
 - id: city-93066
   code: '93066'
   name: Saint-Denis
-  qualifier: Île-de-France
   department: dep-93
   region: reg-11
   view: paris-region
+  qualifier_key: location.ile_de_france
 - id: city-94028
   code: '94028'
   name: Créteil
-  qualifier: null
   department: dep-94
   region: reg-11
   view: paris-region
 - id: city-95500
   code: '95500'
   name: Pontoise
-  qualifier: null
   department: dep-95
   region: reg-11
   view: metropolitan
 - id: city-97105
   code: '97105'
   name: Basse-Terre
-  qualifier: null
   department: dep-971
   region: reg-01
   view: guadeloupe
 - id: city-97209
   code: '97209'
   name: Fort-de-France
-  qualifier: null
   department: dep-972
   region: reg-02
   view: martinique
 - id: city-97302
   code: '97302'
   name: Cayenne
-  qualifier: null
   department: dep-973
   region: reg-03
   view: guyane
 - id: city-97411
   code: '97411'
   name: Saint-Denis
-  qualifier: océan Indien
   department: dep-974
   region: reg-04
   view: reunion
+  qualifier_key: location.indian_ocean
 - id: city-97611
   code: '97611'
   name: Mamoudzou
-  qualifier: null
   department: dep-976
   region: reg-06
   view: mayotte

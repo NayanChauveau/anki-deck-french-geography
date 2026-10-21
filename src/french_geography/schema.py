@@ -73,8 +73,7 @@ class EditorialReview(Strict):
 class CatalogEntry(Strict):
     id: str = Field(pattern=r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
     name: str = Field(min_length=1)
-    article: Literal["le", "la", "l’", "les"]
-    explanation: str = ""
+    explanation_key: str | None = None
     references: list[str] = Field(default_factory=list)
     label: LabelPosition | None = None
     review: EditorialReview | None = None
@@ -89,7 +88,6 @@ class IdentificationRule(Strict):
     layer: str = Field(min_length=1)
     catalog: str = Field(min_length=1)
     view: str = Field(min_length=1)
-    question: str = Field(min_length=1)
     references: list[str] = Field(min_length=1)
 
 
@@ -147,9 +145,9 @@ class PlaceEntry(Strict):
     ocean: str | None = None
     downstream: str | None = None
     massif: str | None = None
-    qualifier: str | None = None
+    qualifier_key: str | None = None
     view: str = "metropolitan"
-    explanation: str = ""
+    explanation_key: str | None = None
     references: list[str] = Field(default_factory=list)
 
 
@@ -163,7 +161,6 @@ class PlaceRule(Strict):
     layer: str
     catalog: str
     theme: str
-    noun: str
     directions: list[Literal["name-map", "map-name"]] = Field(
         default_factory=lambda: ["name-map", "map-name"], min_length=1
     )
@@ -185,7 +182,6 @@ class RelationRule(Strict):
     related_catalog: str
     relation: Literal["region", "department", "capital", "massif", "downstream", "ocean", "coast"]
     theme: str
-    question: str
     references: list[str] = Field(min_length=1)
 
 

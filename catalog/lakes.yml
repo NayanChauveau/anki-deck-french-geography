@@ -2,34 +2,34 @@ features:
 - id: lake-bourget
   name: Bourget
   view: lake-savoie
-  explanation: Lac naturel.
   references:
   - https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2024
   - https://www.larousse.fr/encyclopedie/riviere-lac/la_Durance/117449
+  explanation_key: lakes.natural
 - id: lake-sainte-croix
   name: Sainte-Croix
   view: lake-south
-  explanation: Retenue de barrage sur le Verdon.
   references:
   - https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2024
   - https://www.larousse.fr/encyclopedie/riviere-lac/la_Durance/117449
+  explanation_key: lakes.verdon_reservoir
 - id: lake-annecy
   name: Annecy
   view: lake-savoie
-  explanation: Lac naturel.
   references:
   - https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2024
   - https://www.larousse.fr/encyclopedie/riviere-lac/la_Durance/117449
+  explanation_key: lakes.natural
 - id: lake-serre-poncon
   name: Serre-Ponçon
   view: lake-south
-  explanation: Retenue de barrage sur la Durance.
   references:
   - https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2024
   - https://www.larousse.fr/encyclopedie/riviere-lac/la_Durance/117449
+  explanation_key: lakes.durance_reservoir
 - id: lake-leman
   name: Léman
   view: lake-savoie
-  explanation: Lac partagé entre la France et la Suisse.
   references:
   - https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-lakes/
+  explanation_key: lakes.shared_france_switzerland

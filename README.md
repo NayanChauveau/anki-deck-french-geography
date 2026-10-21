@@ -1,9 +1,9 @@
 # French Geography — Anki
 
-An English-first project for learning French geography, with separate English and
-French Anki packages. The English edition is deliberately starting small: **one Loire
-card**. The French edition currently contains **1,014 cards**. Full translation is
-outside the current scope.
+An English-first project for learning French geography, with complete English and
+French Anki editions: **1,014 cards per language**. Both use the same canonical facts,
+geographic images and generators. Other languages can be added through the shared
+[localization structure](docs/LOCALIZATION.md).
 
 ## Build
 
@@ -19,7 +19,7 @@ The default build produces both packages, English first:
 
 | Stable filename | Current content |
 | --- | --- |
-| `dist/french-geography-en.apkg` | English starter: one Loire card |
+| `dist/french-geography-en.apkg` | English edition: 1,014 cards |
 | `dist/french-geography-fr.apkg` | French edition: 1,014 cards |
 
 These filenames are fixed for future releases. The French notes retain their
@@ -33,10 +33,11 @@ uv run --frozen french-geography build --lang en
 uv run --frozen french-geography build --lang fr
 ```
 
-`make preview` generates the existing French gallery at `build/preview/index.html`.
+`make preview` generates the French gallery at `build/preview/index.html`.
+For an English gallery, use `uv run --frozen french-geography preview --lang en --out build/preview-en`.
 `make push` keeps its existing behaviour: build and import the **French** package
 through AnkiConnect, then request a sync. It does not push Git commits or import the
-English starter automatically.
+English edition automatically.
 
 ## Releases and Deckdock
 
@@ -56,7 +57,8 @@ See [distribution notes](docs/DECKDOCK.md).
 - `geo/sources.yml`: provenance, versions, licences, transformations and checksums.
 - `catalog/`: editorial content and relationships.
 - `cards/`: shared generation rules, rather than one handwritten entry per note.
-- `locales/en.yml`: the explicitly selected English pilot translations.
+- `locales/fr.yml` and `locales/en.yml`: shared semantic keys with localized text.
+- `locales/languages.json`: registered languages, package names and permanent Anki identities.
 - `templates/anki/`: Anki presentation; map images contain no text.
 - `src/french_geography/`: validation, generation, rendering and packaging.
 - `scripts/`: preparation and release tools, separate from normal offline builds.

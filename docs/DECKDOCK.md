@@ -94,7 +94,14 @@ n’est publiée. Si cet ancien fichier a été suivi dans Deckdock, remplacer s
 par le lien versionné du nouveau fichier français. Les identités des notes françaises
 sont conservées : le renommage de fichier ne recrée pas les notes.
 
-`make build` produit les deux éditions. L’anglais est un pilote explicite d’une seule
-carte Loire ; le français reste à 1 014 cartes. Les deux paquets ont des identités
-isolées. Le contrôle Deckdock teste les deux assets et la publication refuse un lot
-auquel manquerait une édition. La traduction complète n’a pas été entreprise.
+Lors du premier pilote bilingue, `make build` produisait une carte Loire en anglais
+et 1 014 cartes en français, avec des identités isolées. Cette étape a depuis été
+remplacée dans l’arbre de travail par les éditions complètes décrites ci-dessous.
+
+## Complete editions and future languages
+
+The subsequent complete translation now builds 1,014 notes in each language.
+`locales/languages.json` is the shared registry for the builder, release asset list
+and Deckdock check. CI uploads all built APKGs; publication requires every registered
+language exactly once. Published filenames remain fixed. The first release containing this refactoring
+replaces the earlier English starter edition; v0.1.1 predates the complete translation.

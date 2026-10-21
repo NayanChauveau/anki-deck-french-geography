@@ -91,11 +91,6 @@
           "title": "View",
           "type": "string"
         },
-        "question": {
-          "minLength": 1,
-          "title": "Question",
-          "type": "string"
-        },
         "references": {
           "items": {
             "type": "string"
@@ -110,7 +105,6 @@
         "layer",
         "catalog",
         "view",
-        "question",
         "references"
       ],
       "title": "IdentificationRule",
@@ -140,10 +134,6 @@
         },
         "theme": {
           "title": "Theme",
-          "type": "string"
-        },
-        "noun": {
-          "title": "Noun",
           "type": "string"
         },
         "directions": {
@@ -178,7 +168,6 @@
         "layer",
         "catalog",
         "theme",
-        "noun",
         "references"
       ],
       "title": "PlaceRule",
@@ -227,10 +216,6 @@
           "title": "Theme",
           "type": "string"
         },
-        "question": {
-          "title": "Question",
-          "type": "string"
-        },
         "references": {
           "items": {
             "type": "string"
@@ -247,7 +232,6 @@
         "related_catalog",
         "relation",
         "theme",
-        "question",
         "references"
       ],
       "title": "RelationRule",

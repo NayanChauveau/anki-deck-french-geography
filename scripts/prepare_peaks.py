@@ -54,7 +54,7 @@ for feature in json.loads(args.input.read_text())["features"]:
             "id": key,
             "name": french,
             "massif": "mountain-" + massif,
-            "explanation": f"Grand ensemble de relief : {massif_name}.",
+            "explanation_key": key.replace("peak-", "peak.", 1) + ".context",
             "view": "corsica-relief" if massif == "corse" else "metropolitan",
             "references": [reference],
         }

@@ -52,23 +52,17 @@ for e in editorial:
     ]
     features[e["id"]] = geometry(codes)
     used[e["id"]] = codes
-    old[e["id"]] = {k: e[k] for k in ("id", "name", "article", "explanation", "references")}
+    old[e["id"]] = {k: e[k] for k in ("id", "name", "explanation_key", "references")}
     old[e["id"]]["review"] = {"status": "verified", "checked_on": "2026-10-20"}
     if e["downstream"]:
         relations.append(
-            {k: e[k] for k in ("id", "name", "downstream", "explanation", "references")}
+            {k: e[k] for k in ("id", "name", "downstream", "explanation_key", "references")}
         )
 for key, code in {"saone": "06C0000002000794279", "rhin": "02C0000002000786588"}.items():
     corrected = geometry([code])
     features[key] = corrected if key == "saone" else unary_union([features[key], corrected])
     used[key] = [code]
-    old[key]["explanation"] = (
-        "La Saône rejoint le Rhône à Lyon. Son tracé est issu de BD TOPAGE 2024."
-        if key == "saone"
-        else "Le Rhin rejoint la mer du Nord. Le tracé Natural Earth est "
-        "complété par la portion frontalière disponible dans BD TOPAGE 2024 ; "
-        "il ne représente pas tout le cours international."
-    )
+    old[key]["explanation_key"] = "river.saone.summary" if key == "saone" else "river.rhin.summary"
     old[key]["references"] = list(
         dict.fromkeys(
             old[key]["references"]

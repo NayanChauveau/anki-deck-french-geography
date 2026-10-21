@@ -2,37 +2,36 @@ features:
 - id: allier
   name: Allier
   downstream: loire
-  explanation: L’Allier rejoint directement la Loire.
   references:
   - https://www.larousse.fr/encyclopedie/riviere-lac/Allier/104911
+  explanation_key: river.allier.summary
 - id: cher
   name: Cher
   downstream: loire
-  explanation: Le Cher rejoint directement la Loire.
   references:
   - https://www.larousse.fr/encyclopedie/riviere-lac/le_Cher/113224
+  explanation_key: river.cher.summary
 - id: oise
   name: Oise
   downstream: seine
-  explanation: L’Oise rejoint la Seine à Conflans-Sainte-Honorine. Le tracé TOPAGE
-    couvre la partie française disponible.
   references:
   - https://www.larousse.fr/encyclopedie/riviere-lac/Oise/135957
+  explanation_key: river.oise.summary
 - id: lot
   name: Lot
   downstream: garonne
-  explanation: Le Lot rejoint directement la Garonne.
   references:
   - https://www.larousse.fr/encyclopedie/riviere-lac/le_Lot/126561
+  explanation_key: river.lot.summary
 - id: isere
   name: Isère
   downstream: rhone
-  explanation: L’Isère rejoint le Rhône au nord de Valence.
   references:
   - https://www.larousse.fr/encyclopedie/riviere-lac/Is%C3%A8re/125230
+  explanation_key: river.isere.summary
 - id: ain
   name: Ain
   downstream: rhone
-  explanation: L’Ain descend du Jura et rejoint directement le Rhône.
   references:
   - https://www.larousse.fr/encyclopedie/riviere-lac/Ain/104387
+  explanation_key: river.ain.summary

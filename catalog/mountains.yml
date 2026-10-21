@@ -2,42 +2,33 @@ features:
 - id: mountain-vosges
   name: Vosges
   view: metropolitan
-  explanation: 'Zone indicative de relief : les limites Natural Earth sont approximatives,
-    sans valeur administrative.'
+  explanation_key: landforms.approximate_notice
 - id: mountain-jura
   name: Jura
   view: metropolitan
-  explanation: 'Zone indicative de relief : les limites Natural Earth sont approximatives,
-    sans valeur administrative.'
+  explanation_key: landforms.approximate_notice
 - id: mountain-massif-central
   name: Massif central
   view: metropolitan
-  explanation: 'Zone indicative de relief : les limites Natural Earth sont approximatives,
-    sans valeur administrative.'
+  explanation_key: landforms.approximate_notice
 - id: mountain-pyrenees
   name: Pyrénées
   view: metropolitan
-  explanation: 'Zone indicative de relief : les limites Natural Earth sont approximatives,
-    sans valeur administrative.'
+  explanation_key: landforms.approximate_notice
 - id: mountain-alpes
   name: Alpes
   view: metropolitan
-  explanation: 'Zone indicative de relief : les limites Natural Earth sont approximatives,
-    sans valeur administrative.'
+  explanation_key: landforms.approximate_notice
 - id: mountain-armoricain
   name: Massif armoricain
   view: metropolitan
-  explanation: 'Zone schématique dessinée pour ce deck : elle situe le grand ensemble
-    sans en délimiter précisément le contour. Ce n’est ni un zonage administratif
-    ni une carte géologique.'
   references:
   - https://sigespal.brgm.fr/spip.php?rubrique65=
   - https://sigessn.brgm.fr/spip.php?article339=
+  explanation_key: landforms.schematic_notice
 - id: mountain-corse
   name: Reliefs corses
   view: corsica-relief
-  explanation: 'Zone schématique dessinée pour ce deck : elle situe le grand ensemble
-    sans en délimiter précisément le contour. Ce n’est ni un zonage administratif
-    ni une carte géologique.'
   references:
   - https://www.brgm.fr/fr/implantation-regionale/corse-reseau-regional-brgm
+  explanation_key: landforms.schematic_notice

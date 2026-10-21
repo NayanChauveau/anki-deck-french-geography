@@ -28,8 +28,7 @@ jobs:
         with:
           name: french-geography
           path: |
-            dist/french-geography-en.apkg
-            dist/french-geography-fr.apkg
+            dist/*.apkg
             build/preview/
       - uses: actions/checkout@v4
         with:
@@ -60,5 +59,4 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: >-
           python3 scripts/publish_release.py
-          --package release/dist/french-geography-en.apkg
-          --package release/dist/french-geography-fr.apkg
+          --package-dir release/dist

@@ -1,0 +1,38 @@
+{
+  "en": {
+    "filename": "french-geography-en.apkg",
+    "label": "French geography — English",
+    "namespace": "ultimate-french-geography-v1-en",
+    "note_suffix": "-en",
+    "model_id": 1976423201,
+    "deck_ids": {
+      "rivers": 1976423200,
+      "departments": 1976423202,
+      "regions": 1976423203,
+      "cities": 1976423204,
+      "landforms": 1976423205,
+      "lakes": 1976423206,
+      "coasts": 1976423207,
+      "overseas": 1976423208,
+      "parks": 1976423209
+    }
+  },
+  "fr": {
+    "filename": "french-geography-fr.apkg",
+    "label": "Géographie française — Français",
+    "namespace": "ultimate-french-geography-v1",
+    "note_suffix": "",
+    "model_id": 1976423101,
+    "deck_ids": {
+      "rivers": 1976423100,
+      "departments": 1976423102,
+      "regions": 1976423103,
+      "cities": 1976423104,
+      "landforms": 1976423105,
+      "lakes": 1976423106,
+      "coasts": 1976423107,
+      "overseas": 1976423108,
+      "parks": 1976423109
+    }
+  }
+}

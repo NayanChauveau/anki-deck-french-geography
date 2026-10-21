@@ -2,88 +2,66 @@ features:
 - id: park-vanoise
   name: Vanoise
   view: parks-alps
-  explanation: Seuls les cœurs terrestre et marin sont représentés, sans aire d’adhésion
-    ni aire maritime adjacente. Contours de février 2026 simplifiés pour l’apprentissage
-    ; ne pas utiliser pour vérifier la réglementation d’un lieu.
   references:
   - https://www.data.gouv.fr/datasets/contours-des-11-parcs-nationaux-de-france
+  explanation_key: parks.core_areas_notice
 - id: park-port-cros
   name: Port-Cros
   view: parks-coast
-  explanation: Seuls les cœurs terrestre et marin sont représentés, sans aire d’adhésion
-    ni aire maritime adjacente. Contours de février 2026 simplifiés pour l’apprentissage
-    ; ne pas utiliser pour vérifier la réglementation d’un lieu.
   references:
   - https://www.data.gouv.fr/datasets/contours-des-11-parcs-nationaux-de-france
+  explanation_key: parks.core_areas_notice
 - id: park-pyrenees
   name: Pyrénées
   view: metropolitan
-  explanation: Seuls les cœurs terrestre et marin sont représentés, sans aire d’adhésion
-    ni aire maritime adjacente. Contours de février 2026 simplifiés pour l’apprentissage
-    ; ne pas utiliser pour vérifier la réglementation d’un lieu.
   references:
   - https://www.data.gouv.fr/datasets/contours-des-11-parcs-nationaux-de-france
+  explanation_key: parks.core_areas_notice
 - id: park-cevennes
   name: Cévennes
   view: metropolitan
-  explanation: Seuls les cœurs terrestre et marin sont représentés, sans aire d’adhésion
-    ni aire maritime adjacente. Contours de février 2026 simplifiés pour l’apprentissage
-    ; ne pas utiliser pour vérifier la réglementation d’un lieu.
   references:
   - https://www.data.gouv.fr/datasets/contours-des-11-parcs-nationaux-de-france
+  explanation_key: parks.core_areas_notice
 - id: park-ecrins
   name: Écrins
   view: parks-alps
-  explanation: Seuls les cœurs terrestre et marin sont représentés, sans aire d’adhésion
-    ni aire maritime adjacente. Contours de février 2026 simplifiés pour l’apprentissage
-    ; ne pas utiliser pour vérifier la réglementation d’un lieu.
   references:
   - https://www.data.gouv.fr/datasets/contours-des-11-parcs-nationaux-de-france
+  explanation_key: parks.core_areas_notice
 - id: park-mercantour
   name: Mercantour
   view: parks-alps
-  explanation: Seuls les cœurs terrestre et marin sont représentés, sans aire d’adhésion
-    ni aire maritime adjacente. Contours de février 2026 simplifiés pour l’apprentissage
-    ; ne pas utiliser pour vérifier la réglementation d’un lieu.
   references:
   - https://www.data.gouv.fr/datasets/contours-des-11-parcs-nationaux-de-france
+  explanation_key: parks.core_areas_notice
 - id: park-guadeloupe
   name: Guadeloupe
   view: guadeloupe
-  explanation: Seuls les cœurs terrestre et marin sont représentés, sans aire d’adhésion
-    ni aire maritime adjacente. Contours de février 2026 simplifiés pour l’apprentissage
-    ; ne pas utiliser pour vérifier la réglementation d’un lieu.
   references:
   - https://www.data.gouv.fr/datasets/contours-des-11-parcs-nationaux-de-france
+  explanation_key: parks.core_areas_notice
 - id: park-reunion
   name: La Réunion
   view: reunion
-  explanation: Seuls les cœurs terrestre et marin sont représentés, sans aire d’adhésion
-    ni aire maritime adjacente. Contours de février 2026 simplifiés pour l’apprentissage
-    ; ne pas utiliser pour vérifier la réglementation d’un lieu.
   references:
   - https://www.data.gouv.fr/datasets/contours-des-11-parcs-nationaux-de-france
+  explanation_key: parks.core_areas_notice
 - id: park-guyane
   name: Parc amazonien de Guyane
   view: guyane
-  explanation: Seuls les cœurs terrestre et marin sont représentés, sans aire d’adhésion
-    ni aire maritime adjacente. Contours de février 2026 simplifiés pour l’apprentissage
-    ; ne pas utiliser pour vérifier la réglementation d’un lieu.
   references:
   - https://www.data.gouv.fr/datasets/contours-des-11-parcs-nationaux-de-france
+  explanation_key: parks.core_areas_notice
 - id: park-calanques
   name: Calanques
   view: parks-coast
-  explanation: Seuls les cœurs terrestre et marin sont représentés, sans aire d’adhésion
-    ni aire maritime adjacente. Contours de février 2026 simplifiés pour l’apprentissage
-    ; ne pas utiliser pour vérifier la réglementation d’un lieu.
   references:
   - https://www.data.gouv.fr/datasets/contours-des-11-parcs-nationaux-de-france
+  explanation_key: parks.core_areas_notice
 - id: park-forets
   name: Forêts
   view: metropolitan
-  explanation: Seuls les cœurs terrestre et marin sont représentés, sans aire d’adhésion
-    ni aire maritime adjacente. Contours de février 2026 simplifiés pour l’apprentissage
-    ; ne pas utiliser pour vérifier la réglementation d’un lieu.
   references:
   - https://www.data.gouv.fr/datasets/contours-des-11-parcs-nationaux-de-france
+  explanation_key: parks.core_areas_notice

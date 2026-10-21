@@ -77,10 +77,14 @@ def test_all_six_directions_are_supported_but_only_three_are_enabled():
     project = load(ROOT)
     rule = DepartmentRule(
         id="test",
-        references=["local snapshot"],
+        references=["https://example.test/snapshot"],
         directions=["name-map", "map-name", "map-code", "name-code", "code-name", "code-map"],
     )
-    cards = generate_departments(ROOT, rule, project.layers["departments"])
+    from french_geography.locales import load_locale
+
+    locale = load_locale(ROOT, "fr")
+    locale.text.rules["test"] = locale.text.rules["departements"].model_copy(deep=True)
+    cards = generate_departments(ROOT, rule, project.layers["departments"], locale)
     assert len(cards) == 606
     for card in cards:
         if card.direction in ("name-code", "code-name"):

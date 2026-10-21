@@ -37,7 +37,7 @@ def gh_json(endpoint):
 def publish(packages, repository, commit):
     expected = {name for name, label in PACKAGES.values()}
     if {path.name for path in packages} != expected or len(packages) != len(expected):
-        raise ValueError("A release must contain exactly the English and French packages")
+        raise ValueError("A release must contain each registered language package exactly once")
     for package in packages:
         if not package.is_file():
             raise ValueError(f"Missing built APKG: {package}")
@@ -76,9 +76,12 @@ def publish(packages, repository, commit):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--package", type=Path, action="append", required=True)
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument("--package", type=Path, action="append")
+    group.add_argument("--package-dir", type=Path)
     args = parser.parse_args()
-    version = publish(args.package, os.environ["GITHUB_REPOSITORY"], os.environ["GITHUB_SHA"])
+    packages = args.package or sorted(args.package_dir.glob("*.apkg"))
+    version = publish(packages, os.environ["GITHUB_REPOSITORY"], os.environ["GITHUB_SHA"])
     print(f"Published {version}")
 
 

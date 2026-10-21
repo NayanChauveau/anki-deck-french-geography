@@ -1,0 +1,250 @@
+# Shared locale schema. Semantic keys are identical across languages.
+proper_names: retain_official_unless_translated
+names: {}
+qualifiers:
+  location.ile_de_france: Île-de-France
+  location.indian_ocean: océan Indien
+forms:
+  loire:
+    identification: La Loire
+  seine:
+    identification: La Seine
+  rhone:
+    identification: Le Rhône
+  ariege:
+    identification: L’Ariège
+  dordogne:
+    identification: La Dordogne
+  doubs:
+    identification: Le Doubs
+  durance:
+    identification: La Durance
+  escaut:
+    identification: L’Escaut
+  garonne:
+    identification: La Garonne
+  marne:
+    identification: La Marne
+  meuse:
+    identification: La Meuse
+  moselle:
+    identification: La Moselle
+  rhin:
+    identification: Le Rhin
+  saone:
+    identification: La Saône
+  segre:
+    identification: Le Sègre
+  tarn:
+    identification: Le Tarn
+  vienne:
+    identification: La Vienne
+  yonne:
+    identification: L’Yonne
+  adour:
+    identification: L’Adour
+  somme:
+    identification: La Somme
+  vilaine:
+    identification: La Vilaine
+  charente:
+    identification: La Charente
+  aude:
+    identification: L’Aude
+  herault:
+    identification: L’Hérault
+  var:
+    identification: Le Var
+  orne:
+    identification: L’Orne
+  allier:
+    identification: L’Allier
+  cher:
+    identification: Le Cher
+  oise:
+    identification: L’Oise
+  lot:
+    identification: Le Lot
+  isere:
+    identification: L’Isère
+  ain:
+    identification: L’Ain
+rules:
+  parcs-nationaux-coeurs:
+    questions:
+      name-map: Où se situe le cœur du parc national « {name} » ?
+      map-name: Quel est le nom de l’élément surligné sur la carte ?
+  regions:
+    questions:
+      name-map: Où se situe la région « {name} » ?
+      map-name: Quel est le nom de l’élément surligné sur la carte ?
+  region-chef-lieu:
+    questions:
+      capital: Quel est le chef-lieu de la région « {name} » ?
+    explanation: '{base_name} → {answer} · Source : Insee, COG 2025.'
+  departement-region:
+    questions:
+      region: À quelle région appartient le département « {name} » ?
+    explanation: '{base_name} → {answer} · Source : Insee, COG 2025.'
+  hydrographie-identification:
+    questions:
+      identification: Quel cours d’eau est surligné sur la carte ?
+    answer: '{identification_name}'
+  relief-massifs:
+    questions:
+      name-map: Où se situe la zone de relief « {name} » ?
+      map-name: Quel est le nom de l’élément surligné sur la carte ?
+  departements:
+    questions:
+      name-map: Où se situe le département « {name} » ?
+      map-name: Quel est le nom du département surligné ?
+      map-code: Quel est le numéro du département surligné ?
+      name-code: Quel est le numéro du département « {name} » ?
+      code-name: Quel département porte le numéro {code} ?
+      code-map: Où se situe le département « {code} » ?
+    explanation: '{base_name} · code départemental {code}.'
+  villes-portuaires-facade:
+    questions:
+      coast: À quelle façade maritime le port de « {name} » est-il relié ?
+  villes-chefs-lieux:
+    questions:
+      name-map: Où se situe la ville « {name} » ?
+      map-name: Quel est le nom de l’élément surligné sur la carte ?
+  prefecture-departement:
+    questions:
+      capital: Quel est le chef-lieu du département « {name} » ?
+    explanation: '{base_name} → {answer} · Source : Insee, COG 2025.'
+  ville-departement:
+    questions:
+      department: Dans quel département se situe la ville « {name} » ?
+    explanation: '{base_name} → {answer} · Source : Insee, COG 2025.'
+  hydrographie-affluent:
+    questions:
+      downstream: Quel cours d’eau la rivière « {name} » rejoint-elle directement ?
+  relief-sommets:
+    questions:
+      name-map: Où se situe le sommet « {name} » ?
+      map-name: Quel est le nom de l’élément surligné sur la carte ?
+  relief-sommet-massif:
+    questions:
+      massif: À quel grand ensemble de relief appartient le sommet « {name} » ?
+  hydrographie-lacs:
+    questions:
+      name-map: Où se situe le lac « {name} » ?
+      map-name: Quel est le nom de l’élément surligné sur la carte ?
+  littoral-mers:
+    questions:
+      name-map: Où se situe la zone maritime « {name} » ?
+      map-name: Quel est le nom de l’élément surligné sur la carte ?
+  outre-mer-situation:
+    questions:
+      name-map: Où se situe le territoire « {name} » ?
+      map-name: Quel est le nom de l’élément surligné sur la carte ?
+  outre-mer-ocean:
+    questions:
+      ocean: Dans quel océan ou bassin océanique se situe « {name} » ?
+explanations:
+  parks.core_areas_notice: Seuls les cœurs terrestre et marin sont représentés, sans aire d’adhésion ni aire
+    maritime adjacente. Contours de février 2026 simplifiés pour l’apprentissage ; ne pas utiliser pour vérifier
+    la réglementation d’un lieu.
+  overseas.position_notice: Point de situation à l’intérieur du territoire ; les vues montrent sa position
+    réelle, avec un encart mondial.
+  landforms.approximate_notice: 'Zone indicative de relief : les limites Natural Earth sont approximatives,
+    sans valeur administrative.'
+  landforms.schematic_notice: 'Zone schématique dessinée pour ce deck : elle situe le grand ensemble sans en
+    délimiter précisément le contour. Ce n’est ni un zonage administratif ni une carte géologique.'
+  river.loire.summary: Elle traverse notamment Orléans, Tours et Nantes avant de rejoindre l’Atlantique à Saint-Nazaire.
+  river.seine.summary: Elle traverse Paris, puis Rouen, avant de rejoindre la Manche par l’estuaire de la Seine.
+  river.rhone.summary: Il traverse le lac Léman, passe par Lyon, puis rejoint la mer Méditerranée par son delta
+    en Camargue.
+  river.ariege.summary: Elle rejoint la Garonne au sud de Toulouse.
+  river.dordogne.summary: Elle rencontre la Garonne au bec d’Ambès ; leur estuaire commun est la Gironde.
+  river.doubs.summary: Rivière du massif du Jura, il est un affluent de la Saône.
+  river.durance.summary: Affluent du Rhône, elle draine une partie des Alpes du Sud.
+  river.escaut.summary: Né en France, ce fleuve traverse la Belgique avant de rejoindre la mer du Nord par
+    les Pays-Bas.
+  river.garonne.summary: La Garonne et la Dordogne se rejoignent pour former l’estuaire de la Gironde.
+  river.marne.summary: Affluent de la Seine, elle rejoint celle-ci à proximité de Paris.
+  river.meuse.summary: Ce fleuve traverse la France, la Belgique et les Pays-Bas.
+  river.moselle.summary: Elle appartient au bassin du Rhin, dont elle est un affluent.
+  river.rhin.summary: Le Rhin rejoint la mer du Nord. Le tracé Natural Earth est complété par la portion frontalière
+    disponible dans BD TOPAGE 2024 ; il ne représente pas tout le cours international.
+  river.saone.summary: La Saône rejoint le Rhône à Lyon. Son tracé est issu de BD TOPAGE 2024.
+  river.segre.summary: Il naît en Cerdagne française et rejoint l’Èbre.
+  river.tarn.summary: Il naît au mont Lozère et rejoint la Garonne.
+  river.vienne.summary: Elle naît sur le plateau de Millevaches et rejoint la Loire.
+  river.yonne.summary: Issue du Morvan, elle rejoint la Seine à Montereau-Fault-Yonne.
+  river.adour.summary: Il passe par Tarbes, Dax et Bayonne avant de rejoindre l’Atlantique.
+  river.somme.summary: Elle passe par Amiens et Abbeville, puis rejoint la Manche. Le tracé inclut la Somme
+    canalisée.
+  river.vilaine.summary: Elle passe par Rennes et Redon avant son embouchure barrée à Arzal.
+  river.charente.summary: Elle passe par Angoulême, Cognac, Saintes et Rochefort avant l’Atlantique.
+  river.aude.summary: Elle traverse Carcassonne puis rejoint la Méditerranée.
+  river.herault.summary: Il descend de l’Aigoual et rejoint la Méditerranée près d’Agde.
+  river.var.summary: Il rejoint la Méditerranée dans le sud-est de la France.
+  river.orne.summary: Ce fleuve normand passe par Caen avant son embouchure à Ouistreham.
+  river.allier.summary: L’Allier rejoint directement la Loire.
+  river.cher.summary: Le Cher rejoint directement la Loire.
+  river.oise.summary: L’Oise rejoint la Seine à Conflans-Sainte-Honorine. Le tracé TOPAGE couvre la partie
+    française disponible.
+  river.lot.summary: Le Lot rejoint directement la Garonne.
+  river.isere.summary: L’Isère rejoint le Rhône au nord de Valence.
+  river.ain.summary: L’Ain descend du Jura et rejoint directement le Rhône.
+  port.city-13055.context: Marseille-Fos dessert la façade méditerranéenne.
+  port.city-76351.context: Le Havre se situe à l’entrée maritime de l’axe Seine, sur la Manche.
+  port.city-76540.context: Rouen est un port de fond d’estuaire, relié à la Manche par la Seine.
+  port.city-29019.context: Brest est une ville portuaire de la façade atlantique.
+  port.city-17300.context: La Rochelle est un port de la façade atlantique.
+  peak.puy-de-sancy.context: 'Grand ensemble de relief : Massif central.'
+  peak.mont-blanc.context: 'Grand ensemble de relief : Alpes.'
+  peak.cret-de-la-neige.context: 'Grand ensemble de relief : Jura.'
+  peak.monte-cinto.context: 'Grand ensemble de relief : Reliefs corses.'
+  seas.boundary_notice: Étendue maritime indicative Natural Earth ; ce contour n’est pas une limite juridique.
+  lakes.natural: Lac naturel.
+  lakes.verdon_reservoir: Retenue de barrage sur le Verdon.
+  lakes.durance_reservoir: Retenue de barrage sur la Durance.
+  lakes.shared_france_switzerland: Lac partagé entre la France et la Suisse.
+reference_labels:
+  boundaries.departments: 'Contours : Etalab / data.gouv.fr, IGN Admin Express, millésime 2025, ODbL 1.0.'
+themes:
+  rivers:
+    name: Géographie française::Fleuves
+    tag: fleuves
+  departments:
+    name: Géographie française::Départements
+    tag: départements
+  regions:
+    name: Géographie française::Régions
+    tag: régions
+  cities:
+    name: Géographie française::Villes
+    tag: villes
+  landforms:
+    name: Géographie française::Relief
+    tag: relief
+  lakes:
+    name: Géographie française::Lacs
+    tag: lacs
+  coasts:
+    name: Géographie française::Littoral
+    tag: littoral
+  overseas:
+    name: Géographie française::Outre-mer
+    tag: outre-mer
+  parks:
+    name: Géographie française::Paysages
+    tag: paysages
+ui:
+  heading: GÉOGRAPHIE FRANÇAISE
+  title: Géographie française
+  model_name: Géographie française — carte physique
+  template_name: Identifier
+  sources: Sources
+  map_alt: Carte géographique
+  front: Recto
+  back: Verso
+  gallery_title: Géographie française — galerie
+  gallery_count: '{count} cartes · recto et verso'
+  credits_label: 'Cartographie :'
+  public_domain: domaine public
+  parks_date: février 2026

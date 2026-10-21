@@ -1,9 +1,8 @@
 rules:
-  - type: places
-    id: parcs-nationaux-coeurs
-    layer: parks
-    catalog: catalog/parks.yml
-    theme: Paysages
-    noun: le cœur du parc national
-    references:
-      - https://www.data.gouv.fr/datasets/contours-des-11-parcs-nationaux-de-france
+- type: places
+  id: parcs-nationaux-coeurs
+  layer: parks
+  catalog: catalog/parks.yml
+  theme: Paysages
+  references:
+  - https://www.data.gouv.fr/datasets/contours-des-11-parcs-nationaux-de-france

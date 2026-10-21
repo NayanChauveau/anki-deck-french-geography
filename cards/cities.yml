@@ -1,32 +1,31 @@
 rules:
-  - type: places
-    id: villes-chefs-lieux
-    layer: cities
-    catalog: catalog/cities.yml
-    theme: Villes
-    noun: la ville
-    batch_size: 10
-    directions: [name-map, map-name]
-    references:
-      - https://www.insee.fr/fr/information/8377162
-      - https://www.data.gouv.fr/datasets/contours-administratifs
-  - type: relations
-    id: prefecture-departement
-    layer: departments
-    catalog: catalog/departments.yml
-    related_catalog: catalog/cities.yml
-    relation: capital
-    theme: Villes
-    question: Quel est le chef-lieu du département « {name} » ?
-    references:
-      - https://www.insee.fr/fr/information/8377162
-  - type: relations
-    id: ville-departement
-    layer: cities
-    catalog: catalog/cities.yml
-    related_catalog: catalog/departments.yml
-    relation: department
-    theme: Villes
-    question: Dans quel département se situe la ville « {name} » ?
-    references:
-      - https://www.insee.fr/fr/information/8377162
+- type: places
+  id: villes-chefs-lieux
+  layer: cities
+  catalog: catalog/cities.yml
+  theme: Villes
+  batch_size: 10
+  directions:
+  - name-map
+  - map-name
+  references:
+  - https://www.insee.fr/fr/information/8377162
+  - https://www.data.gouv.fr/datasets/contours-administratifs
+- type: relations
+  id: prefecture-departement
+  layer: departments
+  catalog: catalog/departments.yml
+  related_catalog: catalog/cities.yml
+  relation: capital
+  theme: Villes
+  references:
+  - https://www.insee.fr/fr/information/8377162
+- type: relations
+  id: ville-departement
+  layer: cities
+  catalog: catalog/cities.yml
+  related_catalog: catalog/departments.yml
+  relation: department
+  theme: Villes
+  references:
+  - https://www.insee.fr/fr/information/8377162

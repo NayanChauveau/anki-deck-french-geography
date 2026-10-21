@@ -3,39 +3,34 @@ features:
   name: Guadeloupe
   view: caribbean
   ocean: ocean-atlantic
-  explanation: Point de situation à l’intérieur du territoire ; les vues montrent
-    sa position réelle, avec un encart mondial.
   references:
   - https://geoconfluences.ens-lyon.fr/images/glossaire/img-france/monde-outre-mer-francais-2025.pdf/download
+  explanation_key: overseas.position_notice
 - id: overseas-972
   name: Martinique
   view: caribbean
   ocean: ocean-atlantic
-  explanation: Point de situation à l’intérieur du territoire ; les vues montrent
-    sa position réelle, avec un encart mondial.
   references:
   - https://geoconfluences.ens-lyon.fr/images/glossaire/img-france/monde-outre-mer-francais-2025.pdf/download
+  explanation_key: overseas.position_notice
 - id: overseas-973
   name: Guyane
   view: caribbean
   ocean: ocean-atlantic
-  explanation: Point de situation à l’intérieur du territoire ; les vues montrent
-    sa position réelle, avec un encart mondial.
   references:
   - https://geoconfluences.ens-lyon.fr/images/glossaire/img-france/monde-outre-mer-francais-2025.pdf/download
+  explanation_key: overseas.position_notice
 - id: overseas-974
   name: La Réunion
   view: indian-ocean
   ocean: ocean-indian
-  explanation: Point de situation à l’intérieur du territoire ; les vues montrent
-    sa position réelle, avec un encart mondial.
   references:
   - https://geoconfluences.ens-lyon.fr/images/glossaire/img-france/monde-outre-mer-francais-2025.pdf/download
+  explanation_key: overseas.position_notice
 - id: overseas-976
   name: Mayotte
   view: indian-ocean
   ocean: ocean-indian
-  explanation: Point de situation à l’intérieur du territoire ; les vues montrent
-    sa position réelle, avec un encart mondial.
   references:
   - https://geoconfluences.ens-lyon.fr/images/glossaire/img-france/monde-outre-mer-francais-2025.pdf/download
+  explanation_key: overseas.position_notice

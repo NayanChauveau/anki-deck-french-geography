@@ -52,10 +52,7 @@ for key, (slug, name, view, epsg) in selection.items():
             "id": target,
             "name": name,
             "view": view,
-            "explanation": "Seuls les cœurs terrestre et marin sont représentés, "
-            "sans aire d’adhésion ni aire maritime adjacente. Contours de février "
-            "2026 simplifiés pour l’apprentissage ; ne pas utiliser pour vérifier "
-            "la réglementation d’un lieu.",
+            "explanation_key": "parks.core_areas_notice",
             "references": [
                 "https://www.data.gouv.fr/datasets/contours-des-11-parcs-nationaux-de-france"
             ],

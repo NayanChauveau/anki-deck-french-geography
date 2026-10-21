@@ -13,20 +13,17 @@
           "title": "Name",
           "type": "string"
         },
-        "article": {
-          "enum": [
-            "le",
-            "la",
-            "l’",
-            "les"
+        "explanation_key": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
           ],
-          "title": "Article",
-          "type": "string"
-        },
-        "explanation": {
-          "default": "",
-          "title": "Explanation",
-          "type": "string"
+          "default": null,
+          "title": "Explanation Key"
         },
         "references": {
           "items": {
@@ -60,8 +57,7 @@
       },
       "required": [
         "id",
-        "name",
-        "article"
+        "name"
       ],
       "title": "CatalogEntry",
       "type": "object"

@@ -1,6 +1,230 @@
-# Small English pilot. Missing translations are not replaced with French text.
-cards:
-  fr-geo-hydrographie-identification-loire:
-    question: Which river is highlighted on the map?
-    answer: The Loire
-    explanation: It passes through Orléans, Tours and Nantes before reaching the Atlantic at Saint-Nazaire.
+# Shared locale schema. Semantic keys are identical across languages.
+proper_names: retain_official_unless_translated
+names:
+  escaut: Scheldt
+  rhin: Rhine
+  segre: Segre
+  reg-28: Normandy
+  reg-53: Brittany
+  reg-94: Corsica
+  reg-03: French Guiana
+  reg-04: Réunion
+  overseas-973: French Guiana
+  overseas-974: Réunion
+  mountain-jura: Jura Mountains
+  mountain-massif-central: Massif Central
+  mountain-pyrenees: Pyrenees
+  mountain-alpes: Alps
+  mountain-armoricain: Armorican Massif
+  mountain-corse: Corsican mountains
+  lake-bourget: Lake Bourget
+  lake-annecy: Lake Annecy
+  lake-sainte-croix: Sainte-Croix Reservoir
+  lake-serre-poncon: Serre-Ponçon Reservoir
+  lake-leman: Lake Geneva
+  sea-gascogne: Bay of Biscay
+  sea-mer-du-nord: North Sea
+  sea-manche: English Channel
+  sea-lion: Gulf of Lions
+  sea-mediterranee: Mediterranean Sea
+  ocean-atlantic: Atlantic Ocean
+  ocean-indian: Indian Ocean
+  coast-manche: English Channel coast
+  coast-atlantique: Atlantic coast
+  coast-mediterranee: Mediterranean coast
+  park-vanoise: Vanoise National Park
+  park-port-cros: Port-Cros National Park
+  park-pyrenees: Pyrénées National Park
+  park-cevennes: Cévennes National Park
+  park-ecrins: Écrins National Park
+  park-mercantour: Mercantour National Park
+  park-guadeloupe: Guadeloupe National Park
+  park-reunion: Réunion National Park
+  park-guyane: French Guiana Amazonian Park
+  park-calanques: Calanques National Park
+  park-forets: Forêts National Park
+qualifiers:
+  location.ile_de_france: Île-de-France
+  location.indian_ocean: Indian Ocean
+rules:
+  departements:
+    questions:
+      name-map: Where is the department of {name}?
+      map-name: What is the name of the highlighted department?
+      map-code: What is the code of the highlighted department?
+      name-code: What is the code of the department of {name}?
+      code-name: Which department has code {code}?
+      code-map: Where is the department with code {code}?
+    explanation: '{name} · department code {code}.'
+  regions:
+    questions:
+      name-map: Where is the region of {name}?
+      map-name: Which region is highlighted on the map?
+  region-chef-lieu:
+    questions:
+      capital: What is the administrative capital of the region of {name}?
+    explanation: '{name} → {answer} · Source: Insee, COG 2025.'
+  departement-region:
+    questions:
+      region: Which region does the department of {name} belong to?
+    explanation: '{name} → {answer} · Source: Insee, COG 2025.'
+  villes-chefs-lieux:
+    questions:
+      name-map: Where is the city of {name}?
+      map-name: Which city is highlighted on the map?
+  prefecture-departement:
+    questions:
+      capital: What is the administrative capital (prefecture) of the department of {name}?
+    explanation: '{name} → {answer} · Source: Insee, COG 2025.'
+  ville-departement:
+    questions:
+      department: Which department is the city of {name} in?
+    explanation: '{name} → {answer} · Source: Insee, COG 2025.'
+  hydrographie-identification:
+    questions:
+      identification: Which river is highlighted on the map?
+    answer: The {name}
+  hydrographie-affluent:
+    questions:
+      downstream: Which river does the {name} flow directly into?
+  relief-massifs:
+    questions:
+      name-map: Locate the {name} on the map.
+      map-name: Which landform area is highlighted on the map?
+  relief-sommets:
+    questions:
+      name-map: Where is the summit of {name}?
+      map-name: Which summit is highlighted on the map?
+  relief-sommet-massif:
+    questions:
+      massif: Which broad landform region does the summit of {name} belong to?
+  hydrographie-lacs:
+    questions:
+      name-map: Where is {name}?
+      map-name: Which lake or reservoir is highlighted on the map?
+  littoral-mers:
+    questions:
+      name-map: Locate the {name} on the map.
+      map-name: Which maritime area is highlighted on the map?
+  villes-portuaires-facade:
+    questions:
+      coast: Which coast does the port of {name} connect to?
+  outre-mer-situation:
+    questions:
+      name-map: Where is {name}?
+      map-name: Which overseas department is marked on the map?
+  outre-mer-ocean:
+    questions:
+      ocean: Which ocean or ocean basin is {name} in?
+  parcs-nationaux-coeurs:
+    questions:
+      name-map: Where is the core area of {name}?
+      map-name: Which national park’s core area is highlighted on the map?
+explanations:
+  river.loire.summary: It passes through Orléans, Tours and Nantes before reaching the Atlantic at Saint-Nazaire.
+  river.seine.summary: It flows through Paris, then Rouen, before reaching the English Channel through the
+    Seine estuary.
+  river.rhone.summary: It flows through Lake Geneva and Lyon, then reaches the Mediterranean Sea through its
+    delta in the Camargue.
+  river.ariege.summary: It joins the Garonne south of Toulouse.
+  river.dordogne.summary: It meets the Garonne at the Bec d’Ambès; their shared estuary is the Gironde.
+  river.doubs.summary: A river in the Jura Mountains, it is a tributary of the Saône.
+  river.durance.summary: A tributary of the Rhône, it drains part of the Southern Alps.
+  river.escaut.summary: Rising in France, this river flows through Belgium before reaching the North Sea through
+    the Netherlands.
+  river.garonne.summary: The Garonne and the Dordogne meet to form the Gironde estuary.
+  river.marne.summary: A tributary of the Seine, it joins that river near Paris.
+  river.meuse.summary: This river flows through France, Belgium and the Netherlands.
+  river.moselle.summary: It belongs to the Rhine basin and is a tributary of the Rhine.
+  river.rhin.summary: The Rhine flows into the North Sea. The Natural Earth outline is supplemented by the
+    available border section from BD TOPAGE 2024; it does not show the entire international course.
+  river.saone.summary: The Saône joins the Rhône in Lyon. Its outline comes from BD TOPAGE 2024.
+  river.segre.summary: It rises in French Cerdanya and joins the Ebro.
+  river.tarn.summary: It rises on Mont Lozère and joins the Garonne.
+  river.vienne.summary: It rises on the Plateau de Millevaches and joins the Loire.
+  river.yonne.summary: Rising in the Morvan, it joins the Seine at Montereau-Fault-Yonne.
+  river.adour.summary: It flows through Tarbes, Dax and Bayonne before reaching the Atlantic.
+  river.somme.summary: It flows through Amiens and Abbeville, then reaches the English Channel. The outline
+    includes the canalised Somme.
+  river.vilaine.summary: It flows through Rennes and Redon before reaching its mouth, which is dammed at Arzal.
+  river.charente.summary: It flows through Angoulême, Cognac, Saintes and Rochefort before reaching the Atlantic.
+  river.aude.summary: It flows through Carcassonne and then reaches the Mediterranean Sea.
+  river.herault.summary: It descends from Mont Aigoual and reaches the Mediterranean Sea near Agde.
+  river.var.summary: It flows into the Mediterranean Sea in south-eastern France.
+  river.orne.summary: This river in Normandy flows through Caen before reaching its mouth at Ouistreham.
+  river.allier.summary: The Allier flows directly into the Loire.
+  river.cher.summary: The Cher flows directly into the Loire.
+  river.oise.summary: The Oise joins the Seine at Conflans-Sainte-Honorine. The TOPAGE outline covers the available
+    French section.
+  river.lot.summary: The Lot flows directly into the Garonne.
+  river.isere.summary: The Isère joins the Rhône north of Valence.
+  river.ain.summary: The Ain descends from the Jura Mountains and flows directly into the Rhône.
+  landforms.approximate_notice: 'Indicative landform area: the Natural Earth boundaries are approximate and
+    have no administrative status.'
+  landforms.schematic_notice: 'A schematic area drawn for this deck: it locates the broad landform region without
+    defining its precise boundary. It is neither an administrative zoning map nor a geological map.'
+  peak.puy-de-sancy.context: 'Broad landform region: Massif Central.'
+  peak.mont-blanc.context: 'Broad landform region: Alps.'
+  peak.cret-de-la-neige.context: 'Broad landform region: Jura Mountains.'
+  peak.monte-cinto.context: 'Broad landform region: Corsican mountains.'
+  lakes.natural: A natural lake.
+  lakes.verdon_reservoir: A reservoir created by a dam on the Verdon.
+  lakes.durance_reservoir: A reservoir created by a dam on the Durance.
+  lakes.shared_france_switzerland: A lake shared by France and Switzerland.
+  seas.boundary_notice: An indicative maritime area from Natural Earth; this outline is not a legal boundary.
+  overseas.position_notice: A location point within the territory; the views show its actual position, with
+    a world map inset.
+  port.city-13055.context: Marseille-Fos serves the Mediterranean coast.
+  port.city-76351.context: Le Havre lies at the seaward entrance to the Seine corridor, on the English Channel.
+  port.city-76540.context: Rouen is a port at the head of an estuary, linked to the English Channel by the
+    Seine.
+  port.city-29019.context: Brest is a port city on the Atlantic coast.
+  port.city-17300.context: La Rochelle is a port on the Atlantic coast.
+  parks.core_areas_notice: Only the terrestrial and marine core areas, where present, are shown; membership
+    areas and adjacent marine areas are excluded. The February 2026 boundaries have been simplified for learning;
+    do not use them to determine the regulations applicable to a location.
+reference_labels:
+  boundaries.departments: 'Boundaries: Etalab / data.gouv.fr, IGN Admin Express, 2025 edition, ODbL 1.0.'
+forms: {}
+themes:
+  rivers:
+    name: French geography::Rivers
+    tag: rivers
+  departments:
+    name: French geography::Departments
+    tag: departments
+  regions:
+    name: French geography::Regions
+    tag: regions
+  cities:
+    name: French geography::Cities
+    tag: cities
+  landforms:
+    name: French geography::Landforms
+    tag: landforms
+  lakes:
+    name: French geography::Lakes
+    tag: lakes
+  coasts:
+    name: French geography::Coasts
+    tag: coasts
+  overseas:
+    name: French geography::Overseas
+    tag: overseas
+  parks:
+    name: French geography::National parks
+    tag: national-parks
+ui:
+  heading: FRENCH GEOGRAPHY
+  title: French geography
+  model_name: French geography — map
+  template_name: Identify
+  sources: Sources
+  map_alt: Geographic map
+  front: Front
+  back: Back
+  gallery_title: French geography — gallery
+  gallery_count: '{count} cards · front and back'
+  credits_label: 'Map data:'
+  public_domain: public domain
+  parks_date: February 2026

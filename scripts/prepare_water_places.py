@@ -59,24 +59,24 @@ def natural_earth(path, filename):
 # Lakes: original national TOPAGE polygons, plus the transboundary Lake Geneva polygon.
 raw = root / "data/lakes/topage2024-selection.geojson"
 names = {
-    "06P0000002000777191": ("bourget", "Bourget", "lake-savoie", "Lac naturel."),
-    "06P0000002000776973": ("annecy", "Annecy", "lake-savoie", "Lac naturel."),
+    "06P0000002000777191": ("bourget", "Bourget", "lake-savoie", "lakes.natural"),
+    "06P0000002000776973": ("annecy", "Annecy", "lake-savoie", "lakes.natural"),
     "06P0000002000777258": (
         "serre-poncon",
         "Serre-Ponçon",
         "lake-south",
-        "Retenue de barrage sur la Durance.",
+        "lakes.durance_reservoir",
     ),
     "06P0000002000777286": (
         "sainte-croix",
         "Sainte-Croix",
         "lake-south",
-        "Retenue de barrage sur le Verdon.",
+        "lakes.verdon_reservoir",
     ),
 }
 features, entries = [], []
 for f in json.loads(raw.read_text())["features"]:
-    key, name, view, explanation = names[f["properties"]["CdOH"]]
+    key, name, view, explanation_key = names[f["properties"]["CdOH"]]
     key = "lake-" + key
     features.append(feature(key, shape(f["geometry"])))
     entries.append(
@@ -84,7 +84,7 @@ for f in json.loads(raw.read_text())["features"]:
             "id": key,
             "name": name,
             "view": view,
-            "explanation": explanation,
+            "explanation_key": explanation_key,
             "references": [
                 "https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2024",
                 "https://www.larousse.fr/encyclopedie/riviere-lac/la_Durance/117449",
@@ -99,7 +99,7 @@ for f in json.loads(args.lakes.read_text())["features"]:
                 "id": "lake-leman",
                 "name": "Léman",
                 "view": "lake-savoie",
-                "explanation": "Lac partagé entre la France et la Suisse.",
+                "explanation_key": "lakes.shared_france_switzerland",
                 "references": [
                     "https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-lakes/"
                 ],
@@ -149,10 +149,7 @@ for f in json.loads(args.marine.read_text())["features"]:
                 "id": key,
                 "name": name,
                 "view": "europe-seas",
-                "explanation": (
-                    "Étendue maritime indicative Natural Earth ; ce contour n’est pas une "
-                    "limite juridique."
-                ),
+                "explanation_key": ("seas.boundary_notice"),
             }
         )
 if len(features) != 5:
@@ -194,10 +191,7 @@ for code, (name, view, ocean) in selection.items():
             "name": name,
             "view": view,
             "ocean": "ocean-" + ocean,
-            "explanation": (
-                "Point de situation à l’intérieur du territoire ; les vues montrent sa "
-                "position réelle, avec un encart mondial."
-            ),
+            "explanation_key": ("overseas.position_notice"),
             "references": [
                 "https://geoconfluences.ens-lyon.fr/images/glossaire/img-france/monde-outre-mer-francais-2025.pdf/download"
             ],

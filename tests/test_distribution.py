@@ -31,13 +31,9 @@ def test_release_waits_for_checks_and_uses_the_uploaded_package():
     )
     assert upload["name"] == download["name"]
     args = shlex.split(release["steps"][-1]["run"])
-    packages = [args[i + 1] for i, value in enumerate(args) if value == "--package"]
-    assert {Path(package).name for package in packages} == {
-        "french-geography-en.apkg",
-        "french-geography-fr.apkg",
-    }
-    for package in packages:
-        assert str(Path(package).relative_to(download["path"])) in upload["path"].splitlines()
+    assert args[-2:] == ["--package-dir", "release/dist"]
+    assert "dist/*.apkg" in upload["path"].splitlines()
+    assert Path(args[-1]).relative_to(download["path"]) == Path("dist")
     assert release["steps"][0]["with"]["ref"] == "${{ github.sha }}"
 
 

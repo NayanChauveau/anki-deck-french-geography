@@ -5,6 +5,7 @@ from pathlib import Path
 
 import yaml
 
+from french_geography.locales import format_text, load_locale
 from french_geography.schema import (
     Annotation,
     Card,
@@ -21,7 +22,9 @@ def generate(
     root: Path,
     rules: list[IdentificationRule | DepartmentRule | PlaceRule | RelationRule],
     layers: dict,
+    locale=None,
 ) -> list[Card]:
+    locale = locale or load_locale(root, "fr")
     cards = []
     seen_rules = set()
     for rule in rules:
@@ -31,10 +34,10 @@ def generate(
         if rule.layer not in layers:
             raise ValueError(f"Unknown geographic layer: {rule.layer}")
         if isinstance(rule, (PlaceRule, RelationRule)):
-            cards.extend(generate_places(root, rule, layers[rule.layer]))
+            cards.extend(generate_places(root, rule, layers[rule.layer], locale))
             continue
         if isinstance(rule, DepartmentRule):
-            cards.extend(generate_departments(root, rule, layers[rule.layer]))
+            cards.extend(generate_departments(root, rule, layers[rule.layer], locale))
             continue
         path = (root / rule.catalog).resolve()
         if not path.is_relative_to(root.resolve()):
@@ -49,8 +52,11 @@ def generate(
             unknown = sorted(entries.keys() - geometries.keys())
             raise ValueError(f"Catalog/layer mismatch: missing={missing}, unknown={unknown}")
         for entry in catalog.features:
-            separator = "" if entry.article == "l’" else " "
-            answer = entry.article.capitalize() + separator + entry.name
+            values = {"name": locale.name(entry)}
+            values.update(
+                {key + "_name": value for key, value in locale.text.forms.get(entry.id, {}).items()}
+            )
+            answer = format_text(locale.text.rules[rule.id].answer, **values)
             if entry.label:
                 lon, lat = entry.label.lon, entry.label.lat
             else:
@@ -62,17 +68,19 @@ def generate(
                     id=f"fr-geo-{rule.id}-{entry.id.lower()}",
                     target=entry.id,
                     view=rule.view,
-                    question=rule.question,
+                    question=locale.question(rule.id, "identification"),
                     answer=answer,
-                    explanation=entry.explanation,
-                    references=list(dict.fromkeys([*rule.references, *entry.references])),
+                    explanation=locale.explanation(entry),
+                    references=locale.references(
+                        list(dict.fromkeys([*rule.references, *entry.references]))
+                    ),
                     annotations=[Annotation(text=entry.name, lon=lon, lat=lat)],
                 )
             )
     return cards
 
 
-def generate_departments(root, rule, geometries):
+def generate_departments(root, rule, geometries, locale):
     from french_geography.schema import DepartmentCatalog
 
     path = (root / rule.catalog).resolve()
@@ -91,20 +99,9 @@ def generate_departments(root, rule, geometries):
     for batch in batched(ordered_entries, rule.batch_size):
         for direction in rule.directions:
             for entry in batch:
-                values = {"name": entry.name, "code": entry.code, "map": ""}
+                values = {"name": locale.name(entry), "code": entry.code, "map": ""}
                 start, end = direction.split("-")
-                if end == "map":
-                    question = f"Où se situe le département « {values[start]} » ?"
-                elif start == "map":
-                    question = (
-                        "Quel est le nom du département surligné ?"
-                        if end == "name"
-                        else "Quel est le numéro du département surligné ?"
-                    )
-                elif end == "code":
-                    question = f"Quel est le numéro du département « {entry.name} » ?"
-                else:
-                    question = f"Quel département porte le numéro {entry.code} ?"
+                question = locale.question(rule.id, direction, **values)
                 cards.append(
                     Card(
                         id=f"fr-geo-{rule.id}-{entry.code.lower()}-{direction}",
@@ -115,12 +112,16 @@ def generate_departments(root, rule, geometries):
                         direction=direction,
                         question=question,
                         answer=(
-                            f"{entry.name} ({entry.code})"
+                            f"{locale.name(entry)} ({entry.code})"
                             if end == "map" or direction == "map-code"
                             else values[end]
                         ),
-                        explanation=f"{entry.name} · code départemental {entry.code}.",
-                        references=rule.references,
+                        explanation=format_text(
+                            locale.text.rules[rule.id].explanation,
+                            base_name=locale.name(entry),
+                            **values,
+                        ),
+                        references=locale.references(rule.references),
                         front_map="target"
                         if start == "map"
                         else "blank"
@@ -144,7 +145,7 @@ def place_catalog(root, relative):
     return entries
 
 
-def generate_places(root, rule, geometries):
+def generate_places(root, rule, geometries, locale):
     entries = place_catalog(root, rule.catalog)
     valid_coverage = (
         entries.keys() <= geometries.keys()
@@ -160,11 +161,12 @@ def generate_places(root, rule, geometries):
             target = getattr(entry, rule.relation)
             if target not in related:
                 raise ValueError(f"Unknown {rule.relation} for {entry.id}: {target}")
-            answer = related[target].name
-            display_name = f"{entry.name} ({entry.qualifier})" if entry.qualifier else entry.name
-            question = rule.question.format(name=display_name)
-            if answer.casefold() in question.casefold():
-                continue  # A relation already disclosed by its question adds no recall value.
+            # Eligibility is a canonical fact/name check, independent of output language.
+            if related[target].name.casefold() in entry.name.casefold():
+                continue
+            answer = locale.name(related[target])
+            display_name = locale.display_name(entry)
+            question = locale.question(rule.id, rule.relation, name=display_name)
             cards.append(
                 Card(
                     id=f"fr-geo-{rule.id}-{entry.id.lower()}",
@@ -176,11 +178,18 @@ def generate_places(root, rule, geometries):
                     question=question,
                     answer=answer,
                     explanation=(
-                        entry.explanation
+                        locale.explanation(entry)
                         if rule.relation in ("massif", "downstream", "ocean", "coast")
-                        else f"{entry.name} → {answer} · Source : Insee, COG 2025."
+                        else format_text(
+                            locale.text.rules[rule.id].explanation,
+                            name=display_name,
+                            base_name=locale.name(entry),
+                            answer=answer,
+                        )
                     ),
-                    references=list(dict.fromkeys([*rule.references, *entry.references])),
+                    references=locale.references(
+                        list(dict.fromkeys([*rule.references, *entry.references]))
+                    ),
                     front_map="none",
                     back_map="none",
                 )
@@ -190,9 +199,7 @@ def generate_places(root, rule, geometries):
         for direction in rule.directions:
             for entry in batch:
                 locate = direction == "name-map"
-                display_name = (
-                    f"{entry.name} ({entry.qualifier})" if entry.qualifier else entry.name
-                )
+                display_name = locale.display_name(entry)
                 cards.append(
                     Card(
                         id=f"fr-geo-{rule.id}-{entry.id.lower()}-{direction}",
@@ -201,14 +208,12 @@ def generate_places(root, rule, geometries):
                         layer=rule.layer,
                         theme=rule.theme,
                         direction=direction,
-                        question=(
-                            f"Où se situe {rule.noun} « {display_name} » ?"
-                            if locate
-                            else "Quel est le nom de l’élément surligné sur la carte ?"
-                        ),
+                        question=locale.question(rule.id, direction, name=display_name),
                         answer=display_name,
-                        explanation=entry.explanation,
-                        references=list(dict.fromkeys([*rule.references, *entry.references])),
+                        explanation=locale.explanation(entry),
+                        references=locale.references(
+                            list(dict.fromkeys([*rule.references, *entry.references]))
+                        ),
                         front_map="blank" if locate else "target",
                         back_map="target",
                     )

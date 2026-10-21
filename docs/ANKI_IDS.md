@@ -55,14 +55,20 @@ pas renommer les notes existantes ; ce nom technique ne définit plus le périm�
 Les nouvelles relations utilisent des identités distinctes, sans dupliquer les
 localisations de villes déjà présentes.
 
-## Pilote anglais et noms de paquets figés
+## Multilingual editions and fixed package names
 
-- Français : `french-geography-fr.apkg`, namespace, IDs de modèles/decks et IDs de notes inchangés.
-- Anglais : `french-geography-en.apkg`, namespace `ultimate-french-geography-v1-en`.
-- Modèle anglais : `1976423201` ; sous-deck `French geography::Rivers` : `1976423200`.
-- Note anglaise : ID français source suivi de `-en`, avec un GUID dans le namespace anglais.
+- French: `french-geography-fr.apkg`, namespace `ultimate-french-geography-v1`;
+  historical model/deck IDs and note IDs remain unchanged.
+- English: `french-geography-en.apkg`, namespace `ultimate-french-geography-v1-en`;
+  source note ID plus `-en`; model ID `1976423201`.
+- English Rivers deck: `1976423200`. Departments, Regions, Cities, Landforms,
+  Lakes, Coasts, Overseas and National parks: `1976423202` through `1976423209`.
 
-Le pilote sélectionne explicitement les traductions de `locales/en.yml` ; une carte
-sans traduction n’est pas incluse dans le paquet anglais. Les deux fichiers ne sont
-donc pas annoncés comme ayant le même contenu. Les noms d’assets sont figés dans
-`src/french_geography/distribution.py` pour les futures versions.
+Both editions now contain 1,014 notes. Permanent registrations live in
+`locales/languages.json`; text lives under the same semantic keys in each locale.
+No missing translation silently falls back to another language. Canonical proper
+names can deliberately be retained by policy.
+
+Every note uses the same identity derivation from its canonical rule/feature IDs
+and the registered language suffix/namespace. There is no note-specific migration
+or compatibility mechanism. `LOCALIZATION.md` describes language registration.

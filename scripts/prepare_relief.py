@@ -35,10 +35,7 @@ for feature in json.loads(args.input.read_text())["features"]:
             "id": key,
             "name": french,
             "view": "metropolitan",
-            "explanation": (
-                "Zone indicative de relief : les limites Natural Earth sont approximatives, "
-                "sans valeur administrative."
-            ),
+            "explanation_key": ("landforms.approximate_notice"),
         }
     )
 if len(features) != 5:
@@ -63,9 +60,7 @@ for feature in json.loads(schematic.read_text())["features"]:
             "id": props["id"],
             "name": props["name"],
             "view": "corsica-relief" if props["id"] == "mountain-corse" else "metropolitan",
-            "explanation": "Zone schématique dessinée pour ce deck : elle situe "
-            "le grand ensemble sans en délimiter précisément le contour. "
-            "Ce n’est ni un zonage administratif ni une carte géologique.",
+            "explanation_key": "landforms.schematic_notice",
             "references": props["references"],
         }
     )
