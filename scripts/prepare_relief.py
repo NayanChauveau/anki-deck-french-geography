@@ -59,7 +59,7 @@ for feature in json.loads(schematic.read_text())["features"]:
         {
             "id": props["id"],
             "name": props["name"],
-            "view": "corsica-relief" if props["id"] == "mountain-corse" else "metropolitan",
+            "view": "metropolitan",
             "explanation_key": "landforms.schematic_notice",
             "references": props["references"],
         }

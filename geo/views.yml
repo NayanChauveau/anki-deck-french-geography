@@ -25,10 +25,6 @@ views:
   mayotte:
     projection: EPSG:32738
     bounds: [44.85, -13.2, 45.5, -12.45]
-  corsica-relief:
-    projection: EPSG:2154
-    bounds: [8.45, 41.3, 9.65, 43.1]
-    inset: metropolitan
   europe-seas:
     projection: EPSG:3035
     bounds: [-15, 30, 40, 62]

@@ -37,7 +37,7 @@ def test_schematic_corsican_relief_is_not_the_island_outline():
     assert mountain.area < island.area * 0.6
     card = next(c for c in project.cards if c.target == "mountain-corse")
     assert "schématique" in card.explanation
-    assert card.view == "corsica-relief"
+    assert card.view == "metropolitan"
 
 
 def test_homonymous_saint_denis_questions_remain_useful():

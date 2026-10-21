@@ -226,3 +226,9 @@ uv run --frozen python scripts/prepare_lakes.py /chemin/ne_10m_lakes.geojson
 L’entrée Natural Earth est vérifiée contre son empreinte épinglée. Les 20 objets
 TOPAGE locaux (dont deux pour Hourtin-Carcans) et les requêtes d’acquisition sont
 conservés sous `data/lakes/`, avec leurs empreintes dans le registre des sources.
+
+## Cadrage des paysages et du relief
+
+Tous les massifs et sommets, y compris le relief corse et le Monte Cinto,
+utilisent la grande carte métropolitaine commune, sans zoom ni encart.
+Les scripts de préparation conservent ce cadrage ; la vue corse dédiée est supprimée.

@@ -626,3 +626,7 @@ translation log describes a previous step and is superseded by this completion.
 - [x] Keep a shared France view, without zooms; explain seasonal Grand-Lieu outlines.
 
 Current total: **1,044 cards per language**. Earlier audit totals describe their dated snapshots.
+
+### Relief map framing
+
+- [x] Show all mountain areas and peaks on the shared France map, including Corsica, without zooms or insets.

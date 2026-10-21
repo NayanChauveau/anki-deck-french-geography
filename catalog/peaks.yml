@@ -23,7 +23,7 @@ features:
 - id: peak-monte-cinto
   name: Monte Cinto
   massif: mountain-corse
-  view: corsica-relief
+  view: metropolitan
   references:
   - https://www.larousse.fr/encyclopedie/mont/monte_Cinto/113690
   explanation_key: peak.monte-cinto.context

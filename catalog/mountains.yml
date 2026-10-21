@@ -28,7 +28,7 @@ features:
   explanation_key: landforms.schematic_notice
 - id: mountain-corse
   name: Reliefs corses
-  view: corsica-relief
+  view: metropolitan
   references:
   - https://www.brgm.fr/fr/implantation-regionale/corse-reseau-regional-brgm
   explanation_key: landforms.schematic_notice
