@@ -1,78 +1,115 @@
 # French Geography — Anki
 
-An English-first project for learning French geography, with complete English and
-French Anki editions: **1,044 cards per language**. Both use the same canonical facts,
-geographic images and generators. Other languages can be added through the shared
-[localization structure](docs/LOCALIZATION.md).
+Learn to place French rivers, departments, cities and landscapes on a map — and
+remember them with Anki. **Over 1,000 cards**, available as complete English and
+French editions, with maps included in every package.
 
-## Build
+**Designed to be installed and kept up to date with
+[Deckdock](https://github.com/NayanChauveau/anki-deckdock)**, the Anki add-on that
+tracks this deck’s releases and offers updates inside Anki. Install your preferred
+edition once, then let Deckdock check for new versions.
 
-Requires Python 3.12+, [uv](https://docs.astral.sh/uv/) and Make.
+**[Get Deckdock](https://github.com/NayanChauveau/anki-deckdock/releases/latest)** ·
+**[Browse deck releases](https://github.com/NayanChauveau/anki-deck-french-geography/releases/latest)**
+
+## What you’ll learn
+
+- **Departments:** locate a department from its name, or recall its name and code from a map.
+- **Regions and cities:** place them on a map and learn their administrative relationships and capitals.
+- **Rivers and lakes:** recognize their locations and learn selected tributary relationships.
+- **Landscapes:** identify mountain areas and landmark peaks.
+- **Coasts, overseas France and national parks:** build a broader picture of French geography.
+
+The deck is split into nine themed subdecks, so you can start with one subject.
+Map cards use highlighted features and uncluttered backgrounds; explanations and
+sources appear below the images. Questions run in both directions where useful,
+so you practise finding a place as well as naming it.
+
+Choose the language you want to study in. Both editions cover the same geography;
+they can also coexist in one Anki collection.
+
+## Install with Deckdock — recommended
+
+You’ll need **Anki Desktop 26.09 or later** to use Deckdock.
+
+1. Download the `.ankiaddon` file from the
+   [Deckdock release page](https://github.com/NayanChauveau/anki-deckdock/releases/latest).
+   In Anki, choose **Tools → Add-ons → Install from file**, select it, then restart Anki.
+2. Open **Tools → Deck Manager** — that is Deckdock’s name in Anki.
+3. Paste the download link for your preferred edition and confirm the import.
+
+These published links are ready to paste into Deckdock:
+
+**English edition**
+
+```text
+https://github.com/NayanChauveau/anki-deck-french-geography/releases/download/v0.1.3/french-geography-en.apkg
+```
+
+**Édition française**
+
+```text
+https://github.com/NayanChauveau/anki-deck-french-geography/releases/download/v0.1.3/french-geography-fr.apkg
+```
+
+These are working starting versions; Deckdock will offer newer releases when
+available. To start directly with the newest version, open the
+[latest deck release](https://github.com/NayanChauveau/anki-deck-french-geography/releases/latest),
+then copy the link address of the `.apkg` asset for your language.
+Paste that **versioned file link** into Deckdock, rather than the release page URL.
+
+### Keeping your deck up to date
+
+Deckdock checks for new versions at Anki startup, at most once every 24 hours.
+When an update is available, choose **Import update** or postpone it with **Later**.
+You can also use **Check** in Deck Manager whenever you like.
+
+Updates open Anki’s usual import dialog, so you stay in control of the import.
+The deck keeps stable note identities so existing notes can be updated; your Anki
+import settings determine how updates are applied. No GitHub account or token is
+needed.
+
+## Prefer a manual download?
+
+Download `french-geography-en.apkg` or `french-geography-fr.apkg` from the
+[latest release](https://github.com/NayanChauveau/anki-deck-french-geography/releases/latest),
+then import it in Anki with **File → Import**. All map images are bundled.
+With manual installation, you’ll need to check for new releases yourself.
+
+## Sources and coverage
+
+Maps use Natural Earth, IGN/OFB/Sandre BD TOPAGE and official French administrative
+and national park data. Sources are linked on the cards; dataset versions,
+licences and transformations are recorded in [the source registry](geo/sources.yml).
+Schematic relief boundaries are identified in the explanations.
+
+This is a growing learning deck, with a selection of geographic features rather
+than an exhaustive atlas. Published packages reflect their release; the source
+repository may already contain additions awaiting publication.
+
+## Contribute
+
+Found a misplaced feature, an unclear question or a translation to improve?
+[Open an issue](https://github.com/NayanChauveau/anki-deck-french-geography/issues)
+with the place, edition and correction you suggest. Factual corrections are most
+useful with a source. Content, translation and code contributions are welcome.
+
+To build locally, install Python 3.12+, [uv](https://docs.astral.sh/uv/) and Make:
 
 ```sh
 uv sync --frozen --extra dev
 make check
 make build
+make preview
 ```
 
-The default build produces both packages, English first:
+`make build` creates both language packages in `dist/`.
+`make preview` creates a French card gallery at `build/preview/index.html`.
+Normal builds use pinned local geographic inputs and need no geographic downloads.
 
-| Stable filename | Current content |
-| --- | --- |
-| `dist/french-geography-en.apkg` | English edition: 1,044 cards |
-| `dist/french-geography-fr.apkg` | French edition: 1,044 cards |
-
-These filenames are fixed for future releases. The French notes retain their
-existing identifiers; English notes have separate identities and model/deck IDs.
-Both packages can coexist in the same Anki collection.
-
-To build one language only:
-
-```sh
-uv run --frozen french-geography build --lang en
-uv run --frozen french-geography build --lang fr
-```
-
-`make preview` generates the French gallery at `build/preview/index.html`.
-For an English gallery, use `uv run --frozen french-geography preview --lang en --out build/preview-en`.
-`make push` keeps its existing behaviour: build and import the **French** package
-through AnkiConnect, then request a sync. It does not push Git commits or import the
-English edition automatically.
-
-## Releases and Deckdock
-
-As in the neighbouring WSET 3 project, each successful push to `main` publishes the
-next stable patch release. Pull requests run checks without publishing. Both language
-packages are attached to the same release; their filenames remain constant.
-
-[Releases](https://github.com/NayanChauveau/anki-deck-french-geography/releases)
-contain packages for manual import or [Deckdock](https://github.com/NayanChauveau/anki-deckdock).
-Use a versioned asset URL with Deckdock, not a repository page or `latest-main` link.
-The initial single-file release `v0.1.0` predates the final bilingual filenames.
-See [distribution notes](docs/DECKDOCK.md).
-
-## Project structure
-
-- `geo/features/`: pinned, prepared geographic inputs.
-- `geo/sources.yml`: provenance, versions, licences, transformations and checksums.
-- `catalog/`: editorial content and relationships.
-- `cards/`: shared generation rules, rather than one handwritten entry per note.
-- `locales/fr.yml` and `locales/en.yml`: shared semantic keys with localized text.
-- `locales/languages.json`: registered languages, package names and permanent Anki identities.
-- `templates/anki/`: Anki presentation; map images contain no text.
-- `src/french_geography/`: validation, generation, rendering and packaging.
-- `scripts/`: preparation and release tools, separate from normal offline builds.
-
-Normal builds never download geographic data. SVG/PNG media are content-addressed;
-all referenced PNGs are embedded in the APKG. Geographic sources include Natural
-Earth, INSEE COG/Etalab 2025, BD TOPAGE 2024 and the February 2026 national park dataset.
-Approximate and schematic relief boundaries are identified as such.
-
-The French catalog contains rivers, departments, regions, cities, relief, lakes,
-maritime areas, overseas landmarks and national park cores. Content expansion is
-paused while the existing architecture is consolidated.
-
-Detailed working documents are currently in French:
-[cartography](docs/CARTOGRAPHY.md), [administration](docs/ADMINISTRATION.md),
-[stable Anki IDs](docs/ANKI_IDS.md), [roadmap](docs/ROADMAP.md), and
-[architecture review](docs/reviews/ARCHITECTURE_2026-10-21.md).
+Editorial content lives in `catalog/`, generation rules in `cards/`, translations
+in `locales/`, and prepared geography in `geo/features/`. To learn how to extend
+the deck, see [cartography](docs/CARTOGRAPHY.md),
+[localization](docs/LOCALIZATION.md), [stable Anki IDs](docs/ANKI_IDS.md),
+[distribution](docs/DECKDOCK.md) and the [roadmap](docs/ROADMAP.md).
+Most detailed working documents are currently in French.
