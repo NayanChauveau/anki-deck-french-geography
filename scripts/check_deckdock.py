@@ -9,13 +9,18 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 from types import ModuleType
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+from french_geography.distribution import PACKAGES  # noqa: E402
+
 
 def check(checkout: Path, package: Path) -> dict:
     source = checkout.resolve() / "src"
     if not (source / "domain.py").is_file():
         raise ValueError("Expected a Deckdock checkout containing src/domain.py")
-    if not package.is_file() or package.name != "french-geography.apkg":
-        raise ValueError("Build dist/french-geography.apkg first")
+    labels = dict(PACKAGES.values())
+    if not package.is_file() or package.name not in labels:
+        raise ValueError("Build the English and French packages first")
+    label = labels[package.name]
     # Load the add-on's real modules without executing its Anki UI entry point.
     namespace = "_deckdock_compatibility"
     module = ModuleType(namespace)
@@ -38,7 +43,7 @@ def check(checkout: Path, package: Path) -> dict:
                 {
                     "id": 10 if tag == "v0.1.0" else 20,
                     "name": asset_name,
-                    "label": "Géographie française",
+                    "label": label,
                     "size": size,
                     "state": "uploaded",
                     "browser_download_url": f"{base}/releases/download/{tag}/{asset_name}",
@@ -55,7 +60,7 @@ def check(checkout: Path, package: Path) -> dict:
     ).release
     subscription = manager.make_subscription(initial, first, "test-geography")
     subscription = domain.commit_install(subscription, first, installed_at="2026-10-21T00:00:00Z")
-    assert subscription.display_name == "Géographie française"
+    assert subscription.display_name == label
     newer = github.fetch_release(
         initial,
         latest=True,
@@ -118,9 +123,12 @@ def check(checkout: Path, package: Path) -> dict:
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--deckdock", type=Path, required=True)
-    parser.add_argument("--package", type=Path, default=Path("dist/french-geography.apkg"))
+    parser.add_argument("--package", type=Path, action="append")
     args = parser.parse_args()
-    print(json.dumps(check(args.deckdock, args.package), ensure_ascii=False, indent=2))
+    packages = args.package or [Path("dist") / name for name, label in PACKAGES.values()]
+    print(
+        json.dumps([check(args.deckdock, path) for path in packages], ensure_ascii=False, indent=2)
+    )
 
 
 if __name__ == "__main__":

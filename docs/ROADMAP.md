@@ -571,3 +571,16 @@ Le workflow suit maintenant le fonctionnement WSET 3 : release stable à chaque 
 validé de `main`, numéro de patch incrémenté automatiquement, paquet de nom constant.
 Les pull requests ne publient pas. Le premier passage distant doit être vérifié
 avant d’annoncer une version téléchargeable ; suivi dans `docs/DECKDOCK.md`.
+
+### Build bilingue — périmètre volontairement minimal
+
+- [x] Publication automatique `v0.1.0` vérifiée depuis `main`.
+- [x] README principal en anglais ; notes de travail historiques conservées en français.
+- [x] `make build` produit deux paquets : `french-geography-en.apkg` et `french-geography-fr.apkg`.
+- [x] Pilote anglais limité à la Loire, une carte ; édition française à 1 014 cartes.
+- [x] Identités françaises conservées et identités anglaises séparées.
+- [x] Publication adaptée pour attacher les deux fichiers à une même release.
+- [ ] Traduction complète : différée, expressément hors du périmètre demandé.
+
+Les noms de fichiers sont désormais figés. La première release mono-fichier précède
+cette transition autorisée par l’auteur ; les futurs assets gardent les suffixes de langue.

@@ -5,7 +5,11 @@ import json
 import os
 import re
 import subprocess
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+from french_geography.distribution import PACKAGES  # noqa: E402
 
 VERSION = re.compile(r"^v(\d+)\.(\d+)\.(\d+)$")
 
@@ -30,9 +34,14 @@ def gh_json(endpoint):
     return [item for page in json.loads(result.stdout) for item in page]
 
 
-def publish(package, repository, commit):
-    if not package.is_file() or package.suffix != ".apkg":
-        raise ValueError(f"Missing built APKG: {package}")
+def publish(packages, repository, commit):
+    expected = {name for name, label in PACKAGES.values()}
+    if {path.name for path in packages} != expected or len(packages) != len(expected):
+        raise ValueError("A release must contain exactly the English and French packages")
+    for package in packages:
+        if not package.is_file():
+            raise ValueError(f"Missing built APKG: {package}")
+    labels = dict(PACKAGES.values())
     if not re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", repository):
         raise ValueError("Expected owner/repository")
     if not re.fullmatch(r"[0-9a-f]{40}", commit):
@@ -49,7 +58,7 @@ def publish(package, repository, commit):
             "release",
             "create",
             version,
-            f"{package}#Géographie française",
+            *[f"{package}#{labels[package.name]}" for package in packages],
             "--repo",
             repository,
             "--target",
@@ -67,7 +76,7 @@ def publish(package, repository, commit):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--package", type=Path, required=True)
+    parser.add_argument("--package", type=Path, action="append", required=True)
     args = parser.parse_args()
     version = publish(args.package, os.environ["GITHUB_REPOSITORY"], os.environ["GITHUB_SHA"])
     print(f"Published {version}")

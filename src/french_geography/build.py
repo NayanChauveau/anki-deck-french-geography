@@ -8,6 +8,7 @@ from pathlib import Path
 import genanki
 
 from french_geography.cartography import render
+from french_geography.distribution import PACKAGES
 from french_geography.project import Project
 
 # Permanent IDs and namespace. Never derive these from mutable editorial text.
@@ -17,8 +18,8 @@ NAMESPACE = "ultimate-french-geography-v1"
 DECK_NAME = "Géographie française::Fleuves"
 
 
-def note_guid(card_id: str) -> str:
-    return genanki.guid_for(NAMESPACE, card_id)
+def note_guid(card_id: str, language: str = "fr") -> str:
+    return genanki.guid_for(NAMESPACE if language == "fr" else NAMESPACE + "-en", card_id)
 
 
 def credits(card):
@@ -57,7 +58,14 @@ def references_html(references):
     )
 
 
-def image_html(card, name):
+def image_html(card, name, language="fr"):
+    if language == "en":
+        attribution = (
+            credits(card)
+            .replace("Cartographie", "Map data")
+            .replace("domaine public", "public domain")
+        )
+        return f'<img src="{name}" alt="Geographic map">' + attribution
     return f'<img src="{name}" alt="Carte géographique">' + credits(card)
 
 
@@ -164,13 +172,19 @@ def preview(project: Project, out: Path) -> Path:
     return path
 
 
-def build(project: Project, out: Path) -> Path:
+def build(project: Project, out: Path, *, language: str = "fr") -> Path:
+    if language not in ("en", "fr"):
+        raise ValueError(f"Unsupported package language: {language}")
+    if language == "en":
+        from french_geography.languages import english_pilot
+
+        project = english_pilot(project)
     media_dir = project.root / "build/media"
     manifest = maps(project, media_dir)
     templates = project.root / "templates/anki"
     model = genanki.Model(
-        MODEL_ID,
-        "Géographie française — carte physique",
+        MODEL_ID if language == "fr" else 1976423201,
+        "Géographie française — carte physique" if language == "fr" else "French geography — map",
         fields=[
             {"name": name}
             for name in [
@@ -185,9 +199,19 @@ def build(project: Project, out: Path) -> Path:
         ],
         templates=[
             {
-                "name": "Identifier",
-                "qfmt": (templates / "front.html").read_text(),
-                "afmt": (templates / "back.html").read_text(),
+                "name": "Identify" if language == "en" else "Identifier",
+                "qfmt": (templates / "front.html")
+                .read_text()
+                .replace(
+                    "GÉOGRAPHIE FRANÇAISE",
+                    "FRENCH GEOGRAPHY" if language == "en" else "GÉOGRAPHIE FRANÇAISE",
+                ),
+                "afmt": (templates / "back.html")
+                .read_text()
+                .replace(
+                    "GÉOGRAPHIE FRANÇAISE",
+                    "FRENCH GEOGRAPHY" if language == "en" else "GÉOGRAPHIE FRANÇAISE",
+                ),
             }
         ],
         css=(templates / "style.css").read_text(),
@@ -204,18 +228,20 @@ def build(project: Project, out: Path) -> Path:
         "Outre-mer": genanki.Deck(1976423108, "Géographie française::Outre-mer"),
         "Paysages": genanki.Deck(1976423109, "Géographie française::Paysages"),
     }
+    if language == "en":
+        decks = {"Fleuves": genanki.Deck(1976423200, "French geography::Rivers")}
     media_files = set()
     positions = dict.fromkeys(decks, 0)
     for card in project.cards:
         images = [manifest[card.id][side].get("png") for side in ["front", "back"]]
         media_files.update(str(media_dir / name) for name in images if name)
-        image_fields = [image_html(card, name) if name else "" for name in images]
+        image_fields = [image_html(card, name, language) if name else "" for name in images]
         refs = references_html(card.references)
         positions[card.theme] += 1
         decks[card.theme].add_note(
             genanki.Note(
                 model=model,
-                guid=note_guid(card.id),
+                guid=note_guid(card.id, language),
                 due=positions[card.theme],
                 fields=[
                     card.id,
@@ -228,6 +254,7 @@ def build(project: Project, out: Path) -> Path:
                 ],
                 tags=[
                     "french-geography",
+                    f"language::{language}",
                     f"theme::{card.theme.lower()}",
                     f"direction::{card.direction}",
                     f"id::{card.id}",
@@ -237,6 +264,11 @@ def build(project: Project, out: Path) -> Path:
     package = genanki.Package(list(decks.values()))
     package.media_files = sorted(media_files)
     out.mkdir(parents=True, exist_ok=True)
-    path = out / "french-geography.apkg"
+    path = out / PACKAGES[language][0]
     package.write_to_file(str(path))
     return path
+
+
+def build_packages(project: Project, out: Path, language: str = "all") -> list[Path]:
+    languages = ("en", "fr") if language == "all" else (language,)
+    return [build(project, out, language=item) for item in languages]

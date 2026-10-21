@@ -54,3 +54,15 @@ villes complémentaires conservent la règle historique `villes-chefs-lieux` afi
 pas renommer les notes existantes ; ce nom technique ne définit plus le périmètre.
 Les nouvelles relations utilisent des identités distinctes, sans dupliquer les
 localisations de villes déjà présentes.
+
+## Pilote anglais et noms de paquets figés
+
+- Français : `french-geography-fr.apkg`, namespace, IDs de modèles/decks et IDs de notes inchangés.
+- Anglais : `french-geography-en.apkg`, namespace `ultimate-french-geography-v1-en`.
+- Modèle anglais : `1976423201` ; sous-deck `French geography::Rivers` : `1976423200`.
+- Note anglaise : ID français source suivi de `-en`, avec un GUID dans le namespace anglais.
+
+Le pilote sélectionne explicitement les traductions de `locales/en.yml` ; une carte
+sans traduction n’est pas incluse dans le paquet anglais. Les deux fichiers ne sont
+donc pas annoncés comme ayant le même contenu. Les noms d’assets sont figés dans
+`src/french_geography/distribution.py` pour les futures versions.

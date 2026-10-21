@@ -6,7 +6,7 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
-from french_geography.build import build, maps, preview
+from french_geography.build import build, build_packages, maps, preview
 from french_geography.project import load
 from french_geography.schema import CatalogFile, DepartmentCatalog, PlaceCatalog, RuleFile
 
@@ -25,12 +25,18 @@ def anki(action: str, **params):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Géographie française — cartes Anki")
+    parser = argparse.ArgumentParser(description="French geography — Anki decks")
     parser.add_argument(
         "command", choices=["validate", "schema", "maps", "preview", "build", "check", "push"]
     )
     parser.add_argument("--root", type=Path, default=Path.cwd())
     parser.add_argument("--out", type=Path)
+    parser.add_argument(
+        "--lang",
+        choices=["all", "en", "fr"],
+        default="all",
+        help="Package language (build only; default: both, English first)",
+    )
     args = parser.parse_args()
     root = args.root.resolve()
     try:
@@ -52,7 +58,10 @@ def main():
             maps(project, args.out or root / "build/media")
         elif args.command == "preview":
             print(preview(project, args.out or root / "build/preview"))
-        elif args.command in ("build", "push"):
+        elif args.command == "build":
+            for path in build_packages(project, args.out or root / "dist", args.lang):
+                print(path)
+        elif args.command == "push":
             path = build(project, args.out or root / "dist")
             print(path)
             if args.command == "push":

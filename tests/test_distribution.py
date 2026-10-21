@@ -31,8 +31,13 @@ def test_release_waits_for_checks_and_uses_the_uploaded_package():
     )
     assert upload["name"] == download["name"]
     args = shlex.split(release["steps"][-1]["run"])
-    package = args[args.index("--package") + 1]
-    assert str(Path(package).relative_to(download["path"])) in upload["path"].splitlines()
+    packages = [args[i + 1] for i, value in enumerate(args) if value == "--package"]
+    assert {Path(package).name for package in packages} == {
+        "french-geography-en.apkg",
+        "french-geography-fr.apkg",
+    }
+    for package in packages:
+        assert str(Path(package).relative_to(download["path"])) in upload["path"].splitlines()
     assert release["steps"][0]["with"]["ref"] == "${{ github.sha }}"
 
 
@@ -50,8 +55,9 @@ def test_next_patch_version_uses_numeric_order(tags, expected):
 
 
 def test_publish_avoids_tags_and_release_collisions_and_targets_tested_sha(tmp_path, monkeypatch):
-    package = tmp_path / "french-geography.apkg"
-    package.write_bytes(b"built package")
+    packages = [tmp_path / name for name, label in publisher.PACKAGES.values()]
+    for package in packages:
+        package.write_bytes(b"built package")
     sha = "a" * 40
     monkeypatch.setattr(
         publisher,
@@ -62,17 +68,19 @@ def test_publish_avoids_tags_and_release_collisions_and_targets_tested_sha(tmp_p
     )
     commands = []
     monkeypatch.setattr(publisher.subprocess, "run", lambda args, **kwargs: commands.append(args))
-    assert publisher.publish(package, "owner/repo", sha) == "v0.1.6"
+    assert publisher.publish(packages, "owner/repo", sha) == "v0.1.6"
     command = commands[0]
     assert command[:4] == ["gh", "release", "create", "v0.1.6"]
     assert command[command.index("--target") + 1] == sha
-    assert f"{package}#Géographie française" in command
+    for package, (_name, label) in zip(packages, publisher.PACKAGES.values(), strict=True):
+        assert f"{package}#{label}" in command
     assert "--latest" in command
 
 
 def test_failed_metadata_request_never_publishes(tmp_path, monkeypatch):
-    package = tmp_path / "french-geography.apkg"
-    package.write_bytes(b"built package")
+    packages = [tmp_path / name for name, label in publisher.PACKAGES.values()]
+    for package in packages:
+        package.write_bytes(b"built package")
     commands = []
 
     def fail(args, **kwargs):
@@ -81,5 +89,5 @@ def test_failed_metadata_request_never_publishes(tmp_path, monkeypatch):
 
     monkeypatch.setattr(publisher.subprocess, "run", fail)
     with pytest.raises(subprocess.CalledProcessError):
-        publisher.publish(package, "owner/repo", "a" * 40)
+        publisher.publish(packages, "owner/repo", "a" * 40)
     assert all(command[:3] != ["gh", "release", "create"] for command in commands)

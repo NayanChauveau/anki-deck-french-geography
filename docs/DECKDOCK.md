@@ -7,7 +7,8 @@
 ## Contrat
 
 Deckdock suit un fichier `.apkg` dans les releases stables d’un dépôt GitHub public.
-Le nom du fichier doit rester `french-geography.apkg`, et chaque changement publié
+Les noms définitifs sont `french-geography-en.apkg` et `french-geography-fr.apkg`.
+Chaque changement publié
 utilise une nouvelle version `vX.Y.Z`. Il compare les tags, sans comparer le contenu
 lorsque le tag est identique. `latest-main` et les liens vers une page de dépôt ou
 vers `releases/latest` ne sont pas des liens d’installation acceptés.
@@ -15,7 +16,8 @@ vers `releases/latest` ne sont pas des liens d’installation acceptés.
 Le lien d’installation aura la forme suivante, **après publication de cette version** :
 
 ```text
-https://github.com/NayanChauveau/anki-deck-french-geography/releases/download/vX.Y.Z/french-geography.apkg
+https://github.com/NayanChauveau/anki-deck-french-geography/releases/download/vX.Y.Z/french-geography-en.apkg
+https://github.com/NayanChauveau/anki-deck-french-geography/releases/download/vX.Y.Z/french-geography-fr.apkg
 ```
 
 `vX.Y.Z` est un emplacement à remplacer, pas une release disponible. Le dépôt est public. La CI est désormais configurée pour publier automatiquement
@@ -61,7 +63,8 @@ plus grand numéro stable est incrémenté (`v0.1.9` → `v0.1.10`). Les tags no
 comme `latest-main`, sont ignorés. Une erreur de lecture GitHub interrompt la
 publication ; elle ne déclenche pas un retour au numéro initial.
 
-Chaque release conserve `french-geography.apkg` et le label « Géographie française ».
+Chaque release conserve les deux noms de fichiers définis dans
+`src/french_geography/distribution.py`, avec un label propre à chaque langue.
 Elle cible le SHA vérifié par la CI et devient la release stable la plus récente.
 Une release existante n’est jamais remplacée. Une pull request ne publie rien.
 Aucun tag manuel n’est nécessaire pour une publication normale.
@@ -81,3 +84,17 @@ possibles des options conservent le même comportement.
 Une note absente d’un nouveau paquet n’est pas supprimée automatiquement. Les
 retraits et suspensions devront suivre une politique explicite ; ne pas changer les
 identifiants pour résoudre un problème de présentation ou d’ordre.
+
+## Transition bilingue minimale
+
+La release automatique `v0.1.0` a été publiée avec succès depuis le commit `7fd154d`.
+Elle utilisait l’ancien fichier unique `french-geography.apkg`. À la demande de l’auteur,
+les noms sont désormais figés avec les suffixes `-en` et `-fr` ; aucune troisième copie
+n’est publiée. Si cet ancien fichier a été suivi dans Deckdock, remplacer son suivi
+par le lien versionné du nouveau fichier français. Les identités des notes françaises
+sont conservées : le renommage de fichier ne recrée pas les notes.
+
+`make build` produit les deux éditions. L’anglais est un pilote explicite d’une seule
+carte Loire ; le français reste à 1 014 cartes. Les deux paquets ont des identités
+isolées. Le contrôle Deckdock teste les deux assets et la publication refuse un lot
+auquel manquerait une édition. La traduction complète n’a pas été entreprise.

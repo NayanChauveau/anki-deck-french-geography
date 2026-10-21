@@ -1,0 +1,6 @@
+# Small English pilot. Missing translations are not replaced with French text.
+cards:
+  fr-geo-hydrographie-identification-loire:
+    question: Which river is highlighted on the map?
+    answer: The Loire
+    explanation: It passes through Orléans, Tours and Nantes before reaching the Atlantic at Saint-Nazaire.
