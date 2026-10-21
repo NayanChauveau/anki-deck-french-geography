@@ -1,0 +1,7 @@
+features:
+  - id: coast-manche
+    name: Manche
+  - id: coast-atlantique
+    name: Atlantique
+  - id: coast-mediterranee
+    name: Méditerranée

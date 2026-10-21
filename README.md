@@ -1,14 +1,18 @@
 # Géographie française — Anki
 
-**880 cartes** réparties dans cinq sous-decks :
+**1 014 cartes** réparties dans neuf sous-decks :
 
 | Série | Cartes | Contenu |
 | --- | ---: | --- |
-| Fleuves | 18 | Reconnaissance des cours d’eau, explications vérifiées |
+| Fleuves | 38 | 32 identifications et 6 relations affluent → cours d’eau rejoint |
 | Départements | 303 | 101 départements × 3 sens, par lots de dix |
 | Régions | 148 | Localisation, noms, chefs-lieux et département → région |
-| Villes | 401 | 101 chefs-lieux : localisation, noms et relations départementales |
-| Relief | 10 | Pilote de cinq grandes zones : Alpes, Pyrénées, Massif central, Jura, Vosges |
+| Villes | 437 | 113 communes : 101 chefs-lieux et 12 repères complémentaires |
+| Relief | 26 | 7 zones indicatives et 4 sommets repères |
+| Lacs | 10 | 5 lacs et retenues, dans les deux sens |
+| Littoral | 15 | 5 zones maritimes et 5 relations ville portuaire → façade |
+| Outre-mer | 15 | Situation de 5 territoires et relation au bassin océanique |
+| Paysages | 22 | Les cœurs des 11 parcs nationaux, dans les deux sens |
 
 Les questions relationnelles qui contiennent déjà leur réponse sont écartées.
 Les référentiels administratifs sont ceux du **COG au 1er janvier 2025**. Les points
@@ -16,14 +20,16 @@ urbains représentent les mairies du millésime 2025, pas la forme des agglomér
 Voir [les régions et villes](docs/ADMINISTRATION.md), [les départements](docs/DEPARTMENTS.md)
 et [la revue hydrographique](docs/reviews/HYDROGRAPHY_2026-10-20.md).
 
-La série de géographie physique contient **18 cartes d’identification de cours d’eau**.
-Le recto montre le tracé surligné sans son nom ; le verso révèle le nom et une courte explication sous l’image. Le cadrage reste identique.
+L’hydrographie réunit les 18 objets initiaux Natural Earth et 14 ajouts BD TOPAGE
+2024 sélectionnés explicitement. Les noms homonymes sont départagés par identifiant
+Sandre. La Saône possède désormais un tracé plus complet ; le Rhin reste partiel
+à l’échelle internationale. La Somme inclut le cours canalisé. La série contient
+fleuves et rivières, sans prétendre à l’exhaustivité ; son chemin Anki initial est conservé.
 
-La série couvre les 18 cours d’eau du fichier Natural Earth téléchargé dont un tracé
-recoupe la métropole : Ariège, Dordogne, Doubs, Durance, Escaut, Garonne, Loire,
-Marne, Meuse, Moselle, Rhin, Rhône, Saône, Sègre, Seine, Tarn, Vienne et Yonne.
-Il s’agit de fleuves et de rivières ; la sélection n’est pas un inventaire exhaustif.
-Le deck conserve son chemin Anki initial `Géographie française::Fleuves`.
+Les zones armoricaines et corses sont des schémas pédagogiques indépendants,
+annoncés au verso. Les parcs nationaux utilisent des contours officiels simplifiés,
+avec une distinction explicite entre cœur et aire d’adhésion. Les nouveaux lots sont
+construits localement ; le dernier import Anki confirmé reste celui de 880 cartes.
 
 La progression prévue est détaillée dans la [roadmap complète](docs/ROADMAP.md).
 
@@ -137,14 +143,13 @@ explications restent dans le texte du verso. Les crédits départementaux sont a
 sous l’image en HTML, avec les liens vers le jeu de données et sa licence.
 Les références restent disponibles dans « Sources ».
 
-Les champs `explanation` sont des résumés éditoriaux, pas des citations. Les 18 textes
+Les champs `explanation` sont des résumés éditoriaux, pas des citations. Les textes
 hydrographiques ont une référence factuelle et une revue datée. Les références des
 géométries restent distinctes de celles des explications.
 
-Le relief est un pilote : les zones Natural Earth sont approximatives. Les montagnes
-corses et le Massif armoricain attendent des géométries adaptées ; un contour d’île
-ou de région administrative n’est pas utilisé pour représenter un relief.
+Le relief est un pilote : les zones Natural Earth sont approximatives. Les reliefs corses et le Massif armoricain sont représentés par des zones
+schématiques, distinctes des contours administratifs et signalées comme telles.
 
-Le pilote comprend aussi trois sommets repères et neuf cartes : localisation dans
+Le pilote comprend aussi quatre sommets repères et douze cartes : localisation dans
 les deux sens et rattachement à un grand ensemble. Les relations sont sourcées
 séparément des points Natural Earth ; aucune altitude exacte n’est demandée.

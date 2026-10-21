@@ -146,7 +146,12 @@ def place_catalog(root, relative):
 
 def generate_places(root, rule, geometries):
     entries = place_catalog(root, rule.catalog)
-    if entries.keys() != geometries.keys():
+    valid_coverage = (
+        entries.keys() <= geometries.keys()
+        if isinstance(rule, RelationRule)
+        else entries.keys() == geometries.keys()
+    )
+    if not valid_coverage:
         raise ValueError(f"Catalog/layer mismatch: {rule.catalog}")
     cards = []
     if isinstance(rule, RelationRule):
@@ -156,7 +161,8 @@ def generate_places(root, rule, geometries):
             if target not in related:
                 raise ValueError(f"Unknown {rule.relation} for {entry.id}: {target}")
             answer = related[target].name
-            question = rule.question.format(name=entry.name)
+            display_name = f"{entry.name} ({entry.qualifier})" if entry.qualifier else entry.name
+            question = rule.question.format(name=display_name)
             if answer.casefold() in question.casefold():
                 continue  # A relation already disclosed by its question adds no recall value.
             cards.append(
@@ -171,7 +177,7 @@ def generate_places(root, rule, geometries):
                     answer=answer,
                     explanation=(
                         entry.explanation
-                        if rule.relation == "massif"
+                        if rule.relation in ("massif", "downstream", "ocean", "coast")
                         else f"{entry.name} → {answer} · Source : Insee, COG 2025."
                     ),
                     references=list(dict.fromkeys([*rule.references, *entry.references])),
@@ -184,6 +190,9 @@ def generate_places(root, rule, geometries):
         for direction in rule.directions:
             for entry in batch:
                 locate = direction == "name-map"
+                display_name = (
+                    f"{entry.name} ({entry.qualifier})" if entry.qualifier else entry.name
+                )
                 cards.append(
                     Card(
                         id=f"fr-geo-{rule.id}-{entry.id.lower()}-{direction}",
@@ -193,11 +202,11 @@ def generate_places(root, rule, geometries):
                         theme=rule.theme,
                         direction=direction,
                         question=(
-                            f"Où se situe {rule.noun} « {entry.name} » ?"
+                            f"Où se situe {rule.noun} « {display_name} » ?"
                             if locate
-                            else f"Quel est le nom de {rule.noun} sur la carte ?"
+                            else "Quel est le nom de l’élément surligné sur la carte ?"
                         ),
-                        answer=entry.name,
+                        answer=display_name,
                         explanation=entry.explanation,
                         references=list(dict.fromkeys([*rule.references, *entry.references])),
                         front_map="blank" if locate else "target",

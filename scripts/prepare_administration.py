@@ -35,7 +35,9 @@ def write_json(path, data):
 
 regions = rows(args.cog_regions)
 departments = rows(args.cog_departments)
-needed = {row["CHEFLIEU"] for row in regions + departments}
+capitals = {row["CHEFLIEU"] for row in regions + departments}
+selection = yaml.safe_load((root / "catalog/additional-cities.yml").read_text())
+needed = capitals | set(selection["communes"])
 communes = {
     row["COM"]: row
     for row in rows(args.cog_communes)
@@ -111,11 +113,16 @@ for code, row in sorted(communes.items()):
             "id": f"city-{code}",
             "code": code,
             "name": row["LIBELLE"],
+            "qualifier": "Île-de-France"
+            if code == "93066"
+            else "océan Indien"
+            if code == "97411"
+            else None,
             "department": f"dep-{row['DEP']}",
             "region": f"reg-{region}",
             "view": (
                 "paris-region"
-                if code in {"75056", "92050", "93008", "94028"}
+                if code in {"75056", "92050", "93008", "94028", "93066"}
                 else region_views.get(region, "metropolitan")
             ),
         }
@@ -164,7 +171,7 @@ for key, path, input_path, source, url, modifications in [
         "Etalab / IGN, positions des mairies",
         "https://etalab-datasets.geo.data.gouv.fr/contours-administratifs/2025/geojson/mairies.geojson",
         (
-            "WGS84; town halls for COG 2025 regional and departmental capitals only; nam"
+            "WGS84; town halls for COG 2025 capitals and editorial city selection; nam"
             "e/relations from COG; codes prefixed city-; one town-hall point per selecte"
             "d commune."
         ),
@@ -207,7 +214,8 @@ registry["sources"].append(
             ]
         ],
         "modifications": (
-            "COG regions and departments retained; communes restricted to their capitals"
+            "COG regions and departments retained; communes restricted to capitals "
+            "and the editorial city selection"
             "; UTF-8 CSV converted to JSON without changing codes, names or relationship"
             "s."
         ),

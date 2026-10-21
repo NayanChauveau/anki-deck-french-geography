@@ -130,3 +130,57 @@ Les sommets forment une couche de points séparée des polygones indicatifs de r
 Paris, Nanterre, Bobigny et Créteil partagent désormais la vue francilienne avec
 encart métropolitain : leurs points se confondaient à l’échelle nationale. Leurs
 identifiants et coordonnées restent identiques.
+
+## Extension du 21 octobre 2026
+
+Le fond pays est désormais mondial (Natural Earth 50m v5.1.2), au lieu d’être découpé
+sur l’Europe. Les cadrages métropolitains restent locaux ; les vues océaniques ajoutent
+un encart mondial en projection Equal Earth. Les points de situation ultramarins sont
+calculés à l’intérieur des cinq polygones départementaux et ne sont pas déplacés.
+Les frontières du fond Natural Earth sont généralisées : leurs côtes peuvent différer
+des cibles locales plus précises. Ce fond ne remplace pas un référentiel de limites.
+
+Les deux nouvelles zones de relief sont des schémas indépendants dans
+`data/relief/schematic-zones.geojson` (CC0), accompagnés de références BRGM sur la
+situation des ensembles. Les références soutiennent le contexte géographique ; elles
+ne sont pas présentées comme la source de ces polygones. Les schémas sont découpés
+sur le contour français Natural Earth pour éviter de remplir la mer. Les limites
+intérieures restent indicatives et ne remplacent aucun contour géologique officiel.
+
+BD TOPAGE 2024 (IGN/OFB/Sandre, Licence Ouverte 2.0) complète 14 cours d’eau,
+remplace la Saône et complète la partie frontalière du Rhin. Les codes sélectionnés
+sont conservés dans `data/hydrography/selected-codes.json`. Les homonymes ne sont
+pas fusionnés. La Somme réunit les objets « Fleuve la Somme » et le cours canalisé.
+La simplification de 150 m utilise Lambert-93. Les tronçons étrangers absents du
+référentiel national ne sont pas inventés ; le Rhin demeure incomplet à cette échelle.
+Les instantanés WFS sélectionnés et leurs requêtes sont épinglés sous `data/`.
+
+Les lacs d’Annecy et du Bourget ainsi que les retenues de Serre-Ponçon et de
+Sainte-Croix viennent de BD TOPAGE ; le Léman vient de Natural Earth. Les cadrages
+locaux avec encart permettent de lire les petites surfaces. Les cinq zones marines
+Natural Earth sont des étendues géographiques conventionnelles, sans valeur juridique.
+Les crédits sont en HTML hors des images.
+
+Les cœurs terrestres et marins des onze parcs nationaux sont issus du jeu officiel
+Parcs nationaux de France/OFB du 11 février 2026, sous Licence Ouverte 2.0. Les codes
+CTPN et CMPN sont réunis par parc ; les aires d’adhésion et les aires maritimes adjacentes
+sont exclues. Simplification de 100 m en Lambert-93 ou UTM local, puis retour en WGS84.
+Le verso précise ce périmètre. Ces cartes servent à apprendre des lieux, pas à décider
+des règles applicables à une parcelle ou à une navigation.
+
+### Préparation séparée du build
+
+Les scripts prennent des entrées locales ; ils ne sont jamais appelés par le build.
+`prepare_world_context.py` prépare le fond mondial ; `prepare_relief.py` réunit les
+cinq zones NE et les schémas locaux ; `prepare_hydrography.py` combine les cours d’eau
+NE et l’instantané TOPAGE ; `prepare_water_places.py` prépare lacs, mers et points
+ultramarins ; `prepare_parks.py` sélectionne les cœurs du jeu officiel. Les URL,
+versions, licences, empreintes et modifications sont dans `geo/sources.yml`.
+Les fichiers locaux référencés par `inputs` sont aussi vérifiés par le chargeur.
+
+Attention à l’ordre de préparation : `prepare_geography.py` produit le socle NE initial,
+avant les extensions hydrographiques et le fond mondial. Il ne suffit pas à régénérer
+la version enrichie. `prepare_relief.py` dépend du fond pays ; les points outre-mer
+dépendent des départements. La revue d’architecture doit examiner l’orchestration
+explicite de ces dépendances. `make check`, `make preview` et `make build` utilisent
+uniquement les données préparées, sans accès réseau.

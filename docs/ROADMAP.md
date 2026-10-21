@@ -1,7 +1,7 @@
 # Ultimate French Geography — roadmap
 
 Document de référence pour la progression du contenu et du moteur.
-Mise à jour : 20 octobre 2026.
+Mise à jour : 21 octobre 2026.
 
 Les cases cochées décrivent des fonctions implémentées ou des vérifications réalisées.
 Les autres éléments sont des travaux à venir, sans date de livraison annoncée.
@@ -49,7 +49,7 @@ automatique. Ces possibilités seraient un chantier distinct.
 
 ### Contenu disponible
 
-- [x] 18 cartes d’identification de cours d’eau.
+- [x] 32 cartes d’identification de cours d’eau et six relations affluent → cours d’eau rejoint.
 - [x] Catalogue des 101 départements, avec nom, code texte et géométrie associée.
 - [x] 303 cartes départementales : nom → position, position → nom, position → numéro.
 - [x] Verso des questions de numéro : nom et code, par exemple « Ain (01) ».
@@ -58,11 +58,14 @@ automatique. Ces possibilités seraient un chantier distinct.
 - [x] Vues locales ultramarines et vue francilienne avec encart métropolitain.
 
 - [x] 148 cartes régionales et relations département → région, à partir du COG 2025.
-- [x] 401 cartes urbaines : 101 chefs-lieux réutilisables et relations départementales.
-- [x] Pilote de cinq grandes zones de relief, dix cartes avec limites approximatives explicites.
-- [x] Trois sommets repères et neuf cartes : localisation dans les deux sens et grand ensemble associé.
+- [x] 437 cartes urbaines : 113 communes, dont les 101 chefs-lieux, et relations départementales.
+- [x] Sept zones de relief, dont deux schémas explicitement signalés ; quatorze cartes de localisation.
+- [x] Quatre sommets repères et douze cartes : localisation dans les deux sens et grand ensemble associé.
+- [x] Cinq lacs/retenues (dix cartes), cinq zones maritimes et cinq relations port/façade (quinze cartes).
+- [x] Situation de cinq territoires ultramarins et bassin océanique (quinze cartes).
+- [x] Cœurs des onze parcs nationaux, dans les deux sens (vingt-deux cartes).
 
-Total généré : **889 notes produisant chacune une carte**. Ce nombre ne décrit pas
+Total généré : **1 014 notes produisant chacune une carte**. Ce nombre ne décrit pas
 nécessairement le nombre de notes d’une collection Anki déjà utilisée : les anciennes
 notes issues des changements d’identifiants peuvent y subsister.
 
@@ -79,7 +82,7 @@ notes issues des changements d’identifiants peuvent y subsister.
 - [x] Médias nommés par empreinte et embarqués dans le paquet Anki.
 - [x] Galerie HTML locale, export genanki et commandes AnkiConnect.
 - [x] CI de contrôle et artefacts paquet/galerie définis dans le dépôt.
-- [x] Tests automatiques : 43 tests réussis lors des dernières vérifications.
+- [x] Tests automatiques : 50 tests réussis lors des dernières vérifications.
 - [x] Paquet de 880 cartes construit et importé via AnkiConnect le 20 octobre 2026 ; synchronisation demandée.
 
 ### Limites à traiter
@@ -146,12 +149,12 @@ les nouveaux objets ne changent pas le fond des séries existantes.
 ### 4.2 Premiers repères urbains
 
 - [x] Ajouter les chefs-lieux régionaux comme premier ensemble de villes.
-- [ ] Définir une sélection explicite de grandes villes complémentaires.
+- [x] Définir douze repères urbains complémentaires, sélection éditoriale sans classement de population.
 - [ ] Distinguer commune, agglomération et aire d’attraction dans les éventuels critères de sélection.
 - [x] Documenter le point géographique retenu pour représenter chaque ville.
 - [x] Générer ville → position et position → ville.
 - [x] Relier les villes à leurs départements et régions.
-- [ ] Distinguer clairement les villes homonymes dans les questions.
+- [x] Distinguer les deux Saint-Denis dans les questions ; étendre le contrôle aux futurs ajouts.
 
 Ne pas utiliser « les plus grandes villes » sans préciser le critère et le millésime.
 Un chiffre de population ne doit pas devenir une dépendance de l’identité de la note.
@@ -174,7 +177,8 @@ et reliefs corses ; grands bassins, plaines et vallées structurantes.
 
 - [ ] Distinguer les ensembles montagneux, massifs, bassins et plaines dans les types d’objets.
 - [x] Choisir les zones indicatives du pilote : Alpes, Pyrénées, Massif central, Jura et Vosges.
-- [ ] Compléter les géométries pour le Massif armoricain, les reliefs corses, les bassins et les plaines.
+- [x] Ajouter des schémas pédagogiques explicitement indicatifs pour le Massif armoricain et les reliefs corses.
+- [ ] Étudier leur remplacement par un référentiel physique adapté ; bassins et plaines encore à faire.
 - [x] Documenter les limites approximatives des cinq polygones Natural Earth du pilote.
 - [x] Générer nom → zone et zone → nom pour les cinq ensembles du pilote.
 - [ ] Étendre les cartes aux autres grands ensembles retenus.
@@ -202,30 +206,31 @@ simplifié. Elle ne constitue pas la liste des principaux cours d’eau à appre
 
 - [ ] Établir une sélection éditoriale indépendante de la disponibilité dans Natural Earth.
 - [ ] Ajouter les fleuves manquants importants, dont des fleuves côtiers.
-- [ ] Examiner notamment Adour, Somme, Vilaine, Charente, Aude, Hérault, Var et Orne.
+- [x] Ajouter Adour, Somme, Vilaine, Charente, Aude, Hérault, Var et Orne via BD TOPAGE 2024.
 - [ ] Choisir une source adaptée, par exemple BD TOPAGE/Sandre après étude de sa couverture et licence.
 - [ ] Vérifier la continuité des tracés, confluences, embouchures et traversées de lacs.
-- [ ] Corriger ou remplacer les tronçons incomplets du Rhin et de la Saône.
+- [x] Remplacer la Saône et compléter la portion frontalière française du Rhin avec BD TOPAGE.
+- [ ] Compléter le cours international du Rhin avec une source adaptée : il reste partiel.
 - [ ] Conserver les identifiants des objets lors d’un changement de géométrie.
 - [ ] Contrôler le fond commun : tous les repères de la série visibles, une seule cible surlignée.
 
 ### 6.2 Affluents et bassins
 
 - [ ] Ajouter les principaux affluents des grands bassins, selon une sélection documentée.
-- [ ] Examiner notamment Allier, Cher, Oise, Lot, Isère et Ain.
-- [ ] Stocker explicitement la relation « rejoint tel cours d’eau ».
+- [x] Ajouter Allier, Cher, Oise, Lot, Isère et Ain avec leurs identifiants Sandre.
+- [x] Stocker explicitement six relations « rejoint tel cours d’eau ».
 - [ ] Distinguer affluent direct, sous-affluent, bassin et débouché maritime.
-- [ ] Générer rivière → cours d’eau rejoint pour les relations importantes.
+- [x] Générer six premières cartes rivière → cours d’eau rejoint.
 - [ ] Ajouter une vue d’ensemble des grands bassins versants.
 - [ ] Générer bassin → position et, si utile, fleuve → mer ou océan de débouché.
 - [ ] Traiter les estuaires communs et les cas de classement ambigus par une explication sourcée.
 
 ### 6.3 Grands lacs
 
-- [ ] Constituer une sélection de grands lacs et de quelques petits lacs repères.
+- [x] Première sélection : Léman, Bourget, Annecy, Serre-Ponçon et Sainte-Croix ; à étendre.
 - [ ] Distinguer lac naturel, retenue et étang lorsque cette distinction est pertinente.
 - [ ] Ajouter nom, géométrie, territoire et relation éventuelle à un cours d’eau.
-- [ ] Prévoir des vues locales avec encart pour les surfaces trop petites à l’échelle nationale.
+- [x] Prévoir des vues locales avec encart pour les cinq lacs et retenues.
 - [ ] Éviter de sélectionner uniquement les objets les mieux représentés par le jeu source.
 
 ## 7. Priorité 4 — littoral, mers et îles
@@ -260,8 +265,8 @@ avec des cibles adaptées à leur nature et sans confusion entre zone et point p
 Les vues départementales ultramarines actuelles sont locales. Elles ne suffisent pas
 à apprendre où ces territoires se trouvent dans le monde.
 
-- [ ] Embarquer un fond mondial local, documenté et adapté à cet usage.
-- [ ] Ajouter les vues par océan et les encarts de situation mondiale.
+- [x] Embarquer le fond mondial Natural Earth 50m v5.1.2, local et documenté.
+- [x] Ajouter les vues Atlantique/Antilles et océan Indien, avec encarts mondiaux.
 - [ ] Couvrir les territoires ultramarins pertinents au-delà du seul catalogue départemental.
 - [ ] Stocker explicitement le type de territoire et une référence datée pour les statuts.
 - [ ] Relier territoire → océan, ensemble régional et principaux voisins.
@@ -284,7 +289,7 @@ Ce volet vient après les repères administratifs et physiques structurants.
 - [ ] Distinguer ces objets des régions administratives actuelles.
 - [ ] Documenter les limites floues, variables ou historiques.
 - [ ] Ajouter les grandes forêts comme repères de paysages.
-- [ ] Ajouter les parcs nationaux à partir d’un référentiel daté.
+- [x] Ajouter les cœurs des onze parcs nationaux depuis le jeu officiel du 11 février 2026.
 - [ ] Distinguer parc national, parc naturel régional et autres catégories de protection.
 - [ ] Évaluer séparément l’intérêt d’une extension aux parcs naturels régionaux.
 - [ ] Relier les paysages aux grands ensembles physiques, sans réduire un territoire à un cliché.
@@ -347,7 +352,7 @@ ne constitue pas à elle seule une source pour tout le texte d’une carte.
 - [ ] Étendre les catalogues aux sommets, lacs et repères côtiers.
 - [x] Référencer département/région, ville/département et chefs-lieux par identifiants.
 - [x] Ajouter les premières relations sommet/grand ensemble.
-- [ ] Ajouter les relations affluent/exutoire.
+- [x] Ajouter six relations d’affluent direct ; autres affluents et débouchés à compléter.
 - [x] Valider l’existence des cibles administratives et tester les correspondances avec le COG 2025.
 - [ ] Étendre les contrôles de cohérence aux futures relations physiques.
 - [x] Réutiliser un même objet dans plusieurs séries sans recopier ses propriétés.
@@ -482,17 +487,18 @@ Un lot est terminé lorsque tous les points suivants sont vrais :
 - [x] Cache persistant de rendu et références consultables dans la galerie.
 - [x] 40 tests réussis, paquet de 880 cartes construit et importé ; synchronisation demandée.
 
-### Suite en cours, reprise autorisée
+### Suite du travail
 
 - [ ] Contrôler visuellement les nouvelles séries dans Anki et vérifier leur ordre effectif.
 - [ ] Terminer la documentation des cas institutionnels et des homonymes urbains.
-- [ ] Compléter le pilote relief : géométries adaptées pour les reliefs corses et armoricains.
+- [x] Compléter le pilote relief par deux zones schématiques corses et armoricaines, sans les présenter comme des contours officiels.
 - [x] Ajouter trois sommets repères avec sources géométriques et factuelles distinctes.
-- [ ] Définir les grandes villes complémentaires, au-delà des seuls chefs-lieux.
-- [ ] Préparer ensuite l’hydrographie enrichie : tracés incomplets et cours d’eau manquants.
+- [x] Définir et intégrer douze villes complémentaires, sans classement de population.
+- [x] Intégrer quatorze cours d’eau supplémentaires, six relations, la correction de la Saône et un complément du Rhin.
 
-La poursuite a repris à la demande de l’auteur. Les validations dans les clients
-Anki restent ouvertes ; un build local ne les remplace pas.
+La poursuite des ajouts est mise en pause à la demande de l’auteur après ce lot,
+pour un commit puis une revue globale de l’architecture et de la maintenabilité.
+Les validations dans les clients Anki restent ouvertes ; un build local ne les remplace pas.
 
 ## 18. Liens de référence
 
@@ -526,3 +532,17 @@ conservés. Cette extension reste locale, sans nouvel import Anki.
 Validation locale de cette reprise : 43 tests réussis, 889 fiches validées ;
 aperçus du mont Blanc et de Bobigny inspectés. Contrôle sur mobile et import
 de cette extension restent à faire.
+
+## État au 21 octobre 2026 — pause pour revue
+
+Le lot local contient 1 014 cartes : Fleuves 38, Départements 303, Régions 148,
+Villes 437, Relief 26, Lacs 10, Littoral 15, Outre-mer 15 et Paysages 22.
+Les 50 tests passent. Aucun import de ce lot n’est annoncé ; le dernier import
+confirmé reste celui de 880 cartes. Les paragraphes datés précédents sont historiques.
+
+La priorité demandée devient la revue de la logique, du DRY, de la préparation des
+données et du coût d’ajout d’un thème. Les lots restent extensibles : basins/plaines,
+cols, autres sommets, îles/caps/estuaires, territoires ultramarins hors des cinq DOM,
+régions naturelles/historiques et transports ne sont pas considérés comme terminés.
+Le Rhin international reste incomplet. Les schémas de relief ne sont pas des limites
+physiques de référence. Les choix éditoriaux des villes ne constituent pas un palmarès.

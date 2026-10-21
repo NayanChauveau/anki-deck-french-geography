@@ -1,4 +1,4 @@
-"""Select three representative summit points from a local Natural Earth v5.1.2 file."""
+"""Select four representative summit points from a local Natural Earth v5.1.2 file."""
 
 import argparse
 import hashlib
@@ -12,6 +12,13 @@ parser.add_argument("input", type=Path)
 args = parser.parse_args()
 root = Path(__file__).resolve().parents[1]
 selection = {
+    "Monte Cinto": (
+        "monte-cinto",
+        "Monte Cinto",
+        "corse",
+        "Reliefs corses",
+        "https://www.larousse.fr/encyclopedie/mont/monte_Cinto/113690",
+    ),
     "Mont Blanc": (
         "mont-blanc",
         "Mont Blanc",
@@ -48,6 +55,7 @@ for feature in json.loads(args.input.read_text())["features"]:
             "name": french,
             "massif": "mountain-" + massif,
             "explanation": f"Grand ensemble de relief : {massif_name}.",
+            "view": "corsica-relief" if massif == "corse" else "metropolitan",
             "references": [reference],
         }
     )
@@ -80,7 +88,7 @@ registry["sources"].append(
         "file": "geo/features/peaks.geojson",
         "sha256": hashlib.sha256(output.read_bytes()).hexdigest(),
         "modifications": (
-            "Three named summit points selected; coordinates unchanged; IDs prefixed peak-; "
+            "Four named summit points selected; coordinates unchanged; IDs prefixed peak-; "
             "elevation attributes omitted. Generalized positions are learning landmarks, "
             "not navigation data. Massif membership documented separately in the editorial catalog."
         ),

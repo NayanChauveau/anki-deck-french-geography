@@ -1,0 +1,36 @@
+rules:
+  - type: places
+    id: hydrographie-lacs
+    layer: lakes
+    catalog: catalog/lakes.yml
+    theme: Lacs
+    noun: le lac
+    references:
+      - https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2024
+      - https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-lakes/
+  - type: places
+    id: littoral-mers
+    layer: seas
+    catalog: catalog/seas.yml
+    theme: Littoral
+    noun: la zone maritime
+    references:
+      - https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-physical-labels/
+  - type: places
+    id: outre-mer-situation
+    layer: overseas
+    catalog: catalog/overseas.yml
+    theme: Outre-mer
+    noun: le territoire
+    references:
+      - https://www.data.gouv.fr/datasets/contours-administratifs
+  - type: relations
+    id: outre-mer-ocean
+    layer: overseas
+    catalog: catalog/overseas.yml
+    related_catalog: catalog/oceans.yml
+    relation: ocean
+    theme: Outre-mer
+    question: 'Dans quel océan ou bassin océanique se situe « {name} » ?'
+    references:
+      - https://geoconfluences.ens-lyon.fr/images/glossaire/img-france/monde-outre-mer-francais-2025.pdf/download

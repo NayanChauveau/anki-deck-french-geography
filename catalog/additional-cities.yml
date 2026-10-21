@@ -1,0 +1,15 @@
+# Sélection éditoriale de repères complémentaires, sans classement de population.
+# Codes des communes COG 2025 ; les chefs-lieux déjà présents sont réutilisés.
+communes:
+  - '06004' # Antibes
+  - '06029' # Cannes
+  - '13001' # Aix-en-Provence
+  - '29019' # Brest
+  - '35288' # Saint-Malo
+  - '51454' # Reims
+  - '59512' # Roubaix
+  - '59599' # Tourcoing
+  - '68224' # Mulhouse
+  - '69266' # Villeurbanne
+  - '76351' # Le Havre
+  - '93066' # Saint-Denis (Seine-Saint-Denis)

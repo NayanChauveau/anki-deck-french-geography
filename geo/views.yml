@@ -25,3 +25,39 @@ views:
   mayotte:
     projection: EPSG:32738
     bounds: [44.85, -13.2, 45.5, -12.45]
+  corsica-relief:
+    projection: EPSG:2154
+    bounds: [8.45, 41.3, 9.65, 43.1]
+    inset: metropolitan
+  lake-savoie:
+    projection: EPSG:2154
+    bounds: [5.55, 45.45, 7.1, 46.6]
+    inset: metropolitan
+  lake-south:
+    projection: EPSG:2154
+    bounds: [5.7, 43.5, 6.8, 44.75]
+    inset: metropolitan
+  europe-seas:
+    projection: EPSG:3035
+    bounds: [-15, 30, 40, 62]
+  world:
+    projection: EPSG:8857
+    bounds: [-179.9, -60, 179.9, 85]
+    width: 1000
+    height: 750
+  caribbean:
+    projection: EPSG:8857
+    bounds: [-90, -8, -40, 30]
+    inset: world
+  indian-ocean:
+    projection: EPSG:8857
+    bounds: [30, -30, 70, 0]
+    inset: world
+  parks-alps:
+    projection: EPSG:2154
+    bounds: [5.5, 43.6, 7.8, 45.9]
+    inset: metropolitan
+  parks-coast:
+    projection: EPSG:2154
+    bounds: [5.1, 42.8, 6.7, 43.65]
+    inset: metropolitan

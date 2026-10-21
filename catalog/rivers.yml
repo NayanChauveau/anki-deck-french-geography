@@ -2,7 +2,8 @@ features:
 - id: loire
   name: Loire
   article: la
-  explanation: Elle traverse notamment Orléans, Tours et Nantes avant de rejoindre l’Atlantique à Saint-Nazaire.
+  explanation: Elle traverse notamment Orléans, Tours et Nantes avant de rejoindre
+    l’Atlantique à Saint-Nazaire.
   label:
     lon: 1.0
     lat: 46.8
@@ -14,7 +15,8 @@ features:
 - id: seine
   name: Seine
   article: la
-  explanation: Elle traverse Paris, puis Rouen, avant de rejoindre la Manche par l’estuaire de la Seine.
+  explanation: Elle traverse Paris, puis Rouen, avant de rejoindre la Manche par l’estuaire
+    de la Seine.
   label:
     lon: 1.9
     lat: 49.2
@@ -26,8 +28,8 @@ features:
 - id: rhone
   name: Rhône
   article: le
-  explanation: Il traverse le lac Léman, passe par Lyon, puis rejoint la mer Méditerranée par son delta
-    en Camargue.
+  explanation: Il traverse le lac Léman, passe par Lyon, puis rejoint la mer Méditerranée
+    par son delta en Camargue.
   label:
     lon: 5.3
     lat: 44.8
@@ -51,7 +53,8 @@ features:
 - id: dordogne
   name: Dordogne
   article: la
-  explanation: Elle rencontre la Garonne au bec d’Ambès ; leur estuaire commun est la Gironde.
+  explanation: Elle rencontre la Garonne au bec d’Ambès ; leur estuaire commun est
+    la Gironde.
   references:
   - https://www.larousse.fr/encyclopedie/riviere-lac/la_Dordogne/116918
   label:
@@ -87,8 +90,8 @@ features:
 - id: escaut
   name: Escaut
   article: l’
-  explanation: Né en France, ce fleuve traverse la Belgique avant de rejoindre la mer du Nord par les
-    Pays-Bas.
+  explanation: Né en France, ce fleuve traverse la Belgique avant de rejoindre la
+    mer du Nord par les Pays-Bas.
   references:
   - https://www.larousse.fr/encyclopedie/riviere-lac/Escaut/118392
   label:
@@ -100,7 +103,8 @@ features:
 - id: garonne
   name: Garonne
   article: la
-  explanation: La Garonne et la Dordogne se rejoignent pour former l’estuaire de la Gironde.
+  explanation: La Garonne et la Dordogne se rejoignent pour former l’estuaire de la
+    Gironde.
   references:
   - https://www.larousse.fr/encyclopedie/riviere-lac/la_Garonne/111428
   label:
@@ -148,10 +152,12 @@ features:
 - id: rhin
   name: Rhin
   article: le
-  explanation: Ce fleuve longe l’Alsace puis poursuit son cours vers la mer du Nord. Seul un tronçon est
-    présent dans les données sélectionnées.
+  explanation: Le Rhin rejoint la mer du Nord. Le tracé Natural Earth est complété
+    par la portion frontalière disponible dans BD TOPAGE 2024 ; il ne représente pas
+    tout le cours international.
   references:
   - https://formation-civique.interieur.gouv.fr/fiches-par-thematiques/histoire-geographie-et-culture/atlas-de-la-france/les-fleuves-fran%C3%A7ais/
+  - https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2024
   label:
     lon: 8.5
     lat: 48.3
@@ -161,9 +167,10 @@ features:
 - id: saone
   name: Saône
   article: la
-  explanation: Elle rejoint le Rhône à Lyon. Le jeu de données ne représente ici que sa partie aval.
+  explanation: La Saône rejoint le Rhône à Lyon. Son tracé est issu de BD TOPAGE 2024.
   references:
   - https://www.larousse.fr/encyclopedie/riviere-lac/Sa%C3%B4ne/143176
+  - https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2024
   label:
     lon: 5.2
     lat: 46.5
@@ -215,6 +222,134 @@ features:
   label:
     lon: 2.2
     lat: 47.8
+  review:
+    status: verified
+    checked_on: '2026-10-20'
+- id: adour
+  name: Adour
+  article: l’
+  explanation: Il passe par Tarbes, Dax et Bayonne avant de rejoindre l’Atlantique.
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Adour/104104
+  review:
+    status: verified
+    checked_on: '2026-10-20'
+- id: somme
+  name: Somme
+  article: la
+  explanation: Elle passe par Amiens et Abbeville, puis rejoint la Manche. Le tracé
+    inclut la Somme canalisée.
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Somme/144800
+  review:
+    status: verified
+    checked_on: '2026-10-20'
+- id: vilaine
+  name: Vilaine
+  article: la
+  explanation: Elle passe par Rennes et Redon avant son embouchure barrée à Arzal.
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Vilaine/148921
+  review:
+    status: verified
+    checked_on: '2026-10-20'
+- id: charente
+  name: Charente
+  article: la
+  explanation: Elle passe par Angoulême, Cognac, Saintes et Rochefort avant l’Atlantique.
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Charente/112781
+  review:
+    status: verified
+    checked_on: '2026-10-20'
+- id: aude
+  name: Aude
+  article: l’
+  explanation: Elle traverse Carcassonne puis rejoint la Méditerranée.
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Aude/106646
+  review:
+    status: verified
+    checked_on: '2026-10-20'
+- id: herault
+  name: Hérault
+  article: l’
+  explanation: Il descend de l’Aigoual et rejoint la Méditerranée près d’Agde.
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/H%C3%A9rault/123672
+  review:
+    status: verified
+    checked_on: '2026-10-20'
+- id: var
+  name: Var
+  article: le
+  explanation: Il rejoint la Méditerranée dans le sud-est de la France.
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Var/148321
+  review:
+    status: verified
+    checked_on: '2026-10-20'
+- id: orne
+  name: Orne
+  article: l’
+  explanation: Ce fleuve normand passe par Caen avant son embouchure à Ouistreham.
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Orne/136367
+  review:
+    status: verified
+    checked_on: '2026-10-20'
+- id: allier
+  name: Allier
+  article: l’
+  explanation: L’Allier rejoint directement la Loire.
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Allier/104911
+  review:
+    status: verified
+    checked_on: '2026-10-20'
+- id: cher
+  name: Cher
+  article: le
+  explanation: Le Cher rejoint directement la Loire.
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/le_Cher/113224
+  review:
+    status: verified
+    checked_on: '2026-10-20'
+- id: oise
+  name: Oise
+  article: l’
+  explanation: L’Oise rejoint la Seine à Conflans-Sainte-Honorine. Le tracé TOPAGE
+    couvre la partie française disponible.
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Oise/135957
+  review:
+    status: verified
+    checked_on: '2026-10-20'
+- id: lot
+  name: Lot
+  article: le
+  explanation: Le Lot rejoint directement la Garonne.
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/le_Lot/126561
+  review:
+    status: verified
+    checked_on: '2026-10-20'
+- id: isere
+  name: Isère
+  article: l’
+  explanation: L’Isère rejoint le Rhône au nord de Valence.
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Is%C3%A8re/125230
+  review:
+    status: verified
+    checked_on: '2026-10-20'
+- id: ain
+  name: Ain
+  article: l’
+  explanation: L’Ain descend du Jura et rejoint directement le Rhône.
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Ain/104387
   review:
     status: verified
     checked_on: '2026-10-20'

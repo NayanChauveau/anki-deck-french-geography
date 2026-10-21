@@ -1,0 +1,26 @@
+features:
+- id: sea-gascogne
+  name: Golfe de Gascogne
+  view: europe-seas
+  explanation: Étendue maritime indicative Natural Earth ; ce contour n’est pas une
+    limite juridique.
+- id: sea-mer-du-nord
+  name: Mer du Nord
+  view: europe-seas
+  explanation: Étendue maritime indicative Natural Earth ; ce contour n’est pas une
+    limite juridique.
+- id: sea-manche
+  name: Manche
+  view: europe-seas
+  explanation: Étendue maritime indicative Natural Earth ; ce contour n’est pas une
+    limite juridique.
+- id: sea-lion
+  name: Golfe du Lion
+  view: europe-seas
+  explanation: Étendue maritime indicative Natural Earth ; ce contour n’est pas une
+    limite juridique.
+- id: sea-mediterranee
+  name: Mer Méditerranée
+  view: europe-seas
+  explanation: Étendue maritime indicative Natural Earth ; ce contour n’est pas une
+    limite juridique.

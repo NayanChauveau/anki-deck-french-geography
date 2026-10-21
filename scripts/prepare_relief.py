@@ -8,6 +8,7 @@ from pathlib import Path
 import yaml
 from shapely import make_valid
 from shapely.geometry import box, mapping, shape
+from shapely.ops import unary_union
 
 parser = argparse.ArgumentParser()
 parser.add_argument("input", type=Path)
@@ -42,6 +43,32 @@ for feature in json.loads(args.input.read_text())["features"]:
     )
 if len(features) != 5:
     raise ValueError("Incomplete relief pilot")
+schematic = root / "data/relief/schematic-zones.geojson"
+country_path = root / "geo/features/countries.geojson"
+france = unary_union(
+    [
+        shape(f["geometry"])
+        for f in json.loads(country_path.read_text())["features"]
+        if f["properties"]["france"]
+    ]
+)
+for feature in json.loads(schematic.read_text())["features"]:
+    props = feature["properties"]
+    geom = make_valid(shape(feature["geometry"])).intersection(france)
+    features.append(
+        {"type": "Feature", "properties": {"id": props["id"]}, "geometry": mapping(geom)}
+    )
+    entries.append(
+        {
+            "id": props["id"],
+            "name": props["name"],
+            "view": "corsica-relief" if props["id"] == "mountain-corse" else "metropolitan",
+            "explanation": "Zone schématique dessinée pour ce deck : elle situe "
+            "le grand ensemble sans en délimiter précisément le contour. "
+            "Ce n’est ni un zonage administratif ni une carte géologique.",
+            "references": props["references"],
+        }
+    )
 output = root / "geo/features/mountains.geojson"
 output.write_text(
     json.dumps(
@@ -66,13 +93,33 @@ registry["sources"].append(
         "license": "Public domain",
         "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
         "upstream_sha256": hashlib.sha256(args.input.read_bytes()).hexdigest(),
+        "inputs": [
+            {
+                "url": "local:data/relief/schematic-zones.geojson",
+                "file": "data/relief/schematic-zones.geojson",
+                "sha256": hashlib.sha256(schematic.read_bytes()).hexdigest(),
+                "source": "Independently authored educational schematics, 2026-10-20",
+                "license": "CC0-1.0",
+                "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+            },
+            {
+                "file": "geo/features/countries.geojson",
+                "url": "local:geo/features/countries.geojson",
+                "sha256": hashlib.sha256(country_path.read_bytes()).hexdigest(),
+                "license": "Public domain",
+            },
+        ],
         "file": "geo/features/mountains.geojson",
         "sha256": hashlib.sha256(output.read_bytes()).hexdigest(),
         "modifications": (
-            "Five physical regions selected by NAME, clipped to [-7,40,12,53], "
+            "Five Natural Earth physical regions selected by NAME, clipped to [-7,40,12,53]; "
+            "Two independently authored schematic zones added "
+            "from data/relief/schematic-zones.geojson. "
             "properties reduced, IDs prefixed mountain-, make_valid applied. "
             "Label polygons describe approximate geographic extents, not administrative "
-            "mountain-law zones. No island polygon substituted for Corsican relief."
+            "mountain-law zones. No island polygon substituted for Corsican relief. "
+            "Schematic zones clipped to the pinned Natural Earth France outline "
+            "to avoid marine fill."
         ),
     }
 )

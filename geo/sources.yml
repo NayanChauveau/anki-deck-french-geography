@@ -2,15 +2,25 @@
   "sources": [
     {
       "id": "rivers",
-      "source": "Natural Earth",
-      "version": "v5.1.2",
+      "source": "Natural Earth + IGN / OFB / Sandre BD TOPAGE",
+      "version": "NE v5.1.2 + TOPAGE 2024",
       "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_rivers_lake_centerlines.geojson",
-      "license": "Public domain",
+      "license": "Natural Earth: public domain; BD TOPAGE: Licence Ouverte 2.0",
       "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
       "upstream_sha256": "bb854a900ecbd3b408df46d5e16e3e0f974ba55993f9d8b5c26e855273c0905a",
       "file": "geo/features/rivers.geojson",
-      "sha256": "c10d0955c49b5bab5266e0c03353df1e262487893e6544ed03f6f9a8f4852a87",
-      "modifications": "WGS84; clipped to [-7,40,12,53]; properties reduced; rivers selected by aliases in geo/selection.yml and unioned; Rhône includes Rhne lake centerline; no added geometry."
+      "sha256": "368727c6624ba381b372f8d57db3edce35f576c96da71025acee4e7e913f56e7",
+      "modifications": "Original 18 NE IDs retained; 14 rivers added by explicit Sandre codes; Saone replaced; Rhine supplemented (international course still incomplete). Somme includes 78 Fleuve la Somme records and the canalised course. TOPAGE geometries simplified at 150 m in EPSG:2154 and reprojected to WGS84.",
+      "inputs": [
+        {
+          "source": "IGN / OFB / Sandre, BD TOPAGE 2024",
+          "url": "https://services.sandre.eaufrance.fr/geo/topage2024?service=WFS&version=2.0.0&request=GetFeature&typeNames=sa%3ACoursEau_FXX_Topage2024&count=2000&outputFormat=application%2Fjson%3B+subtype%3Dgeojson&srsName=EPSG%3A4326&filter=%3Cfes%3AFilter+xmlns%3Afes%3D%22http%3A%2F%2Fwww.opengis.net%2Ffes%2F2.0%22%3E%3Cfes%3AOr%3E%3Cfes%3APropertyIsEqualTo%3E%3Cfes%3AValueReference%3ETopoOH%3C%2Ffes%3AValueReference%3E%3Cfes%3ALiteral%3El%27Adour%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3APropertyIsEqualTo%3E%3Cfes%3APropertyIsEqualTo%3E%3Cfes%3AValueReference%3ETopoOH%3C%2Ffes%3AValueReference%3E%3Cfes%3ALiteral%3Ela+Somme%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3APropertyIsEqualTo%3E%3Cfes%3APropertyIsEqualTo%3E%3Cfes%3AValueReference%3ETopoOH%3C%2Ffes%3AValueReference%3E%3Cfes%3ALiteral%3Ela+Vilaine%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3APropertyIsEqualTo%3E%3Cfes%3APropertyIsEqualTo%3E%3Cfes%3AValueReference%3ETopoOH%3C%2Ffes%3AValueReference%3E%3Cfes%3ALiteral%3Ela+Charente%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3APropertyIsEqualTo%3E%3Cfes%3APropertyIsEqualTo%3E%3Cfes%3AValueReference%3ETopoOH%3C%2Ffes%3AValueReference%3E%3Cfes%3ALiteral%3El%27Aude%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3APropertyIsEqualTo%3E%3Cfes%3APropertyIsEqualTo%3E%3Cfes%3AValueReference%3ETopoOH%3C%2Ffes%3AValueReference%3E%3Cfes%3ALiteral%3El%27H%C3%A9rault%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3APropertyIsEqualTo%3E%3Cfes%3APropertyIsEqualTo%3E%3Cfes%3AValueReference%3ETopoOH%3C%2Ffes%3AValueReference%3E%3Cfes%3ALiteral%3Ele+Var%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3APropertyIsEqualTo%3E%3Cfes%3APropertyIsEqualTo%3E%3Cfes%3AValueReference%3ETopoOH%3C%2Ffes%3AValueReference%3E%3Cfes%3ALiteral%3El%27Orne%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3APropertyIsEqualTo%3E%3Cfes%3APropertyIsEqualTo%3E%3Cfes%3AValueReference%3ETopoOH%3C%2Ffes%3AValueReference%3E%3Cfes%3ALiteral%3El%27Allier%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3APropertyIsEqualTo%3E%3Cfes%3APropertyIsEqualTo%3E%3Cfes%3AValueReference%3ETopoOH%3C%2Ffes%3AValueReference%3E%3Cfes%3ALiteral%3Ele+Cher%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3APropertyIsEqualTo%3E%3Cfes%3APropertyIsEqualTo%3E%3Cfes%3AValueReference%3ETopoOH%3C%2Ffes%3AValueReference%3E%3Cfes%3ALiteral%3El%27Oise%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3APropertyIsEqualTo%3E%3Cfes%3APropertyIsEqualTo%3E%3Cfes%3AValueReference%3ETopoOH%3C%2Ffes%3AValueReference%3E%3Cfes%3ALiteral%3Ele+Lot%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3APropertyIsEqualTo%3E%3Cfes%3APropertyIsEqualTo%3E%3Cfes%3AValueReference%3ETopoOH%3C%2Ffes%3AValueReference%3E%3Cfes%3ALiteral%3El%27Is%C3%A8re%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3APropertyIsEqualTo%3E%3Cfes%3APropertyIsEqualTo%3E%3Cfes%3AValueReference%3ETopoOH%3C%2Ffes%3AValueReference%3E%3Cfes%3ALiteral%3El%27Ain%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3APropertyIsEqualTo%3E%3Cfes%3APropertyIsEqualTo%3E%3Cfes%3AValueReference%3ETopoOH%3C%2Ffes%3AValueReference%3E%3Cfes%3ALiteral%3Ela+Sa%C3%B4ne%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3APropertyIsEqualTo%3E%3Cfes%3APropertyIsEqualTo%3E%3Cfes%3AValueReference%3ETopoOH%3C%2Ffes%3AValueReference%3E%3Cfes%3ALiteral%3Ele+Rhin%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3APropertyIsEqualTo%3E%3Cfes%3APropertyIsLike+wildCard%3D%22%2A%22+singleChar%3D%22%3F%22+escapeChar%3D%22%21%22%3E%3Cfes%3AValueReference%3ETopoOH%3C%2Ffes%3AValueReference%3E%3Cfes%3ALiteral%3E%2ASomme%2A%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3APropertyIsLike%3E%3C%2Ffes%3AOr%3E%3C%2Ffes%3AFilter%3E",
+          "file": "data/hydrography/topage2024-selection.geojson",
+          "sha256": "d9e35b47f54169960ff33b9ac6be2a23b8ba8775b1d60c410c281d7f0b4a0de3",
+          "license": "Licence Ouverte 2.0",
+          "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence/"
+        }
+      ]
     },
     {
       "id": "countries",
@@ -21,8 +31,8 @@
       "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
       "upstream_sha256": "3e458fc036ad0a66411f2c1e6cac49c5d7bfb81cb1123bc513b22511a2b7fdeb",
       "file": "geo/features/countries.geojson",
-      "sha256": "4e4363f9c7bfa59c0ed3983325765cc8117ee6d4d41eddc7af3734bef14c66f6",
-      "modifications": "WGS84; countries clipped to [-7,40,12,53]; properties reduced; no added geometry."
+      "sha256": "b33c0f591497e77e9c3eb8b9ee50390fe596f752f5577825a5250a957f2dc8d8",
+      "modifications": "Global Natural Earth 50m countries retained without geographic clipping; properties reduced; make_valid applied. World/ocean context for overseas views; historical IDs and source version retained."
     },
     {
       "id": "departments",
@@ -35,6 +45,46 @@
       "file": "geo/features/departments.geojson",
       "sha256": "2397d3a818bf6d9fd41f7170622c543bb08f15c4cfc9d41bebb208e502e012cf",
       "modifications": "WGS84; 101 departments selected by code, excluding COM; properties split into editorial catalog; IDs prefixed dep-; invalid polygons repaired with Shapely make_valid, discarding collapsed line remnants; no simplification beyond upstream 1000m."
+    },
+    {
+      "id": "mountains",
+      "source": "Natural Earth, physical label polygons",
+      "version": "v5.1.2",
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_geography_regions_polys.geojson",
+      "license": "Public domain",
+      "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "upstream_sha256": "b7b26e50ea917d3696aec87f932def2bf5f890f5770e441d59c162c6f4c92a77",
+      "inputs": [
+        {
+          "url": "local:data/relief/schematic-zones.geojson",
+          "sha256": "8bdf1d52bac109571e667a4b19a6e9ca335155457b5d9f536a54f77df6d930ff",
+          "source": "Independently authored educational schematics, 2026-10-20",
+          "license": "CC0-1.0",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "file": "data/relief/schematic-zones.geojson"
+        },
+        {
+          "file": "geo/features/countries.geojson",
+          "sha256": "b33c0f591497e77e9c3eb8b9ee50390fe596f752f5577825a5250a957f2dc8d8",
+          "url": "local:geo/features/countries.geojson",
+          "license": "Public domain"
+        }
+      ],
+      "file": "geo/features/mountains.geojson",
+      "sha256": "3267dc80b18c69ae11f3c042fbc370fcb9151199ecfc641464df592cf3d79da3",
+      "modifications": "Five Natural Earth physical regions selected by NAME, clipped to [-7,40,12,53]; two independently authored schematic zones added from data/relief/schematic-zones.geojson. properties reduced, IDs prefixed mountain-, make_valid applied. Label polygons describe approximate geographic extents, not administrative mountain-law zones. No island polygon substituted for Corsican relief. Schematic zones clipped to the pinned Natural Earth France outline to avoid marine fill."
+    },
+    {
+      "id": "peaks",
+      "source": "Natural Earth, elevation points",
+      "version": "v5.1.2",
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_geography_regions_elevation_points.geojson",
+      "license": "Public domain",
+      "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "upstream_sha256": "f98a16867867146ec4146d6d4b18c823eeedb2825947de666116cf9a4e3f43cb",
+      "file": "geo/features/peaks.geojson",
+      "sha256": "60e442dc98382d112ce5e73eb2fee4237c1a94d07c46b3a09c0081110f97bbc9",
+      "modifications": "Four named summit points selected; coordinates unchanged; IDs prefixed peak-; elevation attributes omitted. Generalized positions are learning landmarks, not navigation data. Massif membership documented separately in the editorial catalog."
     },
     {
       "version": "2025; local preparation 2026-10-20",
@@ -57,8 +107,8 @@
       "url": "https://etalab-datasets.geo.data.gouv.fr/contours-administratifs/2025/geojson/mairies.geojson",
       "upstream_sha256": "1b5640e38050cd9ffe5e59d28c3212275de44004bd9cc093cbebdfdc64800f7a",
       "file": "geo/features/cities.geojson",
-      "sha256": "d548a52b190f4df26f7f37788085be30f57f479fbcfdcae55b155827f03d6e7b",
-      "modifications": "WGS84; town halls for COG 2025 regional and departmental capitals only; name/relations from COG; codes prefixed city-; one town-hall point per selected commune."
+      "sha256": "66824970aeef6281078e8394bacf3d8b344013dfec44613cdaa30e33b86fbf2e",
+      "modifications": "WGS84; town halls for COG 2025 capitals and editorial city selection; name/relations from COG; codes prefixed city-; one town-hall point per selected commune."
     },
     {
       "id": "administration",
@@ -69,7 +119,7 @@
       "license": "Licence Ouverte 2.0",
       "license_url": "https://www.insee.fr/fr/information/2008466?page=copyright.htm",
       "file": "data/administration/cog-2025.json",
-      "sha256": "ac353fde764714df31121749a765601d109d889dd83a6d7e5ff32a0335580c9c",
+      "sha256": "f8d429be16ab6d3ba081b6ebb02ab0c49d13421ef0f1ef421ab5f6df4548b93e",
       "upstream_sha256": "d903566d9c0d263389d279baea6761917b7460749a07bec8ba37dd8f2ff7d98a",
       "inputs": [
         {
@@ -85,31 +135,71 @@
           "sha256": "3f8d2913fb0bdee1f72f54706854dc0cd626ed4089bd5761ec9292db0cb12e7e"
         }
       ],
-      "modifications": "COG regions and departments retained; communes restricted to their capitals; UTF-8 CSV converted to JSON without changing codes, names or relationships."
+      "modifications": "COG regions and departments retained; communes restricted to capitals and the editorial city selection; UTF-8 CSV converted to JSON without changing codes, names or relationships."
     },
     {
-      "id": "mountains",
-      "source": "Natural Earth, physical label polygons",
-      "version": "v5.1.2",
-      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_geography_regions_polys.geojson",
-      "license": "Public domain",
+      "id": "lakes",
+      "file": "geo/features/lakes.geojson",
+      "sha256": "1ba4dcc9aec5ed317e81665f7eb81cf638743a4e46f8f7ef2faf6f16aad378c4",
+      "source": "Natural Earth + IGN / OFB / Sandre BD TOPAGE",
+      "version": "NE v5.1.2 + TOPAGE 2024",
+      "upstream_sha256": "2d036f53dedec578001c5c30c2959ee7d4eebc1306900fa4367c49929ec8f2d9",
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_lakes.geojson",
+      "license": "Natural Earth: public domain; TOPAGE: Licence Ouverte 2.0",
       "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
-      "upstream_sha256": "b7b26e50ea917d3696aec87f932def2bf5f890f5770e441d59c162c6f4c92a77",
-      "file": "geo/features/mountains.geojson",
-      "sha256": "e934e4d0aa18ef60abefc99eec760fade00cc560278b7cd21fe3858df9e3d593",
-      "modifications": "Five physical regions selected by NAME, clipped to [-7,40,12,53], properties reduced, IDs prefixed mountain-, make_valid applied. Label polygons describe approximate geographic extents, not administrative mountain-law zones. No island polygon substituted for Corsican relief."
+      "modifications": "Four TOPAGE waterbody polygons selected by Sandre code; Lake Geneva selected by NE name. WGS84 unchanged; properties reduced; make_valid applied.",
+      "inputs": [
+        {
+          "file": "data/lakes/topage2024-selection.geojson",
+          "sha256": "3a79c82afc66395deb04ab59e5dd8f3d8221f60a1024db3ca45ef1ee61b8361c",
+          "url": "https://services.sandre.eaufrance.fr/geo/topage2024?service=WFS&version=2.0.0&request=GetFeature&typeNames=sa%3APlanEau_FXX_Topage2024&count=2000&outputFormat=application%2Fjson%3B+subtype%3Dgeojson&srsName=EPSG%3A4326&filter=%3Cfes%3AFilter+xmlns%3Afes%3D%22http%3A%2F%2Fwww.opengis.net%2Ffes%2F2.0%22%3E%3Cfes%3AOr%3E%3Cfes%3APropertyIsLike+wildCard%3D%22%2A%22+singleChar%3D%22%3F%22+escapeChar%3D%22%21%22%3E%3Cfes%3AValueReference%3ETopoOH%3C%2Ffes%3AValueReference%3E%3Cfes%3ALiteral%3E%2ABourget%2A%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3APropertyIsLike%3E%3Cfes%3APropertyIsLike+wildCard%3D%22%2A%22+singleChar%3D%22%3F%22+escapeChar%3D%22%21%22%3E%3Cfes%3AValueReference%3ETopoOH%3C%2Ffes%3AValueReference%3E%3Cfes%3ALiteral%3E%2AAnnecy%2A%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3APropertyIsLike%3E%3Cfes%3APropertyIsLike+wildCard%3D%22%2A%22+singleChar%3D%22%3F%22+escapeChar%3D%22%21%22%3E%3Cfes%3AValueReference%3ETopoOH%3C%2Ffes%3AValueReference%3E%3Cfes%3ALiteral%3E%2ASerre-Pon%C3%A7on%2A%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3APropertyIsLike%3E%3Cfes%3APropertyIsLike+wildCard%3D%22%2A%22+singleChar%3D%22%3F%22+escapeChar%3D%22%21%22%3E%3Cfes%3AValueReference%3ETopoOH%3C%2Ffes%3AValueReference%3E%3Cfes%3ALiteral%3E%2ASainte-Croix%2A%3C%2Ffes%3ALiteral%3E%3C%2Ffes%3APropertyIsLike%3E%3C%2Ffes%3AOr%3E%3C%2Ffes%3AFilter%3E",
+          "license": "Licence Ouverte 2.0",
+          "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence/"
+        }
+      ]
     },
     {
-      "id": "peaks",
-      "source": "Natural Earth, elevation points",
+      "id": "seas",
+      "file": "geo/features/seas.geojson",
+      "sha256": "d4ada2030a4fe329db95dc8a01d826a06f0352c6f30a927e289e08e1c5559c5a",
+      "source": "Natural Earth",
       "version": "v5.1.2",
-      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_geography_regions_elevation_points.geojson",
+      "upstream_sha256": "53f865e8ffa966cdd402145c82c5cd14ee7ce974cd0eb9a3f59f03a4cfd2d66c",
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_geography_marine_polys.geojson",
       "license": "Public domain",
       "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
-      "upstream_sha256": "f98a16867867146ec4146d6d4b18c823eeedb2825947de666116cf9a4e3f43cb",
-      "file": "geo/features/peaks.geojson",
-      "sha256": "b5f78da62e926695db3ae8a4442a66e59ce7d94b600bb8860f39281843acc33b",
-      "modifications": "Three named summit points selected; coordinates unchanged; IDs prefixed peak-; elevation attributes omitted. Generalized positions are learning landmarks, not navigation data. Massif membership documented separately in the editorial catalog."
+      "modifications": "Five named marine polygons selected; properties reduced; make_valid applied; broad geographic extents without legal significance."
+    },
+    {
+      "id": "overseas",
+      "file": "geo/features/overseas.geojson",
+      "sha256": "75e29f8ac118047d68ac57f970162a7391f74d374001f8ec5f9cea13d221ca26",
+      "source": "Etalab / data.gouv.fr, contours administratifs, IGN Admin Express",
+      "version": "2025, 1000m; snapshot 2026-10-20",
+      "url": "https://etalab-datasets.geo.data.gouv.fr/contours-administratifs/2025/geojson/departements-1000m.geojson",
+      "license": "ODbL 1.0",
+      "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+      "upstream_sha256": "c4be02f0454addb63d8a327d008fe983561d3e063340825f953b3a4e59a2198f",
+      "modifications": "Representative interior point computed from each of the five pinned overseas department polygons; WGS84, no displaced geometry.",
+      "inputs": [
+        {
+          "file": "geo/features/departments.geojson",
+          "sha256": "2397d3a818bf6d9fd41f7170622c543bb08f15c4cfc9d41bebb208e502e012cf",
+          "url": "https://etalab-datasets.geo.data.gouv.fr/contours-administratifs/2025/geojson/departements-1000m.geojson"
+        }
+      ]
+    },
+    {
+      "id": "parks",
+      "source": "Parcs nationaux de France / OFB",
+      "version": "2026-02-11",
+      "url": "https://www.data.gouv.fr/api/1/datasets/r/87b31eb7-b4e5-444c-b635-d071b319d14d",
+      "license": "Licence Ouverte 2.0",
+      "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence/",
+      "upstream_sha256": "08079d80a0badec10304044a883ed00630f5bfd7a9f23d28e0bec64eedd597c3",
+      "file": "geo/features/parks.geojson",
+      "sha256": "e21a188a305f8b6db58ca36a340dcfb954d9da343eef6173279236929d9da625",
+      "modifications": "CTPN and CMPN cores selected by id_local for all eleven parks; terrestrial and marine parts unioned per park; adhesion and adjacent marine areas excluded. make_valid applied, simplified at 100 m in Lambert-93 (metropolitan) or local UTM (overseas), reprojected to WGS84. Editorial names normalised; no new boundaries drawn."
     }
   ]
 }

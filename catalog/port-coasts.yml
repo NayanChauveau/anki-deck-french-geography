@@ -1,0 +1,27 @@
+# Repères portuaires : relations textuelles, sans dupliquer les cartes des villes.
+features:
+  - id: city-13055
+    name: Marseille
+    coast: coast-mediterranee
+    explanation: Marseille-Fos dessert la façade méditerranéenne.
+    references: [https://www.marseille-port.fr/filieres/conteneurs-reefers]
+  - id: city-76351
+    name: Le Havre
+    coast: coast-manche
+    explanation: Le Havre se situe à l’entrée maritime de l’axe Seine, sur la Manche.
+    references: [https://www.haropaport.com/fr]
+  - id: city-76540
+    name: Rouen
+    coast: coast-manche
+    explanation: Rouen est un port de fond d’estuaire, relié à la Manche par la Seine.
+    references: [https://www.haropaport.com/fr/publications/chiffres-cles]
+  - id: city-29019
+    name: Brest
+    coast: coast-atlantique
+    explanation: Brest est une ville portuaire de la façade atlantique.
+    references: [https://www.brest.port.bzh/en/]
+  - id: city-17300
+    name: La Rochelle
+    coast: coast-atlantique
+    explanation: La Rochelle est un port de la façade atlantique.
+    references: [https://www.larochelle.port.fr/]

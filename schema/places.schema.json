@@ -4,7 +4,7 @@
       "additionalProperties": false,
       "properties": {
         "id": {
-          "pattern": "^[a-z]+-[A-Za-z0-9-]+$",
+          "pattern": "^[a-z][A-Za-z0-9]*(?:-[A-Za-z0-9]+)*$",
           "title": "Id",
           "type": "string"
         },
@@ -61,6 +61,42 @@
           "default": null,
           "title": "Region"
         },
+        "coast": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Coast"
+        },
+        "ocean": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ocean"
+        },
+        "downstream": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Downstream"
+        },
         "massif": {
           "anyOf": [
             {
@@ -72,6 +108,18 @@
           ],
           "default": null,
           "title": "Massif"
+        },
+        "qualifier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Qualifier"
         },
         "view": {
           "default": "metropolitan",

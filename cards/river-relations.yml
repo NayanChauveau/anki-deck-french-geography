@@ -1,0 +1,11 @@
+rules:
+  - type: relations
+    id: hydrographie-affluent
+    layer: rivers
+    catalog: catalog/river-relations.yml
+    related_catalog: catalog/river-destinations.yml
+    relation: downstream
+    theme: Fleuves
+    question: 'Quel cours d’eau la rivière « {name} » rejoint-elle directement ?'
+    references:
+      - https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2024

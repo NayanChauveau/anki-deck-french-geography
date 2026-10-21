@@ -1,0 +1,142 @@
+features:
+- id: adour
+  name: Adour
+  article: l’
+  hydronym: l'Adour
+  codes:
+  - 05C0000002000898951
+  explanation: Il passe par Tarbes, Dax et Bayonne avant de rejoindre l’Atlantique.
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Adour/104104
+  downstream: null
+- id: somme
+  name: Somme
+  article: la
+  hydronym: Fleuve la Somme
+  codes: []
+  explanation: Elle passe par Amiens et Abbeville, puis rejoint la Manche. Le tracé
+    inclut la Somme canalisée.
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Somme/144800
+  downstream: null
+- id: vilaine
+  name: Vilaine
+  article: la
+  hydronym: la Vilaine
+  codes:
+  - 04C0000002000866869
+  explanation: Elle passe par Rennes et Redon avant son embouchure barrée à Arzal.
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Vilaine/148921
+  downstream: null
+- id: charente
+  name: Charente
+  article: la
+  hydronym: la Charente
+  codes:
+  - 05C0000002000863964
+  explanation: Elle passe par Angoulême, Cognac, Saintes et Rochefort avant l’Atlantique.
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Charente/112781
+  downstream: null
+- id: aude
+  name: Aude
+  article: l’
+  hydronym: l'Aude
+  codes:
+  - 06C0000002000839758
+  explanation: Elle traverse Carcassonne puis rejoint la Méditerranée.
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Aude/106646
+  downstream: null
+- id: herault
+  name: Hérault
+  article: l’
+  hydronym: l'Hérault
+  codes:
+  - 06C0000002000818061
+  explanation: Il descend de l’Aigoual et rejoint la Méditerranée près d’Agde.
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/H%C3%A9rault/123672
+  downstream: null
+- id: var
+  name: Var
+  article: le
+  hydronym: le Var
+  codes:
+  - 06C0000002000789272
+  explanation: Il rejoint la Méditerranée dans le sud-est de la France.
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Var/148321
+  downstream: null
+- id: orne
+  name: Orne
+  article: l’
+  hydronym: l'Orne
+  codes:
+  - 03C0000002000845629
+  explanation: Ce fleuve normand passe par Caen avant son embouchure à Ouistreham.
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Orne/136367
+  downstream: null
+- id: allier
+  name: Allier
+  article: l’
+  hydronym: l'Allier
+  codes:
+  - 04C0000002000820586
+  explanation: L’Allier rejoint directement la Loire.
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Allier/104911
+  downstream: loire
+- id: cher
+  name: Cher
+  article: le
+  hydronym: le Cher
+  codes:
+  - 04C0000002000831254
+  explanation: Le Cher rejoint directement la Loire.
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/le_Cher/113224
+  downstream: loire
+- id: oise
+  name: Oise
+  article: l’
+  hydronym: l'Oise
+  codes:
+  - 03C0000002000807131
+  explanation: L’Oise rejoint la Seine à Conflans-Sainte-Honorine. Le tracé TOPAGE
+    couvre la partie française disponible.
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Oise/135957
+  downstream: seine
+- id: lot
+  name: Lot
+  article: le
+  hydronym: le Lot
+  codes:
+  - 05C0000002000835176
+  explanation: Le Lot rejoint directement la Garonne.
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/le_Lot/126561
+  downstream: garonne
+- id: isere
+  name: Isère
+  article: l’
+  hydronym: l'Isère
+  codes:
+  - 06C0000002000788975
+  explanation: L’Isère rejoint le Rhône au nord de Valence.
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Is%C3%A8re/125230
+  downstream: rhone
+- id: ain
+  name: Ain
+  article: l’
+  hydronym: l'Ain
+  codes:
+  - 06C0000002000802959
+  explanation: L’Ain descend du Jura et rejoint directement le Rhône.
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Ain/104387
+  downstream: rhone

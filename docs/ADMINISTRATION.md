@@ -56,3 +56,16 @@ Les tests vérifient les relations avec les tables COG, les chefs-lieux de Norma
 et de Bourgogne-Franche-Comté, la couverture des points et régions et la stabilité
 des anciennes notes. L’affichage dans chaque client Anki reste une validation réelle
 à distinguer de ces contrôles automatiques.
+
+## Sélection urbaine complémentaire du 21 octobre 2026
+
+Douze repères éditoriaux s’ajoutent aux 101 chefs-lieux : Antibes, Cannes,
+Aix-en-Provence, Brest, Saint-Malo, Reims, Roubaix, Tourcoing, Mulhouse,
+Villeurbanne, Le Havre et Saint-Denis (Seine-Saint-Denis). Il ne s’agit pas d’un
+classement de population. La sélection et les codes COG sont dans
+`catalog/additional-cities.yml`, réutilisés par la préparation administrative.
+Les 113 points restent des mairies 2025, sans prétendre représenter les agglomérations.
+
+Les questions précisent « Île-de-France » ou « océan Indien » pour les deux
+Saint-Denis ; ces indications évitent de divulguer le département dans une question
+ville → département. Le Saint-Denis francilien partage le cadrage local parisien.

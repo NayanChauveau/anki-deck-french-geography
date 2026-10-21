@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def test_reviewed_river_explanations_have_fact_sources():
     data = yaml.safe_load((ROOT / "catalog/rivers.yml").read_text())["features"]
-    assert len(data) == 18
+    assert len(data) == 32
     assert all(e["review"]["status"] == "verified" and e["references"] for e in data)
     assert all("naturalearthdata.com" not in url for e in data for url in e["references"])
 
@@ -32,7 +32,7 @@ def test_administrative_relations_match_cog_and_geographic_coverage():
         e["id"]: e
         for e in yaml.safe_load((ROOT / "catalog/departments.yml").read_text())["features"]
     }
-    assert len(regions) == 18 and len(cities) == 101 and len(departments) == 101
+    assert len(regions) == 18 and len(cities) == 113 and len(departments) == 101
     assert set(regions) == set(project.layers["regions"])
     assert set(cities) == set(project.layers["cities"])
     for row in reference["departments"]:
@@ -55,8 +55,8 @@ def test_new_rules_do_not_change_existing_hydrographic_identities():
         "fr-geo-hydrographie-identification-loire"
     )
     count = Counter(c.theme for c in project.cards)
-    assert count["Fleuves"] == 18 and count["Départements"] == 303
-    assert count["Régions"] == 148 and count["Villes"] == 401
+    assert count["Fleuves"] == 38 and count["Départements"] == 303
+    assert count["Régions"] == 148 and count["Villes"] == 437
     assert len({c.id for c in project.cards}) == len(project.cards)
     relations = [c for c in project.cards if c.direction in ("capital", "region", "department")]
     assert all(c.front_map == c.back_map == "none" for c in relations)

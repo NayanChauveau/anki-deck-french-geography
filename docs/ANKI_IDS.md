@@ -41,3 +41,16 @@ chaînes (`01`, `2A`, `971`) ; seul le composant de l’ID est mis en minuscules
 Le modèle et le namespace existants sont partagés. Les anciens IDs des cours d’eau
 et départements ne changent pas. Une correction de texte ou de géométrie conserve
 l’identité de la note ; les relations sans valeur de rappel sont exclues avant export.
+
+## Lacs, littoral, outre-mer et paysages
+
+- Lacs : sous-deck `1976423106`, règle `hydrographie-lacs`.
+- Littoral : sous-deck `1976423107`, règles `littoral-mers` et `villes-portuaires-facade`.
+- Outre-mer : sous-deck `1976423108`, règles `outre-mer-situation` et `outre-mer-ocean`.
+- Paysages : sous-deck `1976423109`, règle `parcs-nationaux-coeurs`.
+
+Le modèle `1976423101` et le namespace existants restent communs. Les notes des
+villes complémentaires conservent la règle historique `villes-chefs-lieux` afin de ne
+pas renommer les notes existantes ; ce nom technique ne définit plus le périmètre.
+Les nouvelles relations utilisent des identités distinctes, sans dupliquer les
+localisations de villes déjà présentes.

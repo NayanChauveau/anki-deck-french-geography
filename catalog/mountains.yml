@@ -24,3 +24,20 @@ features:
   view: metropolitan
   explanation: 'Zone indicative de relief : les limites Natural Earth sont approximatives,
     sans valeur administrative.'
+- id: mountain-armoricain
+  name: Massif armoricain
+  view: metropolitan
+  explanation: 'Zone schématique dessinée pour ce deck : elle situe le grand ensemble
+    sans en délimiter précisément le contour. Ce n’est ni un zonage administratif
+    ni une carte géologique.'
+  references:
+  - https://sigespal.brgm.fr/spip.php?rubrique65=
+  - https://sigessn.brgm.fr/spip.php?article339=
+- id: mountain-corse
+  name: Reliefs corses
+  view: corsica-relief
+  explanation: 'Zone schématique dessinée pour ce deck : elle situe le grand ensemble
+    sans en délimiter précisément le contour. Ce n’est ni un zonage administratif
+    ni une carte géologique.'
+  references:
+  - https://www.brgm.fr/fr/implantation-regionale/corse-reseau-regional-brgm

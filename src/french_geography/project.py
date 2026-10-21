@@ -45,6 +45,13 @@ def load(root: Path) -> Project:
             raise ValueError("Dataset path escapes project")
         if hashlib.sha256(path.read_bytes()).hexdigest() != source["sha256"]:
             raise ValueError(f"Dataset checksum mismatch: {path}")
+        for item in source.get("inputs", []):
+            if "file" in item:
+                input_path = (root / item["file"]).resolve()
+                if not input_path.is_relative_to(root.resolve()):
+                    raise ValueError("Dataset input path escapes project")
+                if hashlib.sha256(input_path.read_bytes()).hexdigest() != item["sha256"]:
+                    raise ValueError(f"Dataset input checksum mismatch: {input_path}")
         if source.get("kind") != "reference":
             layers[source["id"]] = json.loads(path.read_text())["features"]
     features = {}

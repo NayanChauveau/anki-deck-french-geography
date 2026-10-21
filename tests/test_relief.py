@@ -13,9 +13,10 @@ ROOT = Path(__file__).resolve().parents[1]
 def test_summit_cards_have_three_directions_and_fact_sources():
     project = load(ROOT)
     cards = [card for card in project.cards if card.layer == "peaks"]
-    assert len(cards) == 9
+    assert len(cards) == 12
     assert all(isinstance(point, Point) for point in project.layers["peaks"].values())
     expected = {
+        "peak-monte-cinto": "Reliefs corses",
         "peak-mont-blanc": "Alpes",
         "peak-puy-de-sancy": "Massif central",
         "peak-cret-de-la-neige": "Jura",

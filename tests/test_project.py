@@ -25,7 +25,11 @@ ROOT = Path(__file__).resolve().parents[1]
 @pytest.fixture
 def project():
     project = load(ROOT)
-    project.cards = [card for card in project.cards if card.theme == "Fleuves"]
+    project.cards = [
+        card
+        for card in project.cards
+        if card.theme == "Fleuves" and card.direction == "identification"
+    ]
     return project
 
 
@@ -179,12 +183,17 @@ def test_new_catalog_entry_and_geometry_generate_a_note_without_a_card_file(tmp_
     source_path.write_text(yaml.safe_dump(sources))
     project = load(root)
     card = next(c for c in project.cards if c.target == "example")
-    assert len([c for c in project.cards if c.theme == "Fleuves"]) == 19
+    assert (
+        len([c for c in project.cards if c.theme == "Fleuves" and c.direction == "identification"])
+        == 33
+    )
     assert card.target == "example"
     assert card.answer == "L’Exemple"
     assert card.explanation == ""
     assert card.annotations[0].text == "Exemple"
-    first_river = next(c for c in project.cards if c.theme == "Fleuves")
+    first_river = next(
+        c for c in project.cards if c.theme == "Fleuves" and c.direction == "identification"
+    )
     assert card.question == first_river.question
     assert set(card.references) <= set(first_river.references)
 
@@ -197,18 +206,20 @@ def test_common_rule_applies_to_all_notes(tmp_path):
             "Quel cours d’eau est surligné sur la carte ?", "Identifiez le tracé."
         )
     )
-    assert {card.question for card in load(root).cards if card.theme == "Fleuves"} == {
-        "Identifiez le tracé."
-    }
+    assert {
+        card.question
+        for card in load(root).cards
+        if card.theme == "Fleuves" and card.direction == "identification"
+    } == {"Identifiez le tracé."}
 
 
 def test_catalog_requires_every_geographic_feature(tmp_path):
     root = copied_project(tmp_path)
     path = root / "catalog/rivers.yml"
     data = yaml.safe_load(path.read_text())
-    data["features"].pop()
+    removed = data["features"].pop()["id"]
     path.write_text(yaml.safe_dump(data))
-    with pytest.raises(ValueError, match="missing=.*yonne"):
+    with pytest.raises(ValueError, match=f"missing=.*{removed}"):
         load(root)
 
 

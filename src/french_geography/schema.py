@@ -137,13 +137,17 @@ class DepartmentCatalog(Strict):
 
 
 class PlaceEntry(Strict):
-    id: str = Field(pattern=r"^[a-z]+-[A-Za-z0-9-]+$")
+    id: str = Field(pattern=r"^[a-z][A-Za-z0-9]*(?:-[A-Za-z0-9]+)*$")
     name: str = Field(min_length=1)
     code: str | None = None
     capital: str | None = None
     department: str | None = None
     region: str | None = None
+    coast: str | None = None
+    ocean: str | None = None
+    downstream: str | None = None
     massif: str | None = None
+    qualifier: str | None = None
     view: str = "metropolitan"
     explanation: str = ""
     references: list[str] = Field(default_factory=list)
@@ -179,7 +183,7 @@ class RelationRule(Strict):
     layer: str
     catalog: str
     related_catalog: str
-    relation: Literal["region", "department", "capital", "massif"]
+    relation: Literal["region", "department", "capital", "massif", "downstream", "ocean", "coast"]
     theme: str
     question: str
     references: list[str] = Field(min_length=1)

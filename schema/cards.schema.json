@@ -215,7 +215,10 @@
             "region",
             "department",
             "capital",
-            "massif"
+            "massif",
+            "downstream",
+            "ocean",
+            "coast"
           ],
           "title": "Relation",
           "type": "string"

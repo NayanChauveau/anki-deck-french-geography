@@ -22,7 +22,23 @@ def note_guid(card_id: str) -> str:
 
 
 def credits(card):
-    if card.layer not in ("departments", "regions", "cities"):
+    if card.layer == "parks":
+        return (
+            '<div class="credits">Cartographie : '
+            '<a href="https://www.data.gouv.fr/datasets/contours-des-11-parcs-nationaux-de-france">'
+            "Parcs nationaux de France / OFB · février 2026</a> · "
+            '<a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence/">'
+            "Licence Ouverte 2.0</a></div>"
+        )
+    if card.layer in ("rivers", "lakes"):
+        return (
+            '<div class="credits">Cartographie : Natural Earth · domaine public ; '
+            '<a href="https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2024">'
+            "IGN / OFB / Sandre · BD TOPAGE 2024</a> · "
+            '<a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence/">'
+            "Licence Ouverte 2.0</a></div>"
+        )
+    if card.layer not in ("departments", "regions", "cities", "overseas"):
         return ""
     return (
         '<div class="credits">Cartographie : '
@@ -183,6 +199,10 @@ def build(project: Project, out: Path) -> Path:
         "Régions": genanki.Deck(1976423103, "Géographie française::Régions"),
         "Villes": genanki.Deck(1976423104, "Géographie française::Villes"),
         "Relief": genanki.Deck(1976423105, "Géographie française::Relief"),
+        "Lacs": genanki.Deck(1976423106, "Géographie française::Lacs"),
+        "Littoral": genanki.Deck(1976423107, "Géographie française::Littoral"),
+        "Outre-mer": genanki.Deck(1976423108, "Géographie française::Outre-mer"),
+        "Paysages": genanki.Deck(1976423109, "Géographie française::Paysages"),
     }
     media_files = set()
     positions = dict.fromkeys(decks, 0)

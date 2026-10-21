@@ -1,0 +1,11 @@
+rules:
+  - type: relations
+    id: villes-portuaires-facade
+    layer: cities
+    catalog: catalog/port-coasts.yml
+    related_catalog: catalog/coasts.yml
+    relation: coast
+    theme: Littoral
+    question: 'À quelle façade maritime le port de « {name} » est-il relié ?'
+    references:
+      - https://www.data.gouv.fr/datasets/contours-administratifs

@@ -1,0 +1,9 @@
+features:
+- id: garonne
+  name: Garonne
+- id: loire
+  name: Loire
+- id: rhone
+  name: Rhône
+- id: seine
+  name: Seine
