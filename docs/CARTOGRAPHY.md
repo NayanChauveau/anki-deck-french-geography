@@ -158,7 +158,7 @@ référentiel national ne sont pas inventés ; le Rhin demeure incomplet à cett
 Les instantanés WFS sélectionnés et leurs requêtes sont épinglés sous `data/`.
 
 Les lacs d’Annecy et du Bourget ainsi que les retenues de Serre-Ponçon et de
-Sainte-Croix viennent de BD TOPAGE ; le Léman vient de Natural Earth. Les cinq lacs utilisent désormais le cadrage métropolitain commun, sans zoom local
+Sainte-Croix viennent de BD TOPAGE ; le Léman vient de Natural Earth. Les vingt lacs et retenues utilisent le cadrage métropolitain commun, sans zoom local
 ni encart, pour apprendre directement leur position en France. Les cinq zones marines
 Natural Earth sont des étendues géographiques conventionnelles, sans valeur juridique.
 Les crédits sont en HTML hors des images.
@@ -201,3 +201,28 @@ exécuté après les tests ; le test bilingue utilise seulement un échantillon 
 Les tests affichent leur nom avant exécution et les dix durées les plus longues.
 Après 120 secondes dans un test, pytest imprime les piles des threads pour diagnostiquer
 un éventuel blocage, sans interrompre automatiquement le test.
+
+## Extension des grands lacs
+
+La sélection comprend 20 lacs et retenues, soit 40 cartes par langue. Elle complète
+le pilote par Hourtin-Carcans, Cazaux-Sanguinet, Grand-Lieu, Parentis-Biscarrosse,
+Lacanau, Der-Chantecoq, Orient, Temple, Vouglans, Pareloup, Madine, Bort-les-Orgues,
+Vassivière, Naussac et Salagou. C’est une sélection pédagogique des grands plans
+d’eau douce métropolitains, pas un classement exhaustif par superficie. Les lagunes
+salées (Thau, Berre…) et les lacs ultramarins ne sont pas compris dans cette série.
+
+`data/lakes/selection.yml` associe chaque identifiant aux codes Sandre exacts.
+Hourtin et Carcans sont réunis ; les petits homonymes de Vassivière sont exclus.
+Les contours TOPAGE ne représentent pas les niveaux actuels, particulièrement
+variables pour Grand-Lieu. Aucune surface chiffrée n’est déduite de ces contours.
+Le catalogue éditorial et les traductions restent séparés de cette sélection.
+
+Préparation autonome, hors build et sans téléchargement :
+
+```sh
+uv run --frozen python scripts/prepare_lakes.py /chemin/ne_10m_lakes.geojson
+```
+
+L’entrée Natural Earth est vérifiée contre son empreinte épinglée. Les 20 objets
+TOPAGE locaux (dont deux pour Hourtin-Carcans) et les requêtes d’acquisition sont
+conservés sous `data/lakes/`, avec leurs empreintes dans le registre des sources.

@@ -1,7 +1,7 @@
 # French Geography — Anki
 
 An English-first project for learning French geography, with complete English and
-French Anki editions: **1,014 cards per language**. Both use the same canonical facts,
+French Anki editions: **1,044 cards per language**. Both use the same canonical facts,
 geographic images and generators. Other languages can be added through the shared
 [localization structure](docs/LOCALIZATION.md).
 
@@ -19,8 +19,8 @@ The default build produces both packages, English first:
 
 | Stable filename | Current content |
 | --- | --- |
-| `dist/french-geography-en.apkg` | English edition: 1,014 cards |
-| `dist/french-geography-fr.apkg` | French edition: 1,014 cards |
+| `dist/french-geography-en.apkg` | English edition: 1,044 cards |
+| `dist/french-geography-fr.apkg` | French edition: 1,044 cards |
 
 These filenames are fixed for future releases. The French notes retain their
 existing identifiers; English notes have separate identities and model/deck IDs.

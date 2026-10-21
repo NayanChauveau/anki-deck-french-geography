@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 
 import yaml
+from prepare_lakes import prepare_lakes
 from shapely import make_valid
 from shapely.geometry import mapping, shape
 
@@ -56,78 +57,10 @@ def natural_earth(path, filename):
     }
 
 
-# Lakes: original national TOPAGE polygons, plus the transboundary Lake Geneva polygon.
-raw = root / "data/lakes/topage2024-selection.geojson"
-names = {
-    "06P0000002000777191": ("bourget", "Bourget", "metropolitan", "lakes.natural"),
-    "06P0000002000776973": ("annecy", "Annecy", "metropolitan", "lakes.natural"),
-    "06P0000002000777258": (
-        "serre-poncon",
-        "Serre-Ponçon",
-        "metropolitan",
-        "lakes.durance_reservoir",
-    ),
-    "06P0000002000777286": (
-        "sainte-croix",
-        "Sainte-Croix",
-        "metropolitan",
-        "lakes.verdon_reservoir",
-    ),
-}
-features, entries = [], []
-for f in json.loads(raw.read_text())["features"]:
-    key, name, view, explanation_key = names[f["properties"]["CdOH"]]
-    key = "lake-" + key
-    features.append(feature(key, shape(f["geometry"])))
-    entries.append(
-        {
-            "id": key,
-            "name": name,
-            "view": view,
-            "explanation_key": explanation_key,
-            "references": [
-                "https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2024",
-                "https://www.larousse.fr/encyclopedie/riviere-lac/la_Durance/117449",
-            ],
-        }
-    )
-for f in json.loads(args.lakes.read_text())["features"]:
-    if f["properties"].get("name") == "Lake Geneva":
-        features.append(feature("lake-leman", shape(f["geometry"])))
-        entries.append(
-            {
-                "id": "lake-leman",
-                "name": "Léman",
-                "view": "metropolitan",
-                "explanation_key": "lakes.shared_france_switzerland",
-                "references": [
-                    "https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-lakes/"
-                ],
-            }
-        )
-if len(features) != 5:
-    raise ValueError("Incomplete lake selection")
-source = natural_earth(args.lakes, "ne_10m_lakes")
-source.update(
-    source="Natural Earth + IGN / OFB / Sandre BD TOPAGE",
-    version="NE v5.1.2 + TOPAGE 2024",
-    license="Natural Earth: public domain; TOPAGE: Licence Ouverte 2.0",
-    modifications=(
-        "Four TOPAGE waterbody polygons selected by Sandre code; Lake Geneva "
-        "selected by NE name. WGS84 unchanged; properties reduced; make_valid "
-        "applied."
-    ),
-    inputs=[
-        {
-            "file": str(raw.relative_to(root)),
-            "sha256": digest(raw),
-            "url": (root / "data/lakes/topage2024-query.txt").read_text(),
-            "license": "Licence Ouverte 2.0",
-            "license_url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence/",
-        }
-    ],
-)
-save("lakes", features, entries, source)
+# Lake preparation has its own declarative selection and offline entry point.
+
+prepare_lakes(root, args.lakes)
+registry = yaml.safe_load(registry_path.read_text())
 
 # Marine areas: broad conventional extents, not territorial waters.
 selection = {

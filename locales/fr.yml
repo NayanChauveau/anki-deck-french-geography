@@ -199,6 +199,8 @@ explanations:
   peak.cret-de-la-neige.context: 'Grand ensemble de relief : Jura.'
   peak.monte-cinto.context: 'Grand ensemble de relief : Reliefs corses.'
   seas.boundary_notice: Étendue maritime indicative Natural Earth ; ce contour n’est pas une limite juridique.
+  lakes.reservoir: Retenue artificielle.
+  lakes.seasonal: Lac naturel dont la surface varie selon la saison ; le contour TOPAGE est un repère cartographique, pas le niveau d’eau actuel.
   lakes.natural: Lac naturel.
   lakes.verdon_reservoir: Retenue de barrage sur le Verdon.
   lakes.durance_reservoir: Retenue de barrage sur la Durance.

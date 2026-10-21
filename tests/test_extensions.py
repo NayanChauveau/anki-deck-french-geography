@@ -93,3 +93,21 @@ def test_port_relations_reuse_existing_city_positions():
     assert all(c.front_map == c.back_map == "none" for c in cards)
     assert all(c.target in project.layers["cities"] for c in cards)
     assert next(c.answer for c in cards if c.target == "city-76540") == "Manche"
+
+
+def test_major_lakes_cover_twenty_places_on_one_france_view():
+    project = load(ROOT)
+    cards = [c for c in project.cards if c.layer == "lakes"]
+    assert len(project.layers["lakes"]) == 20
+    assert len(cards) == 40
+    assert {c.direction for c in cards} == {"name-map", "map-name"}
+    assert {c.view for c in cards} == {"metropolitan"}
+    assert project.views["metropolitan"].inset is None
+    # Hourtin and Carcans are two source objects for one lake, not just its northern half.
+    hourtin = project.features["lake-hourtin"]
+    assert hourtin.bounds[1] < 45.08 and hourtin.bounds[3] > 45.20
+    # Exclude tiny homonyms south-west of the actual Vassivière reservoir.
+    assert project.features["lake-vassiviere"].bounds[0] > 1.8
+    assert project.features["lake-grand-lieu"].bounds[2] < -1.5
+    assert project.features["lake-der-chantecoq"].bounds[1] > 48.5
+    assert all(project.features[c.target].is_valid for c in cards)

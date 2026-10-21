@@ -1,0 +1,59 @@
+features:
+- id: lake-bourget
+  codes:
+  - 06P0000002000777191
+- id: lake-sainte-croix
+  codes:
+  - 06P0000002000777286
+- id: lake-annecy
+  codes:
+  - 06P0000002000776973
+- id: lake-serre-poncon
+  codes:
+  - 06P0000002000777258
+- id: lake-hourtin
+  codes:
+  - 05P0000002000784182
+  - 05P0000002000784193
+- id: lake-cazaux-sanguinet
+  codes:
+  - 05P0000002000784178
+- id: lake-grand-lieu
+  codes:
+  - 04P0000002000775909
+- id: lake-parentis-biscarrosse
+  codes:
+  - 05P0000002000784305
+- id: lake-lacanau
+  codes:
+  - 05P0000002000784208
+- id: lake-der-chantecoq
+  codes:
+  - 03P0000002000761196
+- id: lake-orient
+  codes:
+  - 03P0000002000761613
+- id: lake-temple
+  codes:
+  - 03P0000002000761426
+- id: lake-vouglans
+  codes:
+  - 06P0000002000760652
+- id: lake-pareloup
+  codes:
+  - 05P0000002000779079
+- id: lake-madine
+  codes:
+  - 02P0000002000756073
+- id: lake-bort-les-orgues
+  codes:
+  - 05P0000002000778668
+- id: lake-vassiviere
+  codes:
+  - 04P0000002000779361
+- id: lake-naussac
+  codes:
+  - 04P0000002000777879
+- id: lake-salagou
+  codes:
+  - 06P0000002000779095

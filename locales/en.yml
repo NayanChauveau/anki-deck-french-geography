@@ -21,6 +21,21 @@ names:
   lake-annecy: Lake Annecy
   lake-sainte-croix: Sainte-Croix Reservoir
   lake-serre-poncon: Serre-Ponçon Reservoir
+  lake-hourtin: Hourtin-Carcans Lake
+  lake-cazaux-sanguinet: Cazaux-Sanguinet Lake
+  lake-grand-lieu: Grand-Lieu Lake
+  lake-parentis-biscarrosse: Parentis-Biscarrosse Lake
+  lake-lacanau: Lacanau Lake
+  lake-der-chantecoq: Der-Chantecoq Reservoir
+  lake-orient: Orient Reservoir
+  lake-temple: Temple Reservoir
+  lake-vouglans: Vouglans Reservoir
+  lake-pareloup: Pareloup Reservoir
+  lake-madine: Madine Reservoir
+  lake-bort-les-orgues: Bort-les-Orgues Reservoir
+  lake-vassiviere: Vassivière Reservoir
+  lake-naussac: Naussac Reservoir
+  lake-salagou: Salagou Reservoir
   lake-leman: Lake Geneva
   sea-gascogne: Bay of Biscay
   sea-mer-du-nord: North Sea
@@ -167,6 +182,8 @@ explanations:
   peak.mont-blanc.context: 'Broad landform region: Alps.'
   peak.cret-de-la-neige.context: 'Broad landform region: Jura Mountains.'
   peak.monte-cinto.context: 'Broad landform region: Corsican mountains.'
+  lakes.reservoir: An artificial reservoir.
+  lakes.seasonal: A natural lake whose surface area varies seasonally; the TOPAGE outline is a geographic reference, not the current water level.
   lakes.natural: A natural lake.
   lakes.verdon_reservoir: A reservoir created by a dam on the Verdon.
   lakes.durance_reservoir: A reservoir created by a dam on the Durance.

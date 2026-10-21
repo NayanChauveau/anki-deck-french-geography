@@ -4,21 +4,19 @@ features:
   view: metropolitan
   references:
   - https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2024
-  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Durance/117449
   explanation_key: lakes.natural
 - id: lake-sainte-croix
   name: Sainte-Croix
   view: metropolitan
   references:
   - https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2024
-  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Durance/117449
+  - https://www.eaufrance.fr/les-lacs-etangs-et-autres-plans-deau
   explanation_key: lakes.verdon_reservoir
 - id: lake-annecy
   name: Annecy
   view: metropolitan
   references:
   - https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2024
-  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Durance/117449
   explanation_key: lakes.natural
 - id: lake-serre-poncon
   name: Serre-Ponçon
@@ -27,9 +25,115 @@ features:
   - https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2024
   - https://www.larousse.fr/encyclopedie/riviere-lac/la_Durance/117449
   explanation_key: lakes.durance_reservoir
+- id: lake-hourtin
+  name: Hourtin-Carcans
+  view: metropolitan
+  explanation_key: lakes.natural
+  references:
+  - https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2024
+  - https://www.musee-lac-sanguinet.fr/thematiques/l-homme-l-archeologie-le-milieu/le-sable/les-lacs-du-littoral-aquitain
+- id: lake-cazaux-sanguinet
+  name: Cazaux-Sanguinet
+  view: metropolitan
+  explanation_key: lakes.natural
+  references:
+  - https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2024
+  - https://www.musee-lac-sanguinet.fr/thematiques/l-homme-l-archeologie-le-milieu/le-sable/les-lacs-du-littoral-aquitain
+- id: lake-grand-lieu
+  name: Grand-Lieu
+  view: metropolitan
+  explanation_key: lakes.seasonal
+  references:
+  - https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2024
+  - https://www.eaufrance.fr/les-lacs-etangs-et-autres-plans-deau
+  - https://tourisme-loireatlantique.com/destinations/suivez-le-gr-de-pays-du-tour-du-lac-de-grand-lieu/
+- id: lake-parentis-biscarrosse
+  name: Parentis-Biscarrosse
+  view: metropolitan
+  explanation_key: lakes.natural
+  references:
+  - https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2024
+  - https://www.musee-lac-sanguinet.fr/thematiques/l-homme-l-archeologie-le-milieu/le-sable/les-lacs-du-littoral-aquitain
+- id: lake-lacanau
+  name: Lacanau
+  view: metropolitan
+  explanation_key: lakes.natural
+  references:
+  - https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2024
+  - https://www.musee-lac-sanguinet.fr/thematiques/l-homme-l-archeologie-le-milieu/le-sable/les-lacs-du-littoral-aquitain
+- id: lake-der-chantecoq
+  name: Der-Chantecoq
+  view: metropolitan
+  explanation_key: lakes.reservoir
+  references:
+  - https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2024
+  - https://www.seinegrandslacs.fr/quatre-lacs-reservoirs/lac-reservoir-du-der-marne
+- id: lake-orient
+  name: Orient
+  view: metropolitan
+  explanation_key: lakes.reservoir
+  references:
+  - https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2024
+  - https://www.seinegrandslacs.fr/quatre-lacs-reservoirs/lac-reservoir-dorient-seine
+- id: lake-temple
+  name: Temple
+  view: metropolitan
+  explanation_key: lakes.reservoir
+  references:
+  - https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2024
+  - https://www.seinegrandslacs.fr/seine-grands-lacs
+- id: lake-vouglans
+  name: Vouglans
+  view: metropolitan
+  explanation_key: lakes.reservoir
+  references:
+  - https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2024
+  - https://www.edf.fr/hydraulique-rhone-ain/vouglans-3eme-retenue-de-france
+- id: lake-pareloup
+  name: Pareloup
+  view: metropolitan
+  explanation_key: lakes.reservoir
+  references:
+  - https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2024
+  - https://www.edf.fr/groupe-edf/edf-pres-de-chez-moi
+- id: lake-madine
+  name: Madine
+  view: metropolitan
+  explanation_key: lakes.reservoir
+  references:
+  - https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2024
+  - https://www.grand-est.developpement-durable.gouv.fr/IMG/pdf/FR4100222-FR4110007_Madine_docob_decembre2000_cle2aee6c.pdf
+- id: lake-bort-les-orgues
+  name: Bort-les-Orgues
+  view: metropolitan
+  explanation_key: lakes.reservoir
+  references:
+  - https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2024
+  - https://adour-garonne.eaufrance.fr/massedeau/EDL2025/FRFL18
+- id: lake-vassiviere
+  name: Vassivière
+  view: metropolitan
+  explanation_key: lakes.reservoir
+  references:
+  - https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2024
+  - https://www.edf.fr/hydraulique-vienne-creuse/visites-au-coeur-du-barrage-hydroelectrique-de-vassiviere
+- id: lake-naussac
+  name: Naussac
+  view: metropolitan
+  explanation_key: lakes.reservoir
+  references:
+  - https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2024
+  - https://www.eptb-loire.fr/nos-missions/exploitation-des-ouvrages-de-naussac-et-villerest/
+- id: lake-salagou
+  name: Salagou
+  view: metropolitan
+  explanation_key: lakes.reservoir
+  references:
+  - https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2024
+  - https://herault.fr/502-lac-du-salagou.htm
 - id: lake-leman
   name: Léman
   view: metropolitan
+  explanation_key: lakes.shared_france_switzerland
   references:
   - https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-lakes/
-  explanation_key: lakes.shared_france_switzerland

@@ -61,11 +61,11 @@ automatique. Ces possibilités seraient un chantier distinct.
 - [x] 437 cartes urbaines : 113 communes, dont les 101 chefs-lieux, et relations départementales.
 - [x] Sept zones de relief, dont deux schémas explicitement signalés ; quatorze cartes de localisation.
 - [x] Quatre sommets repères et douze cartes : localisation dans les deux sens et grand ensemble associé.
-- [x] Cinq lacs/retenues (dix cartes), cinq zones maritimes et cinq relations port/façade (quinze cartes).
+- [x] Vingt lacs/retenues (quarante cartes), cinq zones maritimes et cinq relations port/façade (quinze cartes).
 - [x] Situation de cinq territoires ultramarins et bassin océanique (quinze cartes).
 - [x] Cœurs des onze parcs nationaux, dans les deux sens (vingt-deux cartes).
 
-Total généré : **1 014 notes produisant chacune une carte**. Ce nombre ne décrit pas
+Total généré : **1 044 notes produisant chacune une carte**. Ce nombre ne décrit pas
 nécessairement le nombre de notes d’une collection Anki déjà utilisée : les anciennes
 notes issues des changements d’identifiants peuvent y subsister.
 
@@ -617,3 +617,12 @@ translation log describes a previous step and is superseded by this completion.
 
 - [x] Show the five overseas location points on one shared world map, without zooms or insets.
 - [x] Align preparation defaults, localized descriptions and the existing geography check.
+
+### Major lakes expansion
+
+- [x] Extend from 5 to 20 metropolitan freshwater lakes/reservoirs (40 cards per language).
+- [x] Pin exact Sandre codes and contours; unite Hourtin-Carcans and exclude Vassivière homonyms.
+- [x] Separate lake preparation, geographic selection, editorial catalogue and localized text.
+- [x] Keep a shared France view, without zooms; explain seasonal Grand-Lieu outlines.
+
+Current total: **1,044 cards per language**. Earlier audit totals describe their dated snapshots.
