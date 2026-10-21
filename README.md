@@ -153,3 +153,13 @@ schématiques, distinctes des contours administratifs et signalées comme telles
 Le pilote comprend aussi quatre sommets repères et douze cartes : localisation dans
 les deux sens et rattachement à un grand ensemble. Les relations sont sourcées
 séparément des points Natural Earth ; aucune altitude exacte n’est demandée.
+
+## Deckdock et consolidation
+
+Le paquet est vérifié avec le code de [Deckdock](https://github.com/NayanChauveau/anki-deckdock).
+L’installation suivie nécessitera une release GitHub stable versionnée ; pousser
+`main` ne crée pas cette release. Les contrôles effectués et le workflow préparé
+sont décrits dans [DECKDOCK.md](docs/DECKDOCK.md).
+
+Les prochaines extensions de contenu sont mises de côté. La priorité est la
+[revue d’architecture et son plan de consolidation](docs/reviews/ARCHITECTURE_2026-10-21.md).

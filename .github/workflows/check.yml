@@ -1,5 +1,6 @@
 name: Checks and preview
-on:
+"on":
+  workflow_call:
   pull_request:
   push:
     branches: [main]
@@ -24,3 +25,9 @@ jobs:
           path: |
             dist/french-geography.apkg
             build/preview/
+      - uses: actions/checkout@v4
+        with:
+          repository: NayanChauveau/anki-deckdock
+          ref: 34c797fa8f6546ece8aa0a7e31f90f745ef7a38e
+          path: .compat/anki-deckdock
+      - run: uv run --frozen python scripts/check_deckdock.py --deckdock .compat/anki-deckdock

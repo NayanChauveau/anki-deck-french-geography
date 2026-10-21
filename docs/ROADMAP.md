@@ -82,7 +82,7 @@ notes issues des changements d’identifiants peuvent y subsister.
 - [x] Médias nommés par empreinte et embarqués dans le paquet Anki.
 - [x] Galerie HTML locale, export genanki et commandes AnkiConnect.
 - [x] CI de contrôle et artefacts paquet/galerie définis dans le dépôt.
-- [x] Tests automatiques : 50 tests réussis lors des dernières vérifications.
+- [x] Tests automatiques : 57 tests réussis lors des dernières vérifications.
 - [x] Paquet de 880 cartes construit et importé via AnkiConnect le 20 octobre 2026 ; synchronisation demandée.
 
 ### Limites à traiter
@@ -546,3 +546,21 @@ cols, autres sommets, îles/caps/estuaires, territoires ultramarins hors des cin
 régions naturelles/historiques et transports ne sont pas considérés comme terminés.
 Le Rhin international reste incomplet. Les schémas de relief ne sont pas des limites
 physiques de référence. Les choix éditoriaux des villes ne constituent pas un palmarès.
+
+### Priorités révisées à la demande de l’auteur
+
+Les bassins/plaines, cols, autres sommets, caps/îles/estuaires, autres territoires
+ultramarins et transports sont **différés**, sans reprise automatique. Ils restent
+des idées de contenu, pas des tâches de la prochaine séquence.
+
+La priorité porte sur la consolidation de l’existant : voir la
+[revue d’architecture](reviews/ARCHITECTURE_2026-10-21.md). La compatibilité avec
+Deckdock est vérifiée localement ; le workflow de releases versionnées est préparé,
+mais une publication depuis un tag reste à éprouver. Voir [DECKDOCK.md](DECKDOCK.md).
+Le commit de contenu `7353175` est poussé sur `origin/main`. La revue et les ajouts
+Deckdock sont séparés du lot de contenu.
+
+Revue globale terminée : huit constats priorisés et un ordre de consolidation dans
+le rapport. Les refactorings du moteur ne sont pas encore appliqués. Les contrôles
+locaux comptent désormais 57 tests, en plus du contrôle direct avec Deckdock. Le
+dépôt est public ; une release stable reste nécessaire pour installer via l’add-on.

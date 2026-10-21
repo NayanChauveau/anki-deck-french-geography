@@ -19,6 +19,7 @@ build-backend = "hatchling.build"
 packages = ["src/french_geography"]
 
 [tool.ruff]
+extend-exclude = [".compat"]
 line-length = 100
 target-version = "py312"
 
