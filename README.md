@@ -9,7 +9,7 @@ French editions, with maps included in every package.
 tracks this deck’s releases and offers updates inside Anki. Install your preferred
 edition once, then let Deckdock check for new versions.
 
-**[Get Deckdock](https://github.com/NayanChauveau/anki-deckdock/releases/latest)** ·
+**[Get Deck Manager on AnkiWeb](https://ankiweb.net/shared/info/932198090)** ·
 **[Browse deck releases](https://github.com/NayanChauveau/anki-deck-french-geography/releases/latest)**
 
 ## What you’ll learn
@@ -32,9 +32,9 @@ they can also coexist in one Anki collection.
 
 You’ll need **Anki Desktop 26.09 or later** to use Deckdock.
 
-1. Download the `.ankiaddon` file from the
-   [Deckdock release page](https://github.com/NayanChauveau/anki-deckdock/releases/latest).
-   In Anki, choose **Tools → Add-ons → Install from file**, select it, then restart Anki.
+1. Open [Deck Manager on AnkiWeb](https://ankiweb.net/shared/info/932198090)
+   and copy the add-on code: **`932198090`**. In Anki, choose
+   **Tools → Add-ons → Get Add-ons**, paste the code, confirm, then restart Anki.
 2. Open **Tools → Deck Manager** — that is Deckdock’s name in Anki.
 3. Paste the download link for your preferred edition and confirm the import.
 
