@@ -172,8 +172,7 @@ explanations:
   lakes.durance_reservoir: A reservoir created by a dam on the Durance.
   lakes.shared_france_switzerland: A lake shared by France and Switzerland.
   seas.boundary_notice: An indicative maritime area from Natural Earth; this outline is not a legal boundary.
-  overseas.position_notice: A location point within the territory; the views show its actual position, with
-    a world map inset.
+  overseas.position_notice: A location point within the territory; the world map shows its actual position.
   port.city-13055.context: Marseille-Fos serves the Mediterranean coast.
   port.city-76351.context: Le Havre lies at the seaward entrance to the Seine corridor, on the English Channel.
   port.city-76540.context: Rouen is a port at the head of an estuary, linked to the English Channel by the

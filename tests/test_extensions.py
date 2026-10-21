@@ -50,14 +50,15 @@ def test_homonymous_saint_denis_questions_remain_useful():
         assert relation.answer.casefold() not in relation.question.casefold()
 
 
-def test_overseas_points_and_ocean_insets_keep_actual_geography():
+def test_overseas_points_and_world_map_keep_actual_geography():
     project = load(ROOT)
     for code in ("971", "972", "973", "974", "976"):
         point = project.features["overseas-" + code]
         assert isinstance(point, Point)
         assert project.features["dep-" + code].covers(point)
         card = next(c for c in project.cards if c.target == "overseas-" + code)
-        assert project.views[card.view].inset == "world"
+        assert card.view == "world"
+        assert project.views[card.view].inset is None
     countries = project.countries
     assert any(
         Point(135, -25).intersects(shape(f["geometry"])) for f in countries

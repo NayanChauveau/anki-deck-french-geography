@@ -612,3 +612,8 @@ translation log describes a previous step and is superseded by this completion.
 
 - [x] Show all five lakes on the shared metropolitan France map, without local zooms or insets.
 - [x] Update preparation defaults and remove the two unused lake views.
+
+### Overseas map framing
+
+- [x] Show the five overseas location points on one shared world map, without zooms or insets.
+- [x] Align preparation defaults, localized descriptions and the existing geography check.

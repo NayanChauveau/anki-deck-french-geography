@@ -147,8 +147,7 @@ explanations:
   parks.core_areas_notice: Seuls les cœurs terrestre et marin sont représentés, sans aire d’adhésion ni aire
     maritime adjacente. Contours de février 2026 simplifiés pour l’apprentissage ; ne pas utiliser pour vérifier
     la réglementation d’un lieu.
-  overseas.position_notice: Point de situation à l’intérieur du territoire ; les vues montrent sa position
-    réelle, avec un encart mondial.
+  overseas.position_notice: Point de situation à l’intérieur du territoire ; le planisphère montre sa position réelle.
   landforms.approximate_notice: 'Zone indicative de relief : les limites Natural Earth sont approximatives,
     sans valeur administrative.'
   landforms.schematic_notice: 'Zone schématique dessinée pour ce deck : elle situe le grand ensemble sans en

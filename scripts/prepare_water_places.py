@@ -173,11 +173,11 @@ departments = {
     for f in json.loads((root / "geo/features/departments.geojson").read_text())["features"]
 }
 selection = {
-    "971": ("Guadeloupe", "caribbean", "atlantic"),
-    "972": ("Martinique", "caribbean", "atlantic"),
-    "973": ("Guyane", "caribbean", "atlantic"),
-    "974": ("La Réunion", "indian-ocean", "indian"),
-    "976": ("Mayotte", "indian-ocean", "indian"),
+    "971": ("Guadeloupe", "world", "atlantic"),
+    "972": ("Martinique", "world", "atlantic"),
+    "973": ("Guyane", "world", "atlantic"),
+    "974": ("La Réunion", "world", "indian"),
+    "976": ("Mayotte", "world", "indian"),
 }
 features, entries = [], []
 for code, (name, view, ocean) in selection.items():

@@ -135,8 +135,9 @@ identifiants et coordonnées restent identiques.
 ## Extension du 21 octobre 2026
 
 Le fond pays est désormais mondial (Natural Earth 50m v5.1.2), au lieu d’être découpé
-sur l’Europe. Les cadrages métropolitains restent locaux ; les vues océaniques ajoutent
-un encart mondial en projection Equal Earth. Les points de situation ultramarins sont
+sur l’Europe. Les cadrages métropolitains restent locaux ; les cartes de situation
+ultramarine utilisent un planisphère unique en projection Equal Earth, sans zoom
+ni encart. Les points de situation ultramarins sont
 calculés à l’intérieur des cinq polygones départementaux et ne sont pas déplacés.
 Les frontières du fond Natural Earth sont généralisées : leurs côtes peuvent différer
 des cibles locales plus précises. Ce fond ne remplace pas un référentiel de limites.

@@ -1,35 +1,35 @@
 features:
 - id: overseas-971
   name: Guadeloupe
-  view: caribbean
+  view: world
   ocean: ocean-atlantic
   references:
   - https://geoconfluences.ens-lyon.fr/images/glossaire/img-france/monde-outre-mer-francais-2025.pdf/download
   explanation_key: overseas.position_notice
 - id: overseas-972
   name: Martinique
-  view: caribbean
+  view: world
   ocean: ocean-atlantic
   references:
   - https://geoconfluences.ens-lyon.fr/images/glossaire/img-france/monde-outre-mer-francais-2025.pdf/download
   explanation_key: overseas.position_notice
 - id: overseas-973
   name: Guyane
-  view: caribbean
+  view: world
   ocean: ocean-atlantic
   references:
   - https://geoconfluences.ens-lyon.fr/images/glossaire/img-france/monde-outre-mer-francais-2025.pdf/download
   explanation_key: overseas.position_notice
 - id: overseas-974
   name: La Réunion
-  view: indian-ocean
+  view: world
   ocean: ocean-indian
   references:
   - https://geoconfluences.ens-lyon.fr/images/glossaire/img-france/monde-outre-mer-francais-2025.pdf/download
   explanation_key: overseas.position_notice
 - id: overseas-976
   name: Mayotte
-  view: indian-ocean
+  view: world
   ocean: ocean-indian
   references:
   - https://geoconfluences.ens-lyon.fr/images/glossaire/img-france/monde-outre-mer-francais-2025.pdf/download
