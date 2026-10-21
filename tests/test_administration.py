@@ -78,6 +78,7 @@ def test_render_cache_reuses_identical_visuals(tmp_path, monkeypatch):
     project.root = tmp_path
     copytree(ROOT / "assets", tmp_path / "assets")
     first = maps(project, tmp_path / "first")
+    original_png = cartography.render_png
     monkeypatch.setattr(
         cartography, "render_png", lambda *a, **kw: pytest.fail("Unexpected rerender")
     )
@@ -87,6 +88,17 @@ def test_render_cache_reuses_identical_visuals(tmp_path, monkeypatch):
         for entry in first.values()
         for record in entry.values()
     )
+
+    # An unrelated view must not invalidate existing media.
+    project.views = {**project.views, "unused-view": next(iter(project.views.values()))}
+    assert maps(project, tmp_path / "third") == first
+    monkeypatch.setattr(cartography, "render_png", original_png)
+    name = next(record["png"] for entry in first.values() for record in entry.values() if record)
+    cached = tmp_path / "build/media" / name
+    expected = cached.read_bytes()
+    cached.write_bytes(b"corrupted cached image")
+    assert maps(project, tmp_path / "repaired") == first
+    assert cached.read_bytes() == expected
 
 
 def test_crowded_paris_capitals_share_a_local_view():

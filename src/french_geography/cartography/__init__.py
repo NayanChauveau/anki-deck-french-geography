@@ -86,31 +86,51 @@ def add_geometry(scene, geom, fill, stroke, width):
             raise ValueError(f"Unsupported geometry: {part.geom_type}")
 
 
-def scene_for(project: Project, card: Card, back: bool):
+def scene_for(project: Project, card: Card, back: bool, *, context=None):
     view = project.views[card.view]
     style = project.style
+    # The caller owns this cache for one immutable project/render pass only.
+    context = {} if context is None else context
     scene = []
     show_target = (card.back_map if back else card.front_map) == "target"
     background = {key: project.features[key] for key in project.layers[card.layer]}
 
     def layer(v, rect=None):
-        projection = Projection(v, rect)
-        for feature in project.countries:
-            add_geometry(
-                scene,
-                projection.geometry(shape(feature["geometry"])),
-                style.land if feature["properties"]["france"] else style.neighbor,
-                style.border,
-                0.8,
-            )
-        if card.layer == "cities" and card.view == "paris-region" and rect is None:
-            for geom in project.layers["departments"].values():
-                add_geometry(scene, projection.geometry(geom), style.land, style.border, 1.1)
-        for geom in background.values():
-            if card.layer in ("departments", "regions", "mountains"):
-                add_geometry(scene, projection.geometry(geom), style.land, style.border, 1.1)
-            else:
-                add_geometry(scene, projection.geometry(geom), style.river, style.river, 1.5)
+        key = (card.layer, card.view, v.model_dump_json(), rect)
+        if key not in context:
+            projection = Projection(v, rect)
+            background_scene = []
+            countries = context.get("countries")
+            if countries is None:
+                countries = [
+                    (shape(f["geometry"]), f["properties"]["france"]) for f in project.countries
+                ]
+                context["countries"] = countries
+            for geom, france in countries:
+                add_geometry(
+                    background_scene,
+                    projection.geometry(geom),
+                    style.land if france else style.neighbor,
+                    style.border,
+                    0.8,
+                )
+            if card.layer == "cities" and card.view == "paris-region" and rect is None:
+                for geom in project.layers["departments"].values():
+                    add_geometry(
+                        background_scene, projection.geometry(geom), style.land, style.border, 1.1
+                    )
+            for geom in background.values():
+                if card.layer in ("departments", "regions", "mountains"):
+                    add_geometry(
+                        background_scene, projection.geometry(geom), style.land, style.border, 1.1
+                    )
+                else:
+                    add_geometry(
+                        background_scene, projection.geometry(geom), style.river, style.river, 1.5
+                    )
+            context[key] = projection, background_scene
+        projection, background_scene = context[key]
+        scene.extend(background_scene)
         target = projection.geometry(project.features[card.target])
         if target.is_empty:
             raise ValueError(f"Target outside view: {card.id}")
@@ -148,12 +168,13 @@ def render_svg(view, scene, ocean, font_path):
         f'height="{view.height}" viewBox="0 0 {view.width} {view.height}">',
         f'<rect width="100%" height="100%" fill="{ocean}"/>',
     ]
-    font_data = base64.b64encode(font_path.read_bytes()).decode()
-    parts.append(
-        "<style>@font-face{font-family:GeoSans;src:url(data:font/ttf;base64,"
-        + font_data
-        + ")} text{font-family:GeoSans,sans-serif}</style>"
-    )
+    if any(item.kind == "text" for item in scene):
+        font_data = base64.b64encode(font_path.read_bytes()).decode()
+        parts.append(
+            "<style>@font-face{font-family:GeoSans;src:url(data:font/ttf;base64,"
+            + font_data
+            + ")} text{font-family:GeoSans,sans-serif}</style>"
+        )
     for item in scene:
         attrs = (
             f'fill="{item.fill}" stroke="{item.stroke}" stroke-width="{item.width}" '
@@ -187,7 +208,11 @@ def render_png(view, scene, ocean, font_path):
     factor = 2
     image = Image.new("RGB", (view.width * factor, view.height * factor), ocean)
     draw = ImageDraw.Draw(image)
-    font = ImageFont.truetype(str(font_path), size=18 * factor)
+    font = (
+        ImageFont.truetype(str(font_path), size=18 * factor)
+        if any(item.kind == "text" for item in scene)
+        else None
+    )
 
     def scaled(points):
         return [(round(x * factor), round(y * factor)) for x, y in points]
@@ -216,8 +241,8 @@ def render_png(view, scene, ocean, font_path):
     return buffer.getvalue()
 
 
-def render(project: Project, card: Card, back: bool, out: Path):
-    view, scene = scene_for(project, card, back)
+def render(project: Project, card: Card, back: bool, out: Path, *, context=None):
+    view, scene = scene_for(project, card, back, context=context)
     result = {}
     out.mkdir(parents=True, exist_ok=True)
     for extension, data in [

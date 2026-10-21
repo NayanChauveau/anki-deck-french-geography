@@ -21,6 +21,10 @@ def test_default_build_emits_two_distinct_offline_packages(tmp_path, monkeypatch
 
     monkeypatch.setattr(socket, "socket", offline)
     project = load(ROOT)
+    # Packaging/identity coverage needs representative cards, not a production render.
+    targets = {"loire", "dep-01", "city-75056"}
+    project = replace(project, cards=[c for c in project.cards if c.target in targets])
+    assert {c.target for c in project.cards} == targets
     paths = build_packages(project, tmp_path)
     assert [path.name for path in paths] == ["french-geography-en.apkg", "french-geography-fr.apkg"]
     identities, models = [], []

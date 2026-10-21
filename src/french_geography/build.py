@@ -85,6 +85,10 @@ def maps(project: Project, out: Path):
     font = hashlib.sha256(
         (project.root / "assets/fonts/NotoSans-Regular.ttf").read_bytes()
     ).hexdigest()
+    context = {}
+    verified = {}
+    copied = set()
+    copy_media = out.resolve() != cache_dir.resolve()
     for card in project.cards:
         manifest[card.id] = {}
         for side, back in [("front", False), ("back", True)]:
@@ -98,7 +102,9 @@ def maps(project: Project, out: Path):
                 mode,
                 card.target if mode == "target" else None,
                 project.views[card.view].model_dump(),
-                {name: value.model_dump() for name, value in project.views.items()},
+                project.views[project.views[card.view].inset].model_dump()
+                if project.views[card.view].inset
+                else None,
                 project.style.model_dump(),
                 sources[card.layer],
                 sources["countries"],
@@ -115,22 +121,31 @@ def maps(project: Project, out: Path):
             if valid:
                 for extension, name in record.items():
                     path = cache_dir / name
-                    if (
-                        not path.is_file()
-                        or name
-                        != "geo-" + hashlib.sha256(path.read_bytes()).hexdigest() + "." + extension
-                    ):
+                    if name not in verified:
+                        verified[name] = (
+                            path.is_file()
+                            and name
+                            == "geo-"
+                            + hashlib.sha256(path.read_bytes()).hexdigest()
+                            + "."
+                            + extension
+                        )
+                    if not verified[name]:
                         valid = False
                         break
             if not valid:
                 record = {
-                    ext: path.name for ext, path in render(project, card, back, cache_dir).items()
+                    ext: path.name
+                    for ext, path in render(project, card, back, cache_dir, context=context).items()
                 }
                 cache[key] = record
+                verified.update(dict.fromkeys(record.values(), True))
             manifest[card.id][side] = record
-            if out.resolve() != cache_dir.resolve():
+            if copy_media:
                 for name in record.values():
-                    shutil.copyfile(cache_dir / name, out / name)
+                    if name not in copied:
+                        shutil.copyfile(cache_dir / name, out / name)
+                        copied.add(name)
     index_path.write_text(json.dumps(cache, sort_keys=True) + "\n")
     (out / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
     return manifest

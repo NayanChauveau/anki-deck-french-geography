@@ -27,5 +27,7 @@ target-version = "py312"
 select = ["E", "F", "I", "UP", "B"]
 
 [tool.pytest.ini_options]
+addopts = "-v --durations=10"
+faulthandler_timeout = 120
 testpaths = ["tests"]
 pythonpath = ["src"]

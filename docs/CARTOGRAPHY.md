@@ -6,8 +6,7 @@ Règles YAML + catalogue éditorial + GeoJSON locaux → génération des notes 
 → validation avec vues et styles → scène projetée commune
 → SVG et PNG → galerie HTML et paquet Anki.
 
-Les deux sorties utilisent les mêmes primitives et coordonnées. Le SVG embarque
-la police ; le PNG est rendu par Pillow en double résolution puis réduit avec
+Les deux sorties utilisent les mêmes primitives et coordonnées. Le SVG ne contient aucune police embarquée pour les scènes sans texte ; le PNG est rendu par Pillow en double résolution puis réduit avec
 Lanczos. Chaque média porte le SHA-256 complet de ses octets. Les PNG recto et verso
 référencés par les notes sont tous inclus dans le paquet Anki.
 
@@ -184,3 +183,18 @@ la version enrichie. `prepare_relief.py` dépend du fond pays ; les points outre
 dépendent des départements. La revue d’architecture doit examiner l’orchestration
 explicite de ces dépendances. `make check`, `make preview` et `make build` utilisent
 uniquement les données préparées, sans accès réseau.
+
+## Cache de rendu
+
+Un passage de génération partage les fonds projetés par couche et par vue, encarts
+compris. Ce cache en mémoire reste limité au projet courant. Le cache disque conserve
+les médias nommés par empreinte ; chaque fichier réutilisé est vérifié une fois par
+passage et chaque média de galerie est copié une seule fois. Les clés dépendent des
+vues effectivement utilisées, des données, du style, du moteur et de ses dépendances.
+La CI restaure `build/media` entre exécutions ; les empreintes internes invalident les
+entrées incompatibles, même après une restauration partielle. Le build complet reste
+exécuté après les tests ; le test bilingue utilise seulement un échantillon de notes.
+
+Les tests affichent leur nom avant exécution et les dix durées les plus longues.
+Après 120 secondes dans un test, pytest imprime les piles des threads pour diagnostiquer
+un éventuel blocage, sans interrompre automatiquement le test.

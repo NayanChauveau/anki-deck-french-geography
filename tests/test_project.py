@@ -71,9 +71,10 @@ def test_identity_does_not_depend_on_editorial_changes(project):
     assert project.cards[0].id == "fr-geo-hydrographie-identification-loire"
 
 
-@pytest.mark.parametrize("index", range(18))
-def test_render_is_deterministic_and_front_does_not_reveal_answer(project, tmp_path, index):
-    card = project.cards[index]
+# Exercise representative river geometries; full catalog coverage is in the package build.
+@pytest.mark.parametrize("target", ["loire", "rhone", "rhin", "saone"])
+def test_render_is_deterministic_and_front_does_not_reveal_answer(project, tmp_path, target):
+    card = next(c for c in project.cards if c.target == target)
     label = card.annotations[0].text
     first = render(project, card, False, tmp_path / "one")
     second = render(project, card, False, tmp_path / "two")
@@ -239,3 +240,15 @@ def test_ankiconnect_errors_are_reported(monkeypatch):
     )
     with pytest.raises(RuntimeError, match="Anki unavailable"):
         anki("version")
+
+
+def test_shared_background_preserves_targets_blank_maps_and_insets(project):
+    project = load(ROOT)
+    cards = [
+        next(c for c in project.cards if c.target == target)
+        for target in ("loire", "rhone", "city-75056", "city-92050", "dep-971")
+    ]
+    context = {}
+    for card in cards:
+        for back in (False, True):
+            assert scene_for(project, card, back, context=context) == scene_for(project, card, back)

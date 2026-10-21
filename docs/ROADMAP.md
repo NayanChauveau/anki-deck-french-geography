@@ -584,3 +584,13 @@ avant d’annoncer une version téléchargeable ; suivi dans `docs/DECKDOCK.md`.
 
 Les noms de fichiers sont désormais figés. La première release mono-fichier précède
 cette transition autorisée par l’auteur ; les futurs assets gardent les suffixes de langue.
+
+### Optimisation des builds et des tests
+
+- [x] Test bilingue limité à un échantillon fleuve/département/ville ; build complet maintenu en CI.
+- [x] Tests déterministes du rendu sur quatre fleuves représentatifs, avec tests distincts des
+  points, polygones troués et encarts.
+- [x] Fonds projetés partagés par couche/vue pendant une génération.
+- [x] Police embarquée uniquement pour les scènes contenant réellement du texte.
+- [x] Vérifications d’empreinte et copies dédupliquées par média ; réparation des fichiers corrompus testée.
+- [x] Cache `build/media` ajouté au workflow CI (gain distant à mesurer après exécution).

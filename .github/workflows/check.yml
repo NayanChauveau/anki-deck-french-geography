@@ -15,6 +15,12 @@ jobs:
           version: '0.9.4'
           enable-cache: true
       - run: uv sync --frozen --extra dev --python 3.13
+      - uses: actions/cache@v4
+        with:
+          path: build/media
+          key: maps-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('uv.lock', 'src/french_geography/**', 'geo/**', 'cards/**', 'assets/fonts/**') }}
+          restore-keys: |
+            maps-${{ runner.os }}-${{ runner.arch }}-
       - run: make check
       - run: make preview
       - run: make build
