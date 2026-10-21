@@ -5,9 +5,9 @@ remember them with Anki. **Over 1,000 cards**, available as complete English and
 French editions, with maps included in every package.
 
 **Designed to be installed and kept up to date with
-[Deckdock](https://github.com/NayanChauveau/anki-deckdock)**, the Anki add-on that
+[Deck Manager](https://github.com/NayanChauveau/anki-deck-manager)**, the Anki add-on that
 tracks this deck’s releases and offers updates inside Anki. Install your preferred
-edition once, then let Deckdock check for new versions.
+edition once, then let Deck Manager check for new versions.
 
 **[Get Deck Manager on AnkiWeb](https://ankiweb.net/shared/info/932198090)** ·
 **[Browse deck releases](https://github.com/NayanChauveau/anki-deck-french-geography/releases/latest)**
@@ -28,17 +28,17 @@ so you practise finding a place as well as naming it.
 Choose the language you want to study in. Both editions cover the same geography;
 they can also coexist in one Anki collection.
 
-## Install with Deckdock — recommended
+## Install with Deck Manager — recommended
 
-You’ll need **Anki Desktop 26.09 or later** to use Deckdock.
+You’ll need **Anki Desktop 26.09 or later** to use Deck Manager.
 
 1. Open [Deck Manager on AnkiWeb](https://ankiweb.net/shared/info/932198090)
    and copy the add-on code: **`932198090`**. In Anki, choose
    **Tools → Add-ons → Get Add-ons**, paste the code, confirm, then restart Anki.
-2. Open **Tools → Deck Manager** — that is Deckdock’s name in Anki.
+2. Open **Tools → Deck Manager**.
 3. Paste the download link for your preferred edition and confirm the import.
 
-These published links are ready to paste into Deckdock:
+These published links are ready to paste into Deck Manager:
 
 **English edition**
 
@@ -52,15 +52,15 @@ https://github.com/NayanChauveau/anki-deck-french-geography/releases/download/v0
 https://github.com/NayanChauveau/anki-deck-french-geography/releases/download/v0.1.3/french-geography-fr.apkg
 ```
 
-These are working starting versions; Deckdock will offer newer releases when
+These are working starting versions; Deck Manager will offer newer releases when
 available. To start directly with the newest version, open the
 [latest deck release](https://github.com/NayanChauveau/anki-deck-french-geography/releases/latest),
 then copy the link address of the `.apkg` asset for your language.
-Paste that **versioned file link** into Deckdock, rather than the release page URL.
+Paste that **versioned file link** into Deck Manager, rather than the release page URL.
 
 ### Keeping your deck up to date
 
-Deckdock checks for new versions at Anki startup, at most once every 24 hours.
+Deck Manager checks for new versions at Anki startup, at most once every 24 hours.
 When an update is available, choose **Import update** or postpone it with **Later**.
 You can also use **Check** in Deck Manager whenever you like.
 
@@ -111,5 +111,5 @@ Editorial content lives in `catalog/`, generation rules in `cards/`, translation
 in `locales/`, and prepared geography in `geo/features/`. To learn how to extend
 the deck, see [cartography](docs/CARTOGRAPHY.md),
 [localization](docs/LOCALIZATION.md), [stable Anki IDs](docs/ANKI_IDS.md),
-[distribution](docs/DECKDOCK.md) and the [roadmap](docs/ROADMAP.md).
+[distribution](docs/DECK_MANAGER.md) and the [roadmap](docs/ROADMAP.md).
 Most detailed working documents are currently in French.

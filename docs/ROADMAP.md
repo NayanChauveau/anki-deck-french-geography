@@ -555,14 +555,14 @@ des idées de contenu, pas des tâches de la prochaine séquence.
 
 La priorité porte sur la consolidation de l’existant : voir la
 [revue d’architecture](reviews/ARCHITECTURE_2026-10-21.md). La compatibilité avec
-Deckdock est vérifiée localement ; le workflow de releases versionnées est préparé,
-mais une publication depuis un tag reste à éprouver. Voir [DECKDOCK.md](DECKDOCK.md).
+Deck Manager est vérifiée localement ; le workflow de releases versionnées est préparé,
+mais une publication depuis un tag reste à éprouver. Voir [DECK_MANAGER.md](DECK_MANAGER.md).
 Le commit de contenu `7353175` est poussé sur `origin/main`. La revue et les ajouts
-Deckdock sont séparés du lot de contenu.
+Deck Manager sont séparés du lot de contenu.
 
 Revue globale terminée : huit constats priorisés et un ordre de consolidation dans
 le rapport. Les refactorings du moteur ne sont pas encore appliqués. Les contrôles
-locaux comptent désormais 57 tests, en plus du contrôle direct avec Deckdock. Le
+locaux comptent désormais 57 tests, en plus du contrôle direct avec Deck Manager. Le
 dépôt est public ; une release stable reste nécessaire pour installer via l’add-on.
 
 ### Publication automatique demandée ensuite
@@ -570,7 +570,7 @@ dépôt est public ; une release stable reste nécessaire pour installer via l�
 Le workflow suit maintenant le fonctionnement WSET 3 : release stable à chaque push
 validé de `main`, numéro de patch incrémenté automatiquement, paquet de nom constant.
 Les pull requests ne publient pas. Le premier passage distant doit être vérifié
-avant d’annoncer une version téléchargeable ; suivi dans `docs/DECKDOCK.md`.
+avant d’annoncer une version téléchargeable ; suivi dans `docs/DECK_MANAGER.md`.
 
 ### Build bilingue — périmètre volontairement minimal
 

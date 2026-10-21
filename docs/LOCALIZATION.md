@@ -68,7 +68,7 @@ registered language suffix. No individual note has special identity or migration
    inspect the package. `uv run --frozen french-geography preview --lang <code>
    --out build/preview-<code>` provides a localized gallery.
 4. Build all registered languages with `make build`. CI uploads `dist/*.apkg` and
-   the publisher requires exactly one package per registered language. Deckdock's
+   the publisher requires exactly one package per registered language. Deck Manager's
    compatibility check also obtains its asset list from the registry.
 
 No Python language branch or duplicated geographic input is required. A regression

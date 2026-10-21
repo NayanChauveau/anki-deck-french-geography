@@ -35,7 +35,7 @@ otherwise retained. The shared schema and stable keys are documented in
   to the corresponding French PNGs and bundled under their content hashes.
 - The third-locale regression fixture adds only registration/content data, builds its
   package and gallery and checks separate identity and its localized template.
-- CI, publication and Deckdock obtain package coverage from the language registry.
+- CI, publication and Deck Manager obtain package coverage from the language registry.
 - Preparation scripts emit semantic explanation/qualifier keys, not localized prose.
 
 ## Checks actually performed
@@ -56,7 +56,7 @@ otherwise retained. The shared schema and stable keys are documented in
   reach 2,028 notes, then reimport English without duplicates. This manual check is
   recorded as an observation, not a note-specific compatibility requirement.
   No personal Anki collection was accessed or modified.
-- Deckdock contract check passed for both approximately 44 MiB packages against the
+- Deck Manager contract check passed for both approximately 44 MiB packages against the
   local add-on checkout, using simulated GitHub transport; no release was published.
 
 French/English completeness, source-data parity and cross-language identity separation

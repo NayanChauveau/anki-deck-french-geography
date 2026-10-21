@@ -1,4 +1,4 @@
-"""Exercise the built package against an actual Deckdock checkout, without network or Anki UI."""
+"""Exercise the built package against an actual Deck Manager checkout, without network or Anki UI."""
 
 import argparse
 import hashlib
@@ -16,13 +16,13 @@ from french_geography.distribution import PACKAGES  # noqa: E402
 def check(checkout: Path, package: Path) -> dict:
     source = checkout.resolve() / "src"
     if not (source / "domain.py").is_file():
-        raise ValueError("Expected a Deckdock checkout containing src/domain.py")
+        raise ValueError("Expected a Deck Manager checkout containing src/domain.py")
     labels = dict(PACKAGES.values())
     if not package.is_file() or package.name not in labels:
         raise ValueError("Build the English and French packages first")
     label = labels[package.name]
     # Load the add-on's real modules without executing its Anki UI entry point.
-    namespace = "_deckdock_compatibility"
+    namespace = "_deck_manager_compatibility"
     module = ModuleType(namespace)
     module.__path__ = [str(source)]
     sys.modules[namespace] = module
@@ -76,11 +76,11 @@ def check(checkout: Path, package: Path) -> dict:
     except domain.UrlError:
         pass
     else:
-        raise AssertionError("Deckdock unexpectedly accepted latest-main")
+        raise AssertionError("Deck Manager unexpectedly accepted latest-main")
     max_bytes = manager.DEFAULT_MAX_BYTES
     assert size < max_bytes
     asset = domain.find_apkg(newer, asset_name)
-    with TemporaryDirectory(prefix="geography-deckdock-") as folder:
+    with TemporaryDirectory(prefix="geography-deck-manager-") as folder:
         target = Path(folder) / asset_name
 
         def blocks():
@@ -122,12 +122,12 @@ def check(checkout: Path, package: Path) -> dict:
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--deckdock", type=Path, required=True)
+    parser.add_argument("--deck-manager", type=Path, required=True)
     parser.add_argument("--package", type=Path, action="append")
     args = parser.parse_args()
     packages = args.package or [Path("dist") / name for name, label in PACKAGES.values()]
     print(
-        json.dumps([check(args.deckdock, path) for path in packages], ensure_ascii=False, indent=2)
+        json.dumps([check(args.deck_manager, path) for path in packages], ensure_ascii=False, indent=2)
     )
 
 

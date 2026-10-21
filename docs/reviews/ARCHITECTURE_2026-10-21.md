@@ -1,7 +1,7 @@
 # Revue d’architecture — 21 octobre 2026
 
 Périmètre : dépôt complet au commit `7353175`, puis examen de la compatibilité
-Deckdock. Cette revue porte sur la logique, la maintenabilité et le coût d’ajout
+Deck Manager. Cette revue porte sur la logique, la maintenabilité et le coût d’ajout
 de contenu. Les constats ci-dessous sont distincts des extensions géographiques,
 que l’auteur a demandé de mettre de côté.
 
@@ -237,11 +237,11 @@ aucune perte d’historique à l’import, build hors ligne et crédits exacts. 
 ne constitue pas une réécriture automatique du moteur : les refactorings restent
 à réaliser après accord sur leur ordre.
 
-## Compatibilité Deckdock et limites de validation
+## Compatibilité Deck Manager et limites de validation
 
-Le contrôle complémentaire est détaillé dans [DECKDOCK.md](../DECKDOCK.md).
-Il utilise le code réel de Deckdock, pas une réimplémentation de ses règles.
-Les 67 tests de son checkout `34c797fa8f6546ece8aa0a7e31f90f745ef7a38e` passent.
+Le contrôle complémentaire est détaillé dans [DECK_MANAGER.md](../DECK_MANAGER.md).
+Il utilise le code réel de Deck Manager, pas une réimplémentation de ses règles.
+Les 67 tests de son checkout `b58df24ee3c3a0851ba04dae466f1ce334f59811` passent.
 
 Un test isolé avec le backend Anki 26.9.3 a importé les 1 014 notes, puis modifié
 une question dans un second paquet et réimporté. Le nombre de notes et cartes reste
@@ -256,7 +256,7 @@ de l’auteur pendant cette revue. La publication d’une release n’a pas ét�
 ## État après préparation de la distribution
 
 Les sept tests du contrat de workflow portent le contrôle local à **57 tests réussis**.
-Le script Deckdock passe contre la révision épinglée avec le paquet réel ; GitHub
+Le script Deck Manager passe contre la révision épinglée avec le paquet réel ; GitHub
 est simulé dans ce test. La vérification distante confirme que le nouveau dépôt est
 public. Le workflow de publication et son chemin d’artefact sont contrôlés, sans
 création de tag ni de release. Les constats R1 à R8 restent des travaux de consolidation,
@@ -275,7 +275,7 @@ flowchart LR
     L[Couches, vues et attributions] --> M
     M --> E[Galerie et paquet Anki]
     V --> E
-    E --> D[Release versionnée et Deckdock]
+    E --> D[Release versionnée et Deck Manager]
 ```
 
 Ce diagramme décrit la direction recommandée, pas un refactoring déjà réalisé.

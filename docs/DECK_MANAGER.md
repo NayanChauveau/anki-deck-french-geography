@@ -1,12 +1,12 @@
-# Distribution et compatibilité Deckdock
+# Distribution et compatibilité Deck Manager
 
 État vérifié le 21 octobre 2026, avec le code réel de
-[anki-deckdock](https://github.com/NayanChauveau/anki-deckdock), révision
-`34c797fa8f6546ece8aa0a7e31f90f745ef7a38e`.
+[anki-deck-manager](https://github.com/NayanChauveau/anki-deck-manager), révision
+`b58df24ee3c3a0851ba04dae466f1ce334f59811`.
 
 ## Contrat
 
-Deckdock suit un fichier `.apkg` dans les releases stables d’un dépôt GitHub public.
+Deck Manager suit un fichier `.apkg` dans les releases stables d’un dépôt GitHub public.
 Les noms définitifs sont `french-geography-en.apkg` et `french-geography-fr.apkg`.
 Chaque changement publié
 utilise une nouvelle version `vX.Y.Z`. Il compare les tags, sans comparer le contenu
@@ -27,14 +27,14 @@ la prochaine version stable après chaque push validé sur `main`.
 
 - Paquet courant : 1 014 notes/cartes, neuf sous-decks, 326 médias embarqués.
 - Taille : 46 143 943 octets lors du test ; inférieure à la limite par défaut
-  de 536 870 912 octets de Deckdock.
+  de 536 870 912 octets de Deck Manager.
 - Parseur d’URL, lecture de métadonnées et reconnaissance du nom d’asset.
 - Label « Géographie française », détection d’une nouvelle version et absence de
   proposition de mise à jour pour un tag inchangé.
 - Rejet du tag `latest-main`.
 - Téléchargement simulé du vrai paquet avec le transport injectable de l’add-on :
   taille contrôlée et contenu final identique par SHA-256.
-- Les 67 tests de Deckdock passent sur cette révision.
+- Les 67 tests de Deck Manager passent sur cette révision.
 - Import puis mise à jour d’une question dans une collection temporaire via le
   backend Anki 26.9.3 : toujours 1 014 notes/cartes, même identité, conservation d’un
   historique synthétique et de valeurs de planification de test. La collection
@@ -43,7 +43,7 @@ la prochaine version stable après chaque push validé sur `main`.
 Test reproductible du contrat, avec un checkout local de l’add-on :
 
 ```sh
-uv run --frozen python scripts/check_deckdock.py --deckdock /chemin/vers/anki-deckdock
+uv run --frozen python scripts/check_deck_manager.py --deck-manager /chemin/vers/anki-deck-manager
 ```
 
 La commande utilise le code de cet add-on et le paquet déjà construit. GitHub est
@@ -75,7 +75,7 @@ tests locaux de contrat et du backend Anki.
 
 ## Identités et mises à jour
 
-Les GUID, IDs de modèles et IDs de decks restent ceux de `ANKI_IDS.md`. Deckdock
+Les GUID, IDs de modèles et IDs de decks restent ceux de `ANKI_IDS.md`. Deck Manager
 ouvre le dialogue d’import standard : les options d’import d’Anki restent celles de
 l’utilisateur. Le test de mise à jour emploie la mise à jour des notes activée et
 l’import de planification désactivé. Il ne prouve pas que toutes les combinaisons
@@ -90,7 +90,7 @@ identifiants pour résoudre un problème de présentation ou d’ordre.
 La release automatique `v0.1.0` a été publiée avec succès depuis le commit `7fd154d`.
 Elle utilisait l’ancien fichier unique `french-geography.apkg`. À la demande de l’auteur,
 les noms sont désormais figés avec les suffixes `-en` et `-fr` ; aucune troisième copie
-n’est publiée. Si cet ancien fichier a été suivi dans Deckdock, remplacer son suivi
+n’est publiée. Si cet ancien fichier a été suivi dans Deck Manager, remplacer son suivi
 par le lien versionné du nouveau fichier français. Les identités des notes françaises
 sont conservées : le renommage de fichier ne recrée pas les notes.
 
@@ -102,6 +102,6 @@ remplacée dans l’arbre de travail par les éditions complètes décrites ci-d
 
 The subsequent complete translation now builds 1,014 notes in each language.
 `locales/languages.json` is the shared registry for the builder, release asset list
-and Deckdock check. CI uploads all built APKGs; publication requires every registered
+and Deck Manager check. CI uploads all built APKGs; publication requires every registered
 language exactly once. Published filenames remain fixed. The first release containing this refactoring
 replaces the earlier English starter edition; v0.1.1 predates the complete translation.

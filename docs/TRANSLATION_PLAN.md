@@ -87,7 +87,7 @@ stable semantic keys in locale files. The registry owns per-language Anki identi
 - [x] Reject missing translations, duplicate keys and invalid interpolation.
 - [x] Check canonical data invariance and cross-language identity separation generically.
 - [x] Build a third private-locale fixture using registration/content data only.
-- [x] Make CI, the publisher and Deckdock consume the language registry.
+- [x] Make CI, the publisher and Deck Manager consume the language registry.
 - [x] Build both complete APKGs offline and verify their 326 identical PNGs.
 - [x] Check import/reimport and coexistence in a disposable Anki collection.
 - [x] Record results, limitations and terminology sources in the final report.

@@ -32,10 +32,10 @@ jobs:
             build/preview/
       - uses: actions/checkout@v4
         with:
-          repository: NayanChauveau/anki-deckdock
-          ref: 34c797fa8f6546ece8aa0a7e31f90f745ef7a38e
-          path: .compat/anki-deckdock
-      - run: uv run --frozen python scripts/check_deckdock.py --deckdock .compat/anki-deckdock
+          repository: NayanChauveau/anki-deck-manager
+          ref: b58df24ee3c3a0851ba04dae466f1ce334f59811
+          path: .compat/anki-deck-manager
+      - run: uv run --frozen python scripts/check_deck_manager.py --deck-manager .compat/anki-deck-manager
   release:
     name: Publish versioned release
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
