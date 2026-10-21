@@ -14,7 +14,7 @@ de géométries. Les noms et codes ne sont pas inférés depuis les contours.
 Les positions sont des points de repérage urbain, pas les contours des agglomérations.
 Les noms, relations et chefs-lieux sont datés de 2025 ; les villes ne sont pas une
 sélection des plus grandes populations. Les métropoles complémentaires restent
-un lot ultérieur. Les cinq DROM disposent de vues locales adaptées.
+un lot ultérieur. Les cinq DROM et leurs chefs-lieux utilisent le planisphère commun, sans zoom ni encart.
 
 ## Cartes générées
 

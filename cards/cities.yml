@@ -4,6 +4,13 @@ rules:
   layer: cities
   catalog: catalog/cities.yml
   theme: Villes
+  # Keep overseas city/department relations, but omit redundant world-map cards.
+  exclude_targets:
+  - city-97105
+  - city-97209
+  - city-97302
+  - city-97411
+  - city-97611
   batch_size: 10
   directions:
   - name-map

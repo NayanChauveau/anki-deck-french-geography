@@ -232,3 +232,19 @@ conservés sous `data/lakes/`, avec leurs empreintes dans le registre des source
 Tous les massifs et sommets, y compris le relief corse et le Monte Cinto,
 utilisent la grande carte métropolitaine commune, sans zoom ni encart.
 Les scripts de préparation conservent ce cadrage ; la vue corse dédiée est supprimée.
+
+Les huit parcs nationaux métropolitains utilisent eux aussi la France entière,
+sans zoom régional ni encart. Les anciennes vues `parks-alps` et `parks-coast`
+sont supprimées du catalogue et du script de préparation.
+
+## Cadrage ultramarin commun
+
+Toutes les régions, départements, villes, points de situation et parcs ultramarins
+utilisent le planisphère `world`, sans zoom ni encart. Les coordonnées réelles
+et les contours restent inchangés. Les vues locales ultramarines sont supprimées,
+et les scripts de préparation appliquent la même convention.
+
+Les cinq chefs-lieux ultramarins conservent leurs relations textuelles avec les
+départements mais ne génèrent plus les deux sens de localisation : le planisphère
+apprendrait surtout à reconnaître leur territoire. La règle `villes-chefs-lieux`
+les exclut explicitement via `exclude_targets` ; leurs données et IDs sont conservés.

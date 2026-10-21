@@ -195,7 +195,11 @@ def generate_places(root, rule, geometries, locale):
                 )
             )
         return cards
-    for batch in batched(list(entries.values()), rule.batch_size):
+    unknown = set(rule.exclude_targets) - entries.keys()
+    if unknown:
+        raise ValueError(f"Unknown excluded place targets: {sorted(unknown)}")
+    selected = [entry for entry in entries.values() if entry.id not in rule.exclude_targets]
+    for batch in batched(selected, rule.batch_size):
         for direction in rule.directions:
             for entry in batch:
                 locate = direction == "name-map"

@@ -3,27 +3,27 @@ features:
   code: '01'
   name: Guadeloupe
   capital: city-97105
-  view: guadeloupe
+  view: world
 - id: reg-02
   code: '02'
   name: Martinique
   capital: city-97209
-  view: martinique
+  view: world
 - id: reg-03
   code: '03'
   name: Guyane
   capital: city-97302
-  view: guyane
+  view: world
 - id: reg-04
   code: '04'
   name: La Réunion
   capital: city-97411
-  view: reunion
+  view: world
 - id: reg-06
   code: '06'
   name: Mayotte
   capital: city-97611
-  view: mayotte
+  view: world
 - id: reg-11
   code: '11'
   name: Île-de-France

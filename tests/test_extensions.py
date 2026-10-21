@@ -44,8 +44,12 @@ def test_homonymous_saint_denis_questions_remain_useful():
     project = load(ROOT)
     for target, qualifier in (("city-93066", "Île-de-France"), ("city-97411", "océan Indien")):
         cards = [c for c in project.cards if c.target == target]
-        assert {c.direction for c in cards} == {"name-map", "map-name", "department"}
-        assert qualifier in next(c.question for c in cards if c.direction == "name-map")
+        expected = (
+            {"department"} if target == "city-97411" else {"name-map", "map-name", "department"}
+        )
+        assert {c.direction for c in cards} == expected
+        if "name-map" in expected:
+            assert qualifier in next(c.question for c in cards if c.direction == "name-map")
         relation = next(c for c in cards if c.direction == "department")
         assert relation.answer.casefold() not in relation.question.casefold()
 
@@ -81,9 +85,14 @@ def test_national_park_cores_cover_eleven_parks_including_overseas():
     cards = [c for c in project.cards if c.layer == "parks"]
     assert len(cards) == 22
     assert {c.direction for c in cards} == {"name-map", "map-name"}
-    for slug, view in (("guadeloupe", "guadeloupe"), ("reunion", "reunion"), ("guyane", "guyane")):
+    for slug, view in (("guadeloupe", "world"), ("reunion", "world"), ("guyane", "world")):
         assert {c.view for c in cards if c.target == "park-" + slug} == {view}
     assert all("sans aire d’adhésion" in c.explanation for c in cards)
+    mainland = [
+        c for c in cards if c.target not in {"park-guadeloupe", "park-reunion", "park-guyane"}
+    ]
+    assert {c.view for c in mainland} == {"metropolitan"}
+    assert project.views["metropolitan"].inset is None
 
 
 def test_port_relations_reuse_existing_city_positions():
@@ -111,3 +120,47 @@ def test_major_lakes_cover_twenty_places_on_one_france_view():
     assert project.features["lake-grand-lieu"].bounds[2] < -1.5
     assert project.features["lake-der-chantecoq"].bounds[1] > 48.5
     assert all(project.features[c.target].is_valid for c in cards)
+
+
+def test_all_overseas_places_use_world_view_without_inset():
+    project = load(ROOT)
+    targets = {
+        "dep-971",
+        "dep-972",
+        "dep-973",
+        "dep-974",
+        "dep-976",
+        "reg-01",
+        "reg-02",
+        "reg-03",
+        "reg-04",
+        "reg-06",
+        "city-97105",
+        "city-97209",
+        "city-97302",
+        "city-97411",
+        "city-97611",
+        "park-guadeloupe",
+        "park-reunion",
+        "park-guyane",
+        "overseas-971",
+        "overseas-972",
+        "overseas-973",
+        "overseas-974",
+        "overseas-976",
+    }
+    cards = [c for c in project.cards if c.target in targets]
+    assert {c.target for c in cards} == targets
+    assert {c.view for c in cards} == {"world"}
+    assert project.views["world"].inset is None
+
+
+def test_overseas_cities_keep_relations_without_location_cards():
+    project = load(ROOT)
+    targets = {"city-97105", "city-97209", "city-97302", "city-97411", "city-97611"}
+    for target in targets:
+        cards = [c for c in project.cards if c.target == target]
+        assert len(cards) == 1
+        assert cards[0].direction == "department"
+        assert cards[0].front_map == cards[0].back_map == "none"
+    assert all(target in project.layers["cities"] for target in targets)

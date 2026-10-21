@@ -16,16 +16,16 @@ parser.add_argument("input", type=Path)
 args = parser.parse_args()
 root = Path(__file__).resolve().parents[1]
 selection = {
-    "PNV": ("vanoise", "Vanoise", "parks-alps", 2154),
-    "PNPC": ("port-cros", "Port-Cros", "parks-coast", 2154),
+    "PNV": ("vanoise", "Vanoise", "metropolitan", 2154),
+    "PNPC": ("port-cros", "Port-Cros", "metropolitan", 2154),
     "PNP": ("pyrenees", "Pyrénées", "metropolitan", 2154),
     "PNC": ("cevennes", "Cévennes", "metropolitan", 2154),
-    "PNE": ("ecrins", "Écrins", "parks-alps", 2154),
-    "PNM": ("mercantour", "Mercantour", "parks-alps", 2154),
-    "PNG": ("guadeloupe", "Guadeloupe", "guadeloupe", 32620),
-    "PNRUN": ("reunion", "La Réunion", "reunion", 32740),
-    "PAG": ("guyane", "Parc amazonien de Guyane", "guyane", 32622),
-    "PNCAL": ("calanques", "Calanques", "parks-coast", 2154),
+    "PNE": ("ecrins", "Écrins", "metropolitan", 2154),
+    "PNM": ("mercantour", "Mercantour", "metropolitan", 2154),
+    "PNG": ("guadeloupe", "Guadeloupe", "world", 32620),
+    "PNRUN": ("reunion", "La Réunion", "world", 32740),
+    "PAG": ("guyane", "Parc amazonien de Guyane", "world", 32622),
+    "PNCAL": ("calanques", "Calanques", "metropolitan", 2154),
     "PNFOR": ("forets", "Forêts", "metropolitan", 2154),
 }
 parts = {key: [] for key in selection}

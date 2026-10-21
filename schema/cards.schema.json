@@ -148,6 +148,13 @@
           "title": "Directions",
           "type": "array"
         },
+        "exclude_targets": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Exclude Targets",
+          "type": "array"
+        },
         "batch_size": {
           "default": 10,
           "minimum": 1,

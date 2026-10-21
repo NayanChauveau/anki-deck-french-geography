@@ -1,13 +1,13 @@
 features:
 - id: park-vanoise
   name: Vanoise
-  view: parks-alps
+  view: metropolitan
   references:
   - https://www.data.gouv.fr/datasets/contours-des-11-parcs-nationaux-de-france
   explanation_key: parks.core_areas_notice
 - id: park-port-cros
   name: Port-Cros
-  view: parks-coast
+  view: metropolitan
   references:
   - https://www.data.gouv.fr/datasets/contours-des-11-parcs-nationaux-de-france
   explanation_key: parks.core_areas_notice
@@ -25,37 +25,37 @@ features:
   explanation_key: parks.core_areas_notice
 - id: park-ecrins
   name: Écrins
-  view: parks-alps
+  view: metropolitan
   references:
   - https://www.data.gouv.fr/datasets/contours-des-11-parcs-nationaux-de-france
   explanation_key: parks.core_areas_notice
 - id: park-mercantour
   name: Mercantour
-  view: parks-alps
+  view: metropolitan
   references:
   - https://www.data.gouv.fr/datasets/contours-des-11-parcs-nationaux-de-france
   explanation_key: parks.core_areas_notice
 - id: park-guadeloupe
   name: Guadeloupe
-  view: guadeloupe
+  view: world
   references:
   - https://www.data.gouv.fr/datasets/contours-des-11-parcs-nationaux-de-france
   explanation_key: parks.core_areas_notice
 - id: park-reunion
   name: La Réunion
-  view: reunion
+  view: world
   references:
   - https://www.data.gouv.fr/datasets/contours-des-11-parcs-nationaux-de-france
   explanation_key: parks.core_areas_notice
 - id: park-guyane
   name: Parc amazonien de Guyane
-  view: guyane
+  view: world
   references:
   - https://www.data.gouv.fr/datasets/contours-des-11-parcs-nationaux-de-france
   explanation_key: parks.core_areas_notice
 - id: park-calanques
   name: Calanques
-  view: parks-coast
+  view: metropolitan
   references:
   - https://www.data.gouv.fr/datasets/contours-des-11-parcs-nationaux-de-france
   explanation_key: parks.core_areas_notice

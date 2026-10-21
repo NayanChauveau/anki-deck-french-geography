@@ -653,29 +653,29 @@ features:
   name: Basse-Terre
   department: dep-971
   region: reg-01
-  view: guadeloupe
+  view: world
 - id: city-97209
   code: '97209'
   name: Fort-de-France
   department: dep-972
   region: reg-02
-  view: martinique
+  view: world
 - id: city-97302
   code: '97302'
   name: Cayenne
   department: dep-973
   region: reg-03
-  view: guyane
+  view: world
 - id: city-97411
   code: '97411'
   name: Saint-Denis
   department: dep-974
   region: reg-04
-  view: reunion
+  view: world
   qualifier_key: location.indian_ocean
 - id: city-97611
   code: '97611'
   name: Mamoudzou
   department: dep-976
   region: reg-06
-  view: mayotte
+  view: world

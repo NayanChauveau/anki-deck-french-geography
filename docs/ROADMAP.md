@@ -65,7 +65,7 @@ automatique. Ces possibilités seraient un chantier distinct.
 - [x] Situation de cinq territoires ultramarins et bassin océanique (quinze cartes).
 - [x] Cœurs des onze parcs nationaux, dans les deux sens (vingt-deux cartes).
 
-Total généré : **1 044 notes produisant chacune une carte**. Ce nombre ne décrit pas
+Total généré : **1 034 notes produisant chacune une carte**. Ce nombre ne décrit pas
 nécessairement le nombre de notes d’une collection Anki déjà utilisée : les anciennes
 notes issues des changements d’identifiants peuvent y subsister.
 
@@ -630,3 +630,9 @@ Current total: **1,044 cards per language**. Earlier audit totals describe their
 ### Relief map framing
 
 - [x] Show all mountain areas and peaks on the shared France map, including Corsica, without zooms or insets.
+
+- [x] Étendre le cadrage France sans zoom aux huit parcs nationaux métropolitains.
+
+- [x] Planisphère commun pour toutes les cartes ultramarines : régions, départements, villes et parcs compris ; suppression des vues locales.
+
+- [x] Retirer les dix cartes de localisation des cinq villes ultramarines et conserver les relations ville/département. Total courant : **1 034 cartes par langue**.

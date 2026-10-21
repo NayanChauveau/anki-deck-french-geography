@@ -64,7 +64,7 @@ localisations de villes déjà présentes.
 - English Rivers deck: `1976423200`. Departments, Regions, Cities, Landforms,
   Lakes, Coasts, Overseas and National parks: `1976423202` through `1976423209`.
 
-Both editions now contain 1,014 notes. Permanent registrations live in
+Both editions now contain 1,034 notes. Permanent registrations live in
 `locales/languages.json`; text lives under the same semantic keys in each locale.
 No missing translation silently falls back to another language. Canonical proper
 names can deliberately be retained by policy.
@@ -72,3 +72,13 @@ names can deliberately be retained by policy.
 Every note uses the same identity derivation from its canonical rule/feature IDs
 and the registered language suffix/namespace. There is no note-specific migration
 or compatibility mechanism. `LOCALIZATION.md` describes language registration.
+
+
+## Retired overseas city location cards
+
+The five overseas capitals retain their city IDs and textual department relations.
+Their ten `villes-chefs-lieux` location notes (two directions per city) are no longer
+included in new packages. Their released note IDs remain reserved and must never be
+reused. Standard APKG updates do not delete existing notes: users who imported these
+cards earlier can suspend or delete those ten location notes in Anki’s browser.
+This applies independently to both language editions; all retained identities stay unchanged.

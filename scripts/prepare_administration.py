@@ -56,11 +56,11 @@ if (
 ):
     raise ValueError("Incomplete administrative reference")
 region_views = {
-    "01": "guadeloupe",
-    "02": "martinique",
-    "03": "guyane",
-    "04": "reunion",
-    "06": "mayotte",
+    "01": "world",
+    "02": "world",
+    "03": "world",
+    "04": "world",
+    "06": "world",
 }
 region_data = {row["REG"]: row for row in regions}
 polygons = []

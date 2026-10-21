@@ -38,9 +38,9 @@ les départements. Une seule cible est surlignée, et aucun nom ni numéro n’e
 sur les images des questions.
 
 La vue métropolitaine est partagée. Paris et la petite couronne utilisent un cadrage
-francilien avec un encart métropolitain. Les cinq DROM ont chacun une vue locale
-avec une projection UTM adaptée. Les contours ultramarins restent à leurs vraies
-coordonnées ; les vues locales ne sont pas un planisphère de localisation mondiale.
+francilien avec un encart métropolitain. Les cinq DROM partagent le planisphère `world`, sans zoom ni encart.
+Les contours ultramarins restent à leurs vraies coordonnées pour apprendre
+leur situation mondiale.
 
 ## Données et reproduction
 

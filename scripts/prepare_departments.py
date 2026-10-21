@@ -19,11 +19,11 @@ original = args.input.read_bytes()
 data = json.loads(original)
 features, catalog = [], []
 views = {
-    "971": "guadeloupe",
-    "972": "martinique",
-    "973": "guyane",
-    "974": "reunion",
-    "976": "mayotte",
+    "971": "world",
+    "972": "world",
+    "973": "world",
+    "974": "world",
+    "976": "world",
     **dict.fromkeys(["75", "92", "93", "94"], "paris-region"),
 }
 for feature in sorted(data["features"], key=lambda f: f["properties"]["code"]):

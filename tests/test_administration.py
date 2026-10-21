@@ -56,7 +56,7 @@ def test_new_rules_do_not_change_existing_hydrographic_identities():
     )
     count = Counter(c.theme for c in project.cards)
     assert count["Fleuves"] == 38 and count["Départements"] == 303
-    assert count["Régions"] == 148 and count["Villes"] == 437
+    assert count["Régions"] == 148 and count["Villes"] == 427
     assert len({c.id for c in project.cards}) == len(project.cards)
     relations = [c for c in project.cards if c.direction in ("capital", "region", "department")]
     assert all(c.front_map == c.back_map == "none" for c in relations)

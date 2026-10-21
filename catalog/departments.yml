@@ -486,30 +486,30 @@ features:
 - id: dep-971
   code: '971'
   name: Guadeloupe
-  view: guadeloupe
+  view: world
   region: reg-01
   capital: city-97105
 - id: dep-972
   code: '972'
   name: Martinique
-  view: martinique
+  view: world
   region: reg-02
   capital: city-97209
 - id: dep-973
   code: '973'
   name: Guyane
-  view: guyane
+  view: world
   region: reg-03
   capital: city-97302
 - id: dep-974
   code: '974'
   name: La Réunion
-  view: reunion
+  view: world
   region: reg-04
   capital: city-97411
 - id: dep-976
   code: '976'
   name: Mayotte
-  view: mayotte
+  view: world
   region: reg-06
   capital: city-97611

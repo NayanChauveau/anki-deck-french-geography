@@ -164,6 +164,7 @@ class PlaceRule(Strict):
     directions: list[Literal["name-map", "map-name"]] = Field(
         default_factory=lambda: ["name-map", "map-name"], min_length=1
     )
+    exclude_targets: list[str] = Field(default_factory=list)
     batch_size: int = Field(default=10, ge=1)
     references: list[str] = Field(min_length=1)
 
