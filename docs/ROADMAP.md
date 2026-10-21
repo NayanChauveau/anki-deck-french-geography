@@ -607,3 +607,8 @@ automatic release workflow after a successful main-branch build.
 
 Current architecture: [LOCALIZATION.md](LOCALIZATION.md). The earlier pilot-only
 translation log describes a previous step and is superseded by this completion.
+
+### Lake map framing
+
+- [x] Show all five lakes on the shared metropolitan France map, without local zooms or insets.
+- [x] Update preparation defaults and remove the two unused lake views.

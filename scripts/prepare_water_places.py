@@ -59,18 +59,18 @@ def natural_earth(path, filename):
 # Lakes: original national TOPAGE polygons, plus the transboundary Lake Geneva polygon.
 raw = root / "data/lakes/topage2024-selection.geojson"
 names = {
-    "06P0000002000777191": ("bourget", "Bourget", "lake-savoie", "lakes.natural"),
-    "06P0000002000776973": ("annecy", "Annecy", "lake-savoie", "lakes.natural"),
+    "06P0000002000777191": ("bourget", "Bourget", "metropolitan", "lakes.natural"),
+    "06P0000002000776973": ("annecy", "Annecy", "metropolitan", "lakes.natural"),
     "06P0000002000777258": (
         "serre-poncon",
         "Serre-Ponçon",
-        "lake-south",
+        "metropolitan",
         "lakes.durance_reservoir",
     ),
     "06P0000002000777286": (
         "sainte-croix",
         "Sainte-Croix",
-        "lake-south",
+        "metropolitan",
         "lakes.verdon_reservoir",
     ),
 }
@@ -98,7 +98,7 @@ for f in json.loads(args.lakes.read_text())["features"]:
             {
                 "id": "lake-leman",
                 "name": "Léman",
-                "view": "lake-savoie",
+                "view": "metropolitan",
                 "explanation_key": "lakes.shared_france_switzerland",
                 "references": [
                     "https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-lakes/"

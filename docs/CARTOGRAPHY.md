@@ -157,8 +157,8 @@ référentiel national ne sont pas inventés ; le Rhin demeure incomplet à cett
 Les instantanés WFS sélectionnés et leurs requêtes sont épinglés sous `data/`.
 
 Les lacs d’Annecy et du Bourget ainsi que les retenues de Serre-Ponçon et de
-Sainte-Croix viennent de BD TOPAGE ; le Léman vient de Natural Earth. Les cadrages
-locaux avec encart permettent de lire les petites surfaces. Les cinq zones marines
+Sainte-Croix viennent de BD TOPAGE ; le Léman vient de Natural Earth. Les cinq lacs utilisent désormais le cadrage métropolitain commun, sans zoom local
+ni encart, pour apprendre directement leur position en France. Les cinq zones marines
 Natural Earth sont des étendues géographiques conventionnelles, sans valeur juridique.
 Les crédits sont en HTML hors des images.
 

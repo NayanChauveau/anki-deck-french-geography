@@ -29,14 +29,6 @@ views:
     projection: EPSG:2154
     bounds: [8.45, 41.3, 9.65, 43.1]
     inset: metropolitan
-  lake-savoie:
-    projection: EPSG:2154
-    bounds: [5.55, 45.45, 7.1, 46.6]
-    inset: metropolitan
-  lake-south:
-    projection: EPSG:2154
-    bounds: [5.7, 43.5, 6.8, 44.75]
-    inset: metropolitan
   europe-seas:
     projection: EPSG:3035
     bounds: [-15, 30, 40, 62]
