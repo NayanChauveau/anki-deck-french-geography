@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "source_fingerprint": "72eeea461ba24b4027e112683d2b44e2bf810ccf81dc6242887b5f86a46f3139",
+  "source_fingerprint": "e82a7db31f91c536096e13f33936fa29f443b63cf392680cd0462bebabcee2cb",
   "coordinate_space": "projected SVG pixels",
   "max_error_bound_px": 0.5,
   "groups": [
@@ -21,26 +21,23 @@
     {
       "layer": "countries",
       "view": "europe-seas",
-      "method": "unchanged-projected-invalid",
+      "method": "preserve-topology",
       "tolerance_px": 0,
-      "decimals": 2,
-      "exceptions": {
-        "122": "Self-intersection[552.89350336637 748.9825150079]"
-      }
+      "decimals": 5
     },
     {
       "layer": "countries",
       "view": "metropolitan",
-      "method": "coverage",
-      "tolerance_px": 0.35,
-      "decimals": 1
+      "method": "preserve-topology",
+      "tolerance_px": 0,
+      "decimals": 5
     },
     {
       "layer": "countries",
       "view": "paris-region",
-      "method": "coverage",
+      "method": "preserve-topology",
       "tolerance_px": 0,
-      "decimals": 1
+      "decimals": 5
     },
     {
       "layer": "countries",

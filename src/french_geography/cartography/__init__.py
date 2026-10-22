@@ -35,6 +35,8 @@ class Projection:
         self.ox = x + (width - (max(xs) - min(xs)) * self.scale) / 2
         self.oy = y + (height - (max(ys) - min(ys)) * self.scale) / 2
         self.window = box(*view.bounds)
+        x, y, width, height = rectangle or (0, 0, view.width, view.height)
+        self.canvas = box(x, y, x + width, y + height)
 
     def pixel(self, x, y, z=None):
         return (
@@ -46,12 +48,10 @@ class Projection:
         return self.pixel(*self.transformer.transform(lon, lat, errcheck=True))
 
     def geometry(self, geom):
-        clipped = geom.intersection(self.window)
-        return transform(
-            transform(clipped, self.transformer.transform, interleaved=False),
-            self.pixel,
-            interleaved=False,
-        )
+        # Keep geographic cut edges outside the image; crop in the projected plane.
+        expanded = geom.intersection(self.window.buffer(40, join_style="mitre"))
+        projected = transform(expanded, self.transformer.transform, interleaved=False)
+        return transform(projected, self.pixel, interleaved=False).intersection(self.canvas)
 
 
 def geometries(geom):

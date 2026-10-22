@@ -44,8 +44,8 @@ def test_shared_geometry_resolves_every_reference_and_keeps_both_markers():
     assert len(ids) == len(set(ids))
     assert all(n.attrib["href"][1:] in ids for n in root.iter() if "href" in n.attrib)
     radii = [float(n.attrib["r"]) for n in root.iter() if n.tag.endswith("circle")]
-    assert sorted(radii) == [2.5, 2.5, 7.0, 7.0]
-    assert all(n.attrib["stroke"] == "none" for n in root.iter() if n.tag.endswith("circle"))
+    assert sorted(radii) == [3.2, 3.2, 9.0, 9.0]
+    assert all(n.attrib["stroke"] == "#ffffff" for n in root.iter() if n.tag.endswith("circle"))
     record = {**visuals[visual_key(card, "target")], "shared_svg": "asset.svg"}
     target = ET.fromstring(markup(project, record, alt="Map").split("</svg>")[0] + "</svg>")
     assert len(target) == 2

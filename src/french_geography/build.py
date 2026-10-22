@@ -1,4 +1,6 @@
 import html
+import tempfile
+import zipfile
 from pathlib import Path
 
 import genanki
@@ -207,7 +209,18 @@ def build(project: Project, out: Path, *, language: str = "fr") -> Path:
     package.media_files = sorted(media_files)
     out.mkdir(parents=True, exist_ok=True)
     path = out / locale.export["filename"]
-    package.write_to_file(str(path))
+    # APKG is a ZIP archive. Compress the XML and SQLite instead of storing them raw.
+    with tempfile.TemporaryDirectory() as temporary:
+        raw = Path(temporary) / path.name
+        package.write_to_file(str(raw))
+        with (
+            zipfile.ZipFile(raw) as source,
+            zipfile.ZipFile(
+                path, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9
+            ) as destination,
+        ):
+            for name in source.namelist():
+                destination.writestr(name, source.read(name))
     return path
 
 

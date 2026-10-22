@@ -76,6 +76,7 @@ def glyph(view, geometry, glyph_id, *, radius=2.5, precision=2, compact=False):
             element.set("stroke-linecap", "butt")
         if primitive.kind == "point":
             element.set("r", str(radius))
-            element.set("stroke", "none")  # Markers have no outline.
+            element.set("stroke", "#ffffff")
+            element.set("stroke-width", "1.8")
         group.append(element)
     return group

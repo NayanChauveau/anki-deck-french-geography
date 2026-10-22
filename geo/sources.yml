@@ -205,6 +205,19 @@
       "file": "geo/features/parks.geojson",
       "sha256": "e21a188a305f8b6db58ca36a340dcfb954d9da343eef6173279236929d9da625",
       "modifications": "CTPN and CMPN cores selected by id_local for all eleven parks; terrestrial and marine parts unioned per park; adhesion and adjacent marine areas excluded. make_valid applied, simplified at 100 m in Lambert-93 (metropolitan) or local UTM (overseas), reprojected to WGS84. Editorial names normalised; no new boundaries drawn."
+    },
+    {
+      "id": "country-context",
+      "kind": "reference",
+      "source": "Natural Earth",
+      "version": "v5.1.2, 10m",
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_admin_0_countries.geojson",
+      "license": "Public domain",
+      "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "upstream_sha256": "239eec57ac17f100a11e2536cffc56752c318b50ae765b0918ff7aab4ce8f255",
+      "file": "geo/features/country-context.geojson",
+      "sha256": "24459cc2afdf6d2a3572c6324b5446ed18cefba1ce62eaba4f42cb91457bb397",
+      "modifications": "European context clipped to [-60,-10,100,85], outside card frames; make_valid; joint coverage simplification at 250 m in EPSG:3035; reprojected to WGS84; properties reduced. Global cards retain the separate pinned 50m background."
     }
   ]
 }

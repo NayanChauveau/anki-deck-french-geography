@@ -10,7 +10,7 @@ from pathlib import Path
 import pytest
 import yaml
 from pydantic import ValidationError
-from shapely.geometry import LineString, Point, Polygon
+from shapely.geometry import LineString, Point, Polygon, box
 
 from french_geography.build import DECK_ID, MODEL_ID, build, maps, note_guid, preview
 from french_geography.cartography import Projection
@@ -40,6 +40,7 @@ def test_offline_package_contains_all_notes_and_media(project, tmp_path, monkeyp
     monkeypatch.setattr(socket, "socket", offline)
     output = build(project, tmp_path)
     with zipfile.ZipFile(output) as package:
+        assert all(i.compress_type == zipfile.ZIP_DEFLATED for i in package.infolist())
         media = json.loads(package.read("media"))
         assert len(media) == 1
         for key, name in media.items():
@@ -232,3 +233,11 @@ def test_ankiconnect_errors_are_reported(monkeypatch):
     )
     with pytest.raises(RuntimeError, match="Anki unavailable"):
         anki("version")
+
+
+def test_projection_crops_in_pixel_space_without_interior_cut_edges():
+    projection = Projection(View(projection="EPSG:2154", bounds=(-6, 41, 10, 52)))
+    land = projection.geometry(box(-20, 30, 30, 65))
+    assert land.equals(box(0, 0, 900, 900))
+    point = projection.geometry(Point(2, 47))
+    assert point.distance(Point(*projection.point(2, 47))) < 1e-9

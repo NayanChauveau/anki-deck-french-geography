@@ -58,8 +58,15 @@ def sprite(project, settings):
         key = layer, view_key, rectangle
         if key not in projected_cache:
             projection = Projection(project.views[view_key], rectangle)
+            detailed = view_key != "world" and any(
+                f["properties"].get("detail") for f in project.countries
+            )
             source = (
-                {str(i): shape(f["geometry"]) for i, f in enumerate(project.countries)}
+                {
+                    str(i): shape(f["geometry"])
+                    for i, f in enumerate(project.countries)
+                    if bool(f["properties"].get("detail")) == detailed
+                }
                 if layer == "countries"
                 else project.layers[layer]
             )
@@ -104,7 +111,7 @@ def sprite(project, settings):
                         if project.countries[int(key)]["properties"]["france"]
                         else project.style.neighbor,
                         project.style.border,
-                        0.8,
+                        1.0,
                     )
                 country_group.extend(svg_body(view, scene, precision=precision, compact=True))
                 countries[pane_key] = country_group.attrib["id"]
@@ -141,14 +148,23 @@ def sprite(project, settings):
             filled = layer in ("departments", "regions", "mountains")
             for target, geom in items.items():
                 base_id = technical_id("shape", layer, pane_key, target)
-                definitions.append(glyph(view, geom, base_id, precision=precision, compact=True))
+                definitions.append(
+                    glyph(
+                        view,
+                        geom,
+                        base_id,
+                        radius=project.style.marker_radius,
+                        precision=precision,
+                        compact=True,
+                    )
+                )
                 ET.SubElement(
                     group,
                     "use",
                     href="#" + base_id,
                     fill=project.style.land if filled else project.style.river,
                     stroke=project.style.border if filled else project.style.river,
-                    **{"stroke-width": "1.1" if filled else "1.5"},
+                    **{"stroke-width": "1.0" if filled else "1.3"},
                 )
                 target_id = base_id
                 if geom.geom_type in ("Point", "MultiPoint"):
@@ -160,7 +176,7 @@ def sprite(project, settings):
                             target_id,
                             precision=precision,
                             compact=True,
-                            radius=max(2.5, project.style.target_width * 1.4),
+                            radius=project.style.target_marker_radius,
                         )
                     )
                 targets[(layer, parent_key, pane_key, target)] = target_id

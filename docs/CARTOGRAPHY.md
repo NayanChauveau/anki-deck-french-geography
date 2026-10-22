@@ -16,8 +16,8 @@ Open `http://127.0.0.1:8000/`. External SVG references require HTTP; opening the
 as a local file displays an explanation. `make push` builds the French edition,
 imports it through AnkiConnect and requests synchronization. It does not push Git.
 
-Each package bundles the SVG under its full SHA-256 filename, about 2.7 MB of media
-and 5 MB total per language. Each map references its background and optional target
+Each package bundles the SVG under its full SHA-256 filename. Standard ZIP deflate
+compression keeps the complete package below 2 MB per language. Each map references its background and optional target
 by SVG ID. A hidden image reference lets Anki's media scanner recognize the file.
 There is no PNG renderer, target-selection JavaScript or browser-side positioning.
 Questions, explanations, sources and credits are HTML outside the map.
@@ -44,7 +44,7 @@ Released note/deck/model identities remain stable; see [ANKI_IDS.md](ANKI_IDS.md
 ## Framing and geometry
 
 Inputs use WGS84 longitude/latitude. Views project densified bounds and clip features
-to a shared frame. Mainland maps use Lambert-93 and the whole of metropolitan France,
+in the projected image plane, so geographic clipping edges never appear inside the map. Mainland maps use Lambert-93 and the whole of metropolitan France,
 including Corsica. Overseas departments, regions, parks and location markers share
 the Equal Earth world view. Sea zones use the European view. Paris-area cities use
 a regional view with a national inset to distinguish nearby points. Five overseas
@@ -58,8 +58,15 @@ package/preview builder, not embedded in the SVG.
 Simplification occurs in projected pixels. The retained settings preserve components,
 holes, administrative coverage and existing river junctions, with a maximum geometric
 error of 0.5 SVG pixels. Very small components retain sufficient decimal precision.
-The European country context retains a known invalid projected Libya boundary without
-simplification; it is not repaired or presented as authoritative source geography.
+European backgrounds use Natural Earth v5.1.2 at 1:10 million, prepared separately
+in `geo/features/country-context.geojson`. Shared borders are simplified together at
+250 m in EPSG:3035 before returning to WGS84. `prepare_country_context.py` accepts
+the pinned local upstream file and checks its checksum before writing. The global
+view retains the lighter, pinned 1:50 million background. Target datasets are unchanged.
+
+Colors, line weight and marker radii live in `geo/styles.yml`. White marker outlines
+keep cities and overseas location points visible over borders and coastlines. The
+same palette and marker sizes apply throughout; national/world framing is unchanged.
 
 ## Extending the deck
 

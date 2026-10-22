@@ -130,7 +130,7 @@ def test_inset_uses_existing_projection_and_keeps_correct_paint_order(project, t
     circle = next(iter(ids[inset["target"]]))
     assert abs(float(circle.attrib["cx"]) - point.x) < 1e-7
     assert abs(float(circle.attrib["cy"]) - point.y) < 1e-7
-    assert float(circle.attrib["r"]) == project.style.target_width * 1.4
+    assert float(circle.attrib["r"]) == project.style.target_marker_radius
     main_group = ids[main["background"]]
     # Department context in the main map must remain present below city markers.
     assert any(n.tag.endswith("path") for n in main_group)

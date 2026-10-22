@@ -647,3 +647,11 @@ Current total: **1,044 cards per language**. Earlier audit totals describe their
 - [ ] Confirmer le rendu et la synchronisation sur Android et AnkiWeb ; iOS non vérifié.
 
 Fonctionnement et limites : [cartographie](CARTOGRAPHY.md).
+
+### Cartographic appearance
+
+- [x] Add a pinned, detailed European background (Natural Earth 10m, joint 250 m simplification).
+- [x] Crop after projection to remove artificial interior edges, preserving shared frames.
+- [x] Refine the palette and line weights; add legible white-ringed point markers.
+- [x] Compress the APKG archive using standard ZIP deflate.
+- [x] Keep preparation separate from offline builds and retain stable Anki identities.

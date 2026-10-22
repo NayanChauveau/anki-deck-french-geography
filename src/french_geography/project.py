@@ -60,7 +60,11 @@ def load(root: Path) -> Project:
         if key in features:
             raise ValueError(f"Duplicate feature: {key}")
         features[key] = shape(feature["geometry"])
-    for feature in layers["countries"]:
+    countries = list(layers["countries"])
+    context = next((s for s in sources if s["id"] == "country-context"), None)
+    if context:
+        countries.extend(json.loads((root / context["file"]).read_text())["features"])
+    for feature in countries:
         geom = shape(feature["geometry"])
         if geom.is_empty or not geom.is_valid:
             raise ValueError("Invalid country geometry")
@@ -94,6 +98,4 @@ def load(root: Path) -> Project:
         if not features[card.target].intersects(box(*views[card.view].bounds)):
             raise ValueError(f"Target outside view: {card.id}")
     style = Style.model_validate(yaml.safe_load((root / "geo/styles.yml").read_text())["styles"])
-    return Project(
-        root, cards, views, style, layers["countries"], features, sources, geographic_layers
-    )
+    return Project(root, cards, views, style, countries, features, sources, geographic_layers)

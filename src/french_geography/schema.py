@@ -58,6 +58,8 @@ class Style(Strict):
     target: Color = "#006a85"
     ink: Color = "#203d48"
     target_width: float = Field(default=5, gt=0, le=20)
+    marker_radius: float = Field(default=3.2, gt=0, le=20)
+    target_marker_radius: float = Field(default=9, gt=0, le=20)
 
 
 class LabelPosition(Strict):
