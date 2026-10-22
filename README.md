@@ -105,6 +105,9 @@ make preview
 
 `make build` creates both language packages in `dist/`.
 `make preview` creates a French card gallery at `build/preview/index.html`.
+Serve it with `python3 -m http.server 8000 --bind 127.0.0.1 --directory build/preview`
+and open `http://127.0.0.1:8000/`; shared SVG maps require HTTP.
+Packages use one shared SVG instead of individual PNG maps (about 5 MB per edition).
 Normal builds use pinned local geographic inputs and need no geographic downloads.
 
 Editorial content lives in `catalog/`, generation rules in `cards/`, translations

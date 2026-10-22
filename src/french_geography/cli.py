@@ -38,6 +38,11 @@ def main():
     )
     args = parser.parse_args()
     root = args.root.resolve()
+    defaults = {
+        "maps": root / "build/media",
+        "preview": root / "build/preview",
+        "build": root / "dist",
+    }
     try:
         if args.command == "schema":
             for name, model in [
@@ -54,11 +59,21 @@ def main():
         if args.command == "validate":
             print(f"{len(project.cards)} fiches valides ; données locales vérifiées.")
         elif args.command == "maps":
-            maps(project, args.out or root / "build/media")
+            maps(project, args.out or defaults["maps"])
         elif args.command == "preview":
-            print(preview(project, args.out or root / "build/preview", language=args.lang or "fr"))
+            print(
+                preview(
+                    project,
+                    args.out or defaults["preview"],
+                    language=args.lang or "fr",
+                )
+            )
         elif args.command == "build":
-            for path in build_packages(project, args.out or root / "dist", args.lang or "all"):
+            for path in build_packages(
+                project,
+                args.out or defaults["build"],
+                args.lang or "all",
+            ):
                 print(path)
         elif args.command == "push":
             path = build(project, args.out or root / "dist")

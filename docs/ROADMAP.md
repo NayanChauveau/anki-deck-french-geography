@@ -636,3 +636,14 @@ Current total: **1,044 cards per language**. Earlier audit totals describe their
 - [x] Planisphère commun pour toutes les cartes ultramarines : régions, départements, villes et parcs compris ; suppression des vues locales.
 
 - [x] Retirer les dix cartes de localisation des cinq villes ultramarines et conserver les relations ville/département. Total courant : **1 034 cartes par langue**.
+
+### Cartes SVG mutualisées
+
+- [x] Remplacer les PNG par un SVG mutualisé ; environ 5 Mo par édition au lieu de 50 Mo.
+- [x] Vérifier les dix couches et préserver textes, cadrages et identités Anki.
+- [x] Vérifier import, historique, suspension et réimport avec le backend Anki.
+- [x] Importer le nouveau deck avec `make push` et demander sa synchronisation.
+- [x] Retirer le moteur PNG, les prototypes et les outils/rapports temporaires de migration.
+- [ ] Confirmer le rendu et la synchronisation sur Android et AnkiWeb ; iOS non vérifié.
+
+Fonctionnement et limites : [cartographie](CARTOGRAPHY.md).

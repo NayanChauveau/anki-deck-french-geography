@@ -1,4 +1,4 @@
-"""Exercise the built package against an actual Deck Manager checkout, without network or Anki UI."""
+"""Exercise the package against a Deck Manager checkout, without network or Anki UI."""
 
 import argparse
 import hashlib
@@ -127,7 +127,9 @@ def main():
     args = parser.parse_args()
     packages = args.package or [Path("dist") / name for name, label in PACKAGES.values()]
     print(
-        json.dumps([check(args.deck_manager, path) for path in packages], ensure_ascii=False, indent=2)
+        json.dumps(
+            [check(args.deck_manager, path) for path in packages], ensure_ascii=False, indent=2
+        )
     )
 
 

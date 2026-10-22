@@ -3,7 +3,7 @@ name = "french-geography-anki"
 version = "0.1.0"
 description = "Cartes Anki de géographie physique française"
 requires-python = ">=3.12"
-dependencies = ["genanki>=0.13.1", "pydantic>=2.9", "pyyaml>=6.0.2", "shapely>=2.0", "pyproj>=3.7", "pillow>=11"]
+dependencies = ["genanki>=0.13.1", "pydantic>=2.9", "pyyaml>=6.0.2", "shapely>=2.1", "pyproj>=3.7"]
 
 [project.optional-dependencies]
 dev = ["pytest>=8.3", "ruff>=0.9"]
@@ -30,4 +30,4 @@ select = ["E", "F", "I", "UP", "B"]
 addopts = "-v --durations=10"
 faulthandler_timeout = 120
 testpaths = ["tests"]
-pythonpath = ["src"]
+pythonpath = ["src", "."]

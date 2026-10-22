@@ -1,4 +1,3 @@
-import importlib.util
 import shlex
 import subprocess
 from pathlib import Path
@@ -6,10 +5,9 @@ from pathlib import Path
 import pytest
 import yaml
 
+from scripts import publish_release as publisher
+
 ROOT = Path(__file__).resolve().parents[1]
-spec = importlib.util.spec_from_file_location("publisher", ROOT / "scripts/publish_release.py")
-publisher = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(publisher)
 
 
 def test_release_waits_for_checks_and_uses_the_uploaded_package():

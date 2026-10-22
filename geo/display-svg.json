@@ -1,0 +1,144 @@
+{
+  "version": 1,
+  "source_fingerprint": "72eeea461ba24b4027e112683d2b44e2bf810ccf81dc6242887b5f86a46f3139",
+  "coordinate_space": "projected SVG pixels",
+  "max_error_bound_px": 0.5,
+  "groups": [
+    {
+      "layer": "cities",
+      "view": "metropolitan",
+      "method": "preserve-topology",
+      "tolerance_px": 0,
+      "decimals": 1
+    },
+    {
+      "layer": "cities",
+      "view": "paris-region",
+      "method": "preserve-topology",
+      "tolerance_px": 0,
+      "decimals": 1
+    },
+    {
+      "layer": "countries",
+      "view": "europe-seas",
+      "method": "unchanged-projected-invalid",
+      "tolerance_px": 0,
+      "decimals": 2,
+      "exceptions": {
+        "122": "Self-intersection[552.89350336637 748.9825150079]"
+      }
+    },
+    {
+      "layer": "countries",
+      "view": "metropolitan",
+      "method": "coverage",
+      "tolerance_px": 0.35,
+      "decimals": 1
+    },
+    {
+      "layer": "countries",
+      "view": "paris-region",
+      "method": "coverage",
+      "tolerance_px": 0,
+      "decimals": 1
+    },
+    {
+      "layer": "countries",
+      "view": "world",
+      "method": "coverage",
+      "tolerance_px": 0.1,
+      "decimals": 2
+    },
+    {
+      "layer": "departments",
+      "view": "metropolitan",
+      "method": "coverage",
+      "tolerance_px": 0.1,
+      "decimals": 2
+    },
+    {
+      "layer": "departments",
+      "view": "paris-region",
+      "method": "coverage",
+      "tolerance_px": 0.05,
+      "decimals": 1
+    },
+    {
+      "layer": "departments",
+      "view": "world",
+      "method": "coverage",
+      "tolerance_px": 0.2,
+      "decimals": 5
+    },
+    {
+      "layer": "lakes",
+      "view": "metropolitan",
+      "method": "coverage",
+      "tolerance_px": 0.05,
+      "decimals": 5
+    },
+    {
+      "layer": "mountains",
+      "view": "metropolitan",
+      "method": "coverage",
+      "tolerance_px": 0.6,
+      "decimals": 1
+    },
+    {
+      "layer": "overseas",
+      "view": "world",
+      "method": "preserve-topology",
+      "tolerance_px": 0,
+      "decimals": 1
+    },
+    {
+      "layer": "parks",
+      "view": "metropolitan",
+      "method": "preserve-topology",
+      "tolerance_px": 0.35,
+      "decimals": 7
+    },
+    {
+      "layer": "parks",
+      "view": "world",
+      "method": "preserve-topology",
+      "tolerance_px": 0.35,
+      "decimals": 8
+    },
+    {
+      "layer": "peaks",
+      "view": "metropolitan",
+      "method": "preserve-topology",
+      "tolerance_px": 0,
+      "decimals": 1
+    },
+    {
+      "layer": "regions",
+      "view": "metropolitan",
+      "method": "coverage",
+      "tolerance_px": 0.1,
+      "decimals": 2
+    },
+    {
+      "layer": "regions",
+      "view": "world",
+      "method": "coverage",
+      "tolerance_px": 0.2,
+      "decimals": 5
+    },
+    {
+      "layer": "rivers",
+      "view": "metropolitan",
+      "method": "river-nodes",
+      "tolerance_px": 0.35,
+      "decimals": 2
+    },
+    {
+      "layer": "seas",
+      "view": "europe-seas",
+      "method": "coverage",
+      "tolerance_px": 0.35,
+      "decimals": 2
+    }
+  ]
+}

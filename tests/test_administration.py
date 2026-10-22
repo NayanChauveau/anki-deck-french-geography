@@ -2,11 +2,10 @@ import json
 from collections import Counter
 from pathlib import Path
 
-import pytest
 import yaml
 from shapely.geometry import Point
 
-from french_geography.build import maps, note_guid
+from french_geography.build import note_guid
 from french_geography.project import load
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -63,42 +62,6 @@ def test_new_rules_do_not_change_existing_hydrographic_identities():
     for card in project.cards:
         if card.theme in ("Régions", "Villes") and card.direction != "name-map":
             assert card.answer not in card.question
-
-
-def test_render_cache_reuses_identical_visuals(tmp_path, monkeypatch):
-    from french_geography import cartography
-
-    project = load(ROOT)
-    project.cards = [c for c in project.cards if c.target == "loire"]
-    # This test gets its own cache, independent of a developer's existing build.
-    import copy
-    from shutil import copytree
-
-    project = copy.copy(project)
-    project.root = tmp_path
-    copytree(ROOT / "assets", tmp_path / "assets")
-    first = maps(project, tmp_path / "first")
-    original_png = cartography.render_png
-    monkeypatch.setattr(
-        cartography, "render_png", lambda *a, **kw: pytest.fail("Unexpected rerender")
-    )
-    assert maps(project, tmp_path / "second") == first
-    assert all(
-        (tmp_path / "second" / record["png"]).is_file()
-        for entry in first.values()
-        for record in entry.values()
-    )
-
-    # An unrelated view must not invalidate existing media.
-    project.views = {**project.views, "unused-view": next(iter(project.views.values()))}
-    assert maps(project, tmp_path / "third") == first
-    monkeypatch.setattr(cartography, "render_png", original_png)
-    name = next(record["png"] for entry in first.values() for record in entry.values() if record)
-    cached = tmp_path / "build/media" / name
-    expected = cached.read_bytes()
-    cached.write_bytes(b"corrupted cached image")
-    assert maps(project, tmp_path / "repaired") == first
-    assert cached.read_bytes() == expected
 
 
 def test_crowded_paris_capitals_share_a_local_view():

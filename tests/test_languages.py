@@ -11,7 +11,7 @@ from shutil import copytree
 import pytest
 import yaml
 
-from french_geography.build import build_packages, image_html
+from french_geography.build import build_packages, credits
 from french_geography.languages import localize
 from french_geography.project import load
 
@@ -218,8 +218,10 @@ def test_duplicate_yaml_keys_are_rejected(tmp_path, source_project):
 
 def test_english_park_credit_month_and_source_name(source_project):
     card = next(c for c in source_project.cards if c.layer == "parks")
-    english = image_html(card, "map.png", "en")
-    french = image_html(card, "map.png", "fr")
+    from french_geography.locales import load_locale
+
+    english = credits(card, load_locale(ROOT, "en"))
+    french = credits(card)
     assert "February 2026" in english and "février" not in english
     assert "février 2026" in french
     assert "Map data:" in english and "Parcs nationaux de France / OFB" in english
@@ -241,7 +243,7 @@ def test_registering_a_third_locale_requires_no_language_specific_code(tmp_path,
     from french_geography.build import preview
 
     project = translation_project(tmp_path, source_project)
-    for folder in ("assets", "templates"):
+    for folder in ("assets", "templates", "geo"):
         copytree(ROOT / folder, tmp_path / folder)
     registry_path = tmp_path / "locales/languages.json"
     registry = json.loads(registry_path.read_text())

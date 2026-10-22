@@ -1,13 +1,9 @@
-import hashlib
 import html
-import json
-import shutil
-from importlib.metadata import version
 from pathlib import Path
 
 import genanki
 
-from french_geography.cartography import render
+from french_geography.cartography.shared import maps, markup
 from french_geography.distribution import ROOT, THEME_KEYS, load_registry
 from french_geography.locales import load_locale
 from french_geography.project import Project
@@ -70,94 +66,13 @@ def references_html(references):
     )
 
 
-def image_html(card, name, language="fr", *, locale=None):
-    locale = locale or load_locale(ROOT, language)
-    return (
-        f'<img src="{name}" alt="{html.escape(locale.text.ui["map_alt"], quote=True)}">'
-        + credits(card, locale)
+def map_field(project, card, record, locale, *, prefix=""):
+    """Use the same map markup and credits in packages and gallery."""
+    if not record:
+        return ""
+    return markup(project, record, alt=locale.text.ui["map_alt"], prefix=prefix) + credits(
+        card, locale
     )
-
-
-def maps(project: Project, out: Path):
-    manifest = {}
-    cache_dir = project.root / "build/media"
-    cache_dir.mkdir(parents=True, exist_ok=True)
-    out.mkdir(parents=True, exist_ok=True)
-    index_path = cache_dir / ".render-cache.json"
-    try:
-        cache = json.loads(index_path.read_text())
-    except (OSError, ValueError):
-        cache = {}
-    renderer = hashlib.sha256(Path(render.__code__.co_filename).read_bytes()).hexdigest()
-    sources = {source["id"]: source["sha256"] for source in project.sources}
-    environment = [version(package) for package in ("Pillow", "pyproj", "shapely")]
-    font = hashlib.sha256(
-        (project.root / "assets/fonts/NotoSans-Regular.ttf").read_bytes()
-    ).hexdigest()
-    context = {}
-    verified = {}
-    copied = set()
-    copy_media = out.resolve() != cache_dir.resolve()
-    for card in project.cards:
-        manifest[card.id] = {}
-        for side, back in [("front", False), ("back", True)]:
-            mode = card.back_map if back else card.front_map
-            if mode == "none":
-                manifest[card.id][side] = {}
-                continue
-            inputs = [
-                card.layer,
-                card.view,
-                mode,
-                card.target if mode == "target" else None,
-                project.views[card.view].model_dump(),
-                project.views[project.views[card.view].inset].model_dump()
-                if project.views[card.view].inset
-                else None,
-                project.style.model_dump(),
-                sources[card.layer],
-                sources["countries"],
-                sources.get("departments")
-                if card.layer == "cities" and card.view == "paris-region"
-                else None,
-                renderer,
-                environment,
-                font,
-            ]
-            key = hashlib.sha256(json.dumps(inputs, sort_keys=True).encode()).hexdigest()
-            record = cache.get(key, {})
-            valid = set(record) == {"svg", "png"}
-            if valid:
-                for extension, name in record.items():
-                    path = cache_dir / name
-                    if name not in verified:
-                        verified[name] = (
-                            path.is_file()
-                            and name
-                            == "geo-"
-                            + hashlib.sha256(path.read_bytes()).hexdigest()
-                            + "."
-                            + extension
-                        )
-                    if not verified[name]:
-                        valid = False
-                        break
-            if not valid:
-                record = {
-                    ext: path.name
-                    for ext, path in render(project, card, back, cache_dir, context=context).items()
-                }
-                cache[key] = record
-                verified.update(dict.fromkeys(record.values(), True))
-            manifest[card.id][side] = record
-            if copy_media:
-                for name in record.values():
-                    if name not in copied:
-                        shutil.copyfile(cache_dir / name, out / name)
-                        copied.add(name)
-    index_path.write_text(json.dumps(cache, sort_keys=True) + "\n")
-    (out / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
-    return manifest
 
 
 def preview(project: Project, out: Path, *, language="fr") -> Path:
@@ -171,8 +86,9 @@ def preview(project: Project, out: Path, *, language="fr") -> Path:
     for card in project.cards:
         e = html.escape
         figures = "".join(
-            f'<figure><figcaption>{label}</figcaption><img alt="{label}" '
-            f'src="media/{manifest[card.id][side]["png"]}">{credits(card, locale)}</figure>'
+            f"<figure><figcaption>{label}</figcaption>"
+            + map_field(project, card, manifest[card.id][side], locale, prefix="media/")
+            + "</figure>"
             for side, label in [("front", ui["front"]), ("back", ui["back"])]
             if manifest[card.id][side]
         )
@@ -194,6 +110,14 @@ def preview(project: Project, out: Path, *, language="fr") -> Path:
         f"<h1>{html.escape(ui['title'])}</h1>"
         f"<p>{html.escape(ui['gallery_count'].format(count=len(project.cards)))}</p>"
         + "".join(articles)
+        + (
+            '<script>if(location.protocol==="file:"){'
+            'document.querySelectorAll("article").forEach(el=>el.hidden=true);'
+            'const p=document.createElement("p");p.textContent='
+            "'Shared SVG preview requires HTTP. From this directory, run: "
+            "python3 -m http.server 8000 --bind 127.0.0.1 "
+            "then open http://127.0.0.1:8000/';document.body.prepend(p);}</script>"
+        )
         + "</html>"
     )
     out.mkdir(parents=True, exist_ok=True)
@@ -251,9 +175,9 @@ def build(project: Project, out: Path, *, language: str = "fr") -> Path:
     positions = dict.fromkeys(decks, 0)
     theme_tags = {theme: locale.text.themes[key].tag for theme, key in THEME_KEYS.items()}
     for card in project.cards:
-        images = [manifest[card.id][side].get("png") for side in ["front", "back"]]
-        media_files.update(str(media_dir / name) for name in images if name)
-        image_fields = [image_html(card, name, locale=locale) if name else "" for name in images]
+        records = [manifest[card.id][side] for side in ("front", "back")]
+        media_files.update(str(media_dir / r["shared_svg"]) for r in records if r)
+        image_fields = [map_field(project, card, record, locale) for record in records]
         refs = references_html(card.references)
         positions[card.theme] += 1
         decks[card.theme].add_note(

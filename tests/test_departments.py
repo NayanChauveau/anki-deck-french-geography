@@ -9,8 +9,7 @@ import pytest
 import yaml
 from pydantic import ValidationError
 
-from french_geography.build import build
-from french_geography.cartography import scene_for
+from french_geography.build import build, maps
 from french_geography.generate import generate_departments
 from french_geography.project import load
 from french_geography.schema import DepartmentCatalog, DepartmentEntry, DepartmentRule
@@ -57,20 +56,18 @@ def test_all_departments_have_three_directions_and_exactly_one_fact_to_recall():
     }
 
 
-def test_blank_front_hides_target_and_map_questions_share_the_same_image():
+def test_blank_front_hides_target_and_map_questions_share_the_same_image(tmp_path):
     project = load(ROOT)
+    manifest = maps(project, tmp_path)
     for key in ["01", "75", "2A", "971", "973", "976"]:
         variants = {c.direction: c for c in project.cards if c.target == f"dep-{key}"}
-        blank = scene_for(project, variants["name-map"], False)[1]
-        highlighted = scene_for(project, variants["name-map"], True)[1]
-        assert not any(
-            p.fill == project.style.target or p.stroke == project.style.target for p in blank
+        blank = manifest[variants["name-map"].id]["front"]
+        highlighted = manifest[variants["name-map"].id]["back"]
+        assert all(p["target"] is None for p in blank["panes"])
+        assert all(p["target"] is not None for p in highlighted["panes"])
+        assert (
+            manifest[variants["map-name"].id]["front"] == manifest[variants["map-code"].id]["front"]
         )
-        assert any(p.fill == project.style.target for p in highlighted)
-        assert scene_for(project, variants["map-name"], False) == scene_for(
-            project, variants["map-code"], False
-        )
-        assert all(p.kind != "text" for p in [*blank, *highlighted])
 
 
 def test_all_six_directions_are_supported_but_only_three_are_enabled():
@@ -131,6 +128,6 @@ def test_department_package_keeps_existing_river_identity_and_bundles_shared_med
             c.id for c in project.cards if c.theme == "Départements"
         ]
         for fields, _ in ordered:
-            assert 'alt="Carte géographique"' in fields
+            assert 'aria-label="Carte géographique"' in fields
             assert 'class="credits"' in fields
             assert "https://opendatacommons.org/licenses/odbl/1-0/" in fields

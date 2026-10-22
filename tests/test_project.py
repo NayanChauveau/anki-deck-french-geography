@@ -9,12 +9,12 @@ from pathlib import Path
 
 import pytest
 import yaml
-from PIL import Image
 from pydantic import ValidationError
 from shapely.geometry import LineString, Point, Polygon
 
-from french_geography.build import DECK_ID, MODEL_ID, build, note_guid, preview
-from french_geography.cartography import Projection, render, scene_for
+from french_geography.build import DECK_ID, MODEL_ID, build, maps, note_guid, preview
+from french_geography.cartography import Projection
+from french_geography.cartography.svg import glyph
 from french_geography.cli import anki
 from french_geography.project import load
 from french_geography.schema import CatalogFile, RuleFile, View
@@ -41,10 +41,10 @@ def test_offline_package_contains_all_notes_and_media(project, tmp_path, monkeyp
     output = build(project, tmp_path)
     with zipfile.ZipFile(output) as package:
         media = json.loads(package.read("media"))
-        assert len(media) == len(project.cards)
+        assert len(media) == 1
         for key, name in media.items():
             data = package.read(key)
-            assert name == "geo-" + hashlib.sha256(data).hexdigest() + ".png"
+            assert name == "geo-" + hashlib.sha256(data).hexdigest() + ".svg"
         database = tmp_path / "collection.anki2"
         database.write_bytes(package.read("collection.anki2"))
     with sqlite3.connect(database) as db:
@@ -76,38 +76,24 @@ def test_identity_does_not_depend_on_editorial_changes(project):
 def test_render_is_deterministic_and_front_does_not_reveal_answer(project, tmp_path, target):
     card = next(c for c in project.cards if c.target == target)
     label = card.annotations[0].text
-    first = render(project, card, False, tmp_path / "one")
-    second = render(project, card, False, tmp_path / "two")
-    assert {k: p.name for k, p in first.items()} == {k: p.name for k, p in second.items()}
-    assert label not in first["svg"].read_text()
-    back_image = render(project, card, True, tmp_path / "back")
-    assert label not in back_image["svg"].read_text()
-    assert "<text" not in first["svg"].read_text()
-    assert "<text" not in back_image["svg"].read_text()
-    assert first["png"].read_bytes() == back_image["png"].read_bytes()
-    with Image.open(first["png"]) as image:
-        assert image.size == (900, 900)
-        assert len(image.getcolors(900 * 900)) > 100
-    front = scene_for(project, card, False)[1]
-    back = scene_for(project, card, True)[1]
-    assert [p for p in front if p.kind != "text"] == [p for p in back if p.kind != "text"]
+    project.cards = [card]
+    first = maps(project, tmp_path / "one")
+    second = maps(project, tmp_path / "two")
+    assert first == second
+    front = first[card.id]["front"]
+    back = first[card.id]["back"]
+    assert front == back
+    data = (tmp_path / "one" / front["shared_svg"]).read_text()
+    assert label not in data and "<text" not in data
+    assert all(p["target"] is not None for p in front["panes"])
 
 
-def test_point_polygon_holes_and_inset(project, tmp_path):
-    project.views["regional"] = View(
-        projection="EPSG:2154", bounds=(-3, 44, 5, 50), inset="metropolitan"
-    )
-    card = project.cards[0].model_copy(update={"view": "regional"})
-    targets = [
-        Point(2, 47),
-        LineString([(1, 46), (2, 48)]),
-        Polygon([(0, 45), (4, 45), (4, 49), (0, 49)], holes=[[(1, 46), (2, 46), (2, 47), (1, 47)]]),
-    ]
-    for i, geom in enumerate(targets):
-        project.features[card.target] = geom
-        result = render(project, card, True, tmp_path / str(i))
-        assert result["png"].exists()
-        assert 'fill-rule="evenodd"' in result["svg"].read_text()
+def test_point_polygon_holes_and_lines():
+    view = View(projection="EPSG:2154", bounds=(-3, 44, 5, 50))
+    polygon = Polygon([(0, 0), (4, 0), (4, 4), (0, 4)], holes=[[(1, 1), (2, 1), (2, 2), (1, 2)]])
+    assert glyph(view, polygon, "test")[0].get("d").count("Z") == 2
+    assert glyph(view, Point(2, 2), "test")[0].tag.endswith("circle")
+    assert glyph(view, LineString([(1, 1), (2, 2)]), "test")[0].get("fill") == "none"
 
 
 def test_projection_uses_longitude_latitude():
@@ -118,9 +104,9 @@ def test_projection_uses_longitude_latitude():
 
 
 def test_reject_outside_target(project, tmp_path):
-    project.features[project.cards[0].target] = Point(150, -20)
+    project.layers["rivers"][project.cards[0].target] = Point(150, -20)
     with pytest.raises(ValueError, match="outside"):
-        render(project, project.cards[0], False, tmp_path)
+        maps(project, tmp_path)
 
 
 def copied_project(tmp_path):
@@ -232,7 +218,9 @@ def test_preview_images_exist(project, tmp_path):
     page = preview(project, tmp_path)
     for src in re.findall(r'src="([^" ]+)"', page.read_text()):
         assert (page.parent / src).is_file()
-    assert len(json.loads((tmp_path / "media/manifest.json").read_text())) == len(project.cards)
+    assert len(json.loads((tmp_path / "media/manifest.json").read_text())["cards"]) == len(
+        project.cards
+    )
 
 
 def test_ankiconnect_errors_are_reported(monkeypatch):
@@ -244,15 +232,3 @@ def test_ankiconnect_errors_are_reported(monkeypatch):
     )
     with pytest.raises(RuntimeError, match="Anki unavailable"):
         anki("version")
-
-
-def test_shared_background_preserves_targets_blank_maps_and_insets(project):
-    project = load(ROOT)
-    cards = [
-        next(c for c in project.cards if c.target == target)
-        for target in ("loire", "rhone", "city-75056", "city-92050", "dep-971")
-    ]
-    context = {}
-    for card in cards:
-        for back in (False, True):
-            assert scene_for(project, card, back, context=context) == scene_for(project, card, back)
