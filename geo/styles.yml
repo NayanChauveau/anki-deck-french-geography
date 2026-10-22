@@ -1,11 +1,11 @@
 styles:
-  ocean: '#eaf2f6'
-  land: '#fffdf7'
-  neighbor: '#ecefeb'
-  border: '#aab9bd'
-  river: '#a1bfcc'
-  target: '#007f96'
-  ink: '#203d48'
+  ocean: '#111e29'
+  land: '#293f4d'
+  neighbor: '#1d2e3b'
+  border: '#536d7b'
+  river: '#648fa3'
+  target: '#65d9eb'
+  ink: '#e8f1f5'
   target_width: 4.5
   marker_radius: 3.2
   target_marker_radius: 9

@@ -64,7 +64,8 @@ in `geo/features/country-context.geojson`. Shared borders are simplified togethe
 the pinned local upstream file and checks its checksum before writing. The global
 view retains the lighter, pinned 1:50 million background. Target datasets are unchanged.
 
-Colors, line weight and marker radii live in `geo/styles.yml`. White marker outlines
+Colors, line weight and marker radii live in `geo/styles.yml`. Maps use a fixed dark
+palette with cyan highlights, independently of Anki’s light/dark interface setting. White marker outlines
 keep cities and overseas location points visible over borders and coastlines. The
 same palette and marker sizes apply throughout; national/world framing is unchanged.
 
