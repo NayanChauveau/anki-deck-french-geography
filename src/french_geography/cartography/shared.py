@@ -148,16 +148,18 @@ def sprite(project, settings):
             filled = layer in ("departments", "regions", "mountains")
             for target, geom in items.items():
                 base_id = technical_id("shape", layer, pane_key, target)
-                definitions.append(
-                    glyph(
-                        view,
-                        geom,
-                        base_id,
-                        radius=project.style.marker_radius,
-                        precision=precision,
-                        compact=True,
-                    )
+                shape_group = glyph(
+                    view,
+                    geom,
+                    base_id,
+                    radius=project.style.marker_radius,
+                    precision=precision,
+                    compact=True,
                 )
+                if filled:
+                    # Keep administrative/relief outlines identical when highlighted.
+                    shape_group.set("stroke-width", "1.0")
+                definitions.append(shape_group)
                 ET.SubElement(
                     group,
                     "use",

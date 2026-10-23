@@ -75,3 +75,22 @@ def test_technical_ids_preserve_corsican_codes_and_reject_markup():
     assert technical_id("cities", "city-2A004") == "fg-cities-city-2A004"
     with pytest.raises(ValueError, match="Unsafe SVG ID"):
         technical_id("cities", 'name" onload="bad')
+
+
+@pytest.mark.parametrize("layer", ["departments", "regions", "mountains"])
+def test_filled_highlight_reuses_background_shape_without_thickening_border(layer):
+    project = fixture_project()
+    card = city_card().model_copy(update={"layer": layer, "target": "area-test"})
+    project.cards = [card]
+    project.layers = {layer: {"area-test": box(-0.1, 44.9, 0.1, 45.1)}}
+    setting = {"method": "preserve-topology", "tolerance_px": 0, "decimals": 2}
+    data, visuals = sprite(project, {("countries", "test"): setting, (layer, "test"): setting})
+    nodes = {n.attrib["id"]: n for n in ET.fromstring(data).iter() if "id" in n.attrib}
+    pane = visuals[visual_key(card, "target")]["panes"][0]
+    shape = nodes[pane["target"]]
+    background_use = next(
+        n for n in nodes[pane["background"]] if n.get("href") == "#" + pane["target"]
+    )
+    assert shape.get("stroke-width") == background_use.get("stroke-width") == "1.0"
+    # The explicit shape width wins over the outer highlight's inherited river width.
+    assert all("stroke-width" not in n.attrib for n in shape)
