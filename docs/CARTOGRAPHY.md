@@ -19,8 +19,18 @@ imports it through AnkiConnect and requests synchronization. It does not push Gi
 Each package bundles the SVG under its full SHA-256 filename. Standard ZIP deflate
 compression keeps the complete package below 2 MB per language. Each map references its background and optional target
 by SVG ID. A hidden image reference lets Anki's media scanner recognize the file.
-There is no PNG renderer, target-selection JavaScript or browser-side positioning.
+There is no PNG renderer or browser-side geographic projection.
 Questions, explanations, sources and credits are HTML outside the map.
+
+The reviewer keeps the question above the map on both faces and shows the answer
+below it, reserving header space to avoid moving the map. A small inline script
+(`templates/anki/reviewer.js`) keeps the live SVG attached outside the client's
+`qa`/`content` update container, aligned with a reserved space in the card. This
+avoids WebKit reloading external SVG references when a node is detached. The same
+background elements remain in place; only the precomputed highlight references
+change. Alignment follows scrolling, resizing and client zoom. Anki's HTML fade is disabled for this model. Text-only cards or
+another deck clear the retained map. Clients that reload the entire document retain
+ordinary SVG rendering; they cannot preserve DOM elements across page loads.
 
 ## Files and responsibilities
 

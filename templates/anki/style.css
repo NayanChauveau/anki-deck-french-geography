@@ -11,3 +11,12 @@ details { font-size: 12px; text-align: left; overflow-wrap: anywhere; color: #52
 .credits { font-size: 10px; line-height: 1.4; color: #526e77; margin: 6px 0; text-align: left; }
 .credits a { color: inherit; }
 .nightMode .credits { color: #bdced3; }
+
+/* Keep the map's anchor stable across question/answer text and scrollbar changes. */
+html { overflow-y: scroll; scrollbar-gutter: stable; }
+.fg-card h1 { min-height: 3.9em; display: flex; align-items: center; justify-content: center; }
+.answer { font-size: 24px; line-height: 1.3; margin: 16px 0; }
+/* Anki's reviewer temporarily sets opacity:0 while replacing the card HTML. */
+#qa, #content { opacity: 1 !important; transition: none !important; }
+.fg-map-stage { position: fixed; inset: 0; pointer-events: none; z-index: 1; }
+.fg-map-stage > svg.fg-map { position: absolute; max-width: none; margin: 0; }

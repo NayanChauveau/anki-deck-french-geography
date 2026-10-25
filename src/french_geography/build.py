@@ -132,7 +132,7 @@ def template_html(path: Path, locale):
     text = path.read_text()
     for key in ("heading", "sources"):
         text = text.replace("__" + key.upper() + "__", html.escape(locale.text.ui[key]))
-    return text
+    return text.replace("__MAP_REVIEWER__", (path.parent / "reviewer.js").read_text())
 
 
 def build(project: Project, out: Path, *, language: str = "fr") -> Path:
