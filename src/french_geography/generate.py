@@ -63,20 +63,27 @@ def generate(
                 # An editable label position is only needed when this default overlaps.
                 point = geometries[entry.id].representative_point()
                 lon, lat = point.x, point.y
-            cards.append(
-                Card(
-                    id=f"fr-geo-{rule.id}-{entry.id.lower()}",
-                    target=entry.id,
-                    view=rule.view,
-                    question=locale.question(rule.id, "identification"),
-                    answer=answer,
-                    explanation=locale.explanation(entry),
-                    references=locale.references(
-                        list(dict.fromkeys([*rule.references, *entry.references]))
-                    ),
-                    annotations=[Annotation(text=entry.name, lon=lon, lat=lat)],
+            for direction in rule.directions:
+                locate = direction == "name-map"
+                cards.append(
+                    Card(
+                        id=(
+                            f"fr-geo-{rule.id}-{entry.id.lower()}" + ("-name-map" if locate else "")
+                        ),
+                        target=entry.id,
+                        view=rule.view,
+                        question=locale.question(rule.id, direction, **values),
+                        direction=direction,
+                        layer=rule.layer,
+                        front_map="blank" if locate else "target",
+                        answer=answer,
+                        explanation=locale.explanation(entry),
+                        references=locale.references(
+                            list(dict.fromkeys([*rule.references, *entry.references]))
+                        ),
+                        annotations=[Annotation(text=entry.name, lon=lon, lat=lat)],
+                    )
                 )
-            )
     return cards
 
 

@@ -241,3 +241,34 @@ def test_projection_crops_in_pixel_space_without_interior_cut_edges():
     assert land.equals(box(0, 0, 900, 900))
     point = projection.geometry(Point(2, 47))
     assert point.distance(Point(*projection.point(2, 47))) < 1e-9
+
+
+@pytest.mark.parametrize("language", ["fr", "en"])
+def test_rivers_support_location_without_changing_identification_notes(language, tmp_path):
+    from french_geography.generate import generate
+    from french_geography.locales import load_locale
+
+    project = load(ROOT)
+    rule = RuleFile.model_validate(yaml.safe_load((ROOT / "cards/identification.yml").read_text()))
+    project.cards = generate(ROOT, rule.rules, project.layers, load_locale(ROOT, language))
+    rivers = [c for c in project.cards if c.layer == "rivers" and c.front_map != "none"]
+    identify = {c.target: c for c in rivers if c.direction == "identification"}
+    locate = {c.target: c for c in rivers if c.direction == "name-map"}
+    assert identify.keys() == locate.keys() == project.layers["rivers"].keys()
+    assert len(locate) == 32
+    for target, card in locate.items():
+        original = identify[target]
+        assert original.id == f"fr-geo-hydrographie-identification-{target}"
+        assert card.id == original.id + "-name-map"
+        assert card.front_map == "blank" and card.back_map == "target"
+        assert original.front_map == original.back_map == "target"
+        assert card.answer == original.answer
+        assert card.explanation == original.explanation
+        assert card.references == original.references
+        assert card.view == original.view
+    escaut = locate["escaut"]
+    assert "Escaut" in escaut.question if language == "fr" else "Scheldt" in escaut.question
+    project.cards = [escaut, identify["escaut"]]
+    images = maps(project, tmp_path)
+    assert all(p["target"] is None for p in images[escaut.id]["front"]["panes"])
+    assert images[escaut.id]["back"] == images[identify["escaut"].id]["back"]

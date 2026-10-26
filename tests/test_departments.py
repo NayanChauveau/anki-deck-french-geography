@@ -118,7 +118,7 @@ def test_department_package_keeps_existing_river_identity_and_bundles_shared_med
         database.write_bytes(package.read("collection.anki2"))
     with sqlite3.connect(database) as db:
         assert db.execute("SELECT count(*) FROM cards WHERE did=1976423102").fetchone()[0] == 9
-        assert db.execute("SELECT count(*) FROM cards WHERE did=1976423100").fetchone()[0] == 1
+        assert db.execute("SELECT count(*) FROM cards WHERE did=1976423100").fetchone()[0] == 2
         ordered = db.execute(
             "SELECT notes.flds, cards.due FROM notes JOIN cards ON notes.id=cards.nid "
             "WHERE cards.did=1976423102 ORDER BY cards.due"

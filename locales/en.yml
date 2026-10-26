@@ -98,6 +98,7 @@ rules:
   hydrographie-identification:
     questions:
       identification: Which river is highlighted on the map?
+      name-map: Where is the river {name}?
     answer: The {name}
   hydrographie-affluent:
     questions:

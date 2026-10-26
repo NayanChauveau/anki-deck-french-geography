@@ -91,6 +91,9 @@ class IdentificationRule(Strict):
     catalog: str = Field(min_length=1)
     view: str = Field(min_length=1)
     references: list[str] = Field(min_length=1)
+    directions: list[Literal["identification", "name-map"]] = Field(
+        default_factory=lambda: ["identification"], min_length=1
+    )
 
 
 DepartmentDirection = Literal[

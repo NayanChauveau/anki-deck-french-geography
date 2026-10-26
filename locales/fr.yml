@@ -89,6 +89,7 @@ rules:
   hydrographie-identification:
     questions:
       identification: Quel cours d’eau est surligné sur la carte ?
+      name-map: Où se situe le cours d’eau « {name} » ?
     answer: '{identification_name}'
   relief-massifs:
     questions:

@@ -98,6 +98,18 @@
           "minItems": 1,
           "title": "References",
           "type": "array"
+        },
+        "directions": {
+          "items": {
+            "enum": [
+              "identification",
+              "name-map"
+            ],
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Directions",
+          "type": "array"
         }
       },
       "required": [

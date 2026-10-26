@@ -77,7 +77,7 @@ def test_complete_translation_preserves_source_notes_order_and_geometry(source_p
     before = [card.model_dump() for card in source_project.cards]
     english = localize(source_project, "en")
     assert [card.model_dump() for card in source_project.cards] == before
-    assert len(english.cards) == len(source_project.cards) == 1034
+    assert len(english.cards) == len(source_project.cards) == 1066
     assert Counter(c.theme for c in english.cards) == Counter(c.theme for c in source_project.cards)
     assert len({c.id for c in english.cards}) == len(english.cards)
     translated = {"id", "question", "answer", "explanation", "references"}
