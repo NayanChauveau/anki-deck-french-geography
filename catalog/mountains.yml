@@ -32,3 +32,177 @@ features:
   references:
   - https://www.brgm.fr/fr/implantation-regionale/corse-reseau-regional-brgm
   explanation_key: landforms.schematic_notice
+- id: mountain-morvan
+  name: Morvan
+  view: metropolitan
+  explanation_key: landforms.morvan.context
+  references:
+  - https://paysage.parcdumorvan.org/fic_bdd/pdf_fr_fichier/12015378590_geographie_physique_du_Morvan.pdf
+- id: mountain-chaine-des-puys
+  name: Chaîne des Puys
+  view: metropolitan
+  explanation_key: landforms.chaine-des-puys.context
+  references:
+  - https://www.decouvrir.parcdesvolcans.fr/cinq-regions-naturelles
+- id: mountain-monts-dore
+  name: Monts Dore
+  view: metropolitan
+  explanation_key: landforms.monts-dore.context
+  references:
+  - https://www.decouvrir.parcdesvolcans.fr/les-monts-dore
+- id: mountain-cantal
+  name: Monts du Cantal
+  view: metropolitan
+  explanation_key: landforms.cantal.context
+  references:
+  - https://www.decouvrir.parcdesvolcans.fr/cinq-regions-naturelles
+- id: mountain-forez
+  name: Monts du Forez
+  view: metropolitan
+  explanation_key: landforms.forez.context
+  references:
+  - https://auvergnerhonealpes.cnpf.fr/sites/socle/files/cnpf-old/400758_guide_des_stations_forestieres_du_livradois_forez_1_1.pdf
+- id: mountain-livradois
+  name: Monts du Livradois
+  view: metropolitan
+  explanation_key: landforms.livradois.context
+  references:
+  - https://auvergnerhonealpes.cnpf.fr/sites/socle/files/cnpf-old/400758_guide_des_stations_forestieres_du_livradois_forez_1_1.pdf
+- id: mountain-millevaches
+  name: Plateau de Millevaches
+  view: metropolitan
+  explanation_key: landforms.millevaches.context
+  references:
+  - https://www.pnr-millevaches.fr/territoire/paysage/
+- id: mountain-aubrac
+  name: Aubrac
+  view: metropolitan
+  explanation_key: landforms.aubrac.context
+  references:
+  - https://www.parc-naturel-aubrac.fr/territoire/eau/
+- id: mountain-cevennes
+  name: Cévennes
+  view: metropolitan
+  explanation_key: landforms.cevennes.context
+  references:
+  - https://www.cevennes-parcnational.fr/fr/des-connaissances/le-patrimoine-naturel/les-milieux-naturels/les-milieux-aquatiques
+- id: mountain-lyonnais
+  name: Monts du Lyonnais
+  view: metropolitan
+  explanation_key: landforms.lyonnais.context
+  references:
+  - https://www.montsdulyonnaistourisme.fr/
+- id: mountain-beaujolais
+  name: Monts du Beaujolais
+  view: metropolitan
+  explanation_key: landforms.beaujolais.context
+  references:
+  - https://www.geopark-beaujolais.com/
+- id: mountain-pilat
+  name: Pilat
+  view: metropolitan
+  explanation_key: landforms.pilat.context
+  references:
+  - https://www.vienne-condrieu-agglomeration.fr/valoriser-et-preserver/biodiversite/lagglo-soutient-la-biodiversite/le-parc-naturel-regional-du-pilat
+- id: mountain-vercors
+  name: Vercors
+  view: metropolitan
+  explanation_key: landforms.vercors.context
+  references:
+  - https://www.parc-du-vercors.fr/
+- id: mountain-chartreuse
+  name: Chartreuse
+  view: metropolitan
+  explanation_key: landforms.chartreuse.context
+  references:
+  - https://www.parc-chartreuse.net/content/uploads/diagnostic_pnr_chartreuse_def.pdf
+- id: mountain-bauges
+  name: Bauges
+  view: metropolitan
+  explanation_key: landforms.bauges.context
+  references:
+  - https://www.annecy.fr/fileadmin/mediatheque_annecy/Deliberations/2025/20250203/D_CN_2025_4.pdf
+- id: mountain-bornes
+  name: Bornes
+  view: metropolitan
+  explanation_key: landforms.bornes.context
+  references:
+  - https://geol-alp.uiad.fr/bornes/_general_bornes_aravis/tecto_bornes.html
+- id: mountain-aravis
+  name: Aravis
+  view: metropolitan
+  explanation_key: landforms.aravis.context
+  references:
+  - https://geol-alp.uiad.fr/bornes/_general_bornes_aravis/tecto_bornes.html
+- id: mountain-chablais
+  name: Chablais
+  view: metropolitan
+  explanation_key: landforms.chablais.context
+  references:
+  - https://geol-alp.uiad.fr/chablais/_general_chabl_sixt/chablais_general.html
+- id: mountain-beaufortain
+  name: Beaufortain
+  view: metropolitan
+  explanation_key: landforms.beaufortain.context
+  references:
+  - https://www.geol-alp.uiad.fr/h_mt_blanc/index_mt_blanc.html
+- id: mountain-belledonne
+  name: Belledonne
+  view: metropolitan
+  explanation_key: landforms.belledonne.context
+  references:
+  - https://www.espacebelledonne.fr/
+- id: mountain-ecrins
+  name: Écrins
+  view: metropolitan
+  explanation_key: landforms.ecrins.context
+  references:
+  - https://www.ecrins-parcnational.fr/quest-ce-quun-parc-national
+- id: mountain-queyras
+  name: Queyras
+  view: metropolitan
+  explanation_key: landforms.queyras.context
+  references:
+  - https://www.pnr-queyras.fr/girn-bassin-versant-guil/
+- id: mountain-ventoux
+  name: Mont Ventoux
+  view: metropolitan
+  explanation_key: landforms.ventoux.context
+  references:
+  - https://www.parcduventoux.fr/
+- id: mountain-luberon
+  name: Luberon
+  view: metropolitan
+  explanation_key: landforms.luberon.context
+  references:
+  - https://www.parcduluberon.fr/geosite/crete_luberon/
+- id: mountain-alpilles
+  name: Alpilles
+  view: metropolitan
+  explanation_key: landforms.alpilles.context
+  references:
+  - https://departement13.atlas-paysages-paca.fr/unites-paysageres/le-massif-des-alpilles/
+- id: mountain-sainte-victoire
+  name: Sainte-Victoire
+  view: metropolitan
+  explanation_key: landforms.sainte-victoire.context
+  references:
+  - https://www.grandsitesaintevictoire.com/proteger/un-grand-site-de-france/concors-sainte-victoire/
+- id: mountain-sainte-baume
+  name: Sainte-Baume
+  view: metropolitan
+  explanation_key: landforms.sainte-baume.context
+  references:
+  - https://www.onf.fr/foret-exception/sainte-baume-foret-dexception/+/8a3::sainte-baume-foret-dexception-haut-lieu-patrimonial-en-mediterranee.html
+- id: mountain-maures
+  name: Massif des Maures
+  view: metropolitan
+  explanation_key: landforms.maures.context
+  references:
+  - https://www.var.gouv.fr/Actions-de-l-Etat/Biodiversite-et-Nature/Natura-2000/Liste-des-31-sites-Natura-2000-dans-le-Var/Plaine-et-massif-des-Maures-ZSC
+- id: mountain-esterel
+  name: Estérel
+  view: metropolitan
+  explanation_key: landforms.esterel.context
+  references:
+  - https://www.onf.fr/onf/+/ad3::lesterel-une-foret-comme-au-cinema.html

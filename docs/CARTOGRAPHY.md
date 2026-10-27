@@ -122,8 +122,23 @@ slightly between SVG and the historical PNG reference.
 
 The 20 lakes/reservoirs use exact selected Sandre codes, without small homonyms;
 Hourtin-Carcans is combined. Lake boundaries do not describe current water levels.
-Mountain areas are indicative; schematic Corsican/Armorican zones are recorded as
-such. Five sea extents are conventional geographic areas, not legal boundaries.
+Mountain areas are indicative: five broad Natural Earth regions, two schematic
+Corsican/Armorican zones and 29 regional schematics, all on the metropolitan view.
+The regional envelopes are independently authored WGS84 polygons, with references
+per feature in `data/relief/regional-schematic-zones.geojson`. They locate massifs;
+they are not surveyed boundaries, park perimeters or commune unions. Each has
+a localized geographic explanation explicitly identifying the schematic limits.
+The Chablais envelope shows only the French part; Bornes and Aravis are separate.
+
+`prepare_relief.py <pinned-ne_10m_geography_regions_polys.geojson>` verifies the
+Natural Earth checksum, clips schematic areas to the pinned France outline and
+updates the prepared geography/source registry. It checks catalogue coverage but
+does not overwrite editorial content. Relief areas overlap at different scales,
+so their display profile uses per-feature topology preservation, rather than
+treating them as a disjoint administrative coverage. No relief simplification is
+applied before decimal rounding.
+
+Five sea extents are conventional geographic areas, not legal boundaries.
 National parks show official terrestrial/marine cores, excluding membership areas
 and adjacent marine areas. These maps do not establish regulations for a parcel.
 All dataset licences and modifications are recorded in `geo/sources.yml`.

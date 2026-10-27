@@ -48,31 +48,43 @@
     },
     {
       "id": "mountains",
-      "source": "Natural Earth, physical label polygons",
-      "version": "v5.1.2",
+      "source": "Natural Earth physical label polygons + independently authored relief schematics",
+      "version": "v5.1.2; schematics 2026-10-27",
       "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_geography_regions_polys.geojson",
-      "license": "Public domain",
+      "license": "Public domain + CC0-1.0 schematics",
       "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
       "upstream_sha256": "b7b26e50ea917d3696aec87f932def2bf5f890f5770e441d59c162c6f4c92a77",
       "inputs": [
         {
+          "file": "data/relief/schematic-zones.geojson",
           "url": "local:data/relief/schematic-zones.geojson",
           "sha256": "8bdf1d52bac109571e667a4b19a6e9ca335155457b5d9f536a54f77df6d930ff",
-          "source": "Independently authored educational schematics, 2026-10-20",
+          "source": "Independently authored educational schematics; references per feature",
+          "version": "2026-10-20",
           "license": "CC0-1.0",
           "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-          "file": "data/relief/schematic-zones.geojson"
+          "modifications": "WGS84 educational envelopes; not digitized park or commune boundaries"
+        },
+        {
+          "file": "data/relief/regional-schematic-zones.geojson",
+          "url": "local:data/relief/regional-schematic-zones.geojson",
+          "sha256": "e23e0d83009ba41520f4965caa86419a8d26a66dd6ea2c3dc65cdb89a97576e8",
+          "source": "Independently authored educational schematics; references per feature",
+          "version": "2026-10-27",
+          "license": "CC0-1.0",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "modifications": "WGS84 educational envelopes; not digitized park or commune boundaries"
         },
         {
           "file": "geo/features/countries.geojson",
-          "sha256": "b33c0f591497e77e9c3eb8b9ee50390fe596f752f5577825a5250a957f2dc8d8",
           "url": "local:geo/features/countries.geojson",
+          "sha256": "b33c0f591497e77e9c3eb8b9ee50390fe596f752f5577825a5250a957f2dc8d8",
           "license": "Public domain"
         }
       ],
       "file": "geo/features/mountains.geojson",
-      "sha256": "3267dc80b18c69ae11f3c042fbc370fcb9151199ecfc641464df592cf3d79da3",
-      "modifications": "Five Natural Earth physical regions selected by NAME, clipped to [-7,40,12,53]; two independently authored schematic zones added from data/relief/schematic-zones.geojson. properties reduced, IDs prefixed mountain-, make_valid applied. Label polygons describe approximate geographic extents, not administrative mountain-law zones. No island polygon substituted for Corsican relief. Schematic zones clipped to the pinned Natural Earth France outline to avoid marine fill."
+      "sha256": "241b226447a01a85217247f74adb4d84091de412c9a559d9191b202f1c365f5e",
+      "modifications": "Five Natural Earth physical regions selected by NAME, clipped to [-7,40,12,53]; Two broad and 29 regional independently authored schematic zones added from data/relief/schematic-zones.geojson and regional-schematic-zones.geojson. properties reduced, IDs prefixed mountain-, make_valid applied. Label polygons describe approximate geographic extents, not administrative mountain-law zones. No island polygon substituted for Corsican relief. Schematic zones clipped to the pinned Natural Earth France outline to avoid marine fill."
     },
     {
       "id": "peaks",

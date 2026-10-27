@@ -181,7 +181,10 @@ et reliefs corses ; grands bassins, plaines et vallées structurantes.
 - [ ] Étudier leur remplacement par un référentiel physique adapté ; bassins et plaines encore à faire.
 - [x] Documenter les limites approximatives des cinq polygones Natural Earth du pilote.
 - [x] Générer nom → zone et zone → nom pour les cinq ensembles du pilote.
-- [ ] Étendre les cartes aux autres grands ensembles retenus.
+- [x] Compléter les sept grands ensembles par 29 reliefs régionaux (2026-10-27) :
+  Morvan, reliefs du Massif central et de la vallée de la Loire, massifs alpins et
+  provençaux ; 72 cartes nom ↔ position, en français et en anglais. Zones
+  schématiques sourcées, France entière, explication géographique par relief.
 - [ ] Évaluer un fond de relief discret, sans nuire à la lecture des cibles.
 - [ ] Prévoir des cadrages communs aux séries régionales.
 

@@ -17,7 +17,8 @@ edition once, then let Deck Manager check for new versions.
 - **Departments:** locate a department from its name, or recall its name and code from a map.
 - **Regions and cities:** place them on a map and learn their administrative relationships and capitals.
 - **Rivers and lakes:** recognize their locations and learn selected tributary relationships.
-- **Landscapes:** identify mountain areas and landmark peaks.
+- **Landscapes:** locate 36 mountain areas, from the Alps and Massif Central to the Morvan,
+  Forez, Vercors and Provençal ranges, and identify landmark peaks.
 - **Coasts, overseas France and national parks:** build a broader picture of French geography.
 
 The deck is split into nine themed subdecks, so you can start with one subject.

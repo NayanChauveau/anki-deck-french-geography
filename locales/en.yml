@@ -1,6 +1,35 @@
 # Shared locale schema. Semantic keys are identical across languages.
 proper_names: retain_official_unless_translated
 names:
+  mountain-morvan: Morvan
+  mountain-chaine-des-puys: Chaîne des Puys
+  mountain-monts-dore: Monts Dore
+  mountain-cantal: Cantal Mountains
+  mountain-forez: Forez Mountains
+  mountain-livradois: Livradois Mountains
+  mountain-millevaches: Millevaches Plateau
+  mountain-aubrac: Aubrac
+  mountain-cevennes: Cévennes
+  mountain-lyonnais: Lyonnais Mountains
+  mountain-beaujolais: Beaujolais Mountains
+  mountain-pilat: Pilat
+  mountain-vercors: Vercors
+  mountain-chartreuse: Chartreuse
+  mountain-bauges: Bauges
+  mountain-bornes: Bornes
+  mountain-aravis: Aravis
+  mountain-chablais: Chablais
+  mountain-beaufortain: Beaufortain
+  mountain-belledonne: Belledonne
+  mountain-ecrins: Écrins
+  mountain-queyras: Queyras
+  mountain-ventoux: Mont Ventoux
+  mountain-luberon: Luberon
+  mountain-alpilles: Alpilles
+  mountain-sainte-victoire: Sainte-Victoire
+  mountain-sainte-baume: Sainte-Baume
+  mountain-maures: Maures Massif
+  mountain-esterel: Estérel
   escaut: Scheldt
   rhin: Rhine
   segre: Segre
@@ -137,6 +166,70 @@ rules:
       name-map: Where is the core area of {name}?
       map-name: Which national park’s core area is highlighted on the map?
 explanations:
+  landforms.morvan.context: 'In Burgundy, at the north-eastern end of the Massif Central, between the Seine,
+    Loire and Saône basins. Schematic area: indicative boundaries, not administrative or geological limits.'
+  landforms.chaine-des-puys.context: 'A volcanic chain north of the Monts Dore, west of Clermont-Ferrand
+    and the Limagne plain. Schematic area: indicative boundaries, not administrative or geological limits.'
+  landforms.monts-dore.context: 'A volcanic massif south-west of Clermont-Ferrand, whose highest point is
+    the Puy de Sancy. Schematic area: indicative boundaries, not administrative or geological limits.'
+  landforms.cantal.context: 'A volcanic massif around the Plomb du Cantal and Puy Mary, north-east of Aurillac.
+    Schematic area: indicative boundaries, not administrative or geological limits.'
+  landforms.forez.context: 'East of the Dore valley and west of the Forez plain, through which the Loire
+    flows. Schematic area: indicative boundaries, not administrative or geological limits.'
+  landforms.livradois.context: 'Between the Allier valley to the west and the Dore valley to the east; the
+    Forez Mountains lie beyond the Dore. Schematic area: indicative boundaries, not administrative or geological
+    limits.'
+  landforms.millevaches.context: 'In the Limousin uplands, in the western Massif Central; the Vienne and
+    Vézère rise here. Schematic area: indicative boundaries, not administrative or geological limits.'
+  landforms.aubrac.context: 'A plateau in the southern Massif Central, between the Lot, Truyère and Colagne
+    valleys. Schematic area: indicative boundaries, not administrative or geological limits.'
+  landforms.cevennes.context: 'Along the south-eastern edge of the Massif Central, across Lozère, Gard and
+    Ardèche. Schematic area: indicative boundaries, not administrative or geological limits.'
+  landforms.lyonnais.context: 'West of Lyon and east of the Forez plain, with the Beaujolais to the north
+    and the Pilat to the south. Schematic area: indicative boundaries, not administrative or geological
+    limits.'
+  landforms.beaujolais.context: 'North-west of Lyon, west of the Saône valley and north of the Lyonnais
+    Mountains. Schematic area: indicative boundaries, not administrative or geological limits.'
+  landforms.pilat.context: 'On the eastern edge of the Massif Central, south-east of Saint-Étienne and west
+    of the Rhône. Schematic area: indicative boundaries, not administrative or geological limits.'
+  landforms.vercors.context: 'A pre-Alpine massif south-west of Grenoble, between the Isère and Drôme valleys.
+    Schematic area: indicative boundaries, not administrative or geological limits.'
+  landforms.chartreuse.context: 'Between Grenoble to the south and Chambéry to the north, west of the Grésivaudan
+    valley. Schematic area: indicative boundaries, not administrative or geological limits.'
+  landforms.bauges.context: 'Between Chambéry, Annecy and Albertville, north-east of the Chartreuse. Schematic
+    area: indicative boundaries, not administrative or geological limits.'
+  landforms.bornes.context: 'East of Lake Annecy and west of the Aravis range. Here, the Bornes are shown
+    separately from the Aravis. Schematic area: indicative boundaries, not administrative or geological
+    limits.'
+  landforms.aravis.context: 'A north-east–south-west range, east of the Bornes and west of the Val d’Arly.
+    Schematic area: indicative boundaries, not administrative or geological limits.'
+  landforms.chablais.context: 'Pre-Alps south of Lake Geneva, north of the Bornes and Aravis. Only the French
+    part is shown. Schematic area: indicative boundaries, not administrative or geological limits.'
+  landforms.beaufortain.context: 'East of Albertville, south of the Mont Blanc massif and north of the Tarentaise
+    valley. Schematic area: indicative boundaries, not administrative or geological limits.'
+  landforms.belledonne.context: 'East of Grenoble and the Grésivaudan, facing the Chartreuse and extending
+    towards the Maurienne valley. Schematic area: indicative boundaries, not administrative or geological
+    limits.'
+  landforms.ecrins.context: 'A high mountain massif between the Romanche to the north, the Durance to the
+    east and the Drac to the west. Schematic area: indicative boundaries, not administrative or geological
+    limits.'
+  landforms.queyras.context: 'Around the Guil basin, east of the Durance, close to the Italian border. Schematic
+    area: indicative boundaries, not administrative or geological limits.'
+  landforms.ventoux.context: 'A Provençal massif north-east of Carpentras and east of the Rhône corridor.
+    Schematic area: indicative boundaries, not administrative or geological limits.'
+  landforms.luberon.context: 'A range between the Calavon to the north and the Durance to the south, from
+    Cavaillon towards Manosque. Schematic area: indicative boundaries, not administrative or geological
+    limits.'
+  landforms.alpilles.context: 'A small limestone range east of Arles, south of Saint-Rémy-de-Provence and
+    north of the Crau plain. Schematic area: indicative boundaries, not administrative or geological limits.'
+  landforms.sainte-victoire.context: 'A limestone range east of Aix-en-Provence, whose highest point is
+    the Pic des Mouches. Schematic area: indicative boundaries, not administrative or geological limits.'
+  landforms.sainte-baume.context: 'A limestone range east of Aubagne and north of Toulon, across Bouches-du-Rhône
+    and Var. Schematic area: indicative boundaries, not administrative or geological limits.'
+  landforms.maures.context: 'In Var, between Hyères and Fréjus, south of the Maures depression. Schematic
+    area: indicative boundaries, not administrative or geological limits.'
+  landforms.esterel.context: 'A massif of red volcanic rocks east of Fréjus and Saint-Raphaël, on the Mediterranean
+    coast. Schematic area: indicative boundaries, not administrative or geological limits.'
   river.loire.summary: It passes through Orléans, Tours and Nantes before reaching the Atlantic at Saint-Nazaire.
   river.seine.summary: It flows through Paris, then Rouen, before reaching the English Channel through the
     Seine estuary.

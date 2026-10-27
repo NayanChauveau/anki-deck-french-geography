@@ -145,6 +145,67 @@ rules:
     questions:
       ocean: Dans quel océan ou bassin océanique se situe « {name} » ?
 explanations:
+  landforms.morvan.context: 'Au nord-est du Massif central, en Bourgogne, entre les bassins de la Seine,
+    de la Loire et de la Saône. Zone schématique : limites indicatives, sans valeur administrative ou géologique.'
+  landforms.chaine-des-puys.context: 'Alignement volcanique au nord des monts Dore, à l’ouest de Clermont-Ferrand
+    et de la Limagne. Zone schématique : limites indicatives, sans valeur administrative ou géologique.'
+  landforms.monts-dore.context: 'Massif volcanique au sud-ouest de Clermont-Ferrand ; le puy de Sancy en
+    est le point culminant. Zone schématique : limites indicatives, sans valeur administrative ou géologique.'
+  landforms.cantal.context: 'Massif volcanique autour du Plomb du Cantal et du puy Mary, au nord-est d’Aurillac.
+    Zone schématique : limites indicatives, sans valeur administrative ou géologique.'
+  landforms.forez.context: 'À l’est de la vallée de la Dore et à l’ouest de la plaine du Forez, parcourue
+    par la Loire. Zone schématique : limites indicatives, sans valeur administrative ou géologique.'
+  landforms.livradois.context: 'Entre les vallées de l’Allier à l’ouest et de la Dore à l’est ; les monts
+    du Forez se trouvent au-delà de la Dore. Zone schématique : limites indicatives, sans valeur administrative
+    ou géologique.'
+  landforms.millevaches.context: 'Dans la montagne limousine, à l’ouest du Massif central ; la Vienne et
+    la Vézère y prennent leur source. Zone schématique : limites indicatives, sans valeur administrative
+    ou géologique.'
+  landforms.aubrac.context: 'Plateau du sud du Massif central, entre les vallées du Lot, de la Truyère et
+    de la Colagne. Zone schématique : limites indicatives, sans valeur administrative ou géologique.'
+  landforms.cevennes.context: 'Sur la bordure sud-est du Massif central, entre la Lozère, le Gard et l’Ardèche.
+    Zone schématique : limites indicatives, sans valeur administrative ou géologique.'
+  landforms.lyonnais.context: 'À l’ouest de Lyon et à l’est de la plaine du Forez ; le Beaujolais est au
+    nord et le Pilat au sud. Zone schématique : limites indicatives, sans valeur administrative ou géologique.'
+  landforms.beaujolais.context: 'Au nord-ouest de Lyon, à l’ouest de la vallée de la Saône et au nord des
+    monts du Lyonnais. Zone schématique : limites indicatives, sans valeur administrative ou géologique.'
+  landforms.pilat.context: 'À la bordure orientale du Massif central, au sud-est de Saint-Étienne et à l’ouest
+    du Rhône. Zone schématique : limites indicatives, sans valeur administrative ou géologique.'
+  landforms.vercors.context: 'Massif préalpin au sud-ouest de Grenoble, entre les vallées de l’Isère et
+    de la Drôme. Zone schématique : limites indicatives, sans valeur administrative ou géologique.'
+  landforms.chartreuse.context: 'Entre Grenoble au sud et Chambéry au nord, à l’ouest de la vallée du Grésivaudan.
+    Zone schématique : limites indicatives, sans valeur administrative ou géologique.'
+  landforms.bauges.context: 'Entre Chambéry, Annecy et Albertville, au nord-est de la Chartreuse. Zone schématique
+    : limites indicatives, sans valeur administrative ou géologique.'
+  landforms.bornes.context: 'À l’est du lac d’Annecy et à l’ouest de la chaîne des Aravis. Ici, les Bornes
+    sont distinguées des Aravis. Zone schématique : limites indicatives, sans valeur administrative ou géologique.'
+  landforms.aravis.context: 'Chaîne orientée nord-est–sud-ouest, à l’est des Bornes et à l’ouest du val
+    d’Arly. Zone schématique : limites indicatives, sans valeur administrative ou géologique.'
+  landforms.chablais.context: 'Préalpes au sud du Léman, au nord des Bornes et des Aravis. Seule la partie
+    française est représentée. Zone schématique : limites indicatives, sans valeur administrative ou géologique.'
+  landforms.beaufortain.context: 'À l’est d’Albertville, au sud du massif du Mont-Blanc et au nord de la
+    Tarentaise. Zone schématique : limites indicatives, sans valeur administrative ou géologique.'
+  landforms.belledonne.context: 'À l’est de Grenoble et du Grésivaudan, face à la Chartreuse, jusqu’aux
+    abords de la Maurienne. Zone schématique : limites indicatives, sans valeur administrative ou géologique.'
+  landforms.ecrins.context: 'Massif de haute montagne entre la Romanche au nord, la Durance à l’est et le
+    Drac à l’ouest. Zone schématique : limites indicatives, sans valeur administrative ou géologique.'
+  landforms.queyras.context: 'Autour du bassin du Guil, à l’est de la Durance, près de la frontière italienne.
+    Zone schématique : limites indicatives, sans valeur administrative ou géologique.'
+  landforms.ventoux.context: 'Massif provençal au nord-est de Carpentras et à l’est du couloir rhodanien.
+    Zone schématique : limites indicatives, sans valeur administrative ou géologique.'
+  landforms.luberon.context: 'Chaîne entre le Calavon au nord et la Durance au sud, de Cavaillon vers Manosque.
+    Zone schématique : limites indicatives, sans valeur administrative ou géologique.'
+  landforms.alpilles.context: 'Petite chaîne calcaire à l’est d’Arles, au sud de Saint-Rémy-de-Provence
+    et au nord de la Crau. Zone schématique : limites indicatives, sans valeur administrative ou géologique.'
+  landforms.sainte-victoire.context: 'Chaîne calcaire à l’est d’Aix-en-Provence ; son point culminant est
+    le pic des Mouches. Zone schématique : limites indicatives, sans valeur administrative ou géologique.'
+  landforms.sainte-baume.context: 'Chaîne calcaire à l’est d’Aubagne et au nord de Toulon, entre les Bouches-du-Rhône
+    et le Var. Zone schématique : limites indicatives, sans valeur administrative ou géologique.'
+  landforms.maures.context: 'Dans le Var, entre Hyères et Fréjus, au sud de la dépression des Maures. Zone
+    schématique : limites indicatives, sans valeur administrative ou géologique.'
+  landforms.esterel.context: 'Massif aux roches volcaniques rouges, à l’est de Fréjus et Saint-Raphaël,
+    en bordure de la Méditerranée. Zone schématique : limites indicatives, sans valeur administrative ou
+    géologique.'
   parks.core_areas_notice: Seuls les cœurs terrestre et marin sont représentés, sans aire d’adhésion ni aire
     maritime adjacente. Contours de février 2026 simplifiés pour l’apprentissage ; ne pas utiliser pour vérifier
     la réglementation d’un lieu.

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "source_fingerprint": "45c18325a373df3722327f67aee1e6975dee0e672c0644fc61ce3a0aee2049a8",
+  "source_fingerprint": "7f6a4da6fd93e1bc8475bd03c7116a56630266bf192ca7b3aa622191c6356daf",
   "coordinate_space": "projected SVG pixels",
   "max_error_bound_px": 0.5,
   "groups": [
@@ -77,8 +77,8 @@
     {
       "layer": "mountains",
       "view": "metropolitan",
-      "method": "coverage",
-      "tolerance_px": 0.6,
+      "method": "preserve-topology",
+      "tolerance_px": 0,
       "decimals": 1
     },
     {
