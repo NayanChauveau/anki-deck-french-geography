@@ -147,11 +147,6 @@ def test_geographic_limitations_survive_translation(source_project):
         in cards["fr-geo-hydrographie-identification-rhin"].explanation
     )
     assert "available French section" in cards["fr-geo-hydrographie-affluent-oise"].explanation
-    assert "schematic" in cards["fr-geo-relief-massifs-mountain-corse-map-name"].explanation
-    assert (
-        "neither an administrative zoning map nor a geological map"
-        in cards["fr-geo-relief-massifs-mountain-armoricain-map-name"].explanation
-    )
     assert "not a legal boundary" in cards["fr-geo-littoral-mers-sea-manche-map-name"].explanation
     for card in cards.values():
         if card.layer == "parks":

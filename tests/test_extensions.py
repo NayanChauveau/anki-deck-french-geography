@@ -36,7 +36,7 @@ def test_schematic_corsican_relief_is_not_the_island_outline():
     island = project.features["dep-2A"].union(project.features["dep-2B"])
     assert mountain.area < island.area * 0.6
     card = next(c for c in project.cards if c.target == "mountain-corse")
-    assert "schématique" in card.explanation
+    assert not card.explanation
     assert card.view == "metropolitan"
 
 

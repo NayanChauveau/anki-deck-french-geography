@@ -2,36 +2,29 @@ features:
 - id: mountain-vosges
   name: Vosges
   view: metropolitan
-  explanation_key: landforms.approximate_notice
 - id: mountain-jura
   name: Jura
   view: metropolitan
-  explanation_key: landforms.approximate_notice
 - id: mountain-massif-central
   name: Massif central
   view: metropolitan
-  explanation_key: landforms.approximate_notice
 - id: mountain-pyrenees
   name: Pyrénées
   view: metropolitan
-  explanation_key: landforms.approximate_notice
 - id: mountain-alpes
   name: Alpes
   view: metropolitan
-  explanation_key: landforms.approximate_notice
 - id: mountain-armoricain
   name: Massif armoricain
   view: metropolitan
   references:
   - https://sigespal.brgm.fr/spip.php?rubrique65=
   - https://sigessn.brgm.fr/spip.php?article339=
-  explanation_key: landforms.schematic_notice
 - id: mountain-corse
   name: Reliefs corses
   view: metropolitan
   references:
   - https://www.brgm.fr/fr/implantation-regionale/corse-reseau-regional-brgm
-  explanation_key: landforms.schematic_notice
 - id: mountain-morvan
   name: Morvan
   view: metropolitan

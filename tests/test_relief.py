@@ -65,9 +65,10 @@ def test_regional_reliefs_have_both_directions_and_localized_context():
             assert locate.view == identify.view == "metropolitan"
             assert locate.answer == identify.answer
             assert locate.explanation == identify.explanation
+            assert locate.explanation
             assert (
                 "Zone schématique" if language == "fr" else "Schematic area"
-            ) in locate.explanation
+            ) not in locate.explanation
             assert len(locate.references) >= 2
 
 
