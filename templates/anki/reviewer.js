@@ -64,6 +64,9 @@
                     const target = background.nextElementSibling;
                     if (target && target.classList.contains("fg-highlight")) before[i].after(target);
                 });
+                current.querySelectorAll(":scope > .fg-alternate").forEach(group => group.remove());
+                const alternate = incoming.querySelector(":scope > .fg-alternate");
+                if (alternate) current.append(alternate);
             } else {
                 // Changing from a single map to a map with an inset, or back.
                 current.replaceChildren(...incoming.childNodes);
@@ -73,9 +76,32 @@
                 if (current.getAttribute(attribute) !== value) current.setAttribute(attribute, value);
             }
         }
+        // Every new face starts on its primary map; the alternate shows only while pressed.
+        const alternate = incoming.classList.contains("fg-has-alternate");
+        for (const name of ["fg-has-alternate", "tappable"]) state.svg.classList.toggle(name, alternate);
+        state.svg.classList.remove("fg-show-alternate");
         stage.hidden = false;
         state.align();
     };
+    const press = shown => event => {
+        if (!state.svg || !state.svg.classList.contains("fg-has-alternate")) return;
+        // Capture keeps the release even when the finger slides off the map.
+        if (shown && event.pointerId !== undefined) {
+            try {
+                state.svg.setPointerCapture(event.pointerId);
+            } catch (error) {}
+        }
+        if (event.cancelable) event.preventDefault();
+        event.stopPropagation();
+        state.svg.classList.toggle("fg-show-alternate", shown);
+    };
+    const [down, up] = window.PointerEvent ? ["pointerdown", "pointerup pointercancel"] : ["touchstart", "touchend touchcancel"];
+    stage.addEventListener(down, press(true));
+    for (const name of up.split(" ")) stage.addEventListener(name, press(false));
+    // The press is not a tap: keep it from reaching the client's tap actions.
+    stage.addEventListener("click", event => {
+        if (state.svg && state.svg.classList.contains("fg-has-alternate")) event.stopPropagation();
+    });
     state.observer = new MutationObserver(state.update);
     state.observer.observe(host, { childList: true, subtree: true });
     if (window.ResizeObserver) {

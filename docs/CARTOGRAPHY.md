@@ -28,7 +28,9 @@ below it, reserving header space to avoid moving the map. A small inline script
 `qa`/`content` update container, aligned with a reserved space in the card. This
 avoids WebKit reloading external SVG references when a node is detached. The same
 background elements remain in place; only the precomputed highlight references
-change. Alignment follows scrolling, resizing and client zoom. Anki's HTML fade is disabled for this model. Text-only cards or
+change. Alignment follows scrolling, resizing and client zoom. Anki's HTML fade is disabled for this model. On relief backs, pressing
+the map shows the same frame with department borders drawn over the highlighted relief;
+releasing it returns to the relief map. Text-only cards or
 another deck clear the retained map. Clients that reload the entire document retain
 ordinary SVG rendering; they cannot preserve DOM elements across page loads.
 

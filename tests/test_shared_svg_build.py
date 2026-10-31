@@ -228,3 +228,40 @@ def test_cli_build_and_push_use_the_same_production_renderer(tmp_path, monkeypat
     monkeypatch.setattr(cli, "anki", lambda action, **params: actions.append((action, params)))
     cli.main()
     assert actions == [("version", {}), ("importPackage", {"path": str(package)}), ("sync", {})]
+
+
+def test_relief_back_can_switch_to_department_borders(tmp_path):
+    project = load(ROOT)
+    project.cards = [
+        c for c in project.cards if c.target == "mountain-vercors" or c.target == "dep-33"
+    ]
+    manifest = maps(project, tmp_path)
+    relief = next(c for c in project.cards if c.layer == "mountains")
+    data = ET.fromstring((tmp_path / manifest[relief.id]["back"]["shared_svg"]).read_bytes())
+    nodes = {n.attrib["id"]: n for n in data.iter() if "id" in n.attrib}
+    locale = load_locale(ROOT, "fr")
+    for card in project.cards:
+        back = manifest[card.id]["back"]
+        if card.layer != "mountains":
+            assert "alternate" not in back
+            continue
+        (pane,) = back["alternate"]
+        assert pane["background"] == "fg-map-departments-metropolitan"
+        assert pane["target"] == back["panes"][0]["target"]
+        outline = nodes[pane["outline"]]
+        assert outline.get("fill") == "none"
+        assert len(outline) == sum(
+            1 for i in nodes if i.startswith("fg-shape-departments-metropolitan-")
+        )
+        front = map_field(project, card, manifest[card.id]["front"], locale, side="front")
+        assert "fg-alternate" not in front
+        field = map_field(project, card, back, locale, side="back")
+        svg = ET.fromstring(field.split("</svg>")[0] + "</svg>")
+        assert "fg-has-alternate" in svg.get("class")
+        alternate = svg[-1]
+        assert alternate.get("class") == "fg-alternate"
+        assert [u.get("href").split("#")[1] for u in alternate] == [
+            pane["background"],
+            pane["target"],
+            pane["outline"],
+        ]

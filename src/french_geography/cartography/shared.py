@@ -12,6 +12,9 @@ from french_geography.cartography.display import derive, fingerprint
 from french_geography.cartography.shared_cache import cached_maps, visual_key
 from french_geography.cartography.svg import SVG_NS, glyph, svg_body, technical_id
 
+# Back-side alternate maps: a target layer shown again over another layer's outlines.
+ALTERNATE_CONTEXT = {"mountains": "departments"}
+
 
 def display_settings(project):
     data = json.loads((project.root / "geo/display-svg.json").read_text())
@@ -49,10 +52,16 @@ def sprite(project, settings):
     validate_cards(project)
     root = ET.Element(f"{{{SVG_NS}}}svg")
     definitions = ET.SubElement(root, "defs")
-    panes, targets, countries, projected_cache = {}, {}, {}, {}
-    combinations = sorted(
-        {(c.layer, c.view) for c in project.cards if c.front_map != "none" or c.back_map != "none"}
-    )
+    panes, targets, countries, projected_cache, shapes = {}, {}, {}, {}, {}
+    mapped = {
+        (c.layer, c.view) for c in project.cards if c.front_map != "none" or c.back_map != "none"
+    }
+    alternates = {
+        (ALTERNATE_CONTEXT[layer], view)
+        for layer, view in mapped
+        if ALTERNATE_CONTEXT.get(layer) in project.layers
+    }
+    combinations = sorted(mapped | alternates)
 
     def projected(layer, view_key, rectangle):
         key = layer, view_key, rectangle
@@ -160,6 +169,7 @@ def sprite(project, settings):
                     # Keep administrative/relief outlines identical when highlighted.
                     shape_group.set("stroke-width", "1.0")
                 definitions.append(shape_group)
+                shapes.setdefault((layer, pane_key), []).append(base_id)
                 ET.SubElement(
                     group,
                     "use",
@@ -184,6 +194,23 @@ def sprite(project, settings):
                 targets[(layer, parent_key, pane_key, target)] = target_id
             pane_records.append({"background": map_id, "key": pane_key})
         panes[(layer, parent_key)] = pane_records
+
+    outlines = {}
+    for layer, parent_key in sorted(alternates):
+        for pane in panes[(layer, parent_key)]:
+            # Context borders drawn above the highlight, so covered units stay readable.
+            outline_id = technical_id("outline", layer, pane["key"])
+            outline = ET.SubElement(
+                definitions,
+                "g",
+                id=outline_id,
+                fill="none",
+                stroke=project.style.border,
+                **{"stroke-width": "1.0"},
+            )
+            for shape_id in shapes[(layer, pane["key"])]:
+                ET.SubElement(outline, "use", href="#" + shape_id)
+            outlines[(layer, pane["key"])] = outline_id
 
     ids = [n.attrib["id"] for n in root.iter() if "id" in n.attrib]
     if len(ids) != len(set(ids)):
@@ -215,10 +242,18 @@ def sprite(project, settings):
                     }
                 )
             view = project.views[card.view]
-            visuals[visual_key(card, mode)] = {
-                "view_box": f"0 0 {view.width} {view.height}",
-                "panes": records,
-            }
+            visual = {"view_box": f"0 0 {view.width} {view.height}", "panes": records}
+            context = ALTERNATE_CONTEXT.get(card.layer)
+            if (context, card.view) in alternates and mode == "target":
+                visual["alternate"] = [
+                    {
+                        "background": pane["background"],
+                        "target": targets[(card.layer, card.view, pane["key"], card.target)],
+                        "outline": outlines[(context, pane["key"])],
+                    }
+                    for pane in panes[(context, card.view)]
+                ]
+            visuals[visual_key(card, mode)] = visual
     return ET.tostring(root, encoding="utf-8"), visuals
 
 
@@ -229,21 +264,33 @@ def maps(project, out):
     return cached_maps(project, out, configuration, settings, render=sprite)
 
 
-def markup(project, record, *, alt, prefix=""):
+def markup(project, record, *, alt, prefix="", alternate=False):
     if not record:
         return ""
     source = html.escape(prefix + record["shared_svg"], quote=True)
+    highlight = (
+        f'fill="{project.style.target}" stroke="{project.style.target}" '
+        f'stroke-width="{project.style.target_width}"'
+    )
+    panes = record.get("alternate") if alternate else None
     result = (
-        f'<svg class="fg-map" viewBox="{record["view_box"]}" role="img" '
+        f'<svg class="fg-map{" fg-has-alternate" if panes else ""}" '
+        f'viewBox="{record["view_box"]}" role="img" '
         f'aria-label="{html.escape(alt, quote=True)}">'
     )
     for pane in record["panes"]:
         result += f'<use class="fg-background" href="{source}#{pane["background"]}"/>'
         if pane["target"]:
+            result += f'<use class="fg-highlight" href="{source}#{pane["target"]}" {highlight}/>'
+    if panes:
+        # Hidden second map, shown while pressed; distinct classes keep pane pairing intact.
+        result += '<g class="fg-alternate">'
+        for pane in panes:
             result += (
-                f'<use class="fg-highlight" href="{source}#{pane["target"]}" '
-                f'fill="{project.style.target}" stroke="{project.style.target}" '
-                f'stroke-width="{project.style.target_width}"/>'
+                f'<use href="{source}#{pane["background"]}"/>'
+                f'<use href="{source}#{pane["target"]}" {highlight}/>'
+                f'<use href="{source}#{pane["outline"]}"/>'
             )
+        result += "</g>"
     # Explicit img reference exposes media to Anki's ordinary media scanner.
     return result + f'</svg><img src="{source}" alt="" hidden style="display:none">'

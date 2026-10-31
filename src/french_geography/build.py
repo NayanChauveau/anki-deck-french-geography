@@ -68,13 +68,17 @@ def references_html(references):
     )
 
 
-def map_field(project, card, record, locale, *, prefix=""):
+def map_field(project, card, record, locale, *, prefix="", side="front"):
     """Use the same map markup and credits in packages and gallery."""
     if not record:
         return ""
-    return markup(project, record, alt=locale.text.ui["map_alt"], prefix=prefix) + credits(
-        card, locale
-    )
+    return markup(
+        project,
+        record,
+        alt=locale.text.ui["map_alt"],
+        prefix=prefix,
+        alternate=side == "back",
+    ) + credits(card, locale)
 
 
 def preview(project: Project, out: Path, *, language="fr") -> Path:
@@ -89,7 +93,7 @@ def preview(project: Project, out: Path, *, language="fr") -> Path:
         e = html.escape
         figures = "".join(
             f"<figure><figcaption>{label}</figcaption>"
-            + map_field(project, card, manifest[card.id][side], locale, prefix="media/")
+            + map_field(project, card, manifest[card.id][side], locale, prefix="media/", side=side)
             + "</figure>"
             for side, label in [("front", ui["front"]), ("back", ui["back"])]
             if manifest[card.id][side]
@@ -118,7 +122,13 @@ def preview(project: Project, out: Path, *, language="fr") -> Path:
             'const p=document.createElement("p");p.textContent='
             "'Shared SVG preview requires HTTP. From this directory, run: "
             "python3 -m http.server 8000 --bind 127.0.0.1 "
-            "then open http://127.0.0.1:8000/';document.body.prepend(p);}</script>"
+            "then open http://127.0.0.1:8000/';document.body.prepend(p);}"
+            'document.addEventListener("pointerdown",e=>{'
+            'const m=e.target.closest("svg.fg-has-alternate");'
+            'if(m){m.setPointerCapture(e.pointerId);m.classList.add("fg-show-alternate");}});'
+            'for(const n of["pointerup","pointercancel"])document.addEventListener(n,e=>'
+            'document.querySelectorAll(".fg-show-alternate").forEach(m=>'
+            'm.classList.remove("fg-show-alternate")));</script>'
         )
         + "</html>"
     )
@@ -177,9 +187,11 @@ def build(project: Project, out: Path, *, language: str = "fr") -> Path:
     positions = dict.fromkeys(decks, 0)
     theme_tags = {theme: locale.text.themes[key].tag for theme, key in THEME_KEYS.items()}
     for card in project.cards:
-        records = [manifest[card.id][side] for side in ("front", "back")]
-        media_files.update(str(media_dir / r["shared_svg"]) for r in records if r)
-        image_fields = [map_field(project, card, record, locale) for record in records]
+        records = {side: manifest[card.id][side] for side in ("front", "back")}
+        media_files.update(str(media_dir / r["shared_svg"]) for r in records.values() if r)
+        image_fields = [
+            map_field(project, card, record, locale, side=side) for side, record in records.items()
+        ]
         refs = references_html(card.references)
         positions[card.theme] += 1
         decks[card.theme].add_note(

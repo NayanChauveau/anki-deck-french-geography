@@ -20,3 +20,11 @@ html { overflow-y: scroll; scrollbar-gutter: stable; }
 #qa, #content { opacity: 1 !important; transition: none !important; }
 .fg-map-stage { position: fixed; inset: 0; pointer-events: none; z-index: 1; }
 .fg-map-stage > svg.fg-map { position: absolute; max-width: none; margin: 0; }
+/* Holding a back map with an alternate swaps it, e.g. a relief over department borders. */
+svg.fg-map:not(.fg-show-alternate) > .fg-alternate,
+svg.fg-map.fg-show-alternate > :not(.fg-alternate) { display: none; }
+svg.fg-map.fg-has-alternate {
+    cursor: pointer; touch-action: none; user-select: none; -webkit-user-select: none;
+    -webkit-touch-callout: none; -webkit-tap-highlight-color: transparent;
+}
+.fg-map-stage > svg.fg-map.fg-has-alternate { pointer-events: auto; }
