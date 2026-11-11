@@ -63,12 +63,16 @@ context = {
     "marseille-major-streets": shapely.line_merge(MultiLineString(major)),
     "marseille-minor-streets": shapely.line_merge(MultiLineString(minor)),
 }
+by_id = {w["id"]: w for w in streets}
 targets = {}
 for street in selection:
-    ways = [line(w["geometry"]) for w in streets if w["tags"].get("name") in street["osm_names"]]
-    if not ways:
-        raise ValueError(f"Street not found: {street['id']}")
-    targets[street["id"]] = shapely.line_merge(MultiLineString(ways))
+    # Way IDs, not names: homonymous streets elsewhere in the city stay out.
+    ways = [by_id[i] for i in street["ways"] if i in by_id]
+    if len(ways) != len(street["ways"]) or any(
+        w["tags"].get("name") != street["osm_name"] for w in ways
+    ):
+        raise ValueError(f"Street ways missing or renamed: {street['id']}")
+    targets[street["id"]] = shapely.line_merge(MultiLineString([line(w["geometry"]) for w in ways]))
 
 
 def write(name, items):
@@ -99,6 +103,11 @@ inputs = [
     }
     for name in ("streets", "communes")
 ]
+ranking_input = {
+    "file": "data/marseille/street-ranking.yml",
+    "url": "local:data/marseille/street-ranking.yml",
+    "sha256": sha256(data / "street-ranking.yml"),
+}
 selection_input = {
     "file": "data/marseille/street-selection.yml",
     "url": "local:data/marseille/street-selection.yml",
@@ -140,10 +149,12 @@ registry["sources"] += [
         "file": "geo/features/streets.geojson",
         "sha256": sha256(streets_path),
         "modifications": (
-            "Ways selected by exact OSM name from data/marseille/street-selection.yml and "
-            "merged per street; tags dropped; coordinates rounded to 1e-6 degree."
+            "Streets ranked by scripts/select_marseille_streets.py (rules in "
+            "data/marseille/street-ranking.yml); ways listed by OSM ID in "
+            "data/marseille/street-selection.yml merged per street; tags dropped; "
+            "coordinates rounded to 1e-6 degree."
         ),
-        "inputs": [inputs[0], selection_input],
+        "inputs": [inputs[0], selection_input, ranking_input],
     },
 ]
 registry_path.write_text(json.dumps(registry, ensure_ascii=False, indent=2) + "\n")

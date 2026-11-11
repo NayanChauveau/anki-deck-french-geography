@@ -99,10 +99,15 @@ would be enlarged more than twice. It is drawn with half a view of margin on eac
 inside a clipping frame, so short pans and zoom-outs stay covered without redrawing.
 On reveal it keeps the current zoom when the target's precomputed box
 (`data-target-box`) is fully visible; otherwise it zooms out just enough to show both
-the target and the area the reader was looking at. Another card starts unzoomed.
+the target and the area the reader was looking at. Another card starts unzoomed, or,
+when its front highlights the target, framed on three times the target (at least a
+sixth of the map).
 Marseille data come from pinned OpenStreetMap extracts in `data/marseille/`
-(queries included), prepared by `scripts/prepare_marseille.py`; streets asked in the
-deck are listed by exact OSM name in `data/marseille/street-selection.yml`.
+(queries included), prepared by `scripts/prepare_marseille.py`. The 300 streets asked
+in the deck are chosen by `scripts/select_marseille_streets.py`: road class, length and
+distance to the Vieux-Port give a score, and `data/marseille/street-ranking.yml` adds
+editorial inclusions and exclusions. The result lists OSM way IDs per street in
+`data/marseille/street-selection.yml`, so homonymous streets elsewhere stay out.
 
 ## Extending the deck
 

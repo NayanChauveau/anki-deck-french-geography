@@ -168,6 +168,7 @@ rules:
   marseille-rues:
     questions:
       name-map: Where is “{name}” in Marseille?
+      map-name: What is the name of the street highlighted on the map?
 explanations:
   landforms.morvan.context: 'In Burgundy, at the north-eastern end of the Massif Central, between the Seine,
     Loire and Saône basins.'

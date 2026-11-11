@@ -77,6 +77,7 @@ rules:
   marseille-rues:
     questions:
       name-map: Où se situe « {name} » à Marseille ?
+      map-name: Quel est le nom de la voie surlignée sur la carte ?
   regions:
     questions:
       name-map: Où se situe la région « {name} » ?

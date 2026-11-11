@@ -1,4 +1,901 @@
 features:
+- id: street-tunnel-du-prado-carenage
+  name: Tunnel du Prado Carénage
+  view: marseille
+- id: street-avenue-du-prado
+  name: Avenue du Prado
+  view: marseille
+- id: street-autoroute-du-littoral
+  name: Autoroute du Littoral
+  view: marseille
+- id: street-corniche-du-president-john-fitzgerald-kennedy
+  name: Corniche du Président John Fitzgerald Kennedy
+  view: marseille
+- id: street-autoroute-du-soleil
+  name: Autoroute du Soleil
+  view: marseille
+- id: street-tunnel-du-vieux-port
+  name: Tunnel du Vieux-Port
+  view: marseille
+- id: street-boulevard-michelet
+  name: Boulevard Michelet
+  view: marseille
+- id: street-rue-de-la-republique
+  name: Rue de la République
+  view: marseille
+- id: street-autoroute-est
+  name: Autoroute Est
+  view: marseille
+- id: street-tunnel-de-la-major
+  name: Tunnel de la Major
+  view: marseille
+- id: street-rue-paradis
+  name: Rue Paradis
+  view: marseille
+- id: street-avenue-vaudoyer
+  name: Avenue Vaudoyer
+  view: marseille
+- id: street-chemin-du-littoral
+  name: Chemin du Littoral
+  view: marseille
+- id: street-quai-de-rive-neuve
+  name: Quai de Rive-Neuve
+  view: marseille
+- id: street-tunnel-prado-sud
+  name: Tunnel Prado Sud
+  view: marseille
+- id: street-tunnel-de-la-joliette
+  name: Tunnel de la Joliette
+  view: marseille
+- id: street-cours-pierre-puget
+  name: Cours Pierre Puget
+  view: marseille
+- id: street-avenue-jean-paul-sartre
+  name: Avenue Jean-Paul Sartre
+  view: marseille
+- id: street-boulevard-national
+  name: Boulevard National
+  view: marseille
+- id: street-rue-saint-pierre
+  name: Rue Saint-Pierre
+  view: marseille
+- id: street-boulevard-des-dames
+  name: Boulevard des Dames
+  view: marseille
+- id: street-boulevard-de-plombieres
+  name: Boulevard de Plombières
+  view: marseille
+- id: street-cours-lieutaud
+  name: Cours Lieutaud
+  view: marseille
+- id: street-boulevard-de-dunkerque
+  name: Boulevard de Dunkerque
+  view: marseille
+- id: street-boulevard-jean-moulin
+  name: Boulevard Jean Moulin
+  view: marseille
+- id: street-boulevard-charles-livon
+  name: Boulevard Charles Livon
+  view: marseille
+- id: street-avenue-general-leclerc
+  name: Avenue Général Leclerc
+  view: marseille
+- id: street-avenue-alexandre-fleming
+  name: Avenue Alexandre Fleming
+  view: marseille
+- id: street-boulevard-baille
+  name: Boulevard Baille
+  view: marseille
+- id: street-avenue-de-la-corse
+  name: Avenue de la Corse
+  view: marseille
+- id: street-quai-du-port
+  name: Quai du Port
+  view: marseille
+- id: street-tunnel-saint-charles
+  name: Tunnel Saint-Charles
+  view: marseille
+- id: street-boulevard-danielle-casanova
+  name: Boulevard Danielle Casanova
+  view: marseille
+- id: street-avenue-jules-cantini
+  name: Avenue Jules Cantini
+  view: marseille
+- id: street-rampe-saint-maurice
+  name: Rampe Saint-Maurice
+  view: marseille
+- id: street-boulevard-mireille-lauze
+  name: Boulevard Mireille Lauze
+  view: marseille
+- id: street-chemin-du-roucas-blanc
+  name: Chemin du Roucas-Blanc
+  view: marseille
+- id: street-rue-d-endoume
+  name: Rue d'Endoume
+  view: marseille
+- id: street-rue-du-rouet
+  name: Rue du Rouet
+  view: marseille
+- id: street-route-de-la-gineste
+  name: Route de La Gineste
+  view: marseille
+- id: street-boulevard-francoise-duparc
+  name: Boulevard Françoise Duparc
+  view: marseille
+- id: street-avenue-de-toulon
+  name: Avenue de Toulon
+  view: marseille
+- id: street-avenue-robert-schuman
+  name: Avenue Robert Schuman
+  view: marseille
+- id: street-boulevard-de-la-corderie
+  name: Boulevard de la Corderie
+  view: marseille
+- id: street-avenue-du-marechal-foch
+  name: Avenue du Maréchal Foch
+  view: marseille
+- id: street-rue-breteuil
+  name: Rue Breteuil
+  view: marseille
+- id: street-boulevard-rabatau
+  name: Boulevard Rabatau
+  view: marseille
+- id: street-chemin-de-saint-antoine-a-saint-joseph
+  name: Chemin de Saint-Antoine à Saint-Joseph
+  view: marseille
+- id: street-avenue-pierre-mendes-france
+  name: Avenue Pierre Mendès France
+  view: marseille
+- id: street-avenue-du-marche-d-interet-national
+  name: Avenue du Marché d'Intérêt National
+  view: marseille
+- id: street-boulevard-du-capitaine-geze
+  name: Boulevard du Capitaine Gèze
+  view: marseille
 - id: street-boulevard-de-la-liberation
   name: Boulevard de la Libération
+  view: marseille
+- id: street-boulevard-chave
+  name: Boulevard Chave
+  view: marseille
+- id: street-boulevard-romain-rolland
+  name: Boulevard Romain Rolland
+  view: marseille
+- id: street-boulevard-sakakini
+  name: Boulevard Sakakini
+  view: marseille
+- id: street-quai-des-belges
+  name: Quai des Belges
+  view: marseille
+- id: street-avenue-des-peintres-roux
+  name: Avenue des Peintres Roux
+  view: marseille
+- id: street-quai-de-la-tourette
+  name: Quai de la Tourette
+  view: marseille
+- id: street-boulevard-schloesing
+  name: Boulevard Schloesing
+  view: marseille
+- id: street-quai-du-lazaret
+  name: Quai du Lazaret
+  view: marseille
+- id: street-la-canebiere
+  name: La Canebière
+  view: marseille
+- id: street-boulevard-voltaire
+  name: Boulevard Voltaire
+  view: marseille
+- id: street-rue-de-rome
+  name: Rue de Rome
+  view: marseille
+- id: street-route-leon-lachamp
+  name: Route Léon Lachamp
+  view: marseille
+- id: street-tunnel-saint-loup
+  name: Tunnel Saint-Loup
+  view: marseille
+- id: street-boulevard-elie-wiesel
+  name: Boulevard Elie Wiesel
+  view: marseille
+- id: street-avenue-du-cap-pinede
+  name: Avenue du Cap Pinède
+  view: marseille
+- id: street-avenue-roger-salengro
+  name: Avenue Roger Salengro
+  view: marseille
+- id: street-boulevard-de-sainte-marguerite
+  name: Boulevard de Sainte-Marguerite
+  view: marseille
+- id: street-avenue-de-lattre-de-tassigny
+  name: Avenue de Lattre de Tassigny
+  view: marseille
+- id: street-chemin-de-la-madrague-ville
+  name: Chemin de la Madrague Ville
+  view: marseille
+- id: street-avenue-de-frais-vallon
+  name: Avenue de Frais Vallon
+  view: marseille
+- id: street-rue-jean-queillau
+  name: Rue Jean Queillau
+  view: marseille
+- id: street-avenue-camille-pelletan
+  name: Avenue Camille Pelletan
+  view: marseille
+- id: street-boulevard-perier
+  name: Boulevard Périer
+  view: marseille
+- id: street-boulevard-rabatau-daniel-matalon
+  name: Boulevard Rabatau Daniel Matalon
+  view: marseille
+- id: street-quai-de-la-joliette
+  name: Quai de la Joliette
+  view: marseille
+- id: street-rue-pierre-doize
+  name: Rue Pierre Doize
+  view: marseille
+- id: street-rue-le-chatelier
+  name: Rue Le Chatelier
+  view: marseille
+- id: street-avenue-des-olives
+  name: Avenue des Olives
+  view: marseille
+- id: street-boulevard-de-paris
+  name: Boulevard de Paris
+  view: marseille
+- id: street-rue-du-commandant-rolland
+  name: Rue du Commandant Rolland
+  view: marseille
+- id: street-rue-saint-cassien
+  name: Rue Saint-Cassien
+  view: marseille
+- id: street-boulevard-vincent-delpuech
+  name: Boulevard Vincent Delpuech
+  view: marseille
+- id: street-boulevard-charles-nedelec
+  name: Boulevard Charles Nédelec
+  view: marseille
+- id: street-boulevard-gay-lussac
+  name: Boulevard Gay Lussac
+  view: marseille
+- id: street-avenue-pasteur
+  name: Avenue Pasteur
+  view: marseille
+- id: street-chemin-de-saint-joseph-a-sainte-marthe
+  name: Chemin de Saint-Joseph à Sainte-Marthe
+  view: marseille
+- id: street-rue-docteur-escat
+  name: Rue Docteur Escat
+  view: marseille
+- id: street-viaduc-d-arenc
+  name: Viaduc d'Arenc
+  view: marseille
+- id: street-rue-des-catalans
+  name: Rue des Catalans
+  view: marseille
+- id: street-boulevard-henri-barnier
+  name: Boulevard Henri Barnier
+  view: marseille
+- id: street-rue-de-lyon
+  name: Rue de Lyon
+  view: marseille
+- id: street-boulevard-de-la-blancarde
+  name: Boulevard de la Blancarde
+  view: marseille
+- id: street-rue-peyssonnel
+  name: Rue Peyssonnel
+  view: marseille
+- id: street-rue-du-racati
+  name: Rue du Racati
+  view: marseille
+- id: street-avenue-de-saint-menet
+  name: Avenue de Saint-Menet
+  view: marseille
+- id: street-cours-gouffe
+  name: Cours Gouffé
+  view: marseille
+- id: street-rue-caisserie
+  name: Rue Caisserie
+  view: marseille
+- id: street-rue-de-la-loge
+  name: Rue de la Loge
+  view: marseille
+- id: street-chemin-de-saint-louis-au-rove
+  name: Chemin de Saint-Louis au Rove
+  view: marseille
+- id: street-rue-capitaine-dessemond
+  name: Rue Capitaine Dessemond
+  view: marseille
+- id: street-avenue-des-poilus
+  name: Avenue des Poilus
+  view: marseille
+- id: street-chemin-du-vallon-de-l-oriol
+  name: Chemin du Vallon de l'Oriol
+  view: marseille
+- id: street-chemin-de-sainte-marthe
+  name: Chemin de Sainte-Marthe
+  view: marseille
+- id: street-avenue-de-mazargues
+  name: Avenue de Mazargues
+  view: marseille
+- id: street-avenue-andre-roussin
+  name: Avenue André Roussin
+  view: marseille
+- id: street-boulevard-du-marechal-juin
+  name: Boulevard du Maréchal Juin
+  view: marseille
+- id: street-boulevard-de-la-liberte
+  name: Boulevard de la Liberté
+  view: marseille
+- id: street-rue-louis-rege
+  name: Rue Louis Rège
+  view: marseille
+- id: street-boulevard-de-la-pomme
+  name: Boulevard de la Pomme
+  view: marseille
+- id: street-chemin-de-l-armee-d-afrique
+  name: Chemin de l'Armée d'Afrique
+  view: marseille
+- id: street-boulevard-gueidon
+  name: Boulevard Gueidon
+  view: marseille
+- id: street-rue-longue-des-capucins
+  name: Rue Longue des Capucins
+  view: marseille
+- id: street-avenue-de-la-marche-pour-l-egalite-et-contre-le-racisme
+  name: Avenue de la Marche Pour l'Égalité et Contre le Racisme
+  view: marseille
+- id: street-boulevard-tellene
+  name: Boulevard Tellène
+  view: marseille
+- id: street-chemin-du-merlan-a-la-rose
+  name: Chemin du Merlan à La Rose
+  view: marseille
+- id: street-rue-fort-du-sanctuaire
+  name: Rue Fort du Sanctuaire
+  view: marseille
+- id: street-boulevard-d-athenes
+  name: Boulevard d'Athènes
+  view: marseille
+- id: street-avenue-de-saint-julien
+  name: Avenue de Saint-Julien
+  view: marseille
+- id: street-boulevard-dugommier
+  name: Boulevard Dugommier
+  view: marseille
+- id: street-boulevard-camille-flammarion
+  name: Boulevard Camille Flammarion
+  view: marseille
+- id: street-boulevard-garibaldi
+  name: Boulevard Garibaldi
+  view: marseille
+- id: street-avenue-du-24-avril-1915
+  name: Avenue du 24 Avril 1915
+  view: marseille
+- id: street-avenue-de-la-capelette
+  name: Avenue de la Capelette
+  view: marseille
+- id: street-rue-de-crimee
+  name: Rue de Crimée
+  view: marseille
+- id: street-cours-belsunce
+  name: Cours Belsunce
+  view: marseille
+- id: street-tunnel-louis-rege
+  name: Tunnel Louis Rège
+  view: marseille
+- id: street-avenue-de-corinthe
+  name: Avenue de Corinthe
+  view: marseille
+- id: street-avenue-arnavon
+  name: Avenue Arnavon
+  view: marseille
+- id: street-boulevard-ferdinand-de-lesseps
+  name: Boulevard Ferdinand de Lesseps
+  view: marseille
+- id: street-route-du-rove
+  name: Route du Rove
+  view: marseille
+- id: street-avenue-des-chartreux
+  name: Avenue des Chartreux
+  view: marseille
+- id: street-boulevard-charles-moretti
+  name: Boulevard Charles Moretti
+  view: marseille
+- id: street-avenue-ibrahim-ali
+  name: Avenue Ibrahim Ali
+  view: marseille
+- id: street-boulevard-pierre-menard
+  name: Boulevard Pierre Ménard
+  view: marseille
+- id: street-rue-du-camas
+  name: Rue du Camas
+  view: marseille
+- id: street-chemin-saint-jean-du-desert
+  name: Chemin Saint-Jean-du-Désert
+  view: marseille
+- id: street-chemin-de-morgiou
+  name: Chemin de Morgiou
+  view: marseille
+- id: street-rue-de-lodi
+  name: Rue de Lodi
+  view: marseille
+- id: street-avenue-de-saint-jean
+  name: Avenue de Saint-Jean
+  view: marseille
+- id: street-avenue-jean-lombard
+  name: Avenue Jean Lombard
+  view: marseille
+- id: street-boulevard-jeanne-d-arc
+  name: Boulevard Jeanne d'Arc
+  view: marseille
+- id: street-avenue-de-hambourg
+  name: Avenue de Hambourg
+  view: marseille
+- id: street-avenue-des-roches
+  name: Avenue des Roches
+  view: marseille
+- id: street-avenue-de-la-croix-rouge
+  name: Avenue de la Croix Rouge
+  view: marseille
+- id: street-avenue-des-caillols
+  name: Avenue des Caillols
+  view: marseille
+- id: street-rue-sainte-cecile
+  name: Rue Sainte-Cécile
+  view: marseille
+- id: street-allees-turcat-mery
+  name: Allées Turcat-Méry
+  view: marseille
+- id: street-rue-fort-notre-dame
+  name: Rue Fort Notre-Dame
+  view: marseille
+- id: street-boulevard-guigou
+  name: Boulevard Guigou
+  view: marseille
+- id: street-boulevard-des-bassins-de-radoub
+  name: Boulevard des Bassins de Radoub
+  view: marseille
+- id: street-rue-sainte
+  name: Rue Sainte
+  view: marseille
+- id: street-avenue-de-saint-barnabe
+  name: Avenue de Saint-Barnabé
+  view: marseille
+- id: street-rue-aviateur-le-brix
+  name: Rue Aviateur Le Brix
+  view: marseille
+- id: street-avenue-desire-bianco
+  name: Avenue Désiré Bianco
+  view: marseille
+- id: street-cours-julien
+  name: Cours Julien
+  view: marseille
+- id: street-rue-saint-ferreol
+  name: Rue Saint-Ferréol
+  view: marseille
+- id: street-chemin-de-gibbes
+  name: Chemin de Gibbes
+  view: marseille
+- id: street-boulevard-georges-estrangin
+  name: Boulevard Georges Estrangin
+  view: marseille
+- id: street-boulevard-vauban
+  name: Boulevard Vauban
+  view: marseille
+- id: street-avenue-de-la-timone
+  name: Avenue de la Timone
+  view: marseille
+- id: street-avenue-de-saint-antoine
+  name: Avenue de Saint-Antoine
+  view: marseille
+- id: street-rue-du-vallon-des-auffes
+  name: Rue du Vallon des Auffes
+  view: marseille
+- id: street-rue-loubon
+  name: Rue Loubon
+  view: marseille
+- id: street-rue-de-la-belle-de-mai
+  name: Rue de la Belle de Mai
+  view: marseille
+- id: street-rue-saint-saens
+  name: Rue Saint-Saëns
+  view: marseille
+- id: street-chemin-de-la-parette
+  name: Chemin de la Parette
+  view: marseille
+- id: street-boulevard-paul-claudel
+  name: Boulevard Paul Claudel
+  view: marseille
+- id: street-rue-francois-mauriac
+  name: Rue François Mauriac
+  view: marseille
+- id: street-avenue-corot
+  name: Avenue Corot
+  view: marseille
+- id: street-route-de-la-valentine
+  name: Route de la Valentine
+  view: marseille
+- id: street-allee-leon-gambetta
+  name: Allée Léon Gambetta
+  view: marseille
+- id: street-rue-saint-savournin
+  name: Rue Saint-Savournin
+  view: marseille
+- id: street-rue-d-aubagne
+  name: Rue d'Aubagne
+  view: marseille
+- id: street-boulevard-de-la-pugette
+  name: Boulevard de la Pugette
+  view: marseille
+- id: street-rue-charles-kaddouz
+  name: Rue Charles Kaddouz
+  view: marseille
+- id: street-route-d-enco-de-botte
+  name: Route d'Enco de Botte
+  view: marseille
+- id: street-rue-du-bois-sacre
+  name: Rue du Bois Sacré
+  view: marseille
+- id: street-rue-de-la-palud
+  name: Rue de la Palud
+  view: marseille
+- id: street-rue-de-l-abbe-feraud
+  name: Rue de l'Abbé Féraud
+  view: marseille
+- id: street-avenue-de-la-fourragere
+  name: Avenue de la Fourragère
+  view: marseille
+- id: street-avenue-raimu
+  name: Avenue Raimu
+  view: marseille
+- id: street-rue-de-la-paix-marcel-paul
+  name: Rue de la Paix Marcel Paul
+  view: marseille
+- id: street-chemin-de-chateau-gombert
+  name: Chemin de Château-Gombert
+  view: marseille
+- id: street-rue-francis-davso
+  name: Rue Francis Davso
+  view: marseille
+- id: street-rue-augustin-aubert
+  name: Rue Augustin Aubert
+  view: marseille
+- id: street-rue-saint-jean-du-desert
+  name: Rue Saint-Jean du Désert
+  view: marseille
+- id: street-boulevard-catherine-blum
+  name: Boulevard Catherine Blum
+  view: marseille
+- id: street-chemin-de-l-argile
+  name: Chemin de l'Argile
+  view: marseille
+- id: street-chemin-du-roy-d-espagne
+  name: Chemin du Roy d'Espagne
+  view: marseille
+- id: street-boulevard-urbain-sud
+  name: Boulevard Urbain Sud
+  view: marseille
+- id: street-rue-des-trois-freres-barthelemy
+  name: Rue des Trois Frères Barthélémy
+  view: marseille
+- id: street-avenue-francois-chardigny
+  name: Avenue François Chardigny
+  view: marseille
+- id: street-boulevard-roland-dorgeles
+  name: Boulevard Roland Dorgelès
+  view: marseille
+- id: street-boulevard-du-redon
+  name: Boulevard du Redon
+  view: marseille
+- id: street-rue-du-docteur-cauvin
+  name: Rue du Docteur Cauvin
+  view: marseille
+- id: street-avenue-d-haiti
+  name: Avenue d'Haïti
+  view: marseille
+- id: street-avenue-prosper-merimee
+  name: Avenue Prosper Mérimée
+  view: marseille
+- id: street-cours-franklin-roosevelt
+  name: Cours Franklin Roosevelt
+  view: marseille
+- id: street-rue-des-phoceens
+  name: Rue des Phocéens
+  view: marseille
+- id: street-avenue-de-l-argilite
+  name: Avenue de l'Argilité
+  view: marseille
+- id: street-rue-hrant-dink
+  name: Rue Hrant Dink
+  view: marseille
+- id: street-rue-albert-einstein
+  name: Rue Albert Einstein
+  view: marseille
+- id: street-rue-melchior-guinot
+  name: Rue Melchior Guinot
+  view: marseille
+- id: street-avenue-clot-bey
+  name: Avenue Clot-Bey
+  view: marseille
+- id: street-rue-jean-francois-leca
+  name: Rue Jean-François Leca
+  view: marseille
+- id: street-rue-monte-cristo
+  name: Rue Monte Cristo
+  view: marseille
+- id: street-petite-route-d-aubagne
+  name: Petite Route d'Aubagne
+  view: marseille
+- id: street-rue-dragon
+  name: Rue Dragon
+  view: marseille
+- id: street-boulevard-paul-peytral
+  name: Boulevard Paul Peytral
+  view: marseille
+- id: street-chemin-de-notre-dame-de-consolation
+  name: Chemin de Notre-Dame de Consolation
+  view: marseille
+- id: street-boulevard-ampere
+  name: Boulevard Ampère
+  view: marseille
+- id: street-rue-berthe-sylva
+  name: Rue Berthe Sylva
+  view: marseille
+- id: street-chemin-de-la-colline-saint-joseph
+  name: Chemin de la Colline Saint-Joseph
+  view: marseille
+- id: street-boulevard-de-pont-de-vivaux
+  name: Boulevard de Pont de Vivaux
+  view: marseille
+- id: street-boulevard-de-la-barasse
+  name: Boulevard de la Barasse
+  view: marseille
+- id: street-route-de-la-sabliere
+  name: Route de la Sablière
+  view: marseille
+- id: street-rue-hoche
+  name: Rue Hoche
+  view: marseille
+- id: street-avenue-salvador-allende
+  name: Avenue Salvador Allende
+  view: marseille
+- id: street-avenue-paul-gaffarel
+  name: Avenue Paul Gaffarel
+  view: marseille
+- id: street-boulevard-jean-eugene-cabassud
+  name: Boulevard Jean-Eugène Cabassud
+  view: marseille
+- id: street-boulevard-louis-villecroze
+  name: Boulevard Louis Villecroze
+  view: marseille
+- id: street-rue-du-docteur-leon-perrin
+  name: Rue du Docteur Léon Perrin
+  view: marseille
+- id: street-avenue-de-luminy
+  name: Avenue de Luminy
+  view: marseille
+- id: street-avenue-escadrille-normandie-niemen
+  name: Avenue Escadrille Normandie-Niémen
+  view: marseille
+- id: street-boulevard-alexandre-delabre
+  name: Boulevard Alexandre Delabre
+  view: marseille
+- id: street-rue-raymond-teisseire
+  name: Rue Raymond Teisseire
+  view: marseille
+- id: street-rue-saint-suffren
+  name: Rue Saint-Suffren
+  view: marseille
+- id: street-rue-edmond-rostand
+  name: Rue Edmond Rostand
+  view: marseille
+- id: street-avenue-william-booth
+  name: Avenue William Booth
+  view: marseille
+- id: street-boulevard-anatole-de-la-forge
+  name: Boulevard Anatole de la Forge
+  view: marseille
+- id: street-traverse-notre-dame-du-bon-secours
+  name: Traverse Notre-Dame-du-Bon-Secours
+  view: marseille
+- id: street-boulevard-du-jardin-zoologique
+  name: Boulevard du Jardin Zoologique
+  view: marseille
+- id: street-rue-roger-brun
+  name: Rue Roger Brun
+  view: marseille
+- id: street-boulevard-longchamp
+  name: Boulevard Longchamp
+  view: marseille
+- id: street-boulevard-des-liberateurs
+  name: Boulevard des Libérateurs
+  view: marseille
+- id: street-boulevard-de-saint-loup
+  name: Boulevard de Saint-Loup
+  view: marseille
+- id: street-avenue-de-saint-just
+  name: Avenue de Saint-Just
+  view: marseille
+- id: street-route-d-allauch
+  name: Route d'Allauch
+  view: marseille
+- id: street-avenue-de-la-rose
+  name: Avenue de La Rose
+  view: marseille
+- id: street-les-alpilles
+  name: Les Alpilles
+  view: marseille
+- id: street-avenue-fernandel
+  name: Avenue Fernandel
+  view: marseille
+- id: street-rue-de-l-eveche
+  name: Rue de l'Évêché
+  view: marseille
+- id: street-avenue-d-haifa
+  name: Avenue d'Haïfa
+  view: marseille
+- id: street-cours-joseph-thierry
+  name: Cours Joseph Thierry
+  view: marseille
+- id: street-chemin-de-la-valbarelle-a-saint-marcel
+  name: Chemin de la Valbarelle à Saint-Marcel
+  view: marseille
+- id: street-rue-puvis-de-chavannes
+  name: Rue Puvis de Chavannes
+  view: marseille
+- id: street-rue-du-petit-saint-jean
+  name: Rue du Petit Saint-Jean
+  view: marseille
+- id: street-rue-neuve-sainte-catherine
+  name: Rue Neuve Sainte-Catherine
+  view: marseille
+- id: street-rue-honnorat
+  name: Rue Honnorat
+  view: marseille
+- id: street-rue-grignan
+  name: Rue Grignan
+  view: marseille
+- id: street-rue-des-recolettes
+  name: Rue des Récolettes
+  view: marseille
+- id: street-traverse-parangon
+  name: Traverse Parangon
+  view: marseille
+- id: street-boulevard-achille-marcel
+  name: Boulevard Achille Marcel
+  view: marseille
+- id: street-boulevard-des-alpes
+  name: Boulevard des Alpes
+  view: marseille
+- id: street-boulevard-de-la-comtesse
+  name: Boulevard de la Comtesse
+  view: marseille
+- id: street-rue-pierre-albrand
+  name: Rue Pierre Albrand
+  view: marseille
+- id: street-avenue-des-trois-lucs
+  name: Avenue des Trois Lucs
+  view: marseille
+- id: street-avenue-andre-zenatti
+  name: Avenue André Zénatti
+  view: marseille
+- id: street-traverse-de-chante-perdrix
+  name: Traverse de Chante Perdrix
+  view: marseille
+- id: street-route-des-trois-lucs-a-la-valentine
+  name: Route des Trois Lucs à La Valentine
+  view: marseille
+- id: street-avenue-joseph-vidal
+  name: Avenue Joseph Vidal
+  view: marseille
+- id: street-boulevard-de-la-milliere
+  name: Boulevard de la Millière
+  view: marseille
+- id: street-avenue-saint-paul
+  name: Avenue Saint-Paul
+  view: marseille
+- id: street-rue-de-la-guadeloupe
+  name: Rue de la Guadeloupe
+  view: marseille
+- id: street-boulevard-gaston-ramon
+  name: Boulevard Gaston Ramon
+  view: marseille
+- id: street-rue-alphonse-daudet
+  name: Rue Alphonse Daudet
+  view: marseille
+- id: street-rue-du-docteur-simone-sedan
+  name: Rue du Docteur Simone Sedan
+  view: marseille
+- id: street-rue-cazemajou
+  name: Rue Cazemajou
+  view: marseille
+- id: street-traverse-charles-susini
+  name: Traverse Charles Susini
+  view: marseille
+- id: street-rue-emile-duclaux
+  name: Rue Émile Duclaux
+  view: marseille
+- id: street-quai-d-arenc
+  name: Quai d'Arenc
+  view: marseille
+- id: street-avenue-fernand-sardou
+  name: Avenue Fernand Sardou
+  view: marseille
+- id: street-boulevard-lavoisier
+  name: Boulevard Lavoisier
+  view: marseille
+- id: street-avenue-de-saint-louis
+  name: Avenue de Saint-Louis
+  view: marseille
+- id: street-allee-de-la-grande-bastide-cazaulx
+  name: Allée de la Grande Bastide Cazaulx
+  view: marseille
+- id: street-rue-charras
+  name: Rue Charras
+  view: marseille
+- id: street-rue-rene-d-anjou
+  name: Rue René d'Anjou
+  view: marseille
+- id: street-avenue-de-bonneveine
+  name: Avenue de Bonneveine
+  view: marseille
+- id: street-avenue-benjamin-delessert
+  name: Avenue Benjamin Delessert
+  view: marseille
+- id: street-rue-saint-jacques
+  name: Rue Saint-Jacques
+  view: marseille
+- id: street-boulevard-de-la-valbarelle
+  name: Boulevard de la Valbarelle
+  view: marseille
+- id: street-avenue-david-dellepiane
+  name: Avenue David Dellepiane
+  view: marseille
+- id: street-boulevard-louis-salvator
+  name: Boulevard Louis Salvator
+  view: marseille
+- id: street-boulevard-bompard
+  name: Boulevard Bompard
+  view: marseille
+- id: street-rue-consolat
+  name: Rue Consolat
+  view: marseille
+- id: street-rue-de-la-joliette
+  name: Rue de la Joliette
+  view: marseille
+- id: street-rue-colbert
+  name: Rue Colbert
+  view: marseille
+- id: street-rue-d-italie
+  name: Rue d'Italie
+  view: marseille
+- id: street-rue-montgrand
+  name: Rue Montgrand
+  view: marseille
+- id: street-avenue-de-la-pointe-rouge
+  name: Avenue de la Pointe Rouge
+  view: marseille
+- id: street-rue-nationale
+  name: Rue Nationale
+  view: marseille
+- id: street-rue-edouard-delanglade
+  name: Rue Édouard Delanglade
+  view: marseille
+- id: street-rue-tapis-vert
+  name: Rue Tapis Vert
+  view: marseille
+- id: street-rue-fontange
+  name: Rue Fontange
+  view: marseille
+- id: street-rue-lafayette
+  name: Rue Lafayette
+  view: marseille
+- id: street-rue-francis-de-pressense
+  name: Rue Francis de Pressensé
+  view: marseille
+- id: street-rue-sylvabelle
+  name: Rue Sylvabelle
+  view: marseille
+- id: street-boulevard-gambetta
+  name: Boulevard Gambetta
   view: marseille

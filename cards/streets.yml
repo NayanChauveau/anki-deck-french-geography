@@ -6,5 +6,6 @@ rules:
   theme: Rues de Marseille
   directions:
   - name-map
+  - map-name
   references:
   - https://www.openstreetmap.org/copyright

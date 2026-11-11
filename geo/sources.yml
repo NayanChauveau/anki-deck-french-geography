@@ -272,8 +272,8 @@
       "license_url": "https://www.openstreetmap.org/copyright",
       "upstream_sha256": "84a0b159290608bfb4f3785bfc8541ab2aa38deddab8ef4edd1a11a47aecf3b1",
       "file": "geo/features/streets.geojson",
-      "sha256": "cbfb4e514b3cdf033855ac758c144affc11f7df4080995f875cc090a7d647a78",
-      "modifications": "Ways selected by exact OSM name from data/marseille/street-selection.yml and merged per street; tags dropped; coordinates rounded to 1e-6 degree.",
+      "sha256": "16e9262574148a613cdb91c7810da45bd643b0c2e3bd6483412ca11748ad1ae2",
+      "modifications": "Streets ranked by scripts/select_marseille_streets.py (rules in data/marseille/street-ranking.yml); ways listed by OSM ID in data/marseille/street-selection.yml merged per street; tags dropped; coordinates rounded to 1e-6 degree.",
       "inputs": [
         {
           "source": "OpenStreetMap contributors, Overpass API",
@@ -287,7 +287,12 @@
         {
           "file": "data/marseille/street-selection.yml",
           "url": "local:data/marseille/street-selection.yml",
-          "sha256": "2d4fb6946206033ed0a6d855bf041e8360edf3df7380e748887c594278b12a47"
+          "sha256": "02ae30bd23082f76412b97cca96bc1c5fdb0547c2ea21c40090f3a33b7d08ae6"
+        },
+        {
+          "file": "data/marseille/street-ranking.yml",
+          "url": "local:data/marseille/street-ranking.yml",
+          "sha256": "2686211d373841b7574a1e72abf8857575707e9ce866de2fbf06c3b0c922e964"
         }
       ]
     }

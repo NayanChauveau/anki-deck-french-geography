@@ -15,22 +15,37 @@ ROOT = Path(__file__).resolve().parents[1]
 STREET = "street-boulevard-de-la-liberation"
 
 
-def test_street_card_locates_a_marseille_street_in_both_languages():
+def test_marseille_streets_are_asked_in_both_directions_and_languages():
     project = load(ROOT)
-    (card,) = [c for c in project.cards if c.layer == "streets"]
-    assert card.id == f"fr-geo-marseille-rues-{STREET}-name-map"
-    assert card.target == STREET and card.view == "marseille"
-    assert (card.front_map, card.back_map) == ("blank", "target")
-    assert card.theme == "Rues de Marseille"
-    english = next(c for c in localize(project, "en").cards if c.layer == "streets")
-    assert english.question == "Where is “Boulevard de la Libération” in Marseille?"
+    cards = [c for c in project.cards if c.layer == "streets"]
+    assert len(project.layers["streets"]) == 300 and len(cards) == 600
+    assert {c.theme for c in cards} == {"Rues de Marseille"}
+    assert {c.view for c in cards} == {"marseille"}
+    for target in project.layers["streets"]:
+        selected = {c.direction: c for c in cards if c.target == target}
+        assert set(selected) == {"name-map", "map-name"}
+        assert (selected["name-map"].front_map, selected["name-map"].back_map) == (
+            "blank",
+            "target",
+        )
+        assert (selected["map-name"].front_map, selected["map-name"].back_map) == (
+            "target",
+            "target",
+        )
+    # The first released street note keeps its identity.
+    first = next(c for c in cards if c.target == STREET and c.direction == "name-map")
+    assert first.id == f"fr-geo-marseille-rues-{STREET}-name-map"
+    english = {c.id: c for c in localize(project, "en").cards}
+    assert english[first.id + "-en"].question == (
+        "Where is “Boulevard de la Libération” in Marseille?"
+    )
 
 
 def test_city_maps_use_their_own_zoomable_sprite(tmp_path):
     project = load(ROOT)
     project.cards = [c for c in project.cards if c.target in (STREET, "dep-33")]
     manifest = maps(project, tmp_path)
-    street = next(c for c in project.cards if c.layer == "streets")
+    street = next(c for c in project.cards if c.layer == "streets" and c.direction == "name-map")
     national = next(c for c in project.cards if c.layer == "departments" and c.back_map == "target")
     back = manifest[street.id]["back"]
     assert back["shared_svg"] != manifest[national.id]["back"]["shared_svg"]

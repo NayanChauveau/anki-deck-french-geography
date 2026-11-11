@@ -20,7 +20,7 @@ edition once, then let Deck Manager check for new versions.
 - **Landscapes:** locate 36 mountain areas, from the Alps and Massif Central to the Morvan,
   Forez, Vercors and Provençal ranges, and identify landmark peaks.
 - **Coasts, overseas France and national parks:** build a broader picture of French geography.
-- **Marseille streets:** find a street on a zoomable map of Marseille (a first street for now).
+- **Marseille streets:** find 300 main Marseille streets on a zoomable map, and name a highlighted one.
 
 The deck is split into ten themed subdecks, so you can start with one subject.
 Map cards use highlighted features and uncluttered backgrounds; explanations and

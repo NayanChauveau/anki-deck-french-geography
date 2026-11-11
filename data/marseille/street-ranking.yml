@@ -1,0 +1,98 @@
+# Editorial rules for choosing the Marseille streets asked in the deck.
+# scripts/select_marseille_streets.py ranks OSM streets with these rules and writes
+# data/marseille/street-selection.yml and catalog/streets.yml. Edit, then rerun it.
+count: 300
+# Reference point for centrality: the Vieux-Port.
+centre: [5.3698, 43.2951]
+# Score = class weight × √(length in km) / (1 + distance to centre in km / centre_km)
+centre_km: 2
+min_length_m: 250
+# Parts of one name more than this apart are treated as homonyms and skipped.
+homonym_gap_m: 300
+class_weights:
+  motorway: 3
+  trunk: 3.5
+  primary: 3.5
+  secondary: 3
+  tertiary: 2
+  pedestrian: 1.6
+  unclassified: 1.2
+  residential: 1
+  living_street: 1
+# Not streets, or not useful to learn.
+exclude_prefixes: [Place, Rond-point, Rond-Point, Square, Esplanade, Parvis, Passerelle,
+  Escalier, Escaliers, Impasse, Parking, Aire, Plage, Bretelle, Échangeur, Giratoire,
+  Carrefour, Anse, Porte, Montée, Tranchée]
+exclude_names:
+- Rue Cargo Rhin Fidelity
+- Promenade Georges Pompidou
+# Well-known streets kept whatever their score.
+include:
+- La Canebière
+- Rue de Rome
+- Rue Paradis
+- Rue Saint-Ferréol
+- Cours Julien
+- Boulevard Longchamp
+- Rue de la République
+- Cours Belsunce
+- Avenue du Prado
+- Corniche du Président John Fitzgerald Kennedy
+- Boulevard Baille
+- Boulevard Chave
+- Boulevard de la Libération - Général de Monsabert
+- Rue d'Aubagne
+- Rue Sainte
+- Rue Breteuil
+- Boulevard Périer
+- Boulevard Rabatau
+- Boulevard Michelet
+- Avenue de la Capelette
+- Rue Edmond Rostand
+- Rue Sylvabelle
+- Rue Montgrand
+- Rue Grignan
+- Rue Francis de Pressensé
+- Rue Fontange
+- Boulevard Louis Salvator
+- Boulevard Garibaldi
+- Boulevard National
+- Boulevard Vauban
+- Rue d'Endoume
+- Rue des Catalans
+- Rue du Vallon des Auffes
+- Avenue de Mazargues
+- Avenue de la Pointe Rouge
+- Avenue de Hambourg
+- Boulevard Sakakini
+- Boulevard Jean Moulin
+- Avenue de Toulon
+- Rue Consolat
+- Rue Colbert
+- Rue de la Joliette
+- Rue Caisserie
+- Quai du Port
+- Quai de Rive-Neuve
+- Quai des Belges
+- Boulevard Charles Livon
+- Rue Saint-Pierre
+- Boulevard de Plombières
+- Boulevard Camille Flammarion
+- Rue Édouard Delanglade
+- Cours Lieutaud
+- Cours Pierre Puget
+- Boulevard de la Corderie
+- Rue d'Italie
+- Rue Nationale
+- Rue Tapis Vert
+- Rue du Rouet
+- Boulevard Bompard
+- Boulevard de la Blancarde
+- Avenue des Chartreux
+- Boulevard Romain Rolland
+- Rue Saint-Savournin
+- Rue des Trois Frères Barthélémy
+- Boulevard Gambetta
+- Rue Lafayette
+- Tunnel du Prado Carénage
+- Tunnel du Vieux-Port

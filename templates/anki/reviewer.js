@@ -93,7 +93,8 @@
         }
         state.frame.classList.toggle("fg-zoomable-frame", zoomable());
         if (zoomable()) {
-            if (!sameCard) state.view = viewBox;
+            // A highlighted target on a new card ("which street is this?") starts framed on it.
+            if (!sameCard) state.view = state.svg.querySelector(".fg-highlight") ? focus() : viewBox;
             state.pending = null;
             render();
             if (sameCard && state.svg.querySelector(".fg-highlight")) state.reveal();
@@ -202,6 +203,12 @@
         const width = Math.min(Math.max(w / factor, fw / (+state.svg.dataset.maxZoom || 1)), fw);
         const scale = width / w;
         show(fit([px - (px - x) * scale, py - (py - y) * scale, width, h * scale]));
+    };
+    // Three times the target, at least a sixth of the map, so the area stays recognisable.
+    const focus = () => {
+        const [tx, ty, tw, th] = state.svg.dataset.targetBox.split(" ").map(Number);
+        const side = Math.min(state.full[2], Math.max(Math.max(tw, th) * 3, state.full[2] / 6));
+        return fit([tx + tw / 2 - side / 2, ty + th / 2 - side / 2, side, (side * state.full[3]) / state.full[2]]);
     };
     state.reveal = () => {
         const [tx, ty, tw, th] = state.svg.dataset.targetBox.split(" ").map(Number);
