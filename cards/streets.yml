@@ -4,8 +4,9 @@ rules:
   layer: streets
   catalog: catalog/streets.yml
   theme: Rues de Marseille
+  # Batches of ten: first name the highlighted streets, then find the same ten.
   directions:
-  - name-map
   - map-name
+  - name-map
   references:
   - https://www.openstreetmap.org/copyright

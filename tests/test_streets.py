@@ -32,6 +32,11 @@ def test_marseille_streets_are_asked_in_both_directions_and_languages():
             "target",
             "target",
         )
+    # Batches of ten: name ten highlighted streets, then locate the same ten.
+    for start in range(0, len(cards), 20):
+        batch = cards[start : start + 20]
+        assert [c.direction for c in batch] == ["map-name"] * 10 + ["name-map"] * 10
+        assert [c.target for c in batch[:10]] == [c.target for c in batch[10:]]
     # The first released street note keeps its identity.
     first = next(c for c in cards if c.target == STREET and c.direction == "name-map")
     assert first.id == f"fr-geo-marseille-rues-{STREET}-name-map"
