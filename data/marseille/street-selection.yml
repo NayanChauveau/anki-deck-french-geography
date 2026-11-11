@@ -1,0 +1,5 @@
+# Streets asked in the deck, matched by their exact OpenStreetMap name.
+streets:
+- id: street-boulevard-de-la-liberation
+  osm_names:
+  - Boulevard de la Libération - Général de Monsabert

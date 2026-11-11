@@ -1,13 +1,16 @@
 """Shared backgrounds and target overlays in one content-addressed SVG sprite."""
 
+import copy
 import html
 import json
 import math
 import xml.etree.ElementTree as ET
+from dataclasses import replace
 
+import shapely
 from shapely.geometry import shape
 
-from french_geography.cartography import Projection, add_geometry
+from french_geography.cartography import Projection, add_geometry, geometries
 from french_geography.cartography.display import derive, fingerprint
 from french_geography.cartography.shared_cache import cached_maps, visual_key
 from french_geography.cartography.svg import SVG_NS, glyph, svg_body, technical_id
@@ -257,25 +260,163 @@ def sprite(project, settings):
     return ET.tostring(root, encoding="utf-8"), visuals
 
 
+def city_layer(project, settings, layer, view_key):
+    view = project.views[view_key]
+    setting = settings.get((layer, view_key))
+    if setting is None:
+        raise ValueError(f"Missing SVG display settings: {layer}/{view_key}")
+    # Error bound applies at maximum zoom, where one pixel covers 1/max_zoom units.
+    max_error = 0.5 / view.max_zoom
+    projection = Projection(view)
+    items = {k: projection.geometry(g) for k, g in project.layers[layer].items()}
+    # Street pieces shorter than the error bound stay invisible even at maximum zoom.
+    items = {
+        k: shapely.multilinestrings([p for p in geometries(g) if p.length >= max_error])
+        if g.geom_type == "MultiLineString"
+        else g
+        for k, g in items.items()
+    }
+    items = {k: g for k, g in items.items() if not g.is_empty}
+    values = derive(list(items.values()), setting, max_error=max_error)
+    return dict(zip(items, values, strict=True)), setting["decimals"]
+
+
+# One em is 100 screen pixels in map units, staying above WebView minimum font sizes.
+# Default for pages without the reviewer: about 900 map units over a 680 px card.
+EM_PIXELS = 100
+CITY_STROKE_SCALE = 130
+
+
+def em(width):
+    return f"{float(width) / EM_PIXELS:g}em"
+
+
+def zoom_strokes(nodes):
+    # Widths in em follow the font size the reviewer sets for each zoom, so strokes keep
+    # their screen width without recomputing outlines on every redraw (non-scaling-stroke).
+    for node in nodes:
+        for element in node.iter():
+            if "stroke-width" in element.attrib:
+                element.set("stroke-width", em(element.get("stroke-width")))
+    return nodes
+
+
+def city_sprite(project, settings):
+    """Zoomable city maps: one context background per view, street targets reused on top."""
+    validate_cards(project)
+    root = ET.Element(f"{{{SVG_NS}}}svg")
+    definitions = ET.SubElement(root, "defs")
+    visuals = {}
+    for view_key in sorted({c.view for c in project.cards}):
+        view = project.views[view_key]
+        context, precision = city_layer(project, settings, view.context, view_key)
+        scene = []
+        for key, geom in context.items():
+            if geom.geom_type in ("Polygon", "MultiPolygon"):
+                fill = project.style.neighbor if key.endswith("-neighbours") else project.style.land
+                add_geometry(scene, geom, fill, project.style.border, 1.0)
+        background = svg_body(view, scene, precision=precision, compact=True)
+        for key, geom in context.items():
+            if geom.geom_type in ("LineString", "MultiLineString"):
+                major = key.endswith("-major-streets")
+                color = project.style.street_major if major else project.style.street
+                lines = []
+                add_geometry(lines, geom, "none", color, 1.6 if major else 0.8)
+                # One path per street class: repeated attributes would outweigh coordinates.
+                nodes = svg_body(view, lines, precision=precision, compact=True)
+                nodes[0].set("d", " ".join(n.get("d") for n in nodes))
+                nodes[0].attrib.pop("fill-rule")
+                background.append(nodes[0])
+        layers = sorted({c.layer for c in project.cards if c.view == view_key})
+        for layer in layers:
+            map_id = technical_id("map", layer, view_key)
+            group = ET.SubElement(definitions, "g", id=map_id)
+            ET.SubElement(
+                group,
+                "rect",
+                width=str(view.width),
+                height=str(view.height),
+                fill=project.style.ocean,
+            )
+            group.extend(zoom_strokes(copy.deepcopy(background)))
+            items, precision = city_layer(project, settings, layer, view_key)
+            boxes = {}
+            for target, geom in items.items():
+                target_id = technical_id("shape", layer, view_key, target)
+                definitions.append(glyph(view, geom, target_id, precision=precision, compact=True))
+                x0, y0, x1, y1 = geom.bounds
+                boxes[target] = target_id, [round(v, 1) for v in (x0, y0, x1 - x0, y1 - y0)]
+            for card in project.cards:
+                if (card.layer, card.view) != (layer, view_key):
+                    continue
+                if card.target not in boxes:
+                    raise ValueError(f"SVG target outside view: {card.id}/{view_key}")
+                target_id, box = boxes[card.target]
+                for mode in (card.front_map, card.back_map):
+                    if mode == "none":
+                        continue
+                    visuals[visual_key(card, mode)] = {
+                        "view_box": f"0 0 {view.width} {view.height}",
+                        "panes": [
+                            {
+                                "background": map_id,
+                                "target": target_id if mode == "target" else None,
+                            }
+                        ],
+                        "zoom": {"max": view.max_zoom, "target_box": box},
+                    }
+    return ET.tostring(root, encoding="utf-8"), visuals
+
+
 def maps(project, out):
-    """Validate requests, then reuse the language-independent geographic artifact."""
+    """Validate requests, then reuse the language-independent geographic artifacts.
+
+    City views get their own sprite so national cards never load street networks.
+    """
     validate_cards(project)
     configuration, settings = display_settings(project)
-    return cached_maps(project, out, configuration, settings, render=sprite)
+    groups = {}
+    for card in project.cards:
+        view = project.views.get(card.view)
+        groups.setdefault(card.view if view and view.context else None, []).append(card)
+    manifest, entries = {}, {}
+    for group, cards in sorted(groups.items(), key=lambda item: item[0] or ""):
+        part, entry = cached_maps(
+            replace(project, cards=cards),
+            out,
+            configuration,
+            settings,
+            render=city_sprite if group else sprite,
+            group=group,
+        )
+        manifest.update(part)
+        entries[group or "national"] = entry
+    manifest = {card.id: manifest[card.id] for card in project.cards}
+    (out / "manifest.json").write_text(
+        json.dumps({"sprites": entries, "cards": manifest}, indent=2) + "\n"
+    )
+    return manifest
 
 
 def markup(project, record, *, alt, prefix="", alternate=False):
     if not record:
         return ""
     source = html.escape(prefix + record["shared_svg"], quote=True)
+    zoom = record.get("zoom")
     highlight = (
         f'fill="{project.style.target}" stroke="{project.style.target}" '
-        f'stroke-width="{project.style.target_width}"'
+        f'stroke-width="{em(project.style.target_width) if zoom else project.style.target_width}"'
     )
     panes = record.get("alternate") if alternate else None
+    classes = "fg-map" + (" fg-has-alternate" if panes else "") + (" fg-zoomable" if zoom else "")
+    data = (
+        f' font-size="{CITY_STROKE_SCALE}" data-max-zoom="{zoom["max"]:g}" '
+        f'data-target-box="{" ".join(f"{v:g}" for v in zoom["target_box"])}"'
+        if zoom
+        else ""
+    )
     result = (
-        f'<svg class="fg-map{" fg-has-alternate" if panes else ""}" '
-        f'viewBox="{record["view_box"]}" role="img" '
+        f'<svg class="{classes}" viewBox="{record["view_box"]}"{data} role="img" '
         f'aria-label="{html.escape(alt, quote=True)}">'
     )
     for pane in record["panes"]:

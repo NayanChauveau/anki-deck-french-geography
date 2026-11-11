@@ -74,6 +74,9 @@ rules:
     questions:
       name-map: Où se situe le cœur du parc national « {name} » ?
       map-name: Quel est le nom de l’élément surligné sur la carte ?
+  marseille-rues:
+    questions:
+      name-map: Où se situe « {name} » à Marseille ?
   regions:
     questions:
       name-map: Où se situe la région « {name} » ?
@@ -282,6 +285,9 @@ themes:
   parks:
     name: Géographie française::Paysages
     tag: paysages
+  streets:
+    name: Géographie française::Rues de Marseille
+    tag: rues-marseille
 ui:
   heading: GÉOGRAPHIE FRANÇAISE
   title: Géographie française

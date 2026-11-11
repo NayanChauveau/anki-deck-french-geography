@@ -11,11 +11,13 @@ def visual_key(card, mode):
     return json.dumps((card.layer, card.view, card.target, mode))
 
 
-def cached_maps(project, out, configuration, settings, *, render):
+def cached_maps(project, out, configuration, settings, *, render, group=None):
+    """Return card records and the cache entry of one sprite; `group` names extra sprites."""
     cache_dir = project.root / "build/media"
     cache_dir.mkdir(parents=True, exist_ok=True)
     out.mkdir(parents=True, exist_ok=True)
     inputs = {
+        "group": group,
         "configuration": configuration,
         "dependencies": {p: version(p) for p in ("shapely", "pyproj")},
         "renderer": {
@@ -37,7 +39,7 @@ def cached_maps(project, out, configuration, settings, *, render):
         "countries": project.countries,
     }
     key = hashlib.sha256(json.dumps(inputs, sort_keys=True).encode()).hexdigest()
-    index = cache_dir / ".shared-svg-cache.json"
+    index = cache_dir / (f".shared-svg-cache-{group}.json" if group else ".shared-svg-cache.json")
     try:
         cached = json.loads(index.read_text())
         name = cached["media"][0]
@@ -77,8 +79,7 @@ def cached_maps(project, out, configuration, settings, *, render):
         }
         for c in project.cards
     }
-    (out / "manifest.json").write_text(json.dumps({**cached, "cards": manifest}, indent=2) + "\n")
-    return manifest
+    return manifest, cached
 
 
 def contract_hash(cards):

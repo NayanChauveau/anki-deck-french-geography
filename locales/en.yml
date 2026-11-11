@@ -165,6 +165,9 @@ rules:
     questions:
       name-map: Where is the core area of {name}?
       map-name: Which national park’s core area is highlighted on the map?
+  marseille-rues:
+    questions:
+      name-map: Where is “{name}” in Marseille?
 explanations:
   landforms.morvan.context: 'In Burgundy, at the north-eastern end of the Massif Central, between the Seine,
     Loire and Saône basins.'
@@ -307,6 +310,9 @@ themes:
   parks:
     name: French geography::National parks
     tag: national-parks
+  streets:
+    name: French geography::Marseille streets
+    tag: marseille-streets
 ui:
   heading: FRENCH GEOGRAPHY
   title: French geography

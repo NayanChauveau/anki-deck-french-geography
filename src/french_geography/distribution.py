@@ -15,6 +15,7 @@ THEME_KEYS = {
     "Littoral": "coasts",
     "Outre-mer": "overseas",
     "Paysages": "parks",
+    "Rues de Marseille": "streets",
 }
 
 

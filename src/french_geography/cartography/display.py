@@ -96,7 +96,7 @@ def assess(source, candidate, *, coverage=False, protected=None, decimals=2):
     return None
 
 
-def derive(source, setting):
+def derive(source, setting, *, max_error=0.5):
     """Apply one reviewed setting, rejecting lost parts or broken shared borders."""
     tolerance, decimals = setting["tolerance_px"], setting["decimals"]
     if not 0 <= tolerance <= 0.6 or decimals not in (1, 2, 3, 5, 7, 8):
@@ -119,7 +119,7 @@ def derive(source, setting):
         (0 if tolerance == 0 else a.hausdorff_distance(b)) + rounding_error(b, c)
         for a, b, c in zip(source, simplified, candidate, strict=True)
     )
-    if bound > 0.5:
+    if bound > max_error:
         raise ValueError("Shared SVG display error budget exceeded")
     return candidate
 

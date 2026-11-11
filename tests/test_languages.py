@@ -61,7 +61,7 @@ def test_default_build_emits_registered_offline_packages(tmp_path, monkeypatch, 
                 decks = json.loads(db.execute("select decks from col").fetchone()[0])
                 expected_ids = set(registry[language]["deck_ids"].values())
                 assert expected_ids <= {int(key) for key in decks}
-                assert len({deck["id"] for deck in decks.values() if deck["id"] != 1}) == 9
+                assert len({deck["id"] for deck in decks.values() if deck["id"] != 1}) == 10
                 model = json.loads(db.execute("select models from col").fetchone()[0])
                 assert "FRENCH GEOGRAPHY" in next(iter(model.values()))["tmpls"][0]["qfmt"]
                 assert all(
@@ -77,7 +77,7 @@ def test_complete_translation_preserves_source_notes_order_and_geometry(source_p
     before = [card.model_dump() for card in source_project.cards]
     english = localize(source_project, "en")
     assert [card.model_dump() for card in source_project.cards] == before
-    assert len(english.cards) == len(source_project.cards) == 1124
+    assert len(english.cards) == len(source_project.cards) == 1125
     assert Counter(c.theme for c in english.cards) == Counter(c.theme for c in source_project.cards)
     assert len({c.id for c in english.cards}) == len(english.cards)
     translated = {"id", "question", "answer", "explanation", "references"}

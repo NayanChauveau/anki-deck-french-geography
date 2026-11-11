@@ -48,6 +48,14 @@ def credits(card, locale=None):
             + '<a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence/">'
             + "Licence Ouverte 2.0</a></div>"
         )
+    if card.layer == "streets":
+        return (
+            '<div class="credits">'
+            + label
+            + '<a href="https://www.openstreetmap.org/copyright">'
+            + "© OpenStreetMap contributors</a> · "
+            + '<a href="https://opendatacommons.org/licenses/odbl/1-0/">ODbL 1.0</a></div>'
+        )
     if card.layer not in ("departments", "regions", "cities", "overseas"):
         return ""
     return (

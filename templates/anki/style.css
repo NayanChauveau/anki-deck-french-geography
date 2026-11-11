@@ -19,7 +19,8 @@ html { overflow-y: scroll; scrollbar-gutter: stable; }
 /* Anki's reviewer temporarily sets opacity:0 while replacing the card HTML. */
 #qa, #content { opacity: 1 !important; transition: none !important; }
 .fg-map-stage { position: fixed; inset: 0; pointer-events: none; z-index: 1; }
-.fg-map-stage > svg.fg-map { position: absolute; max-width: none; margin: 0; }
+.fg-map-frame { position: absolute; overflow: hidden; border-radius: 12px; }
+.fg-map-frame > svg.fg-map { position: absolute; width: 100%; height: 100%; max-width: none; margin: 0; }
 /* Holding a back map with an alternate swaps it, e.g. a relief over department borders. */
 svg.fg-map:not(.fg-show-alternate) > .fg-alternate,
 svg.fg-map.fg-show-alternate > :not(.fg-alternate) { display: none; }
@@ -27,4 +28,12 @@ svg.fg-map.fg-has-alternate {
     cursor: pointer; touch-action: none; user-select: none; -webkit-user-select: none;
     -webkit-touch-callout: none; -webkit-tap-highlight-color: transparent;
 }
-.fg-map-stage > svg.fg-map.fg-has-alternate { pointer-events: auto; }
+.fg-map-frame > svg.fg-map.fg-has-alternate { pointer-events: auto; }
+/* City maps zoom and pan inside the card; the reviewer handles the gestures. */
+.fg-map-frame > svg.fg-map.fg-zoomable {
+    pointer-events: auto; touch-action: none; cursor: grab; user-select: none; -webkit-user-select: none;
+    -webkit-touch-callout: none; -webkit-tap-highlight-color: transparent;
+    border-radius: 0; transform-origin: 0 0; will-change: transform;
+}
+/* Behind a zoomable map drawn with margins, the frame shows the sea colour. */
+.fg-map-frame.fg-zoomable-frame { background: #111e29; }

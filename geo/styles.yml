@@ -9,3 +9,5 @@ styles:
   target_width: 4.5
   marker_radius: 3.2
   target_marker_radius: 9
+  street: '#4a6573'
+  street_major: '#7d98a6'

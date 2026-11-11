@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "source_fingerprint": "7f6a4da6fd93e1bc8475bd03c7116a56630266bf192ca7b3aa622191c6356daf",
+  "source_fingerprint": "20b7fdd3d1e55ec3512819dc3dc13b92b4f8969d84a0809ad7e0405589be6293",
   "coordinate_space": "projected SVG pixels",
   "max_error_bound_px": 0.5,
   "groups": [
@@ -75,6 +75,13 @@
       "decimals": 5
     },
     {
+      "layer": "marseille-context",
+      "view": "marseille",
+      "method": "preserve-topology",
+      "tolerance_px": 0.025,
+      "decimals": 2
+    },
+    {
       "layer": "mountains",
       "view": "metropolitan",
       "method": "preserve-topology",
@@ -135,6 +142,13 @@
       "view": "europe-seas",
       "method": "coverage",
       "tolerance_px": 0.35,
+      "decimals": 2
+    },
+    {
+      "layer": "streets",
+      "view": "marseille",
+      "method": "preserve-topology",
+      "tolerance_px": 0.025,
       "decimals": 2
     }
   ]

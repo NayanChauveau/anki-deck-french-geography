@@ -230,6 +230,66 @@
       "file": "geo/features/country-context.geojson",
       "sha256": "24459cc2afdf6d2a3572c6324b5446ed18cefba1ce62eaba4f42cb91457bb397",
       "modifications": "European context clipped to [-60,-10,100,85], outside card frames; make_valid; joint coverage simplification at 250 m in EPSG:3035; reprojected to WGS84; properties reduced. Global cards retain the separate pinned 50m background."
+    },
+    {
+      "id": "marseille-context",
+      "source": "OpenStreetMap contributors",
+      "version": "OpenStreetMap snapshot 2026-11-11T12:33:22",
+      "url": "https://overpass-api.de/api/interpreter",
+      "license": "ODbL 1.0",
+      "license_url": "https://www.openstreetmap.org/copyright",
+      "upstream_sha256": "84a0b159290608bfb4f3785bfc8541ab2aa38deddab8ef4edd1a11a47aecf3b1",
+      "file": "geo/features/marseille-context.geojson",
+      "sha256": "e260ddbb60840731e912a5e3f00189795b6091c677724e8d987e522b5f7bffa9",
+      "modifications": "Commune boundaries assembled from OSM relations (Marseille, relation 76469, and neighbours); neighbours merged into one area. Road ways (motorway to pedestrian, excluding service roads and paths) merged into major (motorway to secondary) and minor networks. Names and other tags dropped; coordinates rounded to 1e-6 degree.",
+      "inputs": [
+        {
+          "source": "OpenStreetMap contributors, Overpass API",
+          "url": "https://overpass-api.de/api/interpreter",
+          "query": "local:data/marseille/streets-query.overpassql",
+          "file": "data/marseille/osm-streets.json",
+          "sha256": "84a0b159290608bfb4f3785bfc8541ab2aa38deddab8ef4edd1a11a47aecf3b1",
+          "license": "ODbL 1.0",
+          "license_url": "https://www.openstreetmap.org/copyright"
+        },
+        {
+          "source": "OpenStreetMap contributors, Overpass API",
+          "url": "https://overpass-api.de/api/interpreter",
+          "query": "local:data/marseille/communes-query.overpassql",
+          "file": "data/marseille/osm-communes.json",
+          "sha256": "0c1d438c04ef8ee96fabb9be968871019aafe7376800ed5ad3a515829785ec85",
+          "license": "ODbL 1.0",
+          "license_url": "https://www.openstreetmap.org/copyright"
+        }
+      ]
+    },
+    {
+      "id": "streets",
+      "source": "OpenStreetMap contributors",
+      "version": "OpenStreetMap snapshot 2026-11-11T12:33:22",
+      "url": "https://overpass-api.de/api/interpreter",
+      "license": "ODbL 1.0",
+      "license_url": "https://www.openstreetmap.org/copyright",
+      "upstream_sha256": "84a0b159290608bfb4f3785bfc8541ab2aa38deddab8ef4edd1a11a47aecf3b1",
+      "file": "geo/features/streets.geojson",
+      "sha256": "cbfb4e514b3cdf033855ac758c144affc11f7df4080995f875cc090a7d647a78",
+      "modifications": "Ways selected by exact OSM name from data/marseille/street-selection.yml and merged per street; tags dropped; coordinates rounded to 1e-6 degree.",
+      "inputs": [
+        {
+          "source": "OpenStreetMap contributors, Overpass API",
+          "url": "https://overpass-api.de/api/interpreter",
+          "query": "local:data/marseille/streets-query.overpassql",
+          "file": "data/marseille/osm-streets.json",
+          "sha256": "84a0b159290608bfb4f3785bfc8541ab2aa38deddab8ef4edd1a11a47aecf3b1",
+          "license": "ODbL 1.0",
+          "license_url": "https://www.openstreetmap.org/copyright"
+        },
+        {
+          "file": "data/marseille/street-selection.yml",
+          "url": "local:data/marseille/street-selection.yml",
+          "sha256": "2d4fb6946206033ed0a6d855bf041e8360edf3df7380e748887c594278b12a47"
+        }
+      ]
     }
   ]
 }

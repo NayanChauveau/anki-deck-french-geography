@@ -1,0 +1,10 @@
+rules:
+- type: places
+  id: marseille-rues
+  layer: streets
+  catalog: catalog/streets.yml
+  theme: Rues de Marseille
+  directions:
+  - name-map
+  references:
+  - https://www.openstreetmap.org/copyright

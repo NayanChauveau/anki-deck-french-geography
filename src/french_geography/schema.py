@@ -37,6 +37,9 @@ class View(Strict):
     width: int = Field(default=900, ge=320, le=2400)
     height: int = Field(default=900, ge=320, le=2400)
     inset: str | None = None
+    # City views: a context layer drawn instead of countries, and zoom/pan in the reviewer.
+    context: str | None = None
+    max_zoom: float = Field(default=1, ge=1, le=40)
 
     @model_validator(mode="after")
     def ordered_bounds(self):
@@ -60,6 +63,8 @@ class Style(Strict):
     target_width: float = Field(default=5, gt=0, le=20)
     marker_radius: float = Field(default=3.2, gt=0, le=20)
     target_marker_radius: float = Field(default=9, gt=0, le=20)
+    street: Color = "#4a6573"
+    street_major: Color = "#7d98a6"
 
 
 class LabelPosition(Strict):

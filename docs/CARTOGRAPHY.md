@@ -17,7 +17,7 @@ as a local file displays an explanation. `make push` builds the French edition,
 imports it through AnkiConnect and requests synchronization. It does not push Git.
 
 Each package bundles the SVG under its full SHA-256 filename. Standard ZIP deflate
-compression keeps the complete package below 2 MB per language. Each map references its background and optional target
+compression keeps each language package around 2.4 MB, including the Marseille street map. Each map references its background and optional target
 by SVG ID. A hidden image reference lets Anki's media scanner recognize the file.
 There is no PNG renderer or browser-side geographic projection.
 Questions, explanations, sources and credits are HTML outside the map.
@@ -80,6 +80,29 @@ Colors, line weight and marker radii live in `geo/styles.yml`. Maps use a fixed 
 palette with cyan highlights, independently of Anki’s light/dark interface setting. White marker outlines
 keep cities and overseas location points visible over borders and coastlines. The
 same palette and marker sizes apply throughout; national/world framing is unchanged.
+
+## City street maps
+
+A view with `context` and `max_zoom` (`geo/views.yml`) is a city map. Its background is
+the context layer instead of countries: polygons ending in `-neighbours` use the
+neighbour colour, other polygons the land colour, and lines ending in `-major-streets`
+or `-minor-streets` are drawn as one path per class. City views get their own
+content-addressed SVG, so national cards never load street networks; each sprite has
+its own cache index in `build/media`. Stroke widths are in `em`; the reviewer sets the
+map's font size from the zoom so strokes keep their screen width, and the display
+error budget is divided by `max_zoom` so simplification stays invisible at full zoom.
+
+The reviewer lets the reader drag, pinch or wheel-zoom these maps up to `max_zoom`.
+During a gesture the drawn image only moves and scales with a CSS transform; the map is
+redrawn when the gesture ends, or earlier when the image no longer covers the view or
+would be enlarged more than twice. It is drawn with half a view of margin on each side
+inside a clipping frame, so short pans and zoom-outs stay covered without redrawing.
+On reveal it keeps the current zoom when the target's precomputed box
+(`data-target-box`) is fully visible; otherwise it zooms out just enough to show both
+the target and the area the reader was looking at. Another card starts unzoomed.
+Marseille data come from pinned OpenStreetMap extracts in `data/marseille/`
+(queries included), prepared by `scripts/prepare_marseille.py`; streets asked in the
+deck are listed by exact OSM name in `data/marseille/street-selection.yml`.
 
 ## Extending the deck
 

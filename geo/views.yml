@@ -13,6 +13,13 @@ views:
   europe-seas:
     projection: EPSG:3035
     bounds: [-15, 30, 40, 62]
+  marseille:
+    projection: EPSG:2154
+    bounds: [5.22, 43.165, 5.555, 43.4]
+    width: 900
+    height: 900
+    context: marseille-context
+    max_zoom: 12
   world:
     projection: EPSG:8857
     bounds: [-179.9, -60, 179.9, 85]

@@ -20,8 +20,9 @@ edition once, then let Deck Manager check for new versions.
 - **Landscapes:** locate 36 mountain areas, from the Alps and Massif Central to the Morvan,
   Forez, Vercors and Provençal ranges, and identify landmark peaks.
 - **Coasts, overseas France and national parks:** build a broader picture of French geography.
+- **Marseille streets:** find a street on a zoomable map of Marseille (a first street for now).
 
-The deck is split into nine themed subdecks, so you can start with one subject.
+The deck is split into ten themed subdecks, so you can start with one subject.
 Map cards use highlighted features and uncluttered backgrounds; explanations and
 sources appear below the images. Questions run in both directions where useful,
 so you practise finding a place as well as naming it.
@@ -79,7 +80,7 @@ With manual installation, you’ll need to check for new releases yourself.
 
 ## Sources and coverage
 
-Maps use Natural Earth, IGN/OFB/Sandre BD TOPAGE and official French administrative
+Maps use Natural Earth, IGN/OFB/Sandre BD TOPAGE, OpenStreetMap (Marseille streets) and official French administrative
 and national park data. Sources are linked on the cards; dataset versions,
 licences and transformations are recorded in [the source registry](geo/sources.yml).
 Schematic relief boundaries are identified in the explanations.
@@ -108,7 +109,7 @@ make preview
 `make preview` creates a French card gallery at `build/preview/index.html`.
 Serve it with `python3 -m http.server 8000 --bind 127.0.0.1 --directory build/preview`
 and open `http://127.0.0.1:8000/`; shared SVG maps require HTTP.
-Packages use one shared SVG instead of individual PNG maps (under 2 MB per edition).
+Packages use shared SVGs instead of individual PNG maps (about 2.4 MB per edition).
 Normal builds use pinned local geographic inputs and need no geographic downloads.
 
 Editorial content lives in `catalog/`, generation rules in `cards/`, translations

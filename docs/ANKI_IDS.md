@@ -48,6 +48,8 @@ l’identité de la note ; les relations sans valeur de rappel sont exclues avan
 - Littoral : sous-deck `1976423107`, règles `littoral-mers` et `villes-portuaires-facade`.
 - Outre-mer : sous-deck `1976423108`, règles `outre-mer-situation` et `outre-mer-ocean`.
 - Paysages : sous-deck `1976423109`, règle `parcs-nationaux-coeurs`.
+- Rues de Marseille : sous-deck `1976423110` (édition anglaise `1976423210`), règle
+  `marseille-rues`, identifiant `fr-geo-marseille-rues-street-{id}-name-map`.
 
 Le modèle `1976423101` et le namespace existants restent communs. Les notes des
 villes complémentaires conservent la règle historique `villes-chefs-lieux` afin de ne
