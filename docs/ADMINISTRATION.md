@@ -25,7 +25,9 @@ Les questions dont le libellé contient déjà toute la réponse sont exclues. L
 et codes sont saisis une fois ; les réponses textuelles n’embarquent aucune image.
 
 Les cartes de position sont groupées par lots de dix, avec les localisations puis
-les reconnaissances. Le même point ou polygone est réutilisé entre les sens. Les
+les reconnaissances. Un dernier lot de moins de cinq objets est fusionné avec le
+précédent, pour qu’une carte ne suive jamais directement son sens inverse ; les cours
+d’eau suivent la même règle (dix identifications, puis les dix localisations). Le même point ou polygone est réutilisé entre les sens. Les
 références sont accessibles dans le verso Anki et la galerie.
 
 ## Provenance et reproduction

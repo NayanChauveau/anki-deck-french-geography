@@ -23,10 +23,10 @@ def test_all_departments_have_three_directions_and_exactly_one_fact_to_recall():
     assert len(cards) == 303
     assert len({card.id for card in cards}) == 303
     expected_directions = []
-    for size in [10] * 10 + [1]:
+    for size in [10] * 9 + [11]:
         expected_directions.extend(["name-map"] * size + ["map-name"] * size + ["map-code"] * size)
     assert [card.direction for card in cards] == expected_directions
-    for start in range(0, 300, 30):
+    for start in range(0, 270, 30):
         group = cards[start : start + 30]
         assert [c.target for c in group[:10]] == [c.target for c in group[10:20]]
         assert [c.target for c in group[:10]] == [c.target for c in group[20:30]]

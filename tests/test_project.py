@@ -272,3 +272,15 @@ def test_rivers_support_location_without_changing_identification_notes(language,
     images = maps(project, tmp_path)
     assert all(p["target"] is None for p in images[escaut.id]["front"]["panes"])
     assert images[escaut.id]["back"] == images[identify["escaut"].id]["back"]
+
+
+def test_no_card_directly_follows_its_reverse_in_a_subdeck():
+    project = load(ROOT)
+    pairs = [
+        (a.theme, a.target)
+        for a, b in zip(project.cards, project.cards[1:], strict=False)
+        if a.theme == b.theme and a.target == b.target
+    ]
+    assert pairs == []
+    rivers = [c for c in project.cards if c.theme == "Fleuves"]
+    assert [c.direction for c in rivers[:20]] == ["identification"] * 10 + ["name-map"] * 10

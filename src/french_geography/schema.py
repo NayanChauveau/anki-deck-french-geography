@@ -99,6 +99,8 @@ class IdentificationRule(Strict):
     directions: list[Literal["identification", "name-map"]] = Field(
         default_factory=lambda: ["identification"], min_length=1
     )
+    # Same direction for a batch of features, so one card never follows its reverse.
+    batch_size: int = Field(default=10, ge=1)
 
 
 DepartmentDirection = Literal[

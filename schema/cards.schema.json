@@ -110,6 +110,12 @@
           "minItems": 1,
           "title": "Directions",
           "type": "array"
+        },
+        "batch_size": {
+          "default": 10,
+          "minimum": 1,
+          "title": "Batch Size",
+          "type": "integer"
         }
       },
       "required": [

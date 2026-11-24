@@ -18,6 +18,18 @@ from french_geography.schema import (
 )
 
 
+def study_batches(items, size):
+    """Group items by `size`, folding a short final group into the previous one.
+
+    Each direction is asked for a whole group before the next direction, so a short
+    final group would put a card right after its own reverse.
+    """
+    batches = [list(batch) for batch in batched(items, size)]
+    if len(batches) > 1 and len(batches[-1]) * 2 < size:
+        batches[-2].extend(batches.pop())
+    return batches
+
+
 def generate(
     root: Path,
     rules: list[IdentificationRule | DepartmentRule | PlaceRule | RelationRule],
@@ -51,40 +63,38 @@ def generate(
             missing = sorted(geometries.keys() - entries.keys())
             unknown = sorted(entries.keys() - geometries.keys())
             raise ValueError(f"Catalog/layer mismatch: missing={missing}, unknown={unknown}")
-        for entry in catalog.features:
-            values = {"name": locale.name(entry)}
-            values.update(
-                {key + "_name": value for key, value in locale.text.forms.get(entry.id, {}).items()}
-            )
-            answer = format_text(locale.text.rules[rule.id].answer, **values)
-            if entry.label:
-                lon, lat = entry.label.lon, entry.label.lat
-            else:
-                # An editable label position is only needed when this default overlaps.
-                point = geometries[entry.id].representative_point()
-                lon, lat = point.x, point.y
+        for batch in study_batches(catalog.features, rule.batch_size):
             for direction in rule.directions:
-                locate = direction == "name-map"
-                cards.append(
-                    Card(
-                        id=(
-                            f"fr-geo-{rule.id}-{entry.id.lower()}" + ("-name-map" if locate else "")
-                        ),
-                        target=entry.id,
-                        view=rule.view,
-                        question=locale.question(rule.id, direction, **values),
-                        direction=direction,
-                        layer=rule.layer,
-                        front_map="blank" if locate else "target",
-                        answer=answer,
-                        explanation=locale.explanation(entry),
-                        references=locale.references(
-                            list(dict.fromkeys([*rule.references, *entry.references]))
-                        ),
-                        annotations=[Annotation(text=entry.name, lon=lon, lat=lat)],
-                    )
-                )
+                for entry in batch:
+                    cards.append(identification_card(rule, entry, direction, geometries, locale))
     return cards
+
+
+def identification_card(rule, entry, direction, geometries, locale):
+    values = {"name": locale.name(entry)}
+    values.update(
+        {key + "_name": value for key, value in locale.text.forms.get(entry.id, {}).items()}
+    )
+    if entry.label:
+        lon, lat = entry.label.lon, entry.label.lat
+    else:
+        # An editable label position is only needed when this default overlaps.
+        point = geometries[entry.id].representative_point()
+        lon, lat = point.x, point.y
+    locate = direction == "name-map"
+    return Card(
+        id=f"fr-geo-{rule.id}-{entry.id.lower()}" + ("-name-map" if locate else ""),
+        target=entry.id,
+        view=rule.view,
+        question=locale.question(rule.id, direction, **values),
+        direction=direction,
+        layer=rule.layer,
+        front_map="blank" if locate else "target",
+        answer=format_text(locale.text.rules[rule.id].answer, **values),
+        explanation=locale.explanation(entry),
+        references=locale.references(list(dict.fromkeys([*rule.references, *entry.references]))),
+        annotations=[Annotation(text=entry.name, lon=lon, lat=lat)],
+    )
 
 
 def generate_departments(root, rule, geometries, locale):
@@ -103,7 +113,7 @@ def generate_departments(root, rule, geometries, locale):
     ordered_entries = sorted(
         catalog.features, key=lambda entry: entry.code.replace("2A", "20A").replace("2B", "20B")
     )
-    for batch in batched(ordered_entries, rule.batch_size):
+    for batch in study_batches(ordered_entries, rule.batch_size):
         for direction in rule.directions:
             for entry in batch:
                 values = {"name": locale.name(entry), "code": entry.code, "map": ""}
@@ -206,7 +216,7 @@ def generate_places(root, rule, geometries, locale):
     if unknown:
         raise ValueError(f"Unknown excluded place targets: {sorted(unknown)}")
     selected = [entry for entry in entries.values() if entry.id not in rule.exclude_targets]
-    for batch in batched(selected, rule.batch_size):
+    for batch in study_batches(selected, rule.batch_size):
         for direction in rule.directions:
             for entry in batch:
                 locate = direction == "name-map"

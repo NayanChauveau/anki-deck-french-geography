@@ -53,7 +53,7 @@ automatique. Ces possibilités seraient un chantier distinct.
 - [x] Catalogue des 101 départements, avec nom, code texte et géométrie associée.
 - [x] 303 cartes départementales : nom → position, position → nom, position → numéro.
 - [x] Verso des questions de numéro : nom et code, par exemple « Ain (01) ».
-- [x] Ordre départemental par lots de dix : dix localisations, dix noms, dix numéros.
+- [x] Ordre départemental par lots de dix : dix localisations, dix noms, dix numéros (dernier lot de onze).
 - [x] Autres sens du triangle implémentés, mais désactivés : nom → code, code → nom, code → position.
 - [x] Vues locales ultramarines et vue francilienne avec encart métropolitain.
 
