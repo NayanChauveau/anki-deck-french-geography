@@ -1,9 +1,29 @@
 features:
+- id: aisne
+  name: Aisne
+- id: dordogne
+  name: Dordogne
+- id: doubs
+  name: Doubs
 - id: garonne
   name: Garonne
+- id: isle
+  name: Isle
 - id: loire
   name: Loire
+- id: oise
+  name: Oise
+- id: rhin
+  name: Rhin
 - id: rhone
   name: Rhône
+- id: saone
+  name: Saône
+- id: sarthe
+  name: Sarthe
 - id: seine
   name: Seine
+- id: vienne
+  name: Vienne
+- id: yonne
+  name: Yonne

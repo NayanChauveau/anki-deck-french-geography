@@ -69,6 +69,76 @@ forms:
     identification: L’Isère
   ain:
     identification: L’Ain
+  layon:
+    identification: Le Layon
+  aubance:
+    identification: L’Aubance
+  thouet:
+    identification: Le Thouet
+  indre:
+    identification: L’Indre
+  creuse:
+    identification: La Creuse
+  loir:
+    identification: Le Loir
+  sarthe:
+    identification: La Sarthe
+  sevre-nantaise:
+    identification: La Sèvre Nantaise
+  maine-sevre-nantaise:
+    identification: La Maine
+  gironde:
+    identification: La Gironde
+  ciron:
+    identification: Le Ciron
+  isle:
+    identification: L’Isle
+  dronne:
+    identification: La Dronne
+  ardeche:
+    identification: L’Ardèche
+  drome:
+    identification: La Drôme
+  ouveze:
+    identification: L’Ouvèze
+  eygues:
+    identification: L’Eygues
+  ceze:
+    identification: La Cèze
+  gardon:
+    identification: Le Gardon
+  doux:
+    identification: Le Doux
+  argens:
+    identification: L’Argens
+  orb:
+    identification: L’Orb
+  agly:
+    identification: L’Agly
+  tet:
+    identification: La Têt
+  tech:
+    identification: Le Tech
+  serein:
+    identification: Le Serein
+  ouche:
+    identification: L’Ouche
+  dheune:
+    identification: La Dheune
+  grosne:
+    identification: La Grosne
+  seille:
+    identification: La Seille
+  loue:
+    identification: La Loue
+  aube:
+    identification: L’Aube
+  vesle:
+    identification: La Vesle
+  aisne:
+    identification: L’Aisne
+  ill:
+    identification: L’Ill
 rules:
   parcs-nationaux-coeurs:
     questions:
@@ -199,6 +269,19 @@ explanations:
   landforms.maures.context: 'Dans le Var, entre Hyères et Fréjus, au sud de la dépression des Maures.'
   landforms.esterel.context: 'Massif aux roches volcaniques rouges, à l’est de Fréjus et Saint-Raphaël,
     en bordure de la Méditerranée.'
+  landforms.montagne-noire.context: 'Extrémité sud-ouest du Massif central, aux confins du Tarn et de l’Aude : versant nord abrupt vers Revel et Mazamet, versant sud plus doux vers Carcassonne.'
+  landforms.corbieres.context: 'Massif entre la vallée de l’Aude, de Carcassonne à Narbonne, au nord et la vallée de l’Agly au sud, jusqu’aux étangs littoraux.'
+  landforms.cote-dor.context: 'Escarpement calcaire dominant la plaine de la Saône, de Dijon aux environs de Santenay, par Nuits-Saint-Georges et Beaune. À distinguer du département de la Côte-d’Or.'
+  landforms.montagne-de-reims.context: 'Plateau boisé entre Reims au nord et la vallée de la Marne à Épernay au sud, dominant la plaine de Champagne.'
+  landforms.cote-des-blancs.context: 'Côte orientée nord-sud au sud d’Épernay, de Cramant et Avize jusqu’à Vertus, au rebord du plateau de la Brie champenoise.'
+  landforms.collines-sous-vosgiennes.context: 'Bande de collines au pied oriental des Vosges, entre le massif et la plaine d’Alsace ; seule la partie de Marlenheim à Thann est représentée.'
+  landforms.dentelles-de-montmirail.context: 'Petit massif calcaire au nord de Carpentras, entre Gigondas, Beaumes-de-Venise et Malaucène, à l’ouest du mont Ventoux.'
+  landforms.alberes.context: 'Extrémité orientale des Pyrénées, du col du Perthus à la Méditerranée entre Collioure et Cerbère, le long de la frontière espagnole. Seule la partie française est représentée.'
+  landforms.larzac.context: 'Plateau calcaire des Grands Causses entre Millau au nord et Lodève au sud, partagé entre l’Aveyron et l’Hérault.'
+  landforms.revermont.context: 'Rebord occidental du Jura dominant la Bresse, de la Seille près de Lons-le-Saunier jusqu’à la rivière d’Ain, vers Pont-d’Ain.'
+  landforms.espinouse-caroux.context: 'Monts du Haut-Languedoc au nord des vallées du Jaur et de l’Orb, entre Olargues, Lamalou-les-Bains et Saint-Gervais-sur-Mare.'
+  landforms.clape.context: 'Massif entre Narbonne et la Méditerranée, limité au nord par l’Aude et au sud par Gruissan et ses étangs.'
+  landforms.maconnais.context: 'Chaînons orientés nord-sud entre la Grosne à l’ouest et la Saône à l’est, de Tournus à Mâcon, au nord du Beaujolais.'
   parks.core_areas_notice: Seuls les cœurs terrestre et marin sont représentés, sans aire d’adhésion ni aire
     maritime adjacente. Contours de février 2026 simplifiés pour l’apprentissage ; ne pas utiliser pour vérifier
     la réglementation d’un lieu.
@@ -240,6 +323,41 @@ explanations:
   river.lot.summary: Le Lot rejoint directement la Garonne.
   river.isere.summary: L’Isère rejoint le Rhône au nord de Valence.
   river.ain.summary: L’Ain descend du Jura et rejoint directement le Rhône.
+  river.layon.summary: 'Il rejoint la Loire en rive gauche à Chalonnes-sur-Loire, au sud-ouest d’Angers.'
+  river.aubance.summary: 'Elle passe par Mûrs-Érigné et rejoint le Louet, un bras de la Loire, à Denée, au sud-ouest d’Angers.'
+  river.thouet.summary: 'Il passe par Parthenay et Thouars, puis rejoint la Loire à Saumur.'
+  river.indre.summary: 'Elle passe par Châteauroux, Loches et Azay-le-Rideau, puis rejoint la Loire à Avoine, près de Chinon.'
+  river.creuse.summary: 'Née sur le plateau de Millevaches, elle passe par Aubusson et Argenton-sur-Creuse, puis rejoint la Vienne à Port-de-Piles.'
+  river.loir.summary: 'Il passe par Châteaudun, Vendôme et La Flèche, puis rejoint la Sarthe à Briollay, au nord d’Angers, et non la Loire.'
+  river.sarthe.summary: 'Elle passe par Alençon et Le Mans, puis s’unit à la Mayenne pour former la Maine, juste au nord d’Angers.'
+  river.sevre-nantaise.summary: 'Elle passe par Clisson et rejoint la Loire à Nantes, en limite de Rezé. À distinguer de la Sèvre Niortaise.'
+  river.maine-sevre-nantaise.summary: 'Affluent de la Sèvre Nantaise, elle passe par Montaigu et la rejoint entre Saint-Fiacre-sur-Maine et Vertou. À distinguer de la Maine d’Angers.'
+  river.gironde.summary: 'Estuaire formé au bec d’Ambès par la Garonne et la Dordogne ; il s’étend sur environ 75 km jusqu’à l’Atlantique, entre la pointe de Grave et Royan.'
+  river.ciron.summary: 'Affluent de rive gauche de la Garonne, il la rejoint à Barsac, en amont de Bordeaux.'
+  river.isle.summary: 'Née en Haute-Vienne, elle passe par Périgueux et rejoint la Dordogne à Libourne.'
+  river.dronne.summary: 'Elle passe par Brantôme et rejoint l’Isle à Coutras.'
+  river.ardeche.summary: 'Née dans le Massif central, elle franchit ses gorges puis rejoint le Rhône près de Pont-Saint-Esprit.'
+  river.drome.summary: 'Elle passe par Die et Crest, puis rejoint le Rhône entre Livron-sur-Drôme et Loriol-sur-Drôme.'
+  river.ouveze.summary: 'Elle passe par Buis-les-Baronnies et Vaison-la-Romaine, puis rejoint le Rhône à Sorgues. Une autre Ouvèze coule en Ardèche.'
+  river.eygues.summary: 'Aussi appelée Aigues ou Aigue, elle passe par Nyons et rejoint le Rhône à Caderousse, au nord-ouest d’Orange.'
+  river.ceze.summary: 'Née dans les Cévennes, elle passe par Bagnols-sur-Cèze et rejoint le Rhône entre Codolet et Laudun-l’Ardoise.'
+  river.gardon.summary: 'Aussi appelé Gard, il naît de la réunion des Gardons d’Alès et d’Anduze, passe sous le pont du Gard et rejoint le Rhône en amont de Beaucaire.'
+  river.doux.summary: 'Affluent de rive droite du Rhône, il le rejoint à Tournon-sur-Rhône.'
+  river.argens.summary: 'Il traverse le Var d’ouest en est et se jette dans la Méditerranée à Fréjus.'
+  river.orb.summary: 'Il passe par Bédarieux et Béziers, puis se jette dans la Méditerranée à Valras-Plage.'
+  river.agly.summary: 'Il passe par Saint-Paul-de-Fenouillet et Estagel, puis se jette dans la Méditerranée au Barcarès.'
+  river.tet.summary: 'Née près du Carlit, elle passe par Prades et Perpignan, puis se jette dans la Méditerranée à Canet-en-Roussillon.'
+  river.tech.summary: 'Il traverse le Vallespir, passe par Céret et se jette dans la Méditerranée au nord d’Argelès-sur-Mer.'
+  river.serein.summary: 'Il passe par Chablis et rejoint l’Yonne à Bonnard.'
+  river.ouche.summary: 'Elle passe par Dijon et rejoint la Saône à Échenon, près de Saint-Jean-de-Losne.'
+  river.dheune.summary: 'Elle rejoint la Saône à Allerey-sur-Saône, juste en aval du confluent du Doubs.'
+  river.grosne.summary: 'Elle passe par Cluny et rejoint la Saône entre Marnay et Ouroux-sur-Saône, au sud de Chalon-sur-Saône.'
+  river.seille.summary: 'Née au pied du Jura, elle passe par Louhans et rejoint la Saône à La Truchère, près de Tournus. À distinguer de la Seille lorraine.'
+  river.loue.summary: 'Née d’une résurgence à Ouhans, elle passe par Ornans et rejoint le Doubs à Parcey, au sud de Dole.'
+  river.aube.summary: 'Née sur le plateau de Langres, elle passe par Bar-sur-Aube et rejoint la Seine à Marcilly-sur-Seine.'
+  river.vesle.summary: 'Elle passe par Reims et rejoint l’Aisne près de Condé-sur-Aisne, en amont de Soissons.'
+  river.aisne.summary: 'Elle passe par Soissons et rejoint l’Oise à Clairoix, près de Compiègne.'
+  river.ill.summary: 'Née dans le Jura alsacien, elle passe par Mulhouse et Strasbourg, puis rejoint le Rhin à Offendorf.'
   port.city-13055.context: Marseille-Fos dessert la façade méditerranéenne.
   port.city-76351.context: Le Havre se situe à l’entrée maritime de l’axe Seine, sur la Manche.
   port.city-76540.context: Rouen est un port de fond d’estuaire, relié à la Manche par la Seine.

@@ -199,3 +199,81 @@ features:
   explanation_key: landforms.esterel.context
   references:
   - https://www.onf.fr/onf/+/ad3::lesterel-une-foret-comme-au-cinema.html
+- id: mountain-montagne-noire
+  name: Montagne Noire
+  view: metropolitan
+  explanation_key: landforms.montagne-noire.context
+  references:
+  - https://www.larousse.fr/encyclopedie/mont/Montagne_Noire/126728
+- id: mountain-corbieres
+  name: Corbières
+  view: metropolitan
+  explanation_key: landforms.corbieres.context
+  references:
+  - https://www.larousse.fr/encyclopedie/mont/les_Corbi%C3%A8res/114635
+- id: mountain-cote-dor
+  name: Côte d’Or (escarpement)
+  view: metropolitan
+  explanation_key: landforms.cote-dor.context
+  references:
+  - https://www.larousse.fr/encyclopedie/autre-region/C%C3%B4te_dOr/114838
+- id: mountain-montagne-de-reims
+  name: Montagne de Reims
+  view: metropolitan
+  explanation_key: landforms.montagne-de-reims.context
+  references:
+  - https://www.parc-montagnedereims.fr/comprendre/decouverte-des-paysages/
+- id: mountain-cote-des-blancs
+  name: Côte des Blancs
+  view: metropolitan
+  explanation_key: landforms.cote-des-blancs.context
+  references:
+  - https://champagne-patrimoinemondial.org/decouvrir/cote-des-blancs-le-paradis-du-chardonnay
+- id: mountain-collines-sous-vosgiennes
+  name: Collines sous-vosgiennes
+  view: metropolitan
+  explanation_key: landforms.collines-sous-vosgiennes.context
+  references:
+  - https://www.larousse.fr/encyclopedie/region-france/Alsace/105009
+- id: mountain-dentelles-de-montmirail
+  name: Dentelles de Montmirail
+  view: metropolitan
+  explanation_key: landforms.dentelles-de-montmirail.context
+  references:
+  - https://paysages.vaucluse.fr/la-diversite-des-paysages-vauclusiens/les-dentelles-de-montmirail
+- id: mountain-alberes
+  name: Albères
+  view: metropolitan
+  explanation_key: landforms.alberes.context
+  references:
+  - https://www.larousse.fr/encyclopedie/mont/Alb%C3%A8res/104566
+- id: mountain-larzac
+  name: Causse du Larzac
+  view: metropolitan
+  explanation_key: landforms.larzac.context
+  references:
+  - https://www.larousse.fr/encyclopedie/autre-region/causse_du_Larzac/128905
+- id: mountain-revermont
+  name: Revermont
+  view: metropolitan
+  explanation_key: landforms.revermont.context
+  references:
+  - https://www.larousse.fr/encyclopedie/divers/Revermont/138744
+- id: mountain-espinouse-caroux
+  name: Espinouse et Caroux
+  view: metropolitan
+  explanation_key: landforms.espinouse-caroux.context
+  references:
+  - https://www.larousse.fr/encyclopedie/mont/monts_de_l_Espinouse/118458
+- id: mountain-clape
+  name: La Clape
+  view: metropolitan
+  explanation_key: landforms.clape.context
+  references:
+  - https://www.larousse.fr/encyclopedie/mont/montagne_de_la_Clape/111187
+- id: mountain-maconnais
+  name: Monts du Mâconnais
+  view: metropolitan
+  explanation_key: landforms.maconnais.context
+  references:
+  - https://www.atlas-paysages.saone-et-loire.developpement-durable.gouv.fr/portrait-de-la-cote-maconnaise-a32.html

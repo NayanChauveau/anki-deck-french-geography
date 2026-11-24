@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def test_reviewed_river_explanations_have_fact_sources():
     data = yaml.safe_load((ROOT / "catalog/rivers.yml").read_text())["features"]
-    assert len(data) == 32
+    assert len(data) == 67
     assert all(e["review"]["status"] == "verified" and e["references"] for e in data)
     assert all("naturalearthdata.com" not in url for e in data for url in e["references"])
 
@@ -54,7 +54,7 @@ def test_new_rules_do_not_change_existing_hydrographic_identities():
         "fr-geo-hydrographie-identification-loire"
     )
     count = Counter(c.theme for c in project.cards)
-    assert count["Fleuves"] == 70 and count["Départements"] == 303
+    assert count["Fleuves"] == 175 and count["Départements"] == 303
     assert count["Régions"] == 148 and count["Villes"] == 427
     assert len({c.id for c in project.cards}) == len(project.cards)
     relations = [c for c in project.cards if c.direction in ("capital", "region", "department")]

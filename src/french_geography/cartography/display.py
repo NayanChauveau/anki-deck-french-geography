@@ -39,11 +39,15 @@ def river_nodes(items):
         endpoint_key(p)
         for geometry in items
         for part in geometries(geometry)
+        if part.geom_type == "LineString"
         for p in (part.coords[0], part.coords[-1])
     }
 
 
 def simplify_river(geometry, tolerance, protected):
+    # Estuaries are polygons in the river layer: they have no junction nodes to keep.
+    if geometry.geom_type in ("Polygon", "MultiPolygon"):
+        return geometry.simplify(tolerance, preserve_topology=True)
     if geometry.geom_type == "MultiLineString":
         return MultiLineString([simplify_river(g, tolerance, protected) for g in geometry.geoms])
     coordinates = list(geometry.coords)

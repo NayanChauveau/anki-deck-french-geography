@@ -124,3 +124,442 @@ features:
   - https://www.larousse.fr/encyclopedie/riviere-lac/Ain/104387
   downstream: rhone
   explanation_key: river.ain.summary
+- id: layon
+  name: Layon
+  hydronym: "le Layon"
+  codes:
+  - 04C0000002000867634
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Layon/129119
+  downstream: loire
+  explanation_key: river.layon.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: aubance
+  name: Aubance
+  hydronym: "l'Aubance"
+  codes:
+  - 04C0000002000858610
+  references:
+  - https://fr.wikipedia.org/wiki/Aubance
+  downstream: null
+  explanation_key: river.aubance.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: thouet
+  name: Thouet
+  hydronym: "le Thouet"
+  codes:
+  - 04C0000002000858235
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/le_Thouet/146702
+  downstream: loire
+  explanation_key: river.thouet.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: indre
+  name: Indre
+  hydronym: "l'Indre"
+  codes:
+  - 04C0000002000857273
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Indre/124950
+  downstream: loire
+  explanation_key: river.indre.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: creuse
+  name: Creuse
+  hydronym: "la Creuse"
+  codes:
+  - 04C0000002000857620
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Creuse/115159
+  downstream: vienne
+  explanation_key: river.creuse.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: loir
+  name: Loir
+  hydronym: "le Loir"
+  codes:
+  - 04C0000002000849052
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/le_Loir/130236
+  downstream: sarthe
+  explanation_key: river.loir.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: sarthe
+  name: Sarthe
+  hydronym: "la Sarthe"
+  codes:
+  - 04C0000002000848792
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Sarthe/143279
+  downstream: null
+  explanation_key: river.sarthe.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: sevre-nantaise
+  name: Sèvre Nantaise
+  hydronym: "la Sèvre Nantaise"
+  codes:
+  - 04C0000002000873154
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/S%C3%A8vre_Nantaise/144032
+  downstream: loire
+  explanation_key: river.sevre-nantaise.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: maine-sevre-nantaise
+  name: Maine (Sèvre Nantaise)
+  hydronym: "la Maine"
+  codes:
+  - 04C0000002000873221
+  references:
+  - https://fr.wikipedia.org/wiki/Maine_(affluent_de_la_S%C3%A8vre_Nantaise)
+  downstream: null
+  explanation_key: river.maine-sevre-nantaise.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: gironde
+  name: Gironde
+  hydronym: "la Gironde (PlanEau, estuaire)"
+  codes:
+  - 05P0000002292062751
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Gironde/121512
+  downstream: null
+  explanation_key: river.gironde.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: ciron
+  name: Ciron
+  hydronym: "le Ciron"
+  codes:
+  - 05C0000002000893488
+  references:
+  - https://fr.wikipedia.org/wiki/Ciron_(rivi%C3%A8re)
+  downstream: garonne
+  explanation_key: river.ciron.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: isle
+  name: Isle
+  hydronym: "l'Isle"
+  codes:
+  - 05C0000002000862705
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Isle/125258
+  downstream: dordogne
+  explanation_key: river.isle.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: dronne
+  name: Dronne
+  hydronym: "la Dronne"
+  codes:
+  - 05C0000002000863252
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Dronne/117126
+  downstream: isle
+  explanation_key: river.dronne.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: ardeche
+  name: Ardèche
+  hydronym: "l'Ardèche"
+  codes:
+  - 06C0000002000809358
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Ard%C3%A8che/106027
+  downstream: rhone
+  explanation_key: river.ardeche.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: drome
+  name: Drôme
+  hydronym: "la Drôme"
+  codes:
+  - 06C0000002000803141
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Dr%C3%B4me/117124
+  downstream: rhone
+  explanation_key: river.drome.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: ouveze
+  name: Ouvèze
+  hydronym: "l'Ouvèze"
+  codes:
+  - 06C0000002000802870
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/l_Ouv%C3%A8ze/182487
+  downstream: rhone
+  explanation_key: river.ouveze.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: eygues
+  name: Eygues
+  hydronym: "l'Eygues"
+  codes:
+  - 06C0000002000803225
+  references:
+  - https://fr.wikipedia.org/wiki/Eygues
+  downstream: rhone
+  explanation_key: river.eygues.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: ceze
+  name: Cèze
+  hydronym: "la Cèze"
+  codes:
+  - 06C0000002000812384
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_C%C3%A8ze/112457
+  downstream: rhone
+  explanation_key: river.ceze.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: gardon
+  name: Gardon
+  hydronym: "le Gard"
+  codes:
+  - 06C0000002000815160
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/le_Gard/120850
+  downstream: rhone
+  explanation_key: river.gardon.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: doux
+  name: Doux
+  hydronym: "le Doux"
+  codes:
+  - 06C0000002000804851
+  references:
+  - https://fr.wikipedia.org/wiki/Doux_(rivi%C3%A8re)
+  downstream: rhone
+  explanation_key: river.doux.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: argens
+  name: Argens
+  hydronym: "l'Argens"
+  codes:
+  - 06C0000002000795812
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Argens/106066
+  downstream: null
+  explanation_key: river.argens.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: orb
+  name: Orb
+  hydronym: "l'Orb"
+  codes:
+  - 06C0000002000823864
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Orb/136224
+  downstream: null
+  explanation_key: river.orb.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: agly
+  name: Agly
+  hydronym: "l'Agly"
+  codes:
+  - 06C0000002000839898
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Agly/104239
+  downstream: null
+  explanation_key: river.agly.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: tet
+  name: Têt
+  hydronym: "la Têt"
+  codes:
+  - 06C0000002000836239
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_T%C3%AAt/146404
+  downstream: null
+  explanation_key: river.tet.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: tech
+  name: Tech
+  hydronym: "le Tech"
+  codes:
+  - 06C0000002000843377
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/le_Tech/146199
+  downstream: null
+  explanation_key: river.tech.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: serein
+  name: Serein
+  hydronym: "le Serein"
+  codes:
+  - 03C0000002000816160
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Serein/143972
+  downstream: yonne
+  explanation_key: river.serein.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: ouche
+  name: Ouche
+  hydronym: "l'Ouche"
+  codes:
+  - 06C0000002000801685
+  references:
+  - https://fr.wikipedia.org/wiki/Ouche_(C%C3%B4te-d%27Or)
+  downstream: saone
+  explanation_key: river.ouche.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: dheune
+  name: Dheune
+  hydronym: "la Dheune"
+  codes:
+  - 06C0000002000801992
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Dheune/179269
+  downstream: saone
+  explanation_key: river.dheune.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: grosne
+  name: Grosne
+  hydronym: "la Grosne"
+  codes:
+  - 06C0000002000801976
+  references:
+  - https://fr.wikipedia.org/wiki/Grosne_(rivi%C3%A8re)
+  downstream: saone
+  explanation_key: river.grosne.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: seille
+  name: Seille (Bresse)
+  hydronym: "la Seille"
+  codes:
+  - 06C0000002000800882
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Seille/143796
+  downstream: saone
+  explanation_key: river.seille.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: loue
+  name: Loue
+  hydronym: "la Loue"
+  codes:
+  - 06C0000002000794464
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Loue/130402
+  downstream: doubs
+  explanation_key: river.loue.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: aube
+  name: Aube
+  hydronym: "l'Aube"
+  codes:
+  - 03C0000002000813408
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Aube/106606
+  downstream: seine
+  explanation_key: river.aube.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: vesle
+  name: Vesle
+  hydronym: "la Vesle"
+  codes:
+  - 03C0000002000818893
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Vesle/148699
+  downstream: aisne
+  explanation_key: river.vesle.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: aisne
+  name: Aisne
+  hydronym: "l'Aisne"
+  codes:
+  - 03C0000002000807320
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Aisne/104421
+  downstream: oise
+  explanation_key: river.aisne.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+- id: ill
+  name: Ill
+  hydronym: "l'Ill"
+  codes:
+  - 02C0000002000786646
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Ill/124814
+  downstream: rhin
+  explanation_key: river.ill.summary
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+natural_earth_relations:
+- id: vienne
+  downstream: loire
+- id: tarn
+  downstream: garonne
+- id: ariege
+  downstream: garonne
+- id: saone
+  downstream: rhone
+- id: durance
+  downstream: rhone
+- id: doubs
+  downstream: saone
+- id: marne
+  downstream: seine
+- id: yonne
+  downstream: seine
+- id: moselle
+  downstream: rhin

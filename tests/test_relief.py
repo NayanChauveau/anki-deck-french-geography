@@ -51,11 +51,11 @@ def test_regional_reliefs_have_both_directions_and_localized_context():
     project = load(ROOT)
     source = json.loads((ROOT / "data/relief/regional-schematic-zones.geojson").read_text())
     targets = {feature["properties"]["id"] for feature in source["features"]}
-    assert len(targets) == 29
-    assert len(project.layers["mountains"]) == 36
+    assert len(targets) == 42
+    assert len(project.layers["mountains"]) == 49
     for language in ("fr", "en"):
         cards = [c for c in localize(project, language).cards if c.layer == "mountains"]
-        assert len(cards) == 72
+        assert len(cards) == 98
         for target in targets:
             selected = {c.direction: c for c in cards if c.target == target}
             assert set(selected) == {"name-map", "map-name"}

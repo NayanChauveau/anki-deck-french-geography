@@ -16,9 +16,11 @@ edition once, then let Deck Manager check for new versions.
 
 - **Departments:** locate a department from its name, or recall its name and code from a map.
 - **Regions and cities:** place them on a map and learn their administrative relationships and capitals.
-- **Rivers and lakes:** recognize their locations and learn selected tributary relationships.
-- **Landscapes:** locate 36 mountain areas, from the Alps and Massif Central to the Morvan,
-  Forez, Vercors and Provençal ranges, and identify landmark peaks.
+- **Rivers and lakes:** recognize 67 rivers, including Loire, Rhône, Saône and Garonne tributaries
+  and the Gironde estuary, and learn which river each one flows into.
+- **Landscapes:** locate 49 mountain areas, from the Alps and Massif Central to the Morvan,
+  Forez, Vercors, Montagne Noire, Corbières, Côte d’Or and Montagne de Reims, and identify
+  landmark peaks.
 - **Coasts, overseas France and national parks:** build a broader picture of French geography.
 - **Marseille streets:** find 300 main Marseille streets on a zoomable map, and name a highlighted one.
 

@@ -80,7 +80,7 @@ source_index = next(i for i, s in enumerate(registry["sources"]) if s["id"] == "
 registry["sources"][source_index] = {
     "id": "mountains",
     "source": ("Natural Earth physical label polygons + independently authored relief schematics"),
-    "version": "v5.1.2; schematics 2026-10-27",
+    "version": "v5.1.2; schematics 2026-11-24",
     "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_geography_regions_polys.geojson",
     "license": "Public domain + CC0-1.0 schematics",
     "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
@@ -92,7 +92,7 @@ registry["sources"][source_index] = {
                 "url": "local:" + str(schematic.relative_to(root)),
                 "sha256": hashlib.sha256(schematic.read_bytes()).hexdigest(),
                 "source": ("Independently authored educational schematics; references per feature"),
-                "version": "2026-10-27" if "regional" in schematic.name else "2026-10-20",
+                "version": "2026-11-24" if "regional" in schematic.name else "2026-10-20",
                 "license": "CC0-1.0",
                 "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
                 "modifications": (
@@ -112,7 +112,7 @@ registry["sources"][source_index] = {
     "sha256": hashlib.sha256(output.read_bytes()).hexdigest(),
     "modifications": (
         "Five Natural Earth physical regions selected by NAME, clipped to [-7,40,12,53]; "
-        "Two broad and 29 regional independently authored schematic zones added "
+        "Two broad and 42 regional independently authored schematic zones added "
         "from data/relief/schematic-zones.geojson and regional-schematic-zones.geojson. "
         "properties reduced, IDs prefixed mountain-, make_valid applied. "
         "Label polygons describe approximate geographic extents, not administrative "

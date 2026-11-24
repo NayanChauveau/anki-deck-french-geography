@@ -27,7 +27,55 @@ def test_topage_selection_excludes_homonymous_small_rivers():
         "lot": "Garonne",
         "isere": "Rhône",
         "ain": "Rhône",
+        "layon": "Loire",
+        "thouet": "Loire",
+        "indre": "Loire",
+        "creuse": "Vienne",
+        "loir": "Sarthe",
+        "sevre-nantaise": "Loire",
+        "ciron": "Garonne",
+        "isle": "Dordogne",
+        "dronne": "Isle",
+        "ardeche": "Rhône",
+        "drome": "Rhône",
+        "ouveze": "Rhône",
+        "eygues": "Rhône",
+        "ceze": "Rhône",
+        "gardon": "Rhône",
+        "doux": "Rhône",
+        "serein": "Yonne",
+        "ouche": "Saône",
+        "dheune": "Saône",
+        "grosne": "Saône",
+        "seille": "Saône",
+        "loue": "Doubs",
+        "aube": "Seine",
+        "vesle": "Aisne",
+        "aisne": "Oise",
+        "ill": "Rhin",
+        "vienne": "Loire",
+        "tarn": "Garonne",
+        "ariege": "Garonne",
+        "saone": "Rhône",
+        "durance": "Rhône",
+        "doubs": "Saône",
+        "marne": "Seine",
+        "yonne": "Seine",
+        "moselle": "Rhin",
     }
+
+
+def test_wine_area_rivers_exclude_homonyms():
+    project = load(ROOT)
+    # Bresse Seille, not the Lorraine one; Vaucluse Ouvèze, not the Ardèche one.
+    assert project.features["seille"].bounds[3] < 47
+    assert project.features["ouveze"].bounds[1] < 44.2
+    # Maine of the Sèvre Nantaise basin, south of the Loire, not the Maine of Angers.
+    assert project.features["maine-sevre-nantaise"].bounds[3] < 47.2
+    # The Garonne reaches the bec d'Ambès, where the Gironde estuary starts.
+    assert project.features["garonne"].bounds[3] > 45
+    assert project.features["gironde"].geom_type == "Polygon"
+    assert project.features["gironde"].bounds[3] > 45.5
 
 
 def test_schematic_corsican_relief_is_not_the_island_outline():

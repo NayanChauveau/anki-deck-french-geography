@@ -35,3 +35,214 @@ features:
   references:
   - https://www.larousse.fr/encyclopedie/riviere-lac/Ain/104387
   explanation_key: river.ain.summary
+- id: layon
+  name: Layon
+  downstream: loire
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Layon/129119
+  explanation_key: river.layon.summary
+- id: thouet
+  name: Thouet
+  downstream: loire
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/le_Thouet/146702
+  explanation_key: river.thouet.summary
+- id: indre
+  name: Indre
+  downstream: loire
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Indre/124950
+  explanation_key: river.indre.summary
+- id: creuse
+  name: Creuse
+  downstream: vienne
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Creuse/115159
+  explanation_key: river.creuse.summary
+- id: loir
+  name: Loir
+  downstream: sarthe
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/le_Loir/130236
+  explanation_key: river.loir.summary
+- id: sevre-nantaise
+  name: Sèvre Nantaise
+  downstream: loire
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/S%C3%A8vre_Nantaise/144032
+  explanation_key: river.sevre-nantaise.summary
+- id: ciron
+  name: Ciron
+  downstream: garonne
+  references:
+  - https://fr.wikipedia.org/wiki/Ciron_(rivi%C3%A8re)
+  explanation_key: river.ciron.summary
+- id: isle
+  name: Isle
+  downstream: dordogne
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Isle/125258
+  explanation_key: river.isle.summary
+- id: dronne
+  name: Dronne
+  downstream: isle
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Dronne/117126
+  explanation_key: river.dronne.summary
+- id: ardeche
+  name: Ardèche
+  downstream: rhone
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Ard%C3%A8che/106027
+  explanation_key: river.ardeche.summary
+- id: drome
+  name: Drôme
+  downstream: rhone
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Dr%C3%B4me/117124
+  explanation_key: river.drome.summary
+- id: ouveze
+  name: Ouvèze
+  downstream: rhone
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/l_Ouv%C3%A8ze/182487
+  explanation_key: river.ouveze.summary
+- id: eygues
+  name: Eygues
+  downstream: rhone
+  references:
+  - https://fr.wikipedia.org/wiki/Eygues
+  explanation_key: river.eygues.summary
+- id: ceze
+  name: Cèze
+  downstream: rhone
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_C%C3%A8ze/112457
+  explanation_key: river.ceze.summary
+- id: gardon
+  name: Gardon
+  downstream: rhone
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/le_Gard/120850
+  explanation_key: river.gardon.summary
+- id: doux
+  name: Doux
+  downstream: rhone
+  references:
+  - https://fr.wikipedia.org/wiki/Doux_(rivi%C3%A8re)
+  explanation_key: river.doux.summary
+- id: serein
+  name: Serein
+  downstream: yonne
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Serein/143972
+  explanation_key: river.serein.summary
+- id: ouche
+  name: Ouche
+  downstream: saone
+  references:
+  - https://fr.wikipedia.org/wiki/Ouche_(C%C3%B4te-d%27Or)
+  explanation_key: river.ouche.summary
+- id: dheune
+  name: Dheune
+  downstream: saone
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Dheune/179269
+  explanation_key: river.dheune.summary
+- id: grosne
+  name: Grosne
+  downstream: saone
+  references:
+  - https://fr.wikipedia.org/wiki/Grosne_(rivi%C3%A8re)
+  explanation_key: river.grosne.summary
+- id: seille
+  name: Seille (Bresse)
+  downstream: saone
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Seille/143796
+  explanation_key: river.seille.summary
+- id: loue
+  name: Loue
+  downstream: doubs
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Loue/130402
+  explanation_key: river.loue.summary
+- id: aube
+  name: Aube
+  downstream: seine
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Aube/106606
+  explanation_key: river.aube.summary
+- id: vesle
+  name: Vesle
+  downstream: aisne
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Vesle/148699
+  explanation_key: river.vesle.summary
+- id: aisne
+  name: Aisne
+  downstream: oise
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Aisne/104421
+  explanation_key: river.aisne.summary
+- id: ill
+  name: Ill
+  downstream: rhin
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Ill/124814
+  explanation_key: river.ill.summary
+- id: vienne
+  name: Vienne
+  downstream: loire
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Vienne/148847
+  explanation_key: river.vienne.summary
+- id: tarn
+  name: Tarn
+  downstream: garonne
+  references:
+  - https://www.larousse.fr/dictionnaires/college/le_Tarn/39307
+  explanation_key: river.tarn.summary
+- id: ariege
+  name: Ariège
+  downstream: garonne
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Ari%C3%A8ge/106123
+  explanation_key: river.ariege.summary
+- id: saone
+  name: Saône
+  downstream: rhone
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Sa%C3%B4ne/143176
+  - https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2024
+  explanation_key: river.saone.summary
+- id: durance
+  name: Durance
+  downstream: rhone
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Durance/117449
+  explanation_key: river.durance.summary
+- id: doubs
+  name: Doubs
+  downstream: saone
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/le_Doubs/116981
+  explanation_key: river.doubs.summary
+- id: marne
+  name: Marne
+  downstream: seine
+  references:
+  - https://www.eau-seine-normandie.fr/agence-de-leau/le-bassin-de-la-seine
+  explanation_key: river.marne.summary
+- id: yonne
+  name: Yonne
+  downstream: seine
+  references:
+  - https://www.eau-seine-normandie.fr/agence-de-leau/le-bassin-de-la-seine
+  explanation_key: river.yonne.summary
+- id: moselle
+  name: Moselle
+  downstream: rhin
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/wd/134171
+  explanation_key: river.moselle.summary

@@ -177,7 +177,7 @@ def test_new_catalog_entry_and_geometry_generate_a_note_without_a_card_file(tmp_
     card = next(c for c in project.cards if c.target == "example")
     assert (
         len([c for c in project.cards if c.theme == "Fleuves" and c.direction == "identification"])
-        == 33
+        == 68
     )
     assert card.target == "example"
     assert card.answer == "L’Exemple"
@@ -255,7 +255,7 @@ def test_rivers_support_location_without_changing_identification_notes(language,
     identify = {c.target: c for c in rivers if c.direction == "identification"}
     locate = {c.target: c for c in rivers if c.direction == "name-map"}
     assert identify.keys() == locate.keys() == project.layers["rivers"].keys()
-    assert len(locate) == 32
+    assert len(locate) == 67
     for target, card in locate.items():
         original = identify[target]
         assert original.id == f"fr-geo-hydrographie-identification-{target}"

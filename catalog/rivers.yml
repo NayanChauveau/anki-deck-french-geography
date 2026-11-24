@@ -91,6 +91,7 @@ features:
   name: Garonne
   references:
   - https://www.larousse.fr/encyclopedie/riviere-lac/la_Garonne/111428
+  - https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2024
   label:
     lon: -1.8
     lat: 44.2
@@ -311,3 +312,283 @@ features:
     status: verified
     checked_on: '2026-10-20'
   explanation_key: river.ain.summary
+- id: layon
+  name: Layon
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Layon/129119
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.layon.summary
+- id: aubance
+  name: Aubance
+  references:
+  - https://fr.wikipedia.org/wiki/Aubance
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.aubance.summary
+- id: thouet
+  name: Thouet
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/le_Thouet/146702
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.thouet.summary
+- id: indre
+  name: Indre
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Indre/124950
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.indre.summary
+- id: creuse
+  name: Creuse
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Creuse/115159
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.creuse.summary
+- id: loir
+  name: Loir
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/le_Loir/130236
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.loir.summary
+- id: sarthe
+  name: Sarthe
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Sarthe/143279
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.sarthe.summary
+- id: sevre-nantaise
+  name: Sèvre Nantaise
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/S%C3%A8vre_Nantaise/144032
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.sevre-nantaise.summary
+- id: maine-sevre-nantaise
+  name: Maine (Sèvre Nantaise)
+  references:
+  - https://fr.wikipedia.org/wiki/Maine_(affluent_de_la_S%C3%A8vre_Nantaise)
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.maine-sevre-nantaise.summary
+- id: gironde
+  name: Gironde
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Gironde/121512
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.gironde.summary
+- id: ciron
+  name: Ciron
+  references:
+  - https://fr.wikipedia.org/wiki/Ciron_(rivi%C3%A8re)
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.ciron.summary
+- id: isle
+  name: Isle
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Isle/125258
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.isle.summary
+- id: dronne
+  name: Dronne
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Dronne/117126
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.dronne.summary
+- id: ardeche
+  name: Ardèche
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Ard%C3%A8che/106027
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.ardeche.summary
+- id: drome
+  name: Drôme
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Dr%C3%B4me/117124
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.drome.summary
+- id: ouveze
+  name: Ouvèze
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/l_Ouv%C3%A8ze/182487
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.ouveze.summary
+- id: eygues
+  name: Eygues
+  references:
+  - https://fr.wikipedia.org/wiki/Eygues
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.eygues.summary
+- id: ceze
+  name: Cèze
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_C%C3%A8ze/112457
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.ceze.summary
+- id: gardon
+  name: Gardon
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/le_Gard/120850
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.gardon.summary
+- id: doux
+  name: Doux
+  references:
+  - https://fr.wikipedia.org/wiki/Doux_(rivi%C3%A8re)
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.doux.summary
+- id: argens
+  name: Argens
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Argens/106066
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.argens.summary
+- id: orb
+  name: Orb
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Orb/136224
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.orb.summary
+- id: agly
+  name: Agly
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Agly/104239
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.agly.summary
+- id: tet
+  name: Têt
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_T%C3%AAt/146404
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.tet.summary
+- id: tech
+  name: Tech
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/le_Tech/146199
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.tech.summary
+- id: serein
+  name: Serein
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Serein/143972
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.serein.summary
+- id: ouche
+  name: Ouche
+  references:
+  - https://fr.wikipedia.org/wiki/Ouche_(C%C3%B4te-d%27Or)
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.ouche.summary
+- id: dheune
+  name: Dheune
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Dheune/179269
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.dheune.summary
+- id: grosne
+  name: Grosne
+  references:
+  - https://fr.wikipedia.org/wiki/Grosne_(rivi%C3%A8re)
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.grosne.summary
+- id: seille
+  name: Seille (Bresse)
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Seille/143796
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.seille.summary
+- id: loue
+  name: Loue
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Loue/130402
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.loue.summary
+- id: aube
+  name: Aube
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Aube/106606
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.aube.summary
+- id: vesle
+  name: Vesle
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/la_Vesle/148699
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.vesle.summary
+- id: aisne
+  name: Aisne
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Aisne/104421
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.aisne.summary
+- id: ill
+  name: Ill
+  references:
+  - https://www.larousse.fr/encyclopedie/riviere-lac/Ill/124814
+  review:
+    status: verified
+    checked_on: '2026-11-24'
+  explanation_key: river.ill.summary

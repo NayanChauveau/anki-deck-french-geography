@@ -144,8 +144,11 @@ complete current dataset. Exact inputs and transformations are in the source reg
 ## Geographic limitations
 
 Natural Earth provides generalized context and some river/lake outlines. The initial
-18-watercourse selection is extended to 32 with BD TOPAGE 2024; foreign segments absent
-from the national dataset are not invented. The Rhine remains incomplete. The Rhône
+18-watercourse selection is extended to 67 with BD TOPAGE 2024, selected by exact Sandre
+code so that homonyms (two Ouvèze, two Seille, the Maine of Angers) stay out; foreign
+segments absent from the national dataset are not invented. The Garonne follows TOPAGE to
+the bec d'Ambès. The Gironde is the TOPAGE estuary polygon (`PlanEau`), drawn like a lake
+in the river layer; its sub-pixel island holes are removed. The Rhine remains incomplete. The Rhône
 includes Natural Earth's lake centerline through Lake Geneva. The Somme includes its
 canalized course and a tiny detached source fragment, whose rasterization differs
 slightly between SVG and the historical PNG reference.
@@ -153,11 +156,12 @@ slightly between SVG and the historical PNG reference.
 The 20 lakes/reservoirs use exact selected Sandre codes, without small homonyms;
 Hourtin-Carcans is combined. Lake boundaries do not describe current water levels.
 Mountain areas are indicative: five broad Natural Earth regions, two schematic
-Corsican/Armorican zones and 29 regional schematics, all on the metropolitan view.
+Corsican/Armorican zones and 42 regional schematics, all on the metropolitan view.
 The regional envelopes are independently authored WGS84 polygons, with references
 per feature in `data/relief/regional-schematic-zones.geojson`. They locate massifs;
 they are not surveyed boundaries, park perimeters or commune unions. Each has
-a localized geographic explanation explicitly identifying the schematic limits.
+a localized geographic explanation. Small areas such as the Dentelles de Montmirail or
+La Clape cover only a few pixels at national scale.
 The Chablais envelope shows only the French part; Bornes and Aravis are separate.
 
 `prepare_relief.py <pinned-ne_10m_geography_regions_polys.geojson>` verifies the

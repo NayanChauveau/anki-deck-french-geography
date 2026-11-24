@@ -30,6 +30,19 @@ names:
   mountain-sainte-baume: Sainte-Baume
   mountain-maures: Maures Massif
   mountain-esterel: Estérel
+  mountain-montagne-noire: Montagne Noire
+  mountain-corbieres: Corbières
+  mountain-cote-dor: Côte d’Or escarpment
+  mountain-montagne-de-reims: Montagne de Reims
+  mountain-cote-des-blancs: Côte des Blancs
+  mountain-collines-sous-vosgiennes: Vosges foothills
+  mountain-dentelles-de-montmirail: Dentelles de Montmirail
+  mountain-alberes: Albères
+  mountain-larzac: Causse du Larzac
+  mountain-revermont: Revermont
+  mountain-espinouse-caroux: Espinouse and Caroux
+  mountain-clape: La Clape
+  mountain-maconnais: Mâconnais Hills
   escaut: Scheldt
   rhin: Rhine
   segre: Segre
@@ -221,6 +234,19 @@ explanations:
   landforms.maures.context: 'In Var, between Hyères and Fréjus, south of the Maures depression.'
   landforms.esterel.context: 'A massif of red volcanic rocks east of Fréjus and Saint-Raphaël, on the Mediterranean
     coast.'
+  landforms.montagne-noire.context: 'The south-western end of the Massif Central, where Tarn meets Aude: a steep northern slope towards Revel and Mazamet, a gentler southern slope towards Carcassonne.'
+  landforms.corbieres.context: 'A massif between the Aude valley, from Carcassonne to Narbonne, to the north and the Agly valley to the south, reaching the coastal lagoons.'
+  landforms.cote-dor.context: 'A limestone escarpment overlooking the Saône plain, from Dijon past Nuits-Saint-Georges and Beaune to around Santenay. Not the Côte-d’Or department.'
+  landforms.montagne-de-reims.context: 'A wooded plateau between Reims to the north and the Marne valley at Épernay to the south, overlooking the Champagne plain.'
+  landforms.cote-des-blancs.context: 'A north–south escarpment south of Épernay, from Cramant and Avize to Vertus, on the edge of the Brie champenoise plateau.'
+  landforms.collines-sous-vosgiennes.context: 'A strip of hills at the eastern foot of the Vosges, between the mountains and the Alsace plain; only the stretch from Marlenheim to Thann is shown.'
+  landforms.dentelles-de-montmirail.context: 'A small limestone range north of Carpentras, between Gigondas, Beaumes-de-Venise and Malaucène, west of Mont Ventoux.'
+  landforms.alberes.context: 'The eastern end of the Pyrenees, from the Col du Perthus to the Mediterranean between Collioure and Cerbère, along the Spanish border. Only the French part is shown.'
+  landforms.larzac.context: 'A limestone plateau of the Grands Causses between Millau to the north and Lodève to the south, shared by Aveyron and Hérault.'
+  landforms.revermont.context: 'The western edge of the Jura overlooking the Bresse plain, from the Seille near Lons-le-Saunier to the Ain river near Pont-d’Ain.'
+  landforms.espinouse-caroux.context: 'Haut-Languedoc uplands north of the Jaur and Orb valleys, between Olargues, Lamalou-les-Bains and Saint-Gervais-sur-Mare.'
+  landforms.clape.context: 'A massif between Narbonne and the Mediterranean, bounded by the Aude to the north and by Gruissan and its lagoons to the south.'
+  landforms.maconnais.context: 'North–south ridges between the Grosne to the west and the Saône to the east, from Tournus to Mâcon, north of the Beaujolais.'
   river.loire.summary: It passes through Orléans, Tours and Nantes before reaching the Atlantic at Saint-Nazaire.
   river.seine.summary: It flows through Paris, then Rouen, before reaching the English Channel through the
     Seine estuary.
@@ -259,6 +285,41 @@ explanations:
   river.lot.summary: The Lot flows directly into the Garonne.
   river.isere.summary: The Isère joins the Rhône north of Valence.
   river.ain.summary: The Ain descends from the Jura Mountains and flows directly into the Rhône.
+  river.layon.summary: 'It joins the Loire on its left bank at Chalonnes-sur-Loire, south-west of Angers.'
+  river.aubance.summary: 'It passes Mûrs-Érigné and joins the Louet, an arm of the Loire, at Denée, south-west of Angers.'
+  river.thouet.summary: 'It flows through Parthenay and Thouars, then joins the Loire at Saumur.'
+  river.indre.summary: 'It flows through Châteauroux, Loches and Azay-le-Rideau, then joins the Loire at Avoine, near Chinon.'
+  river.creuse.summary: 'Rising on the Plateau de Millevaches, it flows through Aubusson and Argenton-sur-Creuse, then joins the Vienne at Port-de-Piles.'
+  river.loir.summary: 'It flows through Châteaudun, Vendôme and La Flèche, then joins the Sarthe at Briollay, north of Angers — not the Loire.'
+  river.sarthe.summary: 'It flows through Alençon and Le Mans, then meets the Mayenne to form the Maine, just north of Angers.'
+  river.sevre-nantaise.summary: 'It flows through Clisson and joins the Loire at Nantes, on the boundary with Rezé. Not to be confused with the Sèvre Niortaise.'
+  river.maine-sevre-nantaise.summary: 'A tributary of the Sèvre Nantaise, it flows through Montaigu and joins it between Saint-Fiacre-sur-Maine and Vertou. Not the Maine of Angers.'
+  river.gironde.summary: 'An estuary formed at the Bec d’Ambès by the Garonne and the Dordogne; it runs about 75 km to the Atlantic, between the Pointe de Grave and Royan.'
+  river.ciron.summary: 'A left-bank tributary of the Garonne, it joins it at Barsac, upstream of Bordeaux.'
+  river.isle.summary: 'Rising in Haute-Vienne, it flows through Périgueux and joins the Dordogne at Libourne.'
+  river.dronne.summary: 'It flows through Brantôme and joins the Isle at Coutras.'
+  river.ardeche.summary: 'Rising in the Massif Central, it passes through its gorges and joins the Rhône near Pont-Saint-Esprit.'
+  river.drome.summary: 'It flows through Die and Crest, then joins the Rhône between Livron-sur-Drôme and Loriol-sur-Drôme.'
+  river.ouveze.summary: 'It flows through Buis-les-Baronnies and Vaison-la-Romaine, then joins the Rhône at Sorgues. Another Ouvèze flows in Ardèche.'
+  river.eygues.summary: 'Also called the Aigues or Aigue, it flows through Nyons and joins the Rhône at Caderousse, north-west of Orange.'
+  river.ceze.summary: 'Rising in the Cévennes, it flows through Bagnols-sur-Cèze and joins the Rhône between Codolet and Laudun-l’Ardoise.'
+  river.gardon.summary: 'Also called the Gard, it forms where the Gardons of Alès and Anduze meet, passes under the Pont du Gard and joins the Rhône upstream of Beaucaire.'
+  river.doux.summary: 'A right-bank tributary of the Rhône, it joins it at Tournon-sur-Rhône.'
+  river.argens.summary: 'It crosses the Var department from west to east and reaches the Mediterranean at Fréjus.'
+  river.orb.summary: 'It flows through Bédarieux and Béziers, then reaches the Mediterranean at Valras-Plage.'
+  river.agly.summary: 'It flows through Saint-Paul-de-Fenouillet and Estagel, then reaches the Mediterranean at Le Barcarès.'
+  river.tet.summary: 'Rising near the Carlit, it flows through Prades and Perpignan, then reaches the Mediterranean at Canet-en-Roussillon.'
+  river.tech.summary: 'It crosses the Vallespir, flows through Céret and reaches the Mediterranean north of Argelès-sur-Mer.'
+  river.serein.summary: 'It flows through Chablis and joins the Yonne at Bonnard.'
+  river.ouche.summary: 'It flows through Dijon and joins the Saône at Échenon, near Saint-Jean-de-Losne.'
+  river.dheune.summary: 'It joins the Saône at Allerey-sur-Saône, just downstream of the Doubs confluence.'
+  river.grosne.summary: 'It flows through Cluny and joins the Saône between Marnay and Ouroux-sur-Saône, south of Chalon-sur-Saône.'
+  river.seille.summary: 'Rising at the foot of the Jura, it flows through Louhans and joins the Saône at La Truchère, near Tournus. Not the Seille of Lorraine.'
+  river.loue.summary: 'Rising from a resurgence at Ouhans, it flows through Ornans and joins the Doubs at Parcey, south of Dole.'
+  river.aube.summary: 'Rising on the Langres plateau, it flows through Bar-sur-Aube and joins the Seine at Marcilly-sur-Seine.'
+  river.vesle.summary: 'It flows through Reims and joins the Aisne near Condé-sur-Aisne, upstream of Soissons.'
+  river.aisne.summary: 'It flows through Soissons and joins the Oise at Clairoix, near Compiègne.'
+  river.ill.summary: 'Rising in the Alsatian Jura, it flows through Mulhouse and Strasbourg, then joins the Rhine at Offendorf.'
   peak.puy-de-sancy.context: 'Broad landform region: Massif Central.'
   peak.mont-blanc.context: 'Broad landform region: Alps.'
   peak.cret-de-la-neige.context: 'Broad landform region: Jura Mountains.'
